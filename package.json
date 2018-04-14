@@ -16,7 +16,7 @@
   },
   "config": {
     "deployToGit": {
-      "repository": "https://$GH_TOKEN@github.com/finom/defi.js.org.git",
+      "repository": "https://$GH_TOKEN@github.com/finom/defi.git",
       "branch": "gh-pages",
       "folder": "dist",
       "script": "npm run build",
