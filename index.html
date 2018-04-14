@@ -650,6 +650,10 @@ class="example-link">Contact List</a> - allows to add, remove, sort, search and 
 	</h2>
 	
 	
+	<p class="module">
+		CommonJS module: <code>'defi/bindnode'</code>
+	</p>
+	
 	<div class="summary"><p>Binds a property of an object to HTML node, implementing two-way data binding</p>
 </div>
 	<div class="description"><p>It creates a bridge between value of a property and a state of HTML node on the page: from a simple input to a complicated widget (the complexity of elements is unlimited). After using this function, it isn&#39;t necessary to monitor the synchronizations between model and view.</p>
@@ -665,7 +669,7 @@ class="example-link">Contact List</a> - allows to add, remove, sort, search and 
 </code></pre>
 <p>For example, you want to bind a property of an object to a <code>input[type=&quot;checkbox&quot;]</code> node:
 defijs
-this.bindNode(obj, &#39;myKey&#39;, &#39;.my-checkbox&#39;, {
+defi.bindNode(obj, &#39;myKey&#39;, &#39;.my-checkbox&#39;, {
     // when is element state changed?
     // - after &#39;click&#39; event
     on: &#39;click&#39;,
@@ -804,7 +808,7 @@ defi.bindNode(obj, &#39;a.b.c&#39;, node);
 
 obj.a.b.c = &#39;bar&#39;; // updates node by bar
 
-const oldB = this.a.b;
+const oldB = obj.a.b;
 
 obj.a.b = { c: &#39;baz&#39; }; // updates node by baz
 
@@ -826,8 +830,8 @@ obj[&#39;a.b.c&#39;] = &#39;bar&#39;;
 <h4 id="flags-debouncegetvalue-true-and-debouncesetvalue-true-">Flags <code>debounceGetValue=true</code> and <code>debounceSetValue=true</code></h4>
 <p>One of the most important feature of <code>bindNode</code> is that the logic of property change and the logic of element state change uses debounce pattern. It means that if bound property is changed many times in a short time then bound element state will be updated only once after small delay (thanks to <code>debounceSetValue=true</code>). If element state is changed many times in a short time (eg corresponding DOM event is triggered), the property gets new value only once after minimum delay (thanks to <code>debounceGetValue=true</code>).</p>
 <pre><code class="lang-js">const input = document.querySelector(&#39;.my-input&#39;);
-this.bindNode(&#39;x&#39;, input);
-this.x = &#39;foo&#39;;
+defi.bindNode(obj, &#39;x&#39;, input);
+obj.x = &#39;foo&#39;;
 console.log(input.value === &#39;foo&#39;); // false
 setTimeout(() =&gt; {
     console.log(input.value === &#39;foo&#39;); // true
@@ -1106,7 +1110,7 @@ setTimeout(() =&gt; {
 
 <pre><code class="lang-js">defi.bindNode(obj, {
 	foo: {
-		node: ':sandbox .aaa',
+		node: ':bound(x) .aaa',
 		binder: myBinder()
 	},
 	bar: '.bbb',
@@ -1126,7 +1130,7 @@ setTimeout(() =&gt; {
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/matreshkajs/matreshka.io/blob/master/doc/en/defi.bindNode.jsdoc.js#L277">Found an ussue in the article? Send a patch there.</a>
+	<a class="make-patch-link" target="_blank" href="https://github.com/matreshkajs/matreshka.io/blob/master/doc/en/defi.bindNode.jsdoc.js#L278">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="defi.bindNode(2)" data-title="Method defi.bindNode(2)">Ask a question<i></i></a>
 <!--<div class="comments-container"></div>-->
@@ -1266,7 +1270,7 @@ setTimeout(() =&gt; {
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/matreshkajs/matreshka.io/blob/master/doc/en/defi.bindNode.jsdoc.js#L324">Found an ussue in the article? Send a patch there.</a>
+	<a class="make-patch-link" target="_blank" href="https://github.com/matreshkajs/matreshka.io/blob/master/doc/en/defi.bindNode.jsdoc.js#L325">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="defi.bindNode(3)" data-title="Method defi.bindNode(3)">Ask a question<i></i></a>
 <!--<div class="comments-container"></div>-->
@@ -1286,6 +1290,10 @@ setTimeout(() =&gt; {
 		</a> 
 	</h2>
 	
+	
+	<p class="module">
+		CommonJS module: <code>'defi/bindoptionalnode'</code>
+	</p>
 	
 	<div class="summary"><p>Works just the same as <a href="#!defi.bindNode">defi.bindNode</a> but it does not throw an exception if the <code>node</code> argument is an empty array, <code>undefined</code> or non-existent.</p>
 </div>
@@ -1334,6 +1342,10 @@ setTimeout(() =&gt; {
 		</a> 
 	</h2>
 	
+	
+	<p class="module">
+		CommonJS module: <code>'defi/bound'</code>
+	</p>
 	
 	<div class="summary"><p>Returns a bound element</p>
 </div>
@@ -1433,6 +1445,10 @@ defi.bound(obj, 'x', { all: true }); // will return an array of elements mached 
 		</a> 
 	</h2>
 	
+	
+	<p class="module">
+		CommonJS module: <code>'defi/calc'</code>
+	</p>
 	
 	<div class="summary"><p>Creates a dependency of one property value on values of others</p>
 </div>
@@ -1940,7 +1956,7 @@ obj.a = 5;</code></pre>
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/matreshkajs/matreshka.io/blob/master/doc/en/defi.calc.jsdoc.js#L352">Found an ussue in the article? Send a patch there.</a>
+	<a class="make-patch-link" target="_blank" href="https://github.com/matreshkajs/matreshka.io/blob/master/doc/en/defi.calc.jsdoc.js#L353">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="defi.calc(batch)" data-title="Method defi.calc(batch)">Ask a question<i></i></a>
 <!--<div class="comments-container"></div>-->
@@ -1965,7 +1981,7 @@ obj.a = 5;</code></pre>
 	
 	
 	<p class="module">
-		CommonJS module: <code>'matreshka/chain'</code>
+		CommonJS module: <code>'defi/chain'</code>
 	</p>
 	
 	<div class="summary"><p>Allows chained calls of defi.js functions</p>
@@ -2058,7 +2074,7 @@ obj.a = 5;</code></pre>
 	
 	
 	<p class="module">
-		CommonJS module: <code>'matreshka/lookforbinder'</code>
+		CommonJS module: <code>'defi/lookforbinder'</code>
 	</p>
 	
 	<div class="summary"></div>
@@ -2163,6 +2179,10 @@ console.log(defi.lookForBinder(element));
 	</h2>
 	
 	
+	<p class="module">
+		CommonJS module: <code>'defi/mediate'</code>
+	</p>
+	
 	<div class="summary"><p>Transforms property value on its changing</p>
 </div>
 	<div class="description"><p>This function is used for transforming property value on its changing. For example, you want the property value to be always either of a certain type or an integer value, or to be no less than zero and no more than a hundred etc.</p>
@@ -2247,7 +2267,7 @@ console.log(defi.lookForBinder(element));
 
 obj.x = 1;
 
-alert(typeof this.x); // "string"</code></pre>
+alert(typeof obj.x); // "string"</code></pre>
 
     <h4><p>An array of keys</p>
 </h4>
@@ -2336,7 +2356,7 @@ alert(typeof obj.z); // "boolean"</code></pre>
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/matreshkajs/matreshka.io/blob/master/doc/en/defi.mediate.jsdoc.js#L24">Found an ussue in the article? Send a patch there.</a>
+	<a class="make-patch-link" target="_blank" href="https://github.com/matreshkajs/matreshka.io/blob/master/doc/en/defi.mediate.jsdoc.js#L25">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="defi.mediate(2)" data-title="Method defi.mediate(2)">Ask a question<i></i></a>
 <!--<div class="comments-container"></div>-->
@@ -2359,6 +2379,10 @@ alert(typeof obj.z); // "boolean"</code></pre>
 </span>
 	</h2>
 	
+	
+	<p class="module">
+		CommonJS module: <code>'defi/off'</code>
+	</p>
 	
 	<div class="summary"><p>Deletes an event handler</p>
 </div>
@@ -2502,6 +2526,10 @@ defi.off(obj, 'change:x', handler);</code></pre>
 </span>
 	</h2>
 	
+	
+	<p class="module">
+		CommonJS module: <code>'defi/on'</code>
+	</p>
 	
 	<div class="summary"><p>Adds an event handler</p>
 </div>
@@ -2742,7 +2770,7 @@ defi.on(obj, 'foo', () => {
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/matreshkajs/matreshka.io/blob/master/doc/en/defi.on.jsdoc.js#L29">Found an ussue in the article? Send a patch there.</a>
+	<a class="make-patch-link" target="_blank" href="https://github.com/matreshkajs/matreshka.io/blob/master/doc/en/defi.on.jsdoc.js#L30">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="defi.on(2)" data-title="Method defi.on(2)">Ask a question<i></i></a>
 <!--<div class="comments-container"></div>-->
@@ -2765,6 +2793,10 @@ defi.on(obj, 'foo', () => {
 </span>
 	</h2>
 	
+	
+	<p class="module">
+		CommonJS module: <code>'defi/remove'</code>
+	</p>
 	
 	<div class="summary"><p>Deletes a property and removes dependent handlers</p>
 </div>
@@ -2884,6 +2916,10 @@ defi.remove(obj, ['myKey1', 'myKey2']);</code></pre>
 		</a> 
 	</h2>
 	
+	
+	<p class="module">
+		CommonJS module: <code>'defi/set'</code>
+	</p>
 	
 	<div class="summary"><p>Sets a property value allowing to pass an event options object</p>
 </div>
@@ -3127,7 +3163,7 @@ defi.set(obj, 'myKey', 4, {
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/matreshkajs/matreshka.io/blob/master/doc/en/defi.set.jsdoc.js#L51">Found an ussue in the article? Send a patch there.</a>
+	<a class="make-patch-link" target="_blank" href="https://github.com/matreshkajs/matreshka.io/blob/master/doc/en/defi.set.jsdoc.js#L52">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="defi.set(2)" data-title="Method defi.set(2)">Ask a question<i></i></a>
 <!--<div class="comments-container"></div>-->
@@ -3150,6 +3186,10 @@ defi.set(obj, 'myKey', 4, {
 </span>
 	</h2>
 	
+	
+	<p class="module">
+		CommonJS module: <code>'defi/trigger'</code>
+	</p>
 	
 	<div class="summary"><p>Fires an event</p>
 </div>
@@ -3273,6 +3313,10 @@ defi.trigger(obj, 'foo', 1, 2, 3); // alerts 6</code></pre>
 </span>
 	</h2>
 	
+	
+	<p class="module">
+		CommonJS module: <code>'defi/unbindnode'</code>
+	</p>
 	
 	<div class="summary"><p>Destroys a binding between given property and HTML node</p>
 </div>
@@ -3511,7 +3555,7 @@ obj.myKey = false;</code></pre>
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/matreshkajs/matreshka.io/blob/master/doc/en/defi.unbindNode.jsdoc.js#L25">Found an ussue in the article? Send a patch there.</a>
+	<a class="make-patch-link" target="_blank" href="https://github.com/matreshkajs/matreshka.io/blob/master/doc/en/defi.unbindNode.jsdoc.js#L26">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="defi.unbindNode(2)" data-title="Method defi.unbindNode(2)">Ask a question<i></i></a>
 <!--<div class="comments-container"></div>-->
@@ -3641,7 +3685,7 @@ defi.unbindNode(obj, temporaryBindings);</code></pre>
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/matreshkajs/matreshka.io/blob/master/doc/en/defi.unbindNode.jsdoc.js#L48">Found an ussue in the article? Send a patch there.</a>
+	<a class="make-patch-link" target="_blank" href="https://github.com/matreshkajs/matreshka.io/blob/master/doc/en/defi.unbindNode.jsdoc.js#L49">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="defi.unbindNode(3)" data-title="Method defi.unbindNode(3)">Ask a question<i></i></a>
 <!--<div class="comments-container"></div>-->
@@ -3667,7 +3711,7 @@ defi.unbindNode(obj, temporaryBindings);</code></pre>
 	</h2>
 	
 	<p class="module">
-		CommonJS module: <code>'matreshka/defaultbinders'</code>
+		CommonJS module: <code>'defi/defaultbinders'</code>
 	</p>
 	
 	<div class="summary"><p>An array of functions which return a corresponding binder or a falsy value</p>
@@ -3845,7 +3889,7 @@ defi.on(obj, &#39;click::x(.my-button)&#39;, evt =&gt; {
 defi.on(obj, &#39;a.b.c@change:d&#39;, () =&gt; {...});
 </code></pre>
 <h5 id="any-combinations-all-events-described-above-can-be-combined-">Any combinations. All events described above can be combined.</h5>
-<pre><code class="lang-js">this.on(&#39;x.y.z@click::u(.my-selector)&#39;, () =&gt; {...});
+<pre><code class="lang-js">defi.on(obj, &#39;x.y.z@click::u(.my-selector)&#39;, () =&gt; {...});
 </code></pre>
 
 	
