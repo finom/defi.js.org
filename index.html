@@ -319,7 +319,7 @@
 			
 				<li>
 					<a href="#!defi.remove"
-						title="Deletes a property
+						title="Deletes a property and removes dependent handlers
 "
 						data-name="remove"
 						
@@ -334,7 +334,7 @@
 			
 				<li>
 					<a href="#!defi.set"
-						title="Sets a property value allowing to pass event options object as the third argument
+						title="Sets a property value allowing to pass event options object
 "
 						data-name="set"
 						
@@ -2050,7 +2050,7 @@ console.log(defi.lookForBinder(element));
 data-importance="2">
 	<h2>
 		<a href="#!defi.mediate">
-			<span class="memberof">defi.</span>mediate<wbr>(<span class="args">key, mediator</span>)
+			<span class="memberof">defi.</span>mediate<wbr>(<span class="args">obj, key, mediator</span>)
 				
 		</a> <span class="returns">→ 
 	<span data-type="object">object</span>
@@ -2067,7 +2067,7 @@ data-importance="2">
 		<b>Returns</b> 
 	<span data-type="object">object</span>
 
-		 - self
+		 - obj
 
 
 	</p>
@@ -2086,6 +2086,19 @@ data-importance="2">
 			</tr>
 		</thead>
 		<tbody>
+			
+				<tr>
+					<td>
+						obj
+						
+					</td>
+					 
+					<td>
+	<span data-type="object">object</span>
+</td>
+					<td> <p>A target object</p>
+</td>
+				</tr>
 			
 				<tr>
 					<td>
@@ -2125,16 +2138,16 @@ data-importance="2">
 	<h3>Examples</h3>
 
 
-<pre><code class="lang-js">this.mediate('x', value => String(value));
+<pre><code class="lang-js">defi.mediate(obj, 'x', value => String(value));
 
-this.x = 1;
+obj.x = 1;
 
 alert(typeof this.x); // "string"</code></pre>
 
     <h4><p>An array of keys</p>
 </h4>
 
-<pre><code class="lang-js">this.mediate(['x', 'y'], value => String(value));</code></pre>
+<pre><code class="lang-js">defi.mediate(obj, ['x', 'y'], value => String(value));</code></pre>
 
  
 
@@ -2204,22 +2217,22 @@ data-importance="2">
 	<h3>Examples</h3>
 
 
-<pre><code class="lang-js">this.mediate({
+<pre><code class="lang-js">defi.mediate(obj, {
 	x: String,
 	y: Number,
 	z: Boolean
 });
-this.x = 1;
-this.y = 2;
-this.z = 3;
-alert(typeof this.x); // "string"
-alert(typeof this.y); // "number"
-alert(typeof this.z); // "boolean"</code></pre>
+obj.x = 1;
+obj.y = 2;
+obj.z = 3;
+alert(typeof obj.x); // "string"
+alert(typeof obj.y); // "number"
+alert(typeof obj.z); // "boolean"</code></pre>
 
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/matreshkajs/matreshka.io/blob/master/doc/en/defi.mediate.jsdoc.js#L25">Found an ussue in the article? Send a patch there.</a>
+	<a class="make-patch-link" target="_blank" href="https://github.com/matreshkajs/matreshka.io/blob/master/doc/en/defi.mediate.jsdoc.js#L26">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="defi.mediate(2)" data-title="Method defi.mediate(2)">Ask a question<i></i></a>
 <!--<div class="comments-container"></div>-->
@@ -2236,7 +2249,7 @@ alert(typeof this.z); // "boolean"</code></pre>
 data-importance="1">
 	<h2>
 		<a href="#!defi.off">
-			<span class="memberof">defi.</span>off<wbr>(<span class="args">names, callback, context</span>)
+			<span class="memberof">defi.</span>off<wbr>(<span class="args">obj, names, callback</span>)
 				
 		</a> <span class="returns">→ 
 	<span data-type="object">object</span>
@@ -2246,14 +2259,14 @@ data-importance="1">
 	
 	<div class="summary"><p>Deletes an event handler</p>
 </div>
-	<div class="description"><p>It deletes a handler which has been created before. All the three arguments are optional. You can delete both all the events (without passing any argument) and separate ones (having passed only the event name, the event name and the handler, the event name and the handler and the context).</p>
+	<div class="description"><p>It deletes a handler which has been created before. All arguments (except of a target object of course) are optional. You can delete both all the events (without passing event names) and separate ones (having passed only the event name, the event name and the handler).</p>
 </div>
 	
 	<p>
 		<b>Returns</b> 
 	<span data-type="object">object</span>
 
-		 - self
+		 - obj
 
 
 	</p>
@@ -2277,6 +2290,19 @@ data-importance="1">
 			</tr>
 		</thead>
 		<tbody>
+			
+				<tr>
+					<td>
+						obj
+						
+					</td>
+					 
+					<td>
+	<span data-type="object">object</span>
+</td>
+					<td> <p>A target object</p>
+</td>
+				</tr>
 			
 				<tr>
 					<td>
@@ -2308,21 +2334,6 @@ data-importance="1">
 </td>
 				</tr>
 			
-				<tr>
-					<td>
-						context
-						
-							<span class="signature">optional</span>
-						
-					</td>
-					 
-					<td>
-	<span data-type="object">object</span>
-</td>
-					<td> <p>A context</p>
-</td>
-				</tr>
-			
 		</tbody>
 	</table>
 
@@ -2346,12 +2357,12 @@ data-importance="1">
 	<h3>Examples</h3>
 
 
-<pre><code class="lang-js">this.off('change:x bind');</code></pre>
+<pre><code class="lang-js">defi.off(obj, 'change:x bind');</code></pre>
 
     <h4><p>The deletion of all events</p>
 </h4>
 
-<pre><code class="lang-js">this.off();</code></pre>
+<pre><code class="lang-js">defi.off(obj);</code></pre>
 
     <h4><p>The deletion of an event with definite handler</p>
 </h4>
@@ -2359,15 +2370,8 @@ data-importance="1">
 <pre><code class="lang-js">const handler = function() {
 	//...
 }
-this.on('change:x', handler);
-this.off('change:x', handler);</code></pre>
-
-    <h4><p>The deletion of an event with definite context</p>
-</h4>
-
-<pre><code class="lang-js">const object = {};
-this.on('change:x', handler, object);
-this.off('change:x', handler, object);</code></pre>
+defi.on(obj, 'change:x', handler);
+defi.off(obj, 'change:x', handler);</code></pre>
 
  
 
@@ -2389,7 +2393,7 @@ this.off('change:x', handler, object);</code></pre>
 data-importance="1">
 	<h2>
 		<a href="#!defi.on">
-			<span class="memberof">defi.</span>on<wbr>(<span class="args">names, callback, triggerOnInit, context</span>)
+			<span class="memberof">defi.</span>on<wbr>(<span class="args">obj, names, callback, triggerOnInit</span>)
 				
 		</a> <span class="returns">→ 
 	<span data-type="object">object</span>
@@ -2399,22 +2403,14 @@ data-importance="1">
 	
 	<div class="summary"><p>Adds an event handler</p>
 </div>
-	<div class="description"><p>The method adds an event handler for an instance of the <code>Matreshka</code> class. Refer to the complete list of possible events with the description here: <span data-type="eventNames">eventNames</span>.</p>
-<blockquote>
-<p>Note that the method has <a href="#!defi.on">static alternative</a>, which works just the same but accepts any target object as the first argument, shifting rest arguments to the right.</p>
-<pre><code class="lang-js">const on = require(&#39;matreshka/on&#39;);
-const object = {};
-on(object, names, callback, triggerOnInit, context);
-// instead of this.on(names, callback, triggerOnInit, context);
-</code></pre>
-</blockquote>
+	<div class="description"><p>The method adds an event handler for an object. Refer to the complete list of possible events with the description here: <span data-type="eventNames">eventNames</span>.</p>
 </div>
 	
 	<p>
 		<b>Returns</b> 
 	<span data-type="object">object</span>
 
-		 - self
+		 - obj
 
 
 	</p>
@@ -2438,6 +2434,19 @@ on(object, names, callback, triggerOnInit, context);
 			</tr>
 		</thead>
 		<tbody>
+			
+				<tr>
+					<td>
+						obj
+						
+					</td>
+					 
+					<td>
+	<span data-type="object">object</span>
+</td>
+					<td> <p>A target object</p>
+</td>
+				</tr>
 			
 				<tr>
 					<td>
@@ -2480,21 +2489,6 @@ on(object, names, callback, triggerOnInit, context);
 </td>
 				</tr>
 			
-				<tr>
-					<td>
-						context
-						
-							<span class="signature">optional</span>
-						
-					</td>
-					 
-					<td>
-	<span data-type="object">object</span>
-</td>
-					<td> <p>A context of the handler. In other words, <code>this</code> when called <code>callback</code></p>
-</td>
-				</tr>
-			
 		</tbody>
 	</table>
 
@@ -2502,10 +2496,6 @@ on(object, names, callback, triggerOnInit, context);
 	
 <h4>Links</h4>
 <ul class="see">
-	
-		<li><a href="#!defi.onDebounce">defi.onDebounce</a>
-	
-		<li><a href="#!defi.once">defi.once</a>
 	
 		<li><a href="#!defi.off">defi.off</a>
 	
@@ -2518,26 +2508,17 @@ on(object, names, callback, triggerOnInit, context);
 	<h3>Examples</h3>
 
 
-<pre><code class="lang-js">this.on('foo', () => {
+<pre><code class="lang-js">defi.on(obj, 'foo', () => {
 	alert('Custom Event is fired');
 });
 
-this.trigger('foo');</code></pre>
-
-    <h4><p>Passing a context</p>
-</h4>
-
-<pre><code class="lang-js">this.on('foo', function() {
-	alert(this.a); // 5
-}, { a: 5 });
-
-this.trigger('foo', 'Hello world');</code></pre>
+defi.trigger(obj, 'foo');</code></pre>
 
     <h4><p>Calling a handler immediately after event initialization</p>
 </h4>
 
 <pre><code class="lang-js">// Displays "bar" at once and waits for a firing of "foo" event
-this.on('foo', () => {
+defi.on(obj, 'foo', () => {
 	alert('bar');
 }, true);</code></pre>
 
@@ -2561,11 +2542,9 @@ this.on('foo', () => {
 data-importance="2">
 	<h2>
 		<a href="#!defi.on(2)">
-			<span class="memberof">defi.</span>on<wbr>(<span class="args">evtnameHandlerObject, triggerOnInit, context</span>)
+			<span class="memberof">defi.</span>on<wbr>(<span class="args">obj, evtnameHandlerObject, triggerOnInit, obj</span>)
 				
-		</a> <span class="returns">→ 
-	<span data-type="object">object</span>
-</span>
+		</a> 
 	</h2>
 	
 	
@@ -2573,15 +2552,6 @@ data-importance="2">
 </div>
 	<div class="description"><p>In the <a href="#!defi.on">defi.on</a> method the object with the key-element pairs can be passed to avoid multiple invocation of the method and reduce your code.</p>
 </div>
-	
-	<p>
-		<b>Returns</b> 
-	<span data-type="object">object</span>
-
-		 - self
-
-
-	</p>
 	
 	
 
@@ -2597,6 +2567,19 @@ data-importance="2">
 			</tr>
 		</thead>
 		<tbody>
+			
+				<tr>
+					<td>
+						obj
+						
+					</td>
+					 
+					<td>
+	<span data-type="object">object</span>
+</td>
+					<td> <p>A target object</p>
+</td>
+				</tr>
 			
 				<tr>
 					<td>
@@ -2628,16 +2611,14 @@ data-importance="2">
 			
 				<tr>
 					<td>
-						context
-						
-							<span class="signature">optional</span>
+						obj
 						
 					</td>
 					 
 					<td>
 	<span data-type="object">object</span>
 </td>
-					<td> <p>A context of the handler</p>
+					<td> <p>A target object</p>
 </td>
 				</tr>
 			
@@ -2651,7 +2632,7 @@ data-importance="2">
 	<h3>Examples</h3>
 
 
-<pre><code class="lang-js">this.on({
+<pre><code class="lang-js">defi.on(obj, {
 	'custom': evt => ...,
 	'click::x': evt => ...,
 	'change:y': evt => ...,
@@ -2660,7 +2641,7 @@ data-importance="2">
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/matreshkajs/matreshka.io/blob/master/doc/en/defi.on.jsdoc.js#L46">Found an ussue in the article? Send a patch there.</a>
+	<a class="make-patch-link" target="_blank" href="https://github.com/matreshkajs/matreshka.io/blob/master/doc/en/defi.on.jsdoc.js#L30">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="defi.on(2)" data-title="Method defi.on(2)">Ask a question<i></i></a>
 <!--<div class="comments-container"></div>-->
@@ -2677,7 +2658,7 @@ data-importance="2">
 data-importance="3">
 	<h2>
 		<a href="#!defi.remove">
-			<span class="memberof">defi.</span>remove<wbr>(<span class="args">key, eventOptions</span>)
+			<span class="memberof">defi.</span>remove<wbr>(<span class="args">obj, key, eventOptions</span>)
 				
 		</a> <span class="returns">→ 
 	<span data-type="object">object</span>
@@ -2685,7 +2666,7 @@ data-importance="3">
 	</h2>
 	
 	
-	<div class="summary"><p>Deletes a property</p>
+	<div class="summary"><p>Deletes a property and removes dependent handlers</p>
 </div>
 	<div class="description"></div>
 	
@@ -2693,7 +2674,7 @@ data-importance="3">
 		<b>Returns</b> 
 	<span data-type="object">object</span>
 
-		 - self
+		 - obj
 
 
 	</p>
@@ -2717,6 +2698,19 @@ data-importance="3">
 			</tr>
 		</thead>
 		<tbody>
+			
+				<tr>
+					<td>
+						obj
+						
+					</td>
+					 
+					<td>
+	<span data-type="object">object</span>
+</td>
+					<td> <p>A target object</p>
+</td>
+				</tr>
 			
 				<tr>
 					<td>
@@ -2756,13 +2750,13 @@ data-importance="3">
 	<h3>Examples</h3>
 
 
-<pre><code class="lang-js">this.remove('myKey');
-this.remove(['myKey1', 'myKey2']);</code></pre>
+<pre><code class="lang-js">defi.remove(obj, 'myKey');
+defi.remove(obj, ['myKey1', 'myKey2']);</code></pre>
 
     <h4><p>Using  <code>eventOptions</code></p>
 </h4>
 
-<pre><code class="lang-js">this.remove('myKey', {
+<pre><code class="lang-js">defi.remove(obj, 'myKey', {
 	silent: true
 });</code></pre>
 
@@ -2786,13 +2780,13 @@ this.remove(['myKey1', 'myKey2']);</code></pre>
 data-importance="1">
 	<h2>
 		<a href="#!defi.set">
-			<span class="memberof">defi.</span>set<wbr>(<span class="args">key, value, eventOptions</span>)
+			<span class="memberof">defi.</span>set<wbr>(<span class="args">obj, key, value, eventOptions</span>)
 				
 		</a> 
 	</h2>
 	
 	
-	<div class="summary"><p>Sets a property value allowing to pass event options object as the third argument</p>
+	<div class="summary"><p>Sets a property value allowing to pass event options object</p>
 </div>
 	<div class="description"><p>The list of the supported flags:</p>
 <ul>
@@ -2803,9 +2797,6 @@ data-importance="1">
 <li><code>skipMediator</code> - prevents the property transformation by a mediator (see <a href="#!defi.mediate">defi.mediate</a>)</li>
 <li><code>skipCalc</code> - prevents the work of dependencies created with <a href="#!defi.calc">defi.calc</a></li>
 </ul>
-<blockquote>
-<p>The method has <a href="#!defi.set">static alternative</a>.</p>
-</blockquote>
 </div>
 	
 	
@@ -2827,6 +2818,19 @@ data-importance="1">
 			</tr>
 		</thead>
 		<tbody>
+			
+				<tr>
+					<td>
+						obj
+						
+					</td>
+					 
+					<td>
+	<span data-type="object">object</span>
+</td>
+					<td> <p>A target object</p>
+</td>
+				</tr>
 			
 				<tr>
 					<td>
@@ -2879,36 +2883,36 @@ data-importance="1">
 	<h3>Examples</h3>
 
 
-<pre><code class="lang-js">this.on('change:myKey', evt => {
+<pre><code class="lang-js">defi.on(obj, 'change:myKey', evt => {
 	alert(evt.value);
 });
 
-// the same as this['myKey'] = 3
-// or this.myKey = 3
+// the same as obj['myKey'] = 3
+// or obj.myKey = 3
 // alerts 3
-this.set('myKey', 3);</code></pre>
+defi.set(obj, 'myKey', 3);</code></pre>
 
     <h4><p>Using <code>eventOptions</code></p>
 </h4>
 
-<pre><code class="lang-js">this.on('change:myKey', evt => {
+<pre><code class="lang-js">defi.on(obj, 'change:myKey', evt => {
 	alert(evt.value);
 });
 
-// handler isn't called
-this.set('myKey', 4, {
+// the handler isn't fired
+defi.set(obj, 'myKey', 4, {
 	silent: true
 });</code></pre>
 
     <h4><p>Passing custom data to a handler</p>
 </h4>
 
-<pre><code class="lang-js">this.on('change:myKey', evt => {
+<pre><code class="lang-js">defi.on(obj, 'change:myKey', evt => {
 	alert(evt.myCustomFlag);
 });
 
 // alerts 42
-this.set('myKey', 4, {
+defi.set(obj, 'myKey', 4, {
 	myCustomFlag: 42
 });</code></pre>
 
@@ -2932,7 +2936,7 @@ this.set('myKey', 4, {
 >
 	<h2>
 		<a href="#!defi.set(2)">
-			<span class="memberof">defi.</span>set<wbr>(<span class="args">keyValuePairs, eventOptions</span>)
+			<span class="memberof">defi.</span>set<wbr>(<span class="args">obj, keyValuePairs, eventOptions</span>)
 				
 		</a> 
 	</h2>
@@ -2956,6 +2960,19 @@ this.set('myKey', 4, {
 			</tr>
 		</thead>
 		<tbody>
+			
+				<tr>
+					<td>
+						obj
+						
+					</td>
+					 
+					<td>
+	<span data-type="object">object</span>
+</td>
+					<td> <p>A target object</p>
+</td>
+				</tr>
 			
 				<tr>
 					<td>
@@ -2995,15 +3012,15 @@ this.set('myKey', 4, {
 	<h3>Examples</h3>
 
 
-<pre><code class="lang-js">this.set({
+<pre><code class="lang-js">defi.set(obj, {
 	myKey1: 1,
 	myKey2: 2
 });</code></pre>
 
-    <h4><p>Passing  <code>eventOptions</code> as second argument</p>
+    <h4><p>Passing  <code>eventOptions</code> as a second argument</p>
 </h4>
 
-<pre><code class="lang-js">this.set({
+<pre><code class="lang-js">defi.set(obj, {
 	myKey: 3
 }, {
 	myFlag: 'foo'
@@ -3012,7 +3029,7 @@ this.set('myKey', 4, {
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/matreshkajs/matreshka.io/blob/master/doc/en/defi.set.jsdoc.js#L53">Found an ussue in the article? Send a patch there.</a>
+	<a class="make-patch-link" target="_blank" href="https://github.com/matreshkajs/matreshka.io/blob/master/doc/en/defi.set.jsdoc.js#L52">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="defi.set(2)" data-title="Method defi.set(2)">Ask a question<i></i></a>
 <!--<div class="comments-container"></div>-->
@@ -3029,27 +3046,24 @@ this.set('myKey', 4, {
 data-importance="1">
 	<h2>
 		<a href="#!defi.trigger">
-			<span class="memberof">defi.</span>trigger<wbr>(<span class="args">names, arg</span>)
+			<span class="memberof">defi.</span>trigger<wbr>(<span class="args">obj, names, arg</span>)
 				
 		</a> <span class="returns">→ 
-	<span data-type="matreshka">matreshka</span>
+	<span data-type="object">object</span>
 </span>
 	</h2>
 	
 	
 	<div class="summary"><p>Fires an event</p>
 </div>
-	<div class="description"><p>After adding event handlers using <a href="#!defi.on">defi.on</a>, <a href="#!defi.onDebounce">defi.onDebounce</a> or <a href="#!defi.once">defi.once</a>, any event can be fired manually using this method.</p>
-<blockquote>
-<p>Note that the method has <a href="#!defi.trigger">static alternative</a></p>
-</blockquote>
+	<div class="description"><p>After adding event handlers using <a href="#!defi.on">defi.on</a> any event can be fired manually using this method.</p>
 </div>
 	
 	<p>
 		<b>Returns</b> 
-	<span data-type="matreshka">matreshka</span>
+	<span data-type="object">object</span>
 
-		 - self
+		 - obj
 
 
 	</p>
@@ -3068,6 +3082,19 @@ data-importance="1">
 			</tr>
 		</thead>
 		<tbody>
+			
+				<tr>
+					<td>
+						obj
+						
+					</td>
+					 
+					<td>
+	<span data-type="object">object</span>
+</td>
+					<td> <p>A target object</p>
+</td>
+				</tr>
 			
 				<tr>
 					<td>
@@ -3095,7 +3122,7 @@ data-importance="1">
 					<td>
 	<span data-type="*">*</span>
 </td>
-					<td> <p>Any arguments which will be passed to every handler</p>
+					<td> <p>Any arguments which will be passed to every event handler</p>
 </td>
 				</tr>
 			
@@ -3109,10 +3136,6 @@ data-importance="1">
 	
 		<li><a href="#!defi.on">defi.on</a>
 	
-		<li><a href="#!defi.once">defi.once</a>
-	
-		<li><a href="#!defi.onDebounce">defi.onDebounce</a>
-	
 		<li><a href="#!defi.off">defi.off</a>
 	
 </ul>
@@ -3122,10 +3145,10 @@ data-importance="1">
 	<h3>Examples</h3>
 
 
-<pre><code class="lang-js">this.on('foo bar', (a, b, c) => {
+<pre><code class="lang-js">defi.on(obj, 'foo bar', (a, b, c) => {
 	alert(a + b + c);
 });
-this.trigger('foo', 1, 2, 3); // alerts 6</code></pre>
+defi.trigger(obj, 'foo', 1, 2, 3); // alerts 6</code></pre>
 
  
 
@@ -3147,7 +3170,7 @@ this.trigger('foo', 1, 2, 3); // alerts 6</code></pre>
 data-importance="2">
 	<h2>
 		<a href="#!defi.unbindNode">
-			<span class="memberof">defi.</span>unbindNode<wbr>(<span class="args">undefined, node, eventOptions</span>)
+			<span class="memberof">defi.</span>unbindNode<wbr>(<span class="args">obj, undefined, node, eventOptions</span>)
 				
 		</a> <span class="returns">→ 
 	<span data-type="object">object</span>
@@ -3157,14 +3180,14 @@ data-importance="2">
 	
 	<div class="summary"><p>Destroys a binding between given property and HTML node</p>
 </div>
-	<div class="description"><p>Using this method you can delete the binding between a property and HTML node, which has been added recently and no longer needed.</p>
+	<div class="description"><p>Using this method you can delete a binding between a property and HTML node, which has been added recently and no longer needed.</p>
 </div>
 	
 	<p>
 		<b>Returns</b> 
 	<span data-type="object">object</span>
 
-		 - self
+		 - obj
 
 
 	</p>
@@ -3191,6 +3214,19 @@ data-importance="2">
 			
 				<tr>
 					<td>
+						obj
+						
+					</td>
+					 
+					<td>
+	<span data-type="object">object</span>
+</td>
+					<td> <p>A target object</p>
+</td>
+				</tr>
+			
+				<tr>
+					<td>
 						
 						
 					</td>
@@ -3200,7 +3236,7 @@ data-importance="2">
 
 	<span data-type="null">null</span>
 </td>
-					<td> <p>A key or an array of keys. If you pass <code>null</code> instead of the key, all bindings for the given instance will be deleted</p>
+					<td> <p>A key or an array of keys. If you pass <code>null</code> instead of the key, all bindings for the given object will be deleted</p>
 </td>
 				</tr>
 			
@@ -3248,15 +3284,15 @@ data-importance="2">
 	<h3>Examples</h3>
 
 
-<pre><code class="lang-js">this.bindNode('myKey', '.my-element');
+<pre><code class="lang-js">defi.bindNode(obj, 'myKey', '.my-element');
 
 // changes the property value and the state of the HTML element
-this.myKey = true;
+obj.myKey = true;
 
-this.unbindNode('myKey', '.my-element');
+defi.unbindNode(obj, 'myKey', '.my-element');
 
 // only the property value is being changed now
-this.myKey = false;</code></pre>
+obj.myKey = false;</code></pre>
 
  
 
@@ -3278,7 +3314,7 @@ this.myKey = false;</code></pre>
 data-importance="2">
 	<h2>
 		<a href="#!defi.unbindNode(2)">
-			<span class="memberof">defi.</span>unbindNode<wbr>(<span class="args">bindings, eventOptions</span>)
+			<span class="memberof">defi.</span>unbindNode<wbr>(<span class="args">obj, bindings, eventOptions</span>)
 				
 		</a> <span class="returns">→ 
 	<span data-type="object">object</span>
@@ -3294,7 +3330,7 @@ data-importance="2">
 		<b>Returns</b> 
 	<span data-type="object">object</span>
 
-		 - self
+		 - obj
 
 
 	</p>
@@ -3313,6 +3349,19 @@ data-importance="2">
 			</tr>
 		</thead>
 		<tbody>
+			
+				<tr>
+					<td>
+						obj
+						
+					</td>
+					 
+					<td>
+	<span data-type="object">object</span>
+</td>
+					<td> <p>A target object</p>
+</td>
+				</tr>
 			
 				<tr>
 					<td>
@@ -3352,7 +3401,7 @@ data-importance="2">
 	<h3>Examples</h3>
 
 
-<pre><code class="lang-js">this.unbindNode({
+<pre><code class="lang-js">defi.unbindNode(obj, {
 	foo: '.aaa'
 	bar: {
 		node: '.bbb'
@@ -3367,7 +3416,7 @@ data-importance="2">
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/matreshkajs/matreshka.io/blob/master/doc/en/defi.unbindNode.jsdoc.js#L25">Found an ussue in the article? Send a patch there.</a>
+	<a class="make-patch-link" target="_blank" href="https://github.com/matreshkajs/matreshka.io/blob/master/doc/en/defi.unbindNode.jsdoc.js#L26">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="defi.unbindNode(2)" data-title="Method defi.unbindNode(2)">Ask a question<i></i></a>
 <!--<div class="comments-container"></div>-->
@@ -3384,7 +3433,7 @@ data-importance="2">
 data-importance="2">
 	<h2>
 		<a href="#!defi.unbindNode(3)">
-			<span class="memberof">defi.</span>unbindNode<wbr>(<span class="args">batch, eventOptions</span>)
+			<span class="memberof">defi.</span>unbindNode<wbr>(<span class="args">obj, batch, eventOptions</span>)
 				
 		</a> 
 	</h2>
@@ -3414,6 +3463,19 @@ data-importance="2">
 			</tr>
 		</thead>
 		<tbody>
+			
+				<tr>
+					<td>
+						obj
+						
+					</td>
+					 
+					<td>
+	<span data-type="object">object</span>
+</td>
+					<td> <p>A target object</p>
+</td>
+				</tr>
 			
 				<tr>
 					<td>
@@ -3470,22 +3532,22 @@ data-importance="2">
 }, {
 	key: 'c.d.e',
 	node: jQuery('.baz'),
-	binder: defi.binders.html(),
+	binder: myBinder(),
 	event: {
 		silent: true,
 		exactKey: true
 	}
 }]
 
-this.bindNode(temporaryBindings);
+defi.bindNode(obj, temporaryBindings);
 
 // these bindings are no longer needed
-this.unbindNode(temporaryBindings);</code></pre>
+defi.unbindNode(obj, temporaryBindings);</code></pre>
 
  
 
 
-	<a class="make-patch-link" target="_blank" href="https://github.com/matreshkajs/matreshka.io/blob/master/doc/en/defi.unbindNode.jsdoc.js#L48">Found an ussue in the article? Send a patch there.</a>
+	<a class="make-patch-link" target="_blank" href="https://github.com/matreshkajs/matreshka.io/blob/master/doc/en/defi.unbindNode.jsdoc.js#L50">Found an ussue in the article? Send a patch there.</a>
 
 <a class="comments" data-id="defi.unbindNode(3)" data-title="Method defi.unbindNode(3)">Ask a question<i></i></a>
 <!--<div class="comments-container"></div>-->
@@ -3580,7 +3642,7 @@ defi.bindNode(obj, 'myKey', '.foo.bar');</code></pre>
 		
 	</h2>
 
-	<p>Event handler. Takes any arguments passed to <a href="#!defi.trigger">defi.trigger</a></p>
+	<p>An event handler. Takes any arguments passed to <a href="#!defi.trigger">defi.trigger</a></p>
 
 	
 	<h4>Arguments</h4>
@@ -3622,96 +3684,9 @@ defi.bindNode(obj, 'myKey', '.foo.bar');</code></pre>
 <pre><code class="lang-js">const eventHandler = (...args) => {
 	console.log(args);
 };
-this.on('fyeah', eventHandler);
+defi.on(obj, 'fyeah', eventHandler);
 // logs 'foo', 'bar', 'baz'
-this.trigger('fyeah', 'foo', 'bar', 'baz');</code></pre>
-
- 
-
-</article>
-
-
-	
-<article class="item typedef" data-typedef="matreshka">
-	<i class="close-modal"></i>
-	<h2>
-		matreshka:
-			<span data-type="object">object</span>
-		
-	</h2>
-
-	<p><a href="#!Matreshka">Matreshka</a> instance</p>
-
-	
-
-	
-
-	
-
-	
-	<h3>Examples</h3>
-
-
-<pre><code class="lang-js">const mk = new Matreshka();
-obj.calc('a', 'b');</code></pre>
-
- 
-
-</article>
-
-
-	
-<article class="item typedef" data-typedef="matreshkaObject">
-	<i class="close-modal"></i>
-	<h2>
-		matreshkaObject:
-			<span data-type="object">object</span>
-		
-	</h2>
-
-	<p><a href="#!defi.Object">defi.Object</a> instance</p>
-
-	
-
-	
-
-	
-
-	
-	<h3>Examples</h3>
-
-
-<pre><code class="lang-js">const obj = new defi.Object({ foo: 'x' });
-obj.setData({ bar: 'y' });</code></pre>
-
- 
-
-</article>
-
-
-	
-<article class="item typedef" data-typedef="matreshkaArray">
-	<i class="close-modal"></i>
-	<h2>
-		matreshkaArray:
-			<span data-type="object">object</span>
-		
-	</h2>
-
-	<p><a href="#!defi.Array">defi.Array</a> instance</p>
-
-	
-
-	
-
-	
-
-	
-	<h3>Examples</h3>
-
-
-<pre><code class="lang-js">const arr = new defi.Array(1, 2, 3);
-arr.push(4);</code></pre>
+defi.trigger(obj, 'fyeah', 'foo', 'bar', 'baz');</code></pre>
 
  
 
@@ -3729,36 +3704,36 @@ arr.push(4);</code></pre>
 
 	<p>Event name or space-delimited list of event names.</p>
 <h5 id="custom-events-">Custom events.</h5>
-<pre><code class="lang-js">this.on(&#39;myevent&#39;, () =&gt; {...});
-this.trigger(&#39;myevent&#39;);
+<pre><code class="lang-js">defi.on(obj, &#39;myevent&#39;, () =&gt; {...});
+defi.trigger(obj, &#39;myevent&#39;);
 </code></pre>
 <h5 id="-change-key-which-is-triggered-every-time-when-a-property-is-changed-"><code>change:KEY</code> which is triggered every time when a property is changed.</h5>
-<pre><code class="lang-js">this.on(&#39;change:x&#39;, evt =&gt; {...});
-this.x = 42;
+<pre><code class="lang-js">defi.on(obj, &#39;change:x&#39;, evt =&gt; {...});
+obj.x = 42;
 </code></pre>
 <h5 id="-beforechange-key-which-is-triggered-every-time-before-a-property-is-changed-"><code>beforechange:KEY</code> which is triggered every time before a property is changed.</h5>
-<pre><code class="lang-js">this.on(&#39;beforechange:x&#39;, evt =&gt; {...});
-this.x = 42;
+<pre><code class="lang-js">defi.on(obj, &#39;beforechange:x&#39;, evt =&gt; {...});
+obj.x = 42;
 </code></pre>
 <h5 id="-addevent-name-and-addevent-which-are-triggered-on-event-add-"><code>addevent:NAME</code> and <code>addevent</code> which are triggered on event add.</h5>
 <pre><code class="lang-js">// for any event
-this.on(&#39;addevent&#39;, evt =&gt; {...});
+defi.on(obj, &#39;addevent&#39;, evt =&gt; {...});
 // for &quot;someevent&quot; event
-this.on(&#39;addevent:someevent&#39;, evt =&gt; {...});
+defi.on(obj, &#39;addevent:someevent&#39;, evt =&gt; {...});
 // the line below fires &quot;addevent&quot; and &quot;addevent:someevent&quot;
-this.on(&#39;someevent&#39;, evt =&gt; {...});
+defi.on(obj, &#39;someevent&#39;, evt =&gt; {...});
 </code></pre>
 <h5 id="-removeevent-name-and-removeevent-which-are-triggered-on-event-remove-"><code>removeevent:NAME</code> and <code>removeevent</code> which are triggered on event remove.</h5>
 <pre><code class="lang-js">// for any event
-this.on(&#39;removeevent&#39;, evt =&gt; {...});
+defi.on(obj, &#39;removeevent&#39;, evt =&gt; {...});
 // for &quot;someevent&quot; event
-this.on(&#39;removeevent:someevent&#39;, evt =&gt; {...});
+defi.on(obj, &#39;removeevent:someevent&#39;, evt =&gt; {...});
 // the line below fires &quot;removeevent&quot; and &quot;removeevent:someevent&quot;
-this.off(&#39;someevent&#39;, evt =&gt; {...});
+defi.off(obj, &#39;someevent&#39;, evt =&gt; {...});
 </code></pre>
 <h5 id="-dom_event-key-where-dom_event-is-a-name-of-dom-event-key-is-a-key-a-handler-is-called-when-dom_event-is-triggered-on-a-node-which-is-bound-to-the-key-"><code>DOM_EVENT::KEY</code>, where DOM_EVENT is a name of DOM event, KEY is a key. A handler is called when DOM_EVENT is triggered on a node which is bound to the KEY.</h5>
-<pre><code class="lang-js">this.bindNode(&#39;x&#39;, &#39;.my-div&#39;);
-this.on(&#39;click::x&#39;, evt =&gt; {
+<pre><code class="lang-js">defi.bindNode(obj, &#39;x&#39;, &#39;.my-div&#39;);
+defi.on(obj, &#39;click::x&#39;, evt =&gt; {
     alert(&#39;clicked &quot;.my-div&quot;&#39;);
 });
 </code></pre>
@@ -3767,33 +3742,17 @@ this.on(&#39;click::x&#39;, evt =&gt; {
     &lt;button class=&quot;my-button&quot;&gt;&lt;/button&gt;
 &lt;/div&gt;
 </code></pre>
-<pre><code class="lang-js">this.bindNode(&#39;x&#39;, &#39;.my-div&#39;);
-this.on(&#39;click::x(.my-button)&#39;, evt =&gt; {
-    alert(&#39;clicked &quot;.my-button&quot;&#39;);
-});
-</code></pre>
-<h5 id="-dom_event-selector-where-dom_event-is-a-name-of-dom-event-selector-is-a-selector-a-handler-is-called-when-dom_event-is-triggered-on-a-node-which-matches-the-selector-within-a-sandbox-"><code>DOM_EVENT::(SELECTOR)</code>, where DOM_EVENT is a name of DOM event, SELECTOR is a selector. A handler is called when DOM_EVENT is triggered on a node which matches the SELECTOR within a sandbox.</h5>
-<pre><code class="lang-js">this.bindNode(&#39;sandbox&#39;, &#39;.my-div&#39;);
-this.on(&#39;click::(.my-button)&#39;, evt =&gt; {
-    alert(&#39;clicked &quot;.my-button&quot;&#39;);
-});
-</code></pre>
-<p>The same as:</p>
-<pre><code class="lang-js">this.bindNode(&#39;sandbox&#39;, &#39;.my-div&#39;);
-this.on(&#39;click::sandbox(.my-button)&#39;, evt =&gt; {
+<pre><code class="lang-js">defi.bindNode(obj, &#39;x&#39;, &#39;.my-div&#39;);
+defi.on(obj, &#39;click::x(.my-button)&#39;, evt =&gt; {
     alert(&#39;clicked &quot;.my-button&quot;&#39;);
 });
 </code></pre>
 <h5 id="delegated-events-path-event-where-path-is-a-path-to-a-target-object-whose-events-we-want-to-listen-event-is-an-event-name-">Delegated events: <code>PATH@EVENT</code>, where PATH is a path to a target object whose events we want to listen, EVENT is an event name.</h5>
-<pre><code class="lang-js">this.on(&#39;a@someevent&#39;, () =&gt; {...});
-this.on(&#39;a.b.c@change:d&#39;, () =&gt; {...});
-</code></pre>
-<p>If you need to listen an event of every item of <a href="#!defi.Array">defi.Array</a> or every data property of <a href="#!defi.Object">defi.Object</a>, you can use an asterisk &quot;*&quot; instead of specific property name.</p>
-<pre><code class="lang-js">this.on(&#39;*@someevent&#39;, () =&gt; {...});
-this.on(&#39;*.b.*.d@change:e&#39;, () =&gt; {...});
+<pre><code class="lang-js">defi.on(obj,&#39;a@someevent&#39;, () =&gt; {...});
+defi.on(obj, &#39;a.b.c@change:d&#39;, () =&gt; {...});
 </code></pre>
 <h5 id="any-combinations-all-events-described-above-can-be-combined-">Any combinations. All events described above can be combined.</h5>
-<pre><code class="lang-js">this.on(&#39;x.y.z@click::(.my-selector)&#39;, () =&gt; {...});
+<pre><code class="lang-js">this.on(&#39;x.y.z@click::u(.my-selector)&#39;, () =&gt; {...});
 </code></pre>
 
 	
@@ -3927,7 +3886,7 @@ this.on(&#39;*.b.*.d@change:e&#39;, () =&gt; {...});
 	}
 };
 
-this.bindNode('a', '.my-checkbox', binder);</code></pre>
+defi.bindNode(obj, 'a', '.my-checkbox', binder);</code></pre>
 
 <pre><code class="lang-js">const binder = {
 	on(callback, bindingOptions) {
@@ -3965,57 +3924,23 @@ this.bindNode('a', '.my-checkbox', binder);</code></pre>
 
 <pre><code class="lang-js">const eventOptions = { silent: true };
 
-this.a = 1;
+obj.a = 1;
 
-this.on('change:a', () => {
+defi.on(obj, 'change:a', () => {
 	alert('a is changed');
 });
 
-this.set('a', 2, eventOptions); // no alert</code></pre>
+defi.set(obj, 'a', 2, eventOptions); // no alert</code></pre>
 
 <pre><code class="lang-js">const eventOptions = { f: 'yeah' };
 
-this.a = 1;
+obj.a = 1;
 
-this.on('change:a', eventOptions => {
+defi.on(obj, 'change:a', eventOptions => {
 	alert(eventOptions.f);
 });
 
-this.set('a', 2, eventOptions); // alerts "yeah"</code></pre>
-
- 
-
-</article>
-
-
-	
-<article class="item typedef" data-typedef="class">
-	<i class="close-modal"></i>
-	<h2>
-		class:
-			<span data-type="function">function</span>
-		
-	</h2>
-
-	<p>A class made using ECMAScript 2015 syntax or returned by <a href="#!defi.Class">defi.Class</a> function</p>
-
-	
-
-	
-
-	
-
-	
-	<h3>Examples</h3>
-
-
-<pre><code class="lang-js">class MyClass {
-	method() { ... }
-};</code></pre>
-
-<pre><code class="lang-js">const MyClass = defi.Class({
-	method() { ... }
-});</code></pre>
+defi.set(obj, 'a', 2, eventOptions); // alerts "yeah"</code></pre>
 
  
 
@@ -4243,7 +4168,7 @@ $nodes = document.querySelectorAll('.bar');</code></pre>
 		null
 	</h2>
 
-	<p>null</p>
+	<p>null, just null</p>
 
 	
 
