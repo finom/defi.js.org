@@ -169,6 +169,21 @@
 
 			
 				<li>
+					<a href="#!defi.bound"
+						title="Returns a bound element
+"
+						data-name="bound"
+						
+					>
+						bound
+						
+					</a>
+
+					
+				</li>
+
+			
+				<li>
 					<a href="#!defi.calc"
 						title="Creates a dependency of one property value on values of others
 "
@@ -334,7 +349,7 @@
 			
 				<li>
 					<a href="#!defi.set"
-						title="Sets a property value allowing to pass event options object
+						title="Sets a property value allowing to pass an event options object
 "
 						data-name="set"
 						
@@ -436,7 +451,7 @@
 				<li>
 					<a
 						href="#!defi.defaultBinders"
-						title="An array of functions which return a corresponding binder
+						title="An array of functions which return a corresponding binder or a falsy value
 "
 						data-name="defaultBinders"
 						
@@ -1311,6 +1326,105 @@ setTimeout(() =&gt; {
 
 </article>
 
+<article class="item method" id="!defi.bound">
+	<h2>
+		<a href="#!defi.bound">
+			<span class="memberof">defi.</span>bound<wbr>(<span class="args">obj, key, options</span>)
+				
+		</a> 
+	</h2>
+	
+	
+	<div class="summary"><p>Returns a bound element</p>
+</div>
+	<div class="description"></div>
+	
+	
+
+	
+	<h4>Arguments</h4>
+	<table class="arguments">
+		<thead>
+			<tr>
+				<th>Name
+				
+				<th>Type
+				<th>Details
+			</tr>
+		</thead>
+		<tbody>
+			
+				<tr>
+					<td>
+						obj
+						
+					</td>
+					 
+					<td>
+	<span data-type="object">object</span>
+</td>
+					<td> <p>A target object</p>
+</td>
+				</tr>
+			
+				<tr>
+					<td>
+						key
+						
+					</td>
+					 
+					<td>
+	<span data-type="string">string</span>
+</td>
+					<td> <p>The key of a property, which bound elements you want to get</p>
+</td>
+				</tr>
+			
+				<tr>
+					<td>
+						options
+						
+					</td>
+					 
+					<td>
+	<span data-type="object">object</span>
+</td>
+					<td> <p>You can pass <code>all: true</code> if you want to get all elements bound to the key</p>
+</td>
+				</tr>
+			
+		</tbody>
+	</table>
+
+
+	
+
+	
+	<h3>Examples</h3>
+
+
+<pre><code class="lang-js">defi.bindNode(obj, 'x', '.my-element');
+defi.bound(obj, 'x'); // will return document.querySelector('.my-element')</code></pre>
+
+<pre><code class="lang-js">defi.bindNode(obj, 'x', '.my-element');
+defi.bound(obj, 'x', { all: true }); // will return an array of elements mached '.my-element'</code></pre>
+
+ 
+
+
+	<a class="make-patch-link" target="_blank" href="https://github.com/matreshkajs/matreshka.io/blob/master/doc/en/defi.bound.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
+
+<a class="comments" data-id="defi.bound" data-title="Method defi.bound">Ask a question<i></i></a>
+<!--<div class="comments-container"></div>-->
+<div class="comments-container"
+  href="https://muut.com/i/matreshka/comments/matreshka-:defi.bound"
+  title="Method defi.bound"
+  data-channel="Matreshka"
+  data-show_online="false"
+  data-upload="false"></div>
+
+</article>
+
 <article class="item method" id="!defi.calc">
 	<h2>
 		<a href="#!defi.calc">
@@ -1906,8 +2020,7 @@ obj.a = 5;</code></pre>
 	<h3>Examples</h3>
 
 
-<pre><code class="lang-js">const obj = {};
-defi.chain(obj)
+<pre><code class="lang-js">defi.chain(obj)
     .calc('a', 'b', b => b * 2)
     .set('b', 3)
     .bindNode('c', '.node');
@@ -2772,7 +2885,7 @@ defi.remove(obj, ['myKey1', 'myKey2']);</code></pre>
 	</h2>
 	
 	
-	<div class="summary"><p>Sets a property value allowing to pass event options object</p>
+	<div class="summary"><p>Sets a property value allowing to pass an event options object</p>
 </div>
 	<div class="description"><p>The list of the supported flags:</p>
 <ul>
@@ -3557,7 +3670,7 @@ defi.unbindNode(obj, temporaryBindings);</code></pre>
 		CommonJS module: <code>'matreshka/defaultbinders'</code>
 	</p>
 	
-	<div class="summary"><p>An array of functions which return a corresponding binder</p>
+	<div class="summary"><p>An array of functions which return a corresponding binder or a falsy value</p>
 </div>
 	<div class="description"><p><code>defaultBinders</code> is the array of functions which check an element in turn against given rules in these functions and return a binder (see <span data-type="binder">binder</span>). This array is used when the third argument has not been passed to the <a href="#!defi.bindNode">defi.bindNode</a> function. See more detailed information about bindings in <a href="#!defi.bindNode">defi.bindNode</a> documentation.</p>
 </div>
