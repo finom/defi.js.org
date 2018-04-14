@@ -1,5 +1,6 @@
 /**
 @function defi.on
+@module defi/on
 @fires addevent
 @fires addevent:NAME
 @summary Adds an event handler

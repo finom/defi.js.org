@@ -1,5 +1,6 @@
 /**
 @function defi.set
+@module defi/set
 @fires change
 @fires change:KEY
 @fires beforechange

@@ -1,6 +1,6 @@
 /**
 @function defi.lookForBinder
-@module matreshka/lookforbinder
+@module defi/lookforbinder
 @desc Returns a binder corresponding to an element. If it is not found, it returns ``undefined``. The function uses {@link defi.defaultBinders} for the search.
 @see {@link defi.bindNode}
 @see {@link defi.defaultBinders}

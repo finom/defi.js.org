@@ -1,5 +1,6 @@
 /**
 @function defi.unbindNode
+@module defi/unbindnode
 @fires unbind
 @fires unbind:KEY
 @summary Destroys a binding between given property and HTML node

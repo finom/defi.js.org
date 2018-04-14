@@ -1,5 +1,6 @@
 /**
 @function defi.calc
+@module defi/calc
 @summary Creates a dependency of one property value on values of others
 @desc ``calc`` creates a dependency of a property (``target`` argument) on values of other properties (``source`` argument). When source property is changed, ``target`` is re-calculated automatically.
 

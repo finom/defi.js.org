@@ -1,5 +1,6 @@
 /**
 @function defi.off
+@module defi/off
 @fires removeevent
 @fires removeevent:NAME
 @summary Deletes an event handler

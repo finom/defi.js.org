@@ -82,7 +82,7 @@ defi.on(obj, 'a.b.c@change:d', () => {...});
 
 ##### Any combinations. All events described above can be combined.
 ```js
-this.on('x.y.z@click::u(.my-selector)', () => {...});
+defi.on(obj, 'x.y.z@click::u(.my-selector)', () => {...});
 ```
 @typedef {string} eventNames
 */

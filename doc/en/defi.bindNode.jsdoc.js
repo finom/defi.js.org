@@ -1,5 +1,6 @@
 /**
 @function defi.bindNode
+@module defi/bindnode
 @fires bind
 @fires bind:KEY
 @summary Binds a property of an object to HTML node, implementing two-way data binding
@@ -19,7 +20,7 @@ defi.bindNode(object, 'myKey', '.my-element', {
 
 For example, you want to bind a property of an object to a ``input[type="checkbox"]`` node:
 defijs
-this.bindNode(obj, 'myKey', '.my-checkbox', {
+defi.bindNode(obj, 'myKey', '.my-checkbox', {
 	// when is element state changed?
 	// - after 'click' event
 	on: 'click',
@@ -191,7 +192,7 @@ defi.bindNode(obj, 'a.b.c', node);
 
 obj.a.b.c = 'bar'; // updates node by bar
 
-const oldB = this.a.b;
+const oldB = obj.a.b;
 
 obj.a.b = { c: 'baz' }; // updates node by baz
 
@@ -224,8 +225,8 @@ One of the most important feature of ``bindNode`` is that the logic of property 
 
 ```js
 const input = document.querySelector('.my-input');
-this.bindNode('x', input);
-this.x = 'foo';
+defi.bindNode(obj, 'x', input);
+obj.x = 'foo';
 console.log(input.value === 'foo'); // false
 setTimeout(() => {
 	console.log(input.value === 'foo'); // true
@@ -302,7 +303,7 @@ defi.bindNode(obj, {
 @example
 defi.bindNode(obj, {
 	foo: {
-		node: ':sandbox .aaa',
+		node: ':bound(x) .aaa',
 		binder: myBinder()
 	},
 	bar: '.bbb',

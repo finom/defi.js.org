@@ -1,5 +1,6 @@
 /**
 @function defi.trigger
+@module defi/trigger
 @summary Fires an event
 @desc After adding event handlers using {@link defi.on} any event can be fired manually using this function.
 

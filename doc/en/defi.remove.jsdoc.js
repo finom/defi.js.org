@@ -1,5 +1,6 @@
 /**
 @function defi.remove
+@module defi/remove
 @fires delete
 @fires delete:KEY
 @summary Deletes a property and removes dependent handlers

@@ -1,5 +1,6 @@
 /**
 @function defi.mediate
+@module defi/mediate
 @summary Transforms property value on its changing
 @desc This function is used for transforming property value on its changing. For example, you want the property value to be always either of a certain type or an integer value, or to be no less than zero and no more than a hundred etc.
 
@@ -14,7 +15,7 @@ defi.mediate(obj, 'x', value => String(value));
 
 obj.x = 1;
 
-alert(typeof this.x); // "string"
+alert(typeof obj.x); // "string"
 
 @example <caption>An array of keys</caption>
 defi.mediate(obj, ['x', 'y'], value => String(value));

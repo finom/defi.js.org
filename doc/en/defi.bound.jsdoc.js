@@ -1,5 +1,6 @@
 /**
-@method defi.bound
+@function defi.bound
+@module defi/bound
 @summary Returns a bound element
 @param {object} obj - A target object
 @param {string} key - The key of a property, which bound elements you want to get

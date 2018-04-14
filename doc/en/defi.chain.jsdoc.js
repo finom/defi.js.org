@@ -1,6 +1,6 @@
 /**
 @function defi.chain
-@module matreshka/chain
+@module defi/chain
 @summary Allows chained calls of defi.js functions
 
 @desc The function accepts any object and returns an instance of externally inaccessible class which adopts function allowing them to be called in a chain to change given object.
