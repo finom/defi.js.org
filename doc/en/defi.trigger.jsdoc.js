@@ -2,20 +2,17 @@
 @method defi.trigger
 @importance 1
 @summary Fires an event
-@desc After adding event handlers using {@link defi.on}, {@link defi.onDebounce} or {@link defi.once}, any event can be fired manually using this method.
-
-> Note that the method has {@link defi.trigger static alternative}
+@desc After adding event handlers using {@link defi.on} any event can be fired manually using this method.
 
 @see {@link defi.on}
-@see {@link defi.once}
-@see {@link defi.onDebounce}
 @see {@link defi.off}
+@param {object} obj - A target object
 @param {eventNames} [names] - An event name or some names which are separated by a space
-@param {...*} [arg] - Any arguments which will be passed to every handler
-@returns {matreshka} self
+@param {...*} [arg] - Any arguments which will be passed to every event handler
+@returns {object} obj
 @example
-this.on('foo bar', (a, b, c) => {
+defi.on(obj, 'foo bar', (a, b, c) => {
 	alert(a + b + c);
 });
-this.trigger('foo', 1, 2, 3); // alerts 6
+defi.trigger(obj, 'foo', 1, 2, 3); // alerts 6
 */

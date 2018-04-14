@@ -5,7 +5,7 @@
 @fires change:KEY
 @fires beforechange
 @fires beforechange:KEY
-@summary Sets a property value allowing to pass event options object as the third argument
+@summary Sets a property value allowing to pass event options object
 @desc The list of the supported flags:
 + ``silent`` -  do not call the ``change`` and ``change:KEY`` events
 + ``silentHTML`` - do not change states of bound HTML nodes
@@ -14,37 +14,36 @@
 + ``skipMediator`` - prevents the property transformation by a mediator (see {@link defi.mediate})
 + ``skipCalc`` - prevents the work of dependencies created with {@link defi.calc}
 
-> The method has {@link defi.set static alternative}.
-
+@param {object} obj - A target object
 @param {string} key - A key
 @param {*} value - A value
 @param {eventOptions} [eventOptions] - Event options
 @example
-this.on('change:myKey', evt => {
+defi.on(obj, 'change:myKey', evt => {
 	alert(evt.value);
 });
 
-// the same as this['myKey'] = 3
-// or this.myKey = 3
+// the same as obj['myKey'] = 3
+// or obj.myKey = 3
 // alerts 3
-this.set('myKey', 3);
+defi.set(obj, 'myKey', 3);
 @example <caption>Using ``eventOptions``</caption>
-this.on('change:myKey', evt => {
+defi.on(obj, 'change:myKey', evt => {
 	alert(evt.value);
 });
 
-// handler isn't called
-this.set('myKey', 4, {
+// the handler isn't fired
+defi.set(obj, 'myKey', 4, {
 	silent: true
 });
 
 @example <caption>Passing custom data to a handler</caption>
-this.on('change:myKey', evt => {
+defi.on(obj, 'change:myKey', evt => {
 	alert(evt.myCustomFlag);
 });
 
 // alerts 42
-this.set('myKey', 4, {
+defi.set(obj, 'myKey', 4, {
 	myCustomFlag: 42
 });
 */
@@ -54,15 +53,16 @@ this.set('myKey', 4, {
 @method defi.set
 @variation 2
 @summary Alternative "key-value" syntax of the {@link defi.set} method
+@param {object} obj - A target object
 @param {object} keyValuePairs - An object containing key-value pairs
 @param {eventOptions} [eventOptions] - An event object
 @example
-this.set({
+defi.set(obj, {
 	myKey1: 1,
 	myKey2: 2
 });
-@example <caption>Passing  ``eventOptions`` as second argument</caption>
-this.set({
+@example <caption>Passing  ``eventOptions`` as a second argument</caption>
+defi.set(obj, {
 	myKey: 3
 }, {
 	myFlag: 'foo'
