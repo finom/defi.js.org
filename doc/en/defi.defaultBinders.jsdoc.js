@@ -23,5 +23,5 @@ defi.defaultBinders.unshift(element => {
 
 // ...
 
-this.bindNode('myKey', '.foo.bar');
+defi.bindNode(obj, 'myKey', '.foo.bar');
 */

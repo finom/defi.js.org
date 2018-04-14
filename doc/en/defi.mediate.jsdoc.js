@@ -5,14 +5,6 @@
 @summary Transforms property value on its changing
 @desc This method is used for transforming property value on its changing. For example, you want the property value to be always either of a certain type or an integer value, or to be no less than zero and no more than a hundred etc.
 
-> Note that the method has {@link defi.mediate static alternative}, which works just the same but accepts any target object as the first argument, shifting rest arguments to the right.
-```js
-const mediate = require('matreshka/mediate');
-const object = {};
-mediate(object, key, mediator);
-// instead of this.mediate(key, mediator);
-```
-
 @param {string|array} key - A key or an array of keys
 @param {function} mediator - A function-mediator which returns a new value. It gets the following arguments: new value, previous value, a key, an object itself
 

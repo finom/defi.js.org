@@ -4,23 +4,14 @@
 @fires bind
 @fires bind:KEY
 @summary Binds a property of an object to HTML node, implementing two-way data binding
-@desc {@link defi.bindNode} is the only method of the {@link Matreshka} class  which is responsible for changing DOM (except array renderer). It creates a bridge between value of a property and state of HTML node on the page: from a simple input to a complicated widget (the complexity of elements is unlimited). After using this method, it isn't necessary to monitor the synchronizations between model and view.
-
-> Note that the method has {@link defi.bindNode static alternative}, which works just the same but accepts any object as the first argument, shifting rest arguments to the right.
-```js
-const bindNode = require('matreshka/bindnode');
-const object = {};
-bindNode(object, key, node, binder, eventOptions);
-// instead of this.bindNode(key, node, binder, eventOptions);
-```
-
+@desc It creates a bridge between value of a property and a state of HTML node on the page: from a simple input to a complicated widget (the complexity of elements is unlimited). After using this method, it isn't necessary to monitor the synchronizations between model and view.
 
 The method acepts three arguments: **a property name**, **HTML node** and a **binding rule** (a binder). In its turn, a binder is an ordinary object and it can have the following properties: ``on``, ``getValue``, ``setValue``, ``initialize``, ``destroy`` (Read more here: {@link #typedef-binder}). All the five properties are optional. It also allows to declare one-way data bindings (any direction).
 
 > The ``bindNode`` method  supports the many-to-many bindings. Several elements can be bound to one property and several properties can be bound to one element, including ones from different instances of various classes.
 
 ```js
-this.bindNode('myKey', '.my-element', {
+defi.bindNode(object, 'myKey', '.my-element', {
 	on: 'click',
 	getValue() { ... },
 	setValue() { ... }
@@ -28,8 +19,8 @@ this.bindNode('myKey', '.my-element', {
 ```
 
 For example, you want to bind a property of an object to a ``input[type="checkbox"]`` node:
-```js
-this.bindNode('myKey', '.my-checkbox', {
+defijs
+this.bindNode(obj, 'myKey', '.my-checkbox', {
 	// when is element state changed?
 	// - after 'click' event
 	on: 'click',
@@ -49,7 +40,7 @@ this.bindNode('myKey', '.my-checkbox', {
 After binding is declared, you can set value of an object property in your most habitual way and HTML node (in this case, a checkbox) will change its state immediately. After clicking on the checkbox, the property value will be changed to the corresponding one as well.
 ```js
 // sets checked = true
-this.myKey = true;
+obj.myKey = true;
 ```
 
 More complicated example: binding object property to jQuery UI widget
@@ -58,7 +49,7 @@ More complicated example: binding object property to jQuery UI widget
 ```
 
 ```js
-this.bindNode('myKey', '.my-slider', {
+defi.bindNode(obj, 'myKey', '.my-slider', {
 	// when is element state changed?
 	// - after 'slide' event
 	on: 'slide',
@@ -83,16 +74,16 @@ this.bindNode('myKey', '.my-slider', {
 
 ```js
 // will set the slider value 42
-this.myKey = 42;
+obj.myKey = 42;
 ```
 
 It looks easy but you may ask a question: "What should I do to avoid writing these rules every time?". Indeed, there can be a lot of elements of the same type on the page: text fields, drop down menus, fields from the HTML5 specification as well as third party widgets (see the example above).
 
 As observed in this documentation, the third argument is not obligatory for the ones of the ```bindNode``` method (see below). This problem is solved by the {@link defi.defaultBinders} array which contains functions checking an HTML node against a set of rules and returns corresponding binder or ``undefined``. You get an opportunity to reduce your code a great deal, putting  binding rules into a separate part of your code and to use a syntax for binding without the third argument:
 ```js
-this.bindNode('myKey', '.my-element');
+defi.bindNode(obj, 'myKey', '.my-element');
 ```
-How to do it? You should add a function checking  your element against a set of rules to the beginning of the {@link defi.defaultBinders} array.
+How to do it? You should add a function checking an element against a set of rules to the beginning of the {@link defi.defaultBinders} array.
 ```js
 const checkboxBinder = () => {
 	return {
@@ -117,8 +108,8 @@ defi.defaultBinders.unshift(node => {
 });
 ```
 ```js
-this.bindNode('myKey', '.my-checkbox');
-this.myKey = true;
+defi.bindNode(obj, 'myKey', '.my-checkbox');
+obj.myKey = true;
 ```
 
 What should you do if you need to pass arguments for initializing some plugin or a widget? You can call the function that returns a binder manually.
@@ -140,18 +131,10 @@ const uiSlider = (min, max) => {
 };
 ```
 ```js
-this.bindNode('myKey1', '.my-slider1', uiSlider(0, 100));
-this.bindNode('myKey2', '.my-slider2', uiSlider(1, 1000));
-this.myKey1 = 42;
-this.myKey2 = 999;
-```
-
-For global access to the binder you can add new property to {@link defi.binders}.
-```js
-defi.binders.uiSlider = uiSlider;
-// ...
-this.bindNode('myKey1', '.my-slider1', defi.binders.uiSlider(0, 100));
-this.bindNode('myKey2', '.my-slider2', defi.binders.uiSlider(1, 1000));
+defi.bindNode(obj, 'myKey1', '.my-slider1', uiSlider(0, 100));
+defi.bindNode(obj, 'myKey2', '.my-slider2', uiSlider(1, 1000));
+obj.myKey1 = 42;
+obj.myKey2 = 999;
 ```
 
 
@@ -160,95 +143,59 @@ this.bindNode('myKey2', '.my-slider2', defi.binders.uiSlider(1, 1000));
 <input type="color" class="my-color-input">
 ```
 ```js
-this.bindNode('myColor', '.my-color-input');
-this.myColor = '#66bb6a';
+defi.bindNode(obj, 'myColor', '.my-color-input');
+obj.myColor = '#66bb6a';
 ```
 
 Besides, after the binding, a new non-standard ``:bound(KEY)`` CSS selector is available for you.
 ```js
-this.bindNode('myKey', '.my-element');
+defi.bindNode(obj, 'myKey', '.my-element');
 
 // will find the element '.my-inner-element' inside '.my-element'
-this.bindNode('myAnotherKey', ':bound(myKey) .my-inner-element');
+defi.bindNode(obj, 'myAnotherKey', ':bound(myKey) .my-inner-element');
 ```
 
 And the syntax of possible event names is extended:
 ```js
-this.bindNode('myKey', '.my-element');
+defi.bindNode(obj, 'myKey', '.my-element');
 
 // will handle the click on the '.my-element' element
-this.on('click::myKey', () => { ... });
+defi.on(obj, 'click::myKey', () => { ... });
 
 // will handle the click on the '.my-element .my-inner-element'
-this.on('click::myKey(.my-inner-element)', () => { ... });
+defi.on('click::myKey(.my-inner-element)', () => { ... });
 ```
 
 > If a node is not found ``"Bound element is missing"`` error will be thrown. Check out {@link defi.bindOptionalNode}.
-
-#### Sandbox definition
-{@link defi.bindNode} can associate a class instance with the "main" HTML element on the page creating so-called **sandbox**. It is necessary to limit the instance influence on other HTML nodes. A special property ``sandbox`` is used for binding a sandbox.
-```html
-<div class="my-sandbox">
-	<!-- your HTML code -->
-</div>
-```
-
-```js
-this.bindNode('sandbox', '.my-sandbox');
-```
-
-The definition of the sandbox adds lots of conveniences for you. For example:
-+ allows to use the {@link defi.select} and {@link defi.$} methods
-+ adds a new ``:sandbox`` selector for the {@link defi.bindNode}, {@link defi.select}, {@link defi.$} methods and others
-+ adds syntactic sugar for delegated DOM events in the {@link defi.on} method
-
-> Keep in mind that you can bind only one sandbox element to ``sandbox`` property. You can try {@link defi.bindSandbox} which does the same thing but removes previous binding.
-
-```js
-// declare a sandbox
-this.bindNode('sandbox', '.my-sandbox');
-
-// .my-element is being searched for in the sandbox
-this.bindNode('myKey', ':sandbox .my-element');
-
-// it is not required to specify a key
-// for the delegated events inside a sandbox
-this.on('click::(.my-button)', () => { ... });
-
-// will put the .inner-node element
-// which is inside the sandbox into the console
-console.log(this.$('.inner-node'));
-```
-
 
 ### Important features of the method and special flags
 
 The fourth argument of ``bindNode`` method is  ``eventOptions``. As usual this object can include special flags or custom data which will be passed to ``bind`` and ``bind:KEY`` event handlers.
 
 ```js
-this.on('bind:x', evt => {
+defi.on(obj, 'bind:x', evt => {
 	console.log(evt.foo); // bar
 });
-this.bindNode('x', node, binder, { foo: 'bar' });
+defi.bindNode(obj, 'x', node, binder, { foo: 'bar' });
 ```
 
 To understand important features of ``bindNode`` it is required to read information below but it's not required to remember all these flags.
 
 #### A flag ``exactKey=false``
 
-If ``key`` string includes a dot then such string will be interpreted as a path to a property of nested object. Matreshka will listen all changes of given object tree.
+If ``key`` string includes a dot then such string will be interpreted as a path to a property of nested object. The library will listen all changes of given object tree.
 
 ```js
-this.a = { b: { c: 'foo' } };
-this.bindNode('a.b.c', node);
+obj.a = { b: { c: 'foo' } };
+defi.bindNode(obj, 'a.b.c', node);
 
-this.a.b.c = 'bar'; // updates node by bar
+obj.a.b.c = 'bar'; // updates node by bar
 
 const oldB = this.a.b;
 
-this.a.b = { c: 'baz' }; // updates node by baz
+obj.a.b = { c: 'baz' }; // updates node by baz
 
-// node is not updated because
+// the node is not updated because
 // the connection with the object subtree is destroyed
 oldB.c = 'fuu';
 ```
@@ -256,11 +203,11 @@ oldB.c = 'fuu';
 In case if you need to use property name as is, use  ``exactKey`` flag with ``true`` value.
 
 ```js
-this['a.b.c'] = 'foo';
-this.bindNode('a.b.c', node, binder, {
+obj['a.b.c'] = 'foo';
+defi.bindNode(obj, 'a.b.c', node, binder, {
 	exactKey: true
 });
-this['a.b.c'] = 'bar';
+obj['a.b.c'] = 'bar';
 ```
 
 #### A flag ``getValueOnBind``
@@ -302,30 +249,27 @@ Even if you pass a binder to ``bindNode``, the framework tries to find default b
 For example, we want to bind ``input[type="text"]`` to a property. By default, the standard binder contains ``"on"`` property with ``"input"`` value for this kind of node. It means that the value of the instance property and node state will be synchronized when a user releases a key of the keyboard or pastes text from clipboard. In case if you want synchronization to be performed after the ``"blur"`` DOM event, you need to pass an object containing the only ``"on"`` property as the third argument. This object will extend the default binder, having retained ``getValue`` and ``setValue`` values.
 
 ```js
-this.bindNode('myKey', '.my-input', { on: 'blur' });
+defi.bindNode(obj, 'myKey', '.my-input', { on: 'blur' });
 ```
 
 To cancel this behavior and use the binder as is, you can use ``useExactBinder`` flag with ``true`` value.
 
 ```js
-this.bindNode('x', node, binder, {
+defi.bindNode(obj, 'x', node, binder, {
 	useExactBinder: true
 });
 ```
 
 @see {@link defi.unbindNode}
 @see {@link defi.bindOptionalNode}
-@see {@link defi.bindSandbox}
-@see {@link defi.$}
-@see {@link defi.binders}
 @see {@link defi.defaultBinders}
 
-
-@param {string|matreshka} key - A property name
+@param {object} obj - A target object
+@param {string} key - A property name
 @param {string|node|$nodes} node - An HTML element which must be bound to a ``key``
 @param {binder} [binder] - A binder containing the following properties: ``on`` , ``getValue``, ``setValue``, ``initialize``, ``destroy``. You can get more detailed information about binders in their documentation: see {@link #typedef-binder}
 @param {eventOptions} [eventOptions] - An event options which accepts ``"silent"`` (don't fire ``"bind"`` and ``"bind:KEY"``), flags described above or custom data
-@returns {object} self
+@returns {object} object
 
 */
 
@@ -337,36 +281,37 @@ this.bindNode('x', node, binder, {
 @summary Alternative syntax: passing of an object
 @desc To the {@link defi.bindNode} method an object can be passed to avoid multiple invocation of the method and reduce code. Keys of the object are property names and values can get the following look:
 
-- A node
-- An object with properties ``node`` and ``binder``
-- An array of objects with properties ``node`` and ``binder``
+- A node;
+- An object with properties ``node`` and ``binder``;
+- An array of objects with properties ``node`` and ``binder``;
 
 If ``binder`` arg is passed as the second argument then it wil be used as the binder for those elements for which a binder wasn't specified.
 
+@param {object} obj - A target object
 @param {object} bindings - (see the example)
 @param {binder} [binder] - (see above)
 @param {eventOptions} [eventOptions] - (see above)
 
-@returns {object} self
+@returns {object} object
 
 @example
-this.bindNode({
+defi.bindNode(obj, {
 	foo: '.custom-checkbox',
 	'bar.length': 'textarea'
 });
 
 @example
-this.bindNode({
+defi.bindNode(obj, {
 	foo: {
 		node: ':sandbox .aaa',
-		binder: defi.binders.html()
+		binder: myBinder()
 	},
 	bar: '.bbb',
 	baz: [{
 		node: '.ccc'
 	}, {
 		node: document.querySelector('.ddd'),
-		binder: defi.binders.prop('baz')
+		binder: myBinder('baz')
 	}]
 }, {
 	// will be used as a binder for .bbb and .ccc
@@ -392,13 +337,14 @@ this.bindNode({
 
 The second arg object includes common event options for all bindings and extends ``event`` object (properties from ``event`` has more priority).
 
+@param {object} obj - A target object
 @param {array} batch - A batch of bindings
 @param {eventOptions} [commonEventOptions] - Common event options
 
-@returns {object} self
+@returns {object} object
 
 @example
-this.bindNode([{
+defi.bindNode(obj, [{
 	key: 'a',
 	node: '.my-node',
 	binder: {
