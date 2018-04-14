@@ -1,5 +1,5 @@
 /**
-Event handler. Takes any arguments passed to {@link Matreshka#trigger}
+Event handler. Takes any arguments passed to {@link defi.trigger}
 @callback eventHandler
 @param {...*} options - Any arguments
 @example
@@ -21,19 +21,19 @@ obj.calc('a', 'b');
 */
 
 /**
-{@link Matreshka.Object} instance
+{@link defi.Object} instance
 @typedef {object} matreshkaObject
 @example
-const obj = new Matreshka.Object({ foo: 'x' });
+const obj = new defi.Object({ foo: 'x' });
 obj.setData({ bar: 'y' });
 */
 
 
 /**
-{@link Matreshka.Array} instance
+{@link defi.Array} instance
 @typedef {object} matreshkaArray
 @example
-const arr = new Matreshka.Array(1, 2, 3);
+const arr = new defi.Array(1, 2, 3);
 arr.push(4);
 */
 
@@ -122,7 +122,7 @@ this.on('a@someevent', () => {...});
 this.on('a.b.c@change:d', () => {...});
 ```
 
-If you need to listen an event of every item of {@link Matreshka.Array} or every data property of {@link Matreshka.Object}, you can use an asterisk "*" instead of specific property name.
+If you need to listen an event of every item of {@link defi.Array} or every data property of {@link defi.Object}, you can use an asterisk "*" instead of specific property name.
 
 ```js
 this.on('*@someevent', () => {...});
@@ -202,14 +202,14 @@ this.set('a', 2, eventOptions); // alerts "yeah"
 
 
 /**
-A class made using ECMAScript 2015 syntax or returned by {@link Matreshka.Class} function
+A class made using ECMAScript 2015 syntax or returned by {@link defi.Class} function
 @typedef {function} class
 @example
 class MyClass {
 	method() { ... }
 };
 @example
-const MyClass = Matreshka.Class({
+const MyClass = defi.Class({
 	method() { ... }
 });
 */

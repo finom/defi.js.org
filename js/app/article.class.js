@@ -20,6 +20,7 @@ export default class Article extends MatreshkaObject {
 				},
 				'change:isActive': evt => {
 					var node = this.nodes.menuItem;
+					if(!node) return;
 					while (node = node.parentNode) {
 						$('.submenu-wrapper').filter(function(wrapper) {
 							return wrapper.contains(node);
@@ -141,7 +142,7 @@ export default class Article extends MatreshkaObject {
 		}
 
 		return this
-			.bindNode({
+			.bindOptionalNode({
 				menuItem: g.app.select('nav a[href="#' + this.id + '"]'),
 				since: {
 					node: ':sandbox',
@@ -154,9 +155,7 @@ export default class Article extends MatreshkaObject {
 				expanded: {
 					node: ':bound(menuItem)',
 					binder: className('expanded')
-				}
-			})
-			.bindOptionalNode({
+				},
 				commentsContainer: ':sandbox .comments-container',
 				submenu: 'nav ul[data-submenu="' + this.id + '"]',
 				comment: ':sandbox .comments',
@@ -193,7 +192,7 @@ export default class Article extends MatreshkaObject {
 				this.nodes.sandbox.insertBefore($(paginationHTML)[0], this.nodes.sandbox.firstChild),
 				this.nodes.sandbox.appendChild($(paginationHTML)[0])
 			])
-			.bindNode('name', ':bound(menuItem)', {
+			.bindOptionalNode('name', ':bound(menuItem)', {
 				getValue: function() {
 					return this.getAttribute('data-name') || this.textContent;
 				}

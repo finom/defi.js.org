@@ -2,8 +2,8 @@
 <?js= obj.intro ?>
 </section>
 <section class="api">
-<?js for( var i in obj.classes ) { ?>
-	<?js= this.partial( 'class.html', obj.classes[i] ) ?>
+<?js for( var i in obj.namespaces ) { ?>
+	<?js= this.partial( 'namespace.html', obj.namespaces[i] ) ?>
 <?js } ?>
 </section>
 <section>

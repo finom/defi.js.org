@@ -124,15 +124,14 @@ nav {
 	}
 
 	ul {
-
 		a {
-			padding-left: $left-indent*2;
+			padding-left: $left-indent;
 			white-space: nowrap;
 		}
 
 		ul {
 			a {
-				padding-left: $left-indent*3;
+				padding-left: $left-indent*2;
 			}
 		}
 

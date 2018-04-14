@@ -26,7 +26,6 @@ export default class Main extends MatreshkaObject {
 				view: localStorage.view || 'all',
 				hideTypoBadge: localStorage.hideTypoBadge,
 				isMobile: /mobile|android/i.test(navigator.userAgent),
-				importanceLevel: +localStorage.importanceLevel || 2
 			})
 			.instantiate({
 				typo: Typo,
@@ -88,12 +87,6 @@ export default class Main extends MatreshkaObject {
 
 		for(let block of $('code.lang-js, code.lang-html, pre.prettyprint.source')) {
 			hljs.highlightBlock(block);
-		}
-
-		for(let article of this.articles) {
-			if(article.id === location.hash && article.importance > this.importanceLevel) {
-
-			}
 		}
 
 		this.loading = false;
@@ -159,13 +152,6 @@ export default class Main extends MatreshkaObject {
 					binder: html()
 				},
 				hashValue: [{
-					node: ':sandbox .another-language',
-					binder: {
-						setValue: function(v) {
-							this.href = this.href.split('#')[0] + '#' + v;
-						}
-					}
-				}, {
 					node: window,
 					binder: {
 						on: 'hashchange',
@@ -186,24 +172,6 @@ export default class Main extends MatreshkaObject {
 					node: 'body',
 					binder: dataset('view')
 				},
-				importanceLevel: [{
-					node: ':sandbox .doc-importance input',
-					binder: {
-						getValue() {
-							return this.checked ? 3 : 2;
-						},
-						setValue(v) {
-							this.checked = v === 3;
-						}
-					}
-				}, {
-					node: ':sandbox',
-					binder: dataset('importanceLevel')
-				}],
-				version: {
-					node: '#promo .version',
-					binder: html()
-				}
 			})
 			.bindNode({
 				view: ':bound(viewSwitcher)'
@@ -271,7 +239,6 @@ export default class Main extends MatreshkaObject {
 
 					scrollTo(fromLeft, fromTop);
 				},
-				'change:importanceLevel': evt => localStorage.importanceLevel = this.importanceLevel,
 				'click::(.show-nav)': evt => {
 					this.navOverlay = true;
 
@@ -292,13 +259,7 @@ export default class Main extends MatreshkaObject {
 
 					evt.preventDefault();
 				},*/
-				'click::typeBadge(.close)': evt => localStorage.hideTypoBadge = this.hideTypoBadge = true,
-				'change:hashValue change:articles': evt => {
-					let article = this.articles.filter(article => article.id === this.hashValue)[0];
-					if(article && article.importance > this.importanceLevel) {
-						this.importanceLevel = article.importance;
-					}
-				}
+				'click::typeBadge(.close)': evt => localStorage.hideTypoBadge = this.hideTypoBadge = true
 			});
 	}
 
