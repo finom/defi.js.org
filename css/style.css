@@ -6700,10 +6700,10 @@ nav {
     transition-duration: .1s;
     transition-timing-function: ease-in-out; }
     nav ul a {
-      padding-left: 40px;
+      padding-left: 20px;
       white-space: nowrap; }
     nav ul ul a {
-      padding-left: 60px; }
+      padding-left: 40px; }
   nav .submenu-wrapper {
     position: relative;
     overflow: hidden;
