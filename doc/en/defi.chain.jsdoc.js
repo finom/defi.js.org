@@ -9,7 +9,6 @@
 @returns {object} An instance of the class which adopts defi functions
 
 @example
-const obj = {};
 defi.chain(obj)
     .calc('a', 'b', b => b * 2)
     .set('b', 3)

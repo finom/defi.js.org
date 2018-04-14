@@ -4,7 +4,7 @@
 @fires change:KEY
 @fires beforechange
 @fires beforechange:KEY
-@summary Sets a property value allowing to pass event options object
+@summary Sets a property value allowing to pass an event options object
 @desc The list of the supported flags:
 + ``silent`` -  do not call the ``change`` and ``change:KEY`` events
 + ``silentHTML`` - do not change states of bound HTML nodes
