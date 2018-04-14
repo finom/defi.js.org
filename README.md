@@ -1,4 +1,4 @@
-# [defi.js.org](http://defi.js.org) source code [![Build Status](https://travis-ci.org/matreshkajs/matreshka.io.svg)](https://travis-ci.org/matreshkajs/matreshka.io)
+# [defi.js.org](http://defi.js.org) source code [![Build Status](https://travis-ci.org/finom/defi.js.org.svg)](https://travis-ci.org/finom/defi.js.org)
 
 This repo contains the source code for [defi.js](https://github.com/finom/defi) website.
 
