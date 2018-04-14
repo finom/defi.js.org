@@ -1,6 +1,5 @@
 /**
-@method defi.set
-@importance 1
+@function defi.set
 @fires change
 @fires change:KEY
 @fires beforechange
@@ -50,9 +49,9 @@ defi.set(obj, 'myKey', 4, {
 
 
 /**
-@method defi.set
+@function defi.set
 @variation 2
-@summary Alternative "key-value" syntax of the {@link defi.set} method
+@summary Alternative "key-value" syntax of the {@link defi.set} function
 @param {object} obj - A target object
 @param {object} keyValuePairs - An object containing key-value pairs
 @param {eventOptions} [eventOptions] - An event object

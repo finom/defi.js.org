@@ -1,9 +1,7 @@
 /**
-@method defi.mediate
-@importance 2
-@since 0.1
+@function defi.mediate
 @summary Transforms property value on its changing
-@desc This method is used for transforming property value on its changing. For example, you want the property value to be always either of a certain type or an integer value, or to be no less than zero and no more than a hundred etc.
+@desc This function is used for transforming property value on its changing. For example, you want the property value to be always either of a certain type or an integer value, or to be no less than zero and no more than a hundred etc.
 
 @param {object} obj - A target object
 @param {string|array} key - A key or an array of keys
@@ -24,11 +22,9 @@ defi.mediate(obj, ['x', 'y'], value => String(value));
 
 
 /**
-@method defi.mediate
-@importance 2
+@function defi.mediate
 @variation 2
-@since 0.1
-@summary Alternative syntax of the {@link defi.mediate} method which accepts "key-mediator" object as an argument
+@summary Alternative syntax of the {@link defi.mediate} function which accepts "key-mediator" object as an argument
 @param {object} keyMediatorPairs - An object with key-mediator properties
 @example
 defi.mediate(obj, {

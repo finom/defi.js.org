@@ -1,14 +1,13 @@
 /**
-@method defi.bindNode
-@importance 1
+@function defi.bindNode
 @fires bind
 @fires bind:KEY
 @summary Binds a property of an object to HTML node, implementing two-way data binding
-@desc It creates a bridge between value of a property and a state of HTML node on the page: from a simple input to a complicated widget (the complexity of elements is unlimited). After using this method, it isn't necessary to monitor the synchronizations between model and view.
+@desc It creates a bridge between value of a property and a state of HTML node on the page: from a simple input to a complicated widget (the complexity of elements is unlimited). After using this function, it isn't necessary to monitor the synchronizations between model and view.
 
-The method acepts three arguments: **a property name**, **HTML node** and a **binding rule** (a binder). In its turn, a binder is an ordinary object and it can have the following properties: ``on``, ``getValue``, ``setValue``, ``initialize``, ``destroy`` (Read more here: {@link #typedef-binder}). All the five properties are optional. It also allows to declare one-way data bindings (any direction).
+The function acepts three arguments: **a property name**, **HTML node** and a **binding rule** (a binder). In its turn, a binder is an ordinary object and it can have the following properties: ``on``, ``getValue``, ``setValue``, ``initialize``, ``destroy`` (Read more here: {@link #typedef-binder}). All the five properties are optional. It also allows to declare one-way data bindings (any direction).
 
-> The ``bindNode`` method  supports the many-to-many bindings. Several elements can be bound to one property and several properties can be bound to one element, including ones from different instances of various classes.
+> The ``bindNode`` function  supports the many-to-many bindings. Several elements can be bound to one property and several properties can be bound to one element, including ones from different objects.
 
 ```js
 defi.bindNode(object, 'myKey', '.my-element', {
@@ -38,6 +37,7 @@ this.bindNode(obj, 'myKey', '.my-checkbox', {
 ```
 
 After binding is declared, you can set value of an object property in your most habitual way and HTML node (in this case, a checkbox) will change its state immediately. After clicking on the checkbox, the property value will be changed to the corresponding one as well.
+
 ```js
 // sets checked = true
 obj.myKey = true;
@@ -79,7 +79,7 @@ obj.myKey = 42;
 
 It looks easy but you may ask a question: "What should I do to avoid writing these rules every time?". Indeed, there can be a lot of elements of the same type on the page: text fields, drop down menus, fields from the HTML5 specification as well as third party widgets (see the example above).
 
-As observed in this documentation, the third argument is not obligatory for the ones of the ```bindNode``` method (see below). This problem is solved by the {@link defi.defaultBinders} array which contains functions checking an HTML node against a set of rules and returns corresponding binder or ``undefined``. You get an opportunity to reduce your code a great deal, putting  binding rules into a separate part of your code and to use a syntax for binding without the third argument:
+As observed in this documentation, the third argument is not obligatory for the ones of the ```bindNode``` function (see below). This problem is solved by the {@link defi.defaultBinders} array which contains functions checking an HTML node against a set of rules and returns corresponding binder or ``undefined``. You get an opportunity to reduce your code a great deal, putting  binding rules into a separate part of your code and to use a syntax for binding without the third argument:
 ```js
 defi.bindNode(obj, 'myKey', '.my-element');
 ```
@@ -97,7 +97,7 @@ const checkboxBinder = () => {
 	}
 };
 
-// the unshift method adds the function
+// the unshift function adds the function
 // to the beginning of the defi.defaultBinders array
 defi.defaultBinders.unshift(node => {
 	// check if the element is a checkbox
@@ -168,9 +168,9 @@ defi.on('click::myKey(.my-inner-element)', () => { ... });
 
 > If a node is not found ``"Bound element is missing"`` error will be thrown. Check out {@link defi.bindOptionalNode}.
 
-### Important features of the method and special flags
+### Important features of the function and special flags
 
-The fourth argument of ``bindNode`` method is  ``eventOptions``. As usual this object can include special flags or custom data which will be passed to ``bind`` and ``bind:KEY`` event handlers.
+The fourth argument of ``bindNode`` function is  ``eventOptions``. As usual this object can include special flags or custom data which will be passed to ``bind`` and ``bind:KEY`` event handlers.
 
 ```js
 defi.on(obj, 'bind:x', evt => {
@@ -236,7 +236,7 @@ To cancel this behavior (e. g. initiate synchronous binding) use ``debounceSetVa
 
 #### Flags ``debounceSetValueOnBind=false`` and ``debounceGetValueOnBind=false``
 
-As described above ``bindNode`` uses debounce pattern on property change and on bound node change. This doesn't apply to a moment when ``bindNode`` is called. To remind, when the method is called a property or a node is changed immediately. When ``debounceGetValueOnBind`` and/or ``debounceSetValueOnBind`` are set to ``true`` then debounce is turned on for binding initialization as well.
+As described above ``bindNode`` uses debounce pattern on property change and on bound node change. This doesn't apply to a moment when ``bindNode`` is called. To remind, when the function is called a property or a node is changed immediately. When ``debounceGetValueOnBind`` and/or ``debounceSetValueOnBind`` are set to ``true`` then debounce is turned on for binding initialization as well.
 
 #### Flags ``debounceSetValueDelay=0`` и ``debounceGetValueDelay=0``
 
@@ -246,7 +246,7 @@ These flags allow to set debounce delay. ``debounceSetValueDelay`` is used when 
 
 Even if you pass a binder to ``bindNode``, the framework tries to find default binder at {@link defi.defaultBinder} and extend it by properties of the passed object. This feature makes possible to use partially re-defined default binder.
 
-For example, we want to bind ``input[type="text"]`` to a property. By default, the standard binder contains ``"on"`` property with ``"input"`` value for this kind of node. It means that the value of the instance property and node state will be synchronized when a user releases a key of the keyboard or pastes text from clipboard. In case if you want synchronization to be performed after the ``"blur"`` DOM event, you need to pass an object containing the only ``"on"`` property as the third argument. This object will extend the default binder, having retained ``getValue`` and ``setValue`` values.
+For example, we want to bind ``input[type="text"]`` to a property. By default, the standard binder contains ``"on"`` property with ``"input"`` value for this kind of node. It means that the value of the object property and node state will be synchronized when a user releases a key of the keyboard or pastes text from clipboard. In case if you want synchronization to be performed after the ``"blur"`` DOM event, you need to pass an object containing the only ``"on"`` property as the third argument. This object will extend the default binder, having retained ``getValue`` and ``setValue`` values.
 
 ```js
 defi.bindNode(obj, 'myKey', '.my-input', { on: 'blur' });
@@ -275,11 +275,10 @@ defi.bindNode(obj, 'x', node, binder, {
 
 
 /**
-@method defi.bindNode
-@importance 2
+@function defi.bindNode
 @variation 2
 @summary Alternative syntax: passing of an object
-@desc To the {@link defi.bindNode} method an object can be passed to avoid multiple invocation of the method and reduce code. Keys of the object are property names and values can get the following look:
+@desc To the {@link defi.bindNode} function an object can be passed to avoid multiple invocation of the function and reduce code. Keys of the object are property names and values can get the following look:
 
 - A node;
 - An object with properties ``node`` and ``binder``;
@@ -323,12 +322,11 @@ defi.bindNode(obj, {
 
 
 /**
-@method defi.bindNode
-@importance 2
+@function defi.bindNode
 @variation 3
 @summary Alternative syntax which makes possible to define unlimited amount of bindings per one ``bindNode`` call.
 
-@desc The method variation allows to pass an array of objects which need to include the following properties:
+@desc The function variation allows to pass an array of objects which need to include the following properties:
 
 - ``key`` - a property name
 - ``node`` - an HTML element which must be bound to a ``key``

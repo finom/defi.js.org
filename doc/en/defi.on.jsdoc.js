@@ -1,10 +1,9 @@
 /**
-@method defi.on
-@importance 1
+@function defi.on
 @fires addevent
 @fires addevent:NAME
 @summary Adds an event handler
-@desc The method adds an event handler for an object. Refer to the complete list of possible events with the description here: {@link #typedef-eventNames}.
+@desc The function adds an event handler for an object. Refer to the complete list of possible events with the description here: {@link #typedef-eventNames}.
 
 @see {@link defi.off}
 @see {@link defi.trigger}
@@ -28,12 +27,10 @@ defi.on(obj, 'foo', () => {
 */
 
 /**
-@method defi.on
-@importance 2
+@function defi.on
 @variation 2
-@since 1.1
 @summary Alternative syntax: "eventname-handler" pairs
-@desc In the {@link defi.on} method the object with the key-element pairs can be passed to avoid multiple invocation of the method and reduce your code.
+@desc In the {@link defi.on} function the object with the key-element pairs can be passed to avoid multiple invocation of the function and reduce your code.
 @param {object} obj - A target object
 @param {object} evtnameHandlerObject - An object where keys are event names and values are event handlers
 @param {boolean} [triggerOnInit=false] - If ``triggerOnInit`` argument  equals ``true``, all handlers will be called immediately after event initialization.

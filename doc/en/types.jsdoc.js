@@ -89,13 +89,13 @@ this.on('x.y.z@click::u(.my-selector)', () => {...});
 
 
 /**
-``binder`` contains all information about how to synchronize instance property value with DOM node state. Every member of a binder uses HTML node as its context (``this``)
+``binder`` contains all information about how to synchronize an object property value with DOM node state. Every member of a binder uses HTML node as its context (``this``)
 @typedef {object} binder
 @property {string|function} [on] - DOM event (or space-delimited list of events) which tells when the node state is changed. Besides, it accepts a function as a value if you need to customize a listener definition
 @property {function} [getValue] - A function which tells how to retrieve a value (state) from HTML node when DOM event is fired
 @property {function} [setValue] - A function which tells how to change DOM node when the property value is changed
 @property {function} [initialize] - A function which is called before binding is launched. For example it can initialize jQuery plugin or something else
-@property {function} [destroy] - A function which is called when a binding is removed using ``unbindNode`` method
+@property {function} [destroy] - A function which is called when a binding is removed using ``unbindNode`` function
 @example
 const binder = {
 	on: 'click',

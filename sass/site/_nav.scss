@@ -90,28 +90,6 @@ nav {
 	}
 
 	.api {
-		a {
-			&::after {
-				@extend .imp-level-2;
-				content: '';
-				width: 1rem;
-				height: 1rem;
-				display: inline-block;
-				margin-left: 5px;
-				vertical-align: middle;
-
-
-			}
-
-			&[data-importance="1"]::after {
-				@extend .imp-level-1;
-			}
-
-			&[data-importance="3"]::after {
-				@extend .imp-level-3;
-			}
-		}
-
 
 	}
 

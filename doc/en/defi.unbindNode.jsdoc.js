@@ -1,10 +1,9 @@
 /**
-@method defi.unbindNode
-@importance 2
+@function defi.unbindNode
 @fires unbind
 @fires unbind:KEY
 @summary Destroys a binding between given property and HTML node
-@desc Using this method you can delete a binding between a property and HTML node, which has been added recently and no longer needed.
+@desc Using this function you can delete a binding between a property and HTML node, which has been added recently and no longer needed.
 @param {object} obj - A target object
 @param {string|null} - A key or an array of keys. If you pass ``null`` instead of the key, all bindings for the given object will be deleted
 @param {string|node|$nodes} [node] - HTML node
@@ -24,8 +23,7 @@ obj.myKey = false;
 
 
 /**
-@method defi.unbindNode
-@importance 2
+@function defi.unbindNode
 @variation 2
 @summary Alternative syntax which allows to pass an object with bindings to ``unbindNode``. Look at {@link defi.bindNode(2)} for more information
 @param {object} obj - A target object
@@ -48,17 +46,16 @@ defi.unbindNode(obj, {
 
 
 /**
-@method defi.unbindNode
-@importance 2
+@function defi.unbindNode
 @variation 3
-@summary Alternative syntax of the method which allows to easily unbind unlimited amount of bindings by single ``unbindNode`` call.
+@summary Alternative syntax of the function which allows to easily unbind unlimited amount of bindings by single ``unbindNode`` call.
 
 @desc The variation makes possible to pass an array which includes objects with the following properties:
 
 - ``key`` - a property name
 - ``node`` - a node bound to ``key`` (optional)
 
-This variation is useful because it matches one variation of {@link defi.bindNode} method, allowing to store bindings in a variable to easily remove them when needed.
+This variation is useful because it matches one variation of {@link defi.bindNode} function, allowing to store bindings in a variable to easily remove them when needed.
 
 @param {object} obj - A target object
 @param {array} batch - An array of bindings

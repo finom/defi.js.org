@@ -5,21 +5,6 @@ $secondary-color: #ef5350;
 $text-color: rgba(#000,.9);
 $gray-color: rgba(0, 0, 0, 0.1);
 
-
-
-.imp-level-1 {
-	background-image: inline-image("./imp-level-1.svg")
-}
-
-.imp-level-2 {
-	background-image: inline-image("imp-level-2.svg")
-}
-
-.imp-level-3 {
-	background-image: inline-image("imp-level-3.svg")
-}
-
-
 .hide {
 	display: none !important;
 }

@@ -1,8 +1,7 @@
 /**
-@method defi.trigger
-@importance 1
+@function defi.trigger
 @summary Fires an event
-@desc After adding event handlers using {@link defi.on} any event can be fired manually using this method.
+@desc After adding event handlers using {@link defi.on} any event can be fired manually using this function.
 
 @see {@link defi.on}
 @see {@link defi.off}

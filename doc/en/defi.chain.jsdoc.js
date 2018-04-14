@@ -1,14 +1,12 @@
 /**
-@method defi.chain
+@function defi.chain
 @module matreshka/chain
-@importance 2
-@since 2.0
 @summary Allows chained calls of defi.js functions
 
 @desc The function accepts any object and returns an instance of externally inaccessible class which adopts function allowing them to be called in a chain to change given object.
 
 @param {object} obj - An object
-@returns {object} An instance of the class which adopts universal methods
+@returns {object} An instance of the class which adopts defi functions
 
 @example
 const obj = {};

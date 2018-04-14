@@ -1,7 +1,5 @@
 /**
-@method defi.calc
-@importance 1
-@since 2.0
+@function defi.calc
 @summary Creates a dependency of one property value on values of others
 @desc ``calc`` creates a dependency of a property (``target`` argument) on values of other properties (``source`` argument). When source property is changed, ``target`` is re-calculated automatically.
 
@@ -126,7 +124,7 @@ console.log(obj.a); // 10
 
 #### A path to source property
 
-If source property name includes a dot then the method initiates a dependency on a property from nested object.
+If source property name includes a dot then the function initiates a dependency on a property from nested object.
 
 ```js
 obj.b = { c: { d: 1 } };
@@ -153,11 +151,11 @@ defi.calc(obj, 'a', [{
 console.log(obj.a); // 3
 ```
 
-> The method is protected from circular references (for example, ``a`` depends on ``b``, ``b`` depends on ``c`` and ``c`` depends on ``a``) and if there is a calculation problem, it does not block the page and does not throw an exception about the stack over-flow.
+> The function is protected from circular references (for example, ``a`` depends on ``b``, ``b`` depends on ``c`` and ``c`` depends on ``a``) and if there is a calculation problem, it does not block the page and does not throw an exception about the stack over-flow.
 
 As you may noticed, arguments of ``handler`` function always follow the same order as source properties appear.
 
-In case if you want to change a value of one source property and make it so that target property will not be recalculated, then use {@link defi.set} method with ``skipCalc`` flag.
+In case if you want to change a value of one source property and make it so that target property will not be recalculated, then use {@link defi.set} function with ``skipCalc`` flag.
 
 ```js
 defi.calc(obj, 'a', 'b', handler);
@@ -166,9 +164,9 @@ defi.set(obj, 'b', newValue, {
 });
 ```
 
-### Important features of the method and special flags
+### Important features of the function and special flags
 
-The fifth argument of ``calc`` method is  ``eventOptions``. As usual this object can include special flags or custom data which will be passed to ``change:TARGET`` event handler.
+The fifth argument of ``calc`` function is  ``eventOptions``. As usual this object can include special flags or custom data which will be passed to ``change:TARGET`` event handler.
 
 ```js
 defi.on(obj, 'change:a', evt => {
@@ -201,7 +199,7 @@ obj.d = 30;
 console.log(obj.a); // 6 instead of 60
 ```
 
-To cancel debounce pattern when source properties are changed, in other words to make the calculation synchronously pass ``debounceCalc`` with ``false`` value to the method.
+To cancel debounce pattern when source properties are changed, in other words to make the calculation synchronously pass ``debounceCalc`` with ``false`` value to the function.
 
 ```js
 obj.b = 1;
@@ -228,7 +226,7 @@ console.log(obj.a); // 60
 
 #### A flag ``debounceCalcOnInit=false``
 
-As described above, target property is calculated immediately after the ``calc`` is called. To turn on debounce on ``calc`` call pass ``debounceCalcOnInit`` with ``true`` value to the method.
+As described above, target property is calculated immediately after the ``calc`` is called. To turn on debounce on ``calc`` call pass ``debounceCalcOnInit`` with ``true`` value to the function.
 
 ```js
 defi.on(obj, 'change:a', () => {
@@ -352,11 +350,9 @@ obj.a = 5;
 
 
 /**
-@method defi.calc
-@importance 2
+@function defi.calc
 @variation batch
-@since 2.0
-@summary Extra syntax for {@link defi.calc}. Allows to define few calculated properties per single call of the method.
+@summary Extra syntax for {@link defi.calc}. Allows to define few calculated properties per single call of the function.
 
 @desc The first argument is an object whose keys are property names and values are objects with the following data:
 

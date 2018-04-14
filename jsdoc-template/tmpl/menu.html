@@ -5,9 +5,7 @@
 ?>
 		<ul>
 			<?js if(_namespace.staticMembers['function'].length) {?>
-				<li><span class="nav-heading" data-importance="<?js=
-						Math.min.apply(null, _namespace.staticMembers['function'].map(function(item) {return +item.importance || 2})) || 2
-					?>"><?js=self.lang.static_methods?></span></li>
+				<li><span class="nav-heading"><?js=self.lang.static_methods?></span></li>
 			<?js}?>
 
 			<?js _namespace.staticMembers['function'].forEach( function( member ) { if( member.name !== previous ) { previous = member.name; ?>
@@ -16,7 +14,7 @@
 						title="<?js= member.summary_plain ?>"
 						data-name="<?js= member.name ?>"
 						<?js if(member.since) {?>data-since="<?js= member.since ?>"<?js } ?>
-						<?js if(member.importance) {?>data-importance="<?js= member.importance ?>"<?js } ?>>
+					>
 						<?js= member.name ?>
 						<?js if( member.variations && member.variations.length ) { ?>
 							<span class="expand"></span>
@@ -33,7 +31,7 @@
 											title="<?js= member.summary_plain ?>"
 											data-name="<?js= member.name ?>#<?js= member.variation ?>"
 											<?js if(member.since) {?>data-since="<?js= member.since ?>"<?js } ?>
-											<?js if(member.importance) {?>data-importance="<?js= member.importance ?>"<?js } ?>>
+										>
 											#<?js= member.variation ?>
 										</a>
 									</li>
@@ -46,9 +44,7 @@
 			<?js } }); ?>
 
 			<?js if(_namespace.staticMembers.member.length) {?>
-				<li><span class="nav-heading" data-importance="<?js=
-						Math.min.apply(null, _namespace.staticMembers.member.map(function(item) {return +item.importance || 2})) || 2
-					?>"><?js=self.lang.static_properties?></span></li>
+				<li><span class="nav-heading"><?js=self.lang.static_properties?></span></li>
 			<?js}?>
 			<?js _namespace.staticMembers.member.forEach( function( member ) { if( member.name !== previous ) { previous = member.name; ?>
 				<li>
@@ -57,7 +53,7 @@
 						title="<?js= member.summary_plain ?>"
 						data-name="<?js= member.name ?>"
 						<?js if(member.since) {?>data-since="<?js= member.since ?>"<?js } ?>
-						<?js if(member.importance) {?>data-importance="<?js= member.importance ?>"<?js } ?>>
+					>
 						<?js= member.name ?>
 					</a>
 				</li>
