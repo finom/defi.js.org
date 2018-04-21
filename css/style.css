@@ -6377,7 +6377,7 @@ body {
         font-size: 3rem; } }
   #promo .demo {
     width: 100%;
-    max-width: 750px;
+    max-width: 350px;
     min-width: 300px;
     margin: 0 auto;
     position: relative; }
@@ -6510,7 +6510,7 @@ main {
     font-weight: 300;
     position: relative; }
     main h1 a, main h2 a, main h3 a, main h4 a {
-      color: #8BC34A; }
+      color: #4ac398; }
   main h2 {
     font-size: 2.5rem;
     margin-top: 0;
@@ -6548,7 +6548,7 @@ main {
   main .comments {
     cursor: pointer;
     margin-top: 10px;
-    color: #8BC34A;
+    color: #4ac398;
     background-color: #fff; }
     main .comments:hover {
       background-color: #fff; }
@@ -6635,7 +6635,7 @@ nav {
       padding: 0 10px;
       cursor: pointer; }
       nav .view-switcher span.checked {
-        background-color: #8BC34A;
+        background-color: #4ac398;
         color: white;
         cursor: default; }
   nav a {
@@ -6651,7 +6651,7 @@ nav {
       background-color: rgba(0, 0, 0, 0.05); }
     nav a.active {
       color: white;
-      background: #8BC34A; }
+      background: #4ac398; }
       nav a.active .hidden-active-child {
         display: none; }
     nav a.another-language {
@@ -6707,7 +6707,7 @@ nav {
     nav .expand:hover {
       color: rgba(0, 0, 0, 0.9); }
   nav .hidden-active-child {
-    background-color: #8BC34A;
+    background-color: #4ac398;
     height: 30px;
     line-height: 30px;
     position: absolute;
@@ -6725,7 +6725,7 @@ nav {
       height: 0;
       border-style: solid;
       border-width: 0 6px 6px 6px;
-      border-color: transparent transparent #8BC34A transparent;
+      border-color: transparent transparent #4ac398 transparent;
       top: -6px;
       right: 8px; }
     nav .hidden-active-child:empty {
@@ -6734,7 +6734,7 @@ nav {
     top: -24px; }
     nav li:last-child .hidden-active-child::after {
       border-width: 6px 6px 0  6px;
-      border-color: #8BC34A transparent transparent transparent;
+      border-color: #4ac398 transparent transparent transparent;
       top: auto;
       bottom: -6px; }
   nav a.expanded .hidden-active-child {
@@ -6781,7 +6781,7 @@ body.nav-shown .nav-overlay {
 
 header {
   padding-left: 240px;
-  background-color: #8BC34A;
+  background-color: #4ac398;
   color: white;
   position: fixed;
   top: 0;

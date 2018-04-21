@@ -3,8 +3,8 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Matreshka.js 2</title>
-		<meta name="description" content="Matreshka.js 2 - The easiest framework in the Universe">
+		<title>defi.js - the magic of accessors</title>
+		<meta name="description" content="defi.js - the magic of accessors">
 		<meta name="viewport" content="initial-scale=1, width=device-width">
 		<meta charset="UTF-8">
 		<link rel="apple-touch-icon" sizes="57x57" href="icons/apple-touch-icon-57x57.png">
@@ -96,8 +96,7 @@
 	</span>
 	<span class="nav-heading">Start</span>
 	<a href="#!home">Home</a>
-	<a href="#!introduction" hidden>Introduction</a>
-	<a href="#!examples" hidden>Examples</a>
+	<a href="#!introduction">Introduction</a>
 	<hr>
 	<div class="api">
 		
@@ -465,10 +464,9 @@
 
 	</div>
 	<hr>
-	<span class="nav-heading" hidden>Info</span>
-	<a href="#!faq" hidden>FAQ</a>
+	<span class="nav-heading">Info</span>
 	<hr>
-	<a>Last update 14.4.2018</a>
+	<a>Last update 21.4.2018</a>
 </nav>
 
 
@@ -478,7 +476,6 @@
 		<h1 class="logo">defi.js</h1>
 		<div class="demo">
 			<output class="out">The magic of accessors</output>
-			THE WEBSITE IS UNDER DEVELOPMENT YET
 			<input type="text" class="in">
 			<pre><code class="lang-html">&lt;input class=&quot;in&quot; type=&quot;text&quot;&gt;
 &lt;output class=&quot;out&quot;&gt;&lt;/output&gt;
@@ -497,103 +494,60 @@ obj.x = 'The magic of accessors';
 	</article>
 </section>
 
-	<section hidden>
+	<section>
 		<article id="!introduction">
 			<h2 id="introduction"><a href="#!introduction">Introduction</a></h2>
-<h3 id="features">Features</h3>
-<ul>
-<li>Reactive API which allows to solve hard and confusing problems easily</li>
-<li>High robustness of developed apps</li>
-<li>The ability to refactor legacy applications without rewriting them from scratch</li>
-<li>Only couple of hours is needed to master the framework because of an absence of complex concepts</li>
-<li>One of the most user-friendly documentations among JavaScript libraries</li>
-</ul>
-<h3 id="who-needs-such-framework-">Who needs such framework?</h3>
-<blockquote>
-<p>Matreshka.js fills the gap between a junior and a senior</p>
-</blockquote>
-<ul>
-<li>For those who is new at JavaScript, wishing to master the development of single-page applications</li>
-<li>For full-stack devs, for whom front-end development is in the second place after the back-end</li>
-<li>For all those who are not satisfied with the current order of things in the universe of web development</li>
-</ul>
-<h3 id="what-s-the-business-need-solved-by-matreshka-js-framework-">What&#39;s the business need solved by Matreshka.js framework?</h3>
-<p>It is not a secret that the barrier to entry into the web development is becoming higher, the list of requirements to a developer is bigger, a number of dependencies in projects may be up to several hundred. Despite the fact that the studying of JavaScript is very popular today, the demand for developers who can accomplish tasks successfully is greater than the supply.</p>
-<p>Due to extreme simplicity of the framework, even novice web developers can quickly start to do small, then medium and then large web applications. This means that web studios are able to save money by hiring younger professionals, who, in turn, could not find a job before.</p>
-<h3 id="it-is-only-for-beginners-">It is only for beginners?</h3>
-<p>Two things that present Matreshka.js as a simple framework are use of selectors of bound DOM nodes when declaring a two-way data binding and an absence of any restrictions on requirements of an architecture and design patterns. In other aspects Matreshka.js is a modern general-purpose framework developed using today&#39;s technologies. At least, Matreshka.js may cause an interest because it uses the full potential of getters and setters in JavaScript.</p>
-
-		</article>
-		<article id="!examples">
-			<h2 id="examples"><a href="#!examples">Examples</a></h2>
-<h3 id="hello-world-">Hello World!</h3>
-<p>Writing your first application is very easy. You should:</p>
-<p><strong>1.</strong> Create an HTML file with the following content</p>
-<pre><code class="lang-html">&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-    &lt;head&gt;
-        &lt;title&gt;My first Matreshka.js application&lt;/title&gt;
-    &lt;/head&gt;
-    &lt;body&gt;
-        &lt;input type=&quot;text&quot; class=&quot;my-input&quot;&gt;
-        &lt;div class=&quot;my-output&quot;&gt;&lt;/div&gt;
-        &lt;script
-          src=&quot;https://matreshkajs.github.io/matreshka/matreshka.min.js&quot;&gt;
-        &lt;/script&gt;
-        &lt;script src=&quot;js/app.js&quot;&gt;&lt;/script&gt;
-    &lt;/body&gt;
-&lt;/html&gt;
+<p><strong>defi.js</strong> bunch of utilities that enable accessor-based reactivity for JavaScript objects.</p>
+<p>It can be installed via NPM:</p>
+<pre><code class="lang-js">npm i defi
 </code></pre>
-<p><strong>2.</strong> Create the application class at <strong>js/app.js</strong></p>
-<pre><code class="lang-js">// store html binder in a short variable
-const htmlBinder = Matreshka.binders.html;
+<pre><code class="lang-js">const { bindNode, calc } = require(&#39;defi&#39;);
 
-// create the class which inherits Matreshka
-class Application extends Matreshka {
-    constructor() {
-        super();
-
-        // bind a property x and the text field
-        this.bindNode(&#39;x&#39;, &#39;.my-input&#39;);
-
-        // bind the property x and the &quot;.my-output&quot; block
-        this.bindNode(&#39;x&#39;, &#39;.my-output&#39;, htmlBinder());
-
-        // if the property &quot;х&quot; has changed,
-        // inform about it in the console
-        this.on(&#39;change:x&#39;, () =&gt;
-            console.log(`x is changed to &quot;${this.x}&quot;`));
-    }
-}
-
-const app = new Application();
+bindNode(obj, &#39;key&#39;, node)
 </code></pre>
-<p><strong>3.</strong> That&#39;s it!</p>
-<p>Now you can open the developer&#39;s console (by pressing F12) and write:</p>
-<pre><code class="lang-js">app.x = &#39;Hello World!&#39;;
+<p>Or <a href="https://github.com/finom/defi/tree/gh-pages">downloaded to use as a global variable</a></p>
+<pre><code class="lang-js">// use defi as a global variable
+defi.bindNode(obj, &#39;key&#39;, node)
 </code></pre>
-<p>Cool, isn&#39;t it? You can work with such magical properties directly.</p>
-<h4 id="links">Links</h4>
+<h3 id="how-would-i-use-it-">How would I use it?</h3>
+<p>As a simple task let&#39;s say you want to define a simple form with first name and last name input, where while you type a greeting appears.</p>
+<pre><code class="lang-html">&lt;input class=&quot;first&quot;&gt;
+&lt;input class=&quot;last&quot;&gt;
+&lt;output class=&quot;greeting&quot;&gt;&lt;/output&gt;
+</code></pre>
+<pre><code class="lang-js">// default data
+const obj = {
+  first: &#39;John&#39;,
+  last: &#39;Doe&#39;
+};
+
+// let&#39;s listen for first and last name changes
+defi.on(obj, &#39;change:first&#39;, () =&gt; console.log(&#39;First name is changed&#39;));
+defi.on(obj, &#39;change:last&#39;, () =&gt; console.log(&#39;Last name is changed&#39;));
+
+// we would like to re-calculate &#39;greeting&#39; property every time
+// when the first or last are changed
+defi.calc(obj, &#39;greeting&#39;, [&#39;first&#39;, &#39;last&#39;], (first, last) =&gt; `Hello, ${first} ${last}`);
+
+// and we want to set up a two-way data binding between the props
+// and corresponding DOM nodes
+defi.bindNode(obj, {
+  first: &#39;.first&#39;,
+  last: &#39;.last&#39;,
+  greeting: &#39;.greeting&#39;
+});
+</code></pre>
+<p>If <code>first</code> or <code>last</code> is changed then event handlers print info about that to console, <code>greeting</code> property is updated, <code>.greeting</code> element is populated by calculated data (by default &quot;Hello, John Doe&quot;). And it happens every time when these properties are changed and it doesn&#39;t matter which way. You can do <code>obj.first = &#39;Jane&#39;</code> or you can type text into its field, and everything will happen immediately. That&#39;s the real reactiveness. Check the example above <a href="http://jsbin.com/qolulirela/3/edit">here</a> and try to type <code>obj.first = &#39;Jane&#39;</code> at &quot;Console&quot; tab.</p>
+<h3 id="i-have-seen-that-before-">I have seen that before!</h3>
+<p>defi.js is a hard-fork of <a href="https://github.com/matreshkajs/matreshka">Matreshka.js framework</a> which includes a subset of its functions. It&#39;s created for applications which don&#39;t need a full list of features like array rendering but require quick and clear two-way data binding features and sugared reactivity.</p>
+<p>Note that defi.js is compatible with the most of Matreshka.js add-ons:</p>
 <ul>
-<li><a href="#!Matreshka">Matreshka Class</a></li>
-<li><a href="#!Matreshka-bindNode">Matreshka#bindNode method</a></li>
-<li><a href="#!Matreshka-on">Matreshka#on method</a></li>
+<li><a href="https://github.com/matreshkajs/matreshka-router">Router</a></li>
+<li><a href="https://github.com/matreshkajs/matreshka-parse-form">Form parser</a></li>
+<li><a href="https://github.com/matreshkajs/file-binders">File binders</a></li>
+<li><a href="https://github.com/matreshkajs/matreshka-binder-codemirror">Codemirror binder</a></li>
 </ul>
-<p><span class="list-item-number">1.</span>
-<a href="https://github.com/matreshkajs/todomvc/tree/master/"
-class="example-link">TodoMVC</a> - a to-do list. (<a href="//matreshkajs.github.io/todomvc/docs/app.html">Source code with annotations</a>)</p>
-<p><span class="list-item-number">2.</span>
-<a href="https://github.com/matreshkajs/examples-and-tutorials/tree/master/treeview/"
-class="example-link">TreeView</a> of unlimited nesting depth.</p>
-<p><span class="list-item-number">3.</span>
-<a href="https://github.com/matreshkajs/examples-and-tutorials/tree/master/markdown-editor/"
-class="example-link">Markdown editor</a> made with few lines of code.</p>
-<p><span class="list-item-number">4.</span>
-<a href="https://github.com/matreshkajs/examples-and-tutorials/tree/master/soundcloud-search/"
-class="example-link">Simple SoundCloud player</a> - music search via SoundCloud API.</p>
-<p><span class="list-item-number">5.</span>
-<a href="https://github.com/matreshkajs/examples-and-tutorials/tree/master/contact-list/"
-class="example-link">Contact List</a> - allows to add, remove, sort, search and change contacts.</p>
+<p>Also there is a <a href="https://github.com/finom/common-binders">standalone set of common binders</a> compatible with both libraries.</p>
 
 		</article>
 	</section>
@@ -602,43 +556,7 @@ class="example-link">Contact List</a> - allows to add, remove, sort, search and 
 </section>
 <section class="api">
 
-	<article
-	class="item class"
-	id="!defi"
->
-	<h2>
-		<a href="#!defi">
-			<span class="signature-class">Class</span> defi
-		</a>
-	</h2>
-
 	
-	<div class="description">
-		<p>The defi.js library namespace</p>
-
-	</div>
-	
-
-	
-
-	
-
- 
-
-	<a class="make-patch-link" target="_blank" href="https://github.com/matreshkajs/matreshka.io/blob/master/doc/en/defi.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
-
-<a class="comments" data-id="defi" data-title="Class defi">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
-<div class="comments-container"
-  href="https://muut.com/i/matreshka/comments/matreshka-:defi"
-  title="Class defi"
-  data-channel="Matreshka"
-  data-show_online="false"
-  data-upload="false"></div>
-
-</article>
-
-
 <article class="item method" id="!defi.bindNode">
 	<h2>
 		<a href="#!defi.bindNode">
@@ -657,6 +575,9 @@ class="example-link">Contact List</a> - allows to add, remove, sort, search and 
 	<div class="summary"><p>Binds a property of an object to HTML node, implementing two-way data binding</p>
 </div>
 	<div class="description"><p>It creates a bridge between value of a property and a state of HTML node on the page: from a simple input to a complicated widget (the complexity of elements is unlimited). After using this function, it isn&#39;t necessary to monitor the synchronizations between model and view.</p>
+<blockquote>
+<p>Note that a bunch of common binders (they are explained below) can be found at <a href="https://github.com/finom/common-binders">common-binders</a> project.</p>
+</blockquote>
 <p>The function acepts three arguments: <strong>a property name</strong>, <strong>HTML node</strong> and a <strong>binding rule</strong> (a binder). In its turn, a binder is an ordinary object and it can have the following properties: <code>on</code>, <code>getValue</code>, <code>setValue</code>, <code>initialize</code>, <code>destroy</code> (Read more here: <span data-type="binder">binder</span>). All the five properties are optional. It also allows to declare one-way data bindings (any direction).</p>
 <blockquote>
 <p>The <code>bindNode</code> function  supports the many-to-many bindings. Several elements can be bound to one property and several properties can be bound to one element, including ones from different objects.</p>
@@ -667,9 +588,8 @@ class="example-link">Contact List</a> - allows to add, remove, sort, search and 
     setValue() { ... }
 });
 </code></pre>
-<p>For example, you want to bind a property of an object to a <code>input[type=&quot;checkbox&quot;]</code> node:
-defijs
-defi.bindNode(obj, &#39;myKey&#39;, &#39;.my-checkbox&#39;, {
+<p>For example, you want to bind a property of an object to a <code>input[type=&quot;checkbox&quot;]</code> node:</p>
+<pre><code class="lang-js">defi.bindNode(obj, &#39;myKey&#39;, &#39;.my-checkbox&#39;, {
     // when is element state changed?
     // - after &#39;click&#39; event
     on: &#39;click&#39;,
@@ -683,14 +603,13 @@ defi.bindNode(obj, &#39;myKey&#39;, &#39;.my-checkbox&#39;, {
     setValue(v) {
         this.checked = !!v;
     }
-});</p>
-<pre><code>
-After binding is declared, you can set value of an object property in your most habitual way and HTML node (in this case, a checkbox) will change its state immediately. After clicking on the checkbox, the property value will be changed to the corresponding one as well.
-
-```js
-// sets checked = true
+});
+</code></pre>
+<p>After binding is declared, you can set value of an object property in your most habitual way and HTML node (in this case, a checkbox) will change its state immediately. After clicking on the checkbox, the property value will be changed to the corresponding one as well.</p>
+<pre><code class="lang-js">// sets checked = true
 obj.myKey = true;
-</code></pre><p>More complicated example: binding object property to jQuery UI widget</p>
+</code></pre>
+<p>More complicated example: binding object property to jQuery UI widget</p>
 <pre><code class="lang-html">&lt;div class=&quot;my-slider&quot;&gt;&lt;/div&gt;
 </code></pre>
 <pre><code class="lang-js">defi.bindNode(obj, &#39;myKey&#39;, &#39;.my-slider&#39;, {
@@ -977,18 +896,6 @@ setTimeout(() =&gt; {
 
  
 
-
-	<a class="make-patch-link" target="_blank" href="https://github.com/matreshkajs/matreshka.io/blob/master/doc/en/defi.bindNode.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
-
-<a class="comments" data-id="defi.bindNode" data-title="Method defi.bindNode">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
-<div class="comments-container"
-  href="https://muut.com/i/matreshka/comments/matreshka-:defi.bindNode"
-  title="Method defi.bindNode"
-  data-channel="Matreshka"
-  data-show_online="false"
-  data-upload="false"></div>
-
 </article>
 
 <article class="item method" id="!defi.bindNode(2)">
@@ -1129,18 +1036,6 @@ setTimeout(() =&gt; {
 
  
 
-
-	<a class="make-patch-link" target="_blank" href="https://github.com/matreshkajs/matreshka.io/blob/master/doc/en/defi.bindNode.jsdoc.js#L278">Found an ussue in the article? Send a patch there.</a>
-
-<a class="comments" data-id="defi.bindNode(2)" data-title="Method defi.bindNode(2)">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
-<div class="comments-container"
-  href="https://muut.com/i/matreshka/comments/matreshka-:defi.bindNode(2)"
-  title="Method defi.bindNode(2)"
-  data-channel="Matreshka"
-  data-show_online="false"
-  data-upload="false"></div>
-
 </article>
 
 <article class="item method" id="!defi.bindNode(3)">
@@ -1269,18 +1164,6 @@ setTimeout(() =&gt; {
 
  
 
-
-	<a class="make-patch-link" target="_blank" href="https://github.com/matreshkajs/matreshka.io/blob/master/doc/en/defi.bindNode.jsdoc.js#L325">Found an ussue in the article? Send a patch there.</a>
-
-<a class="comments" data-id="defi.bindNode(3)" data-title="Method defi.bindNode(3)">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
-<div class="comments-container"
-  href="https://muut.com/i/matreshka/comments/matreshka-:defi.bindNode(3)"
-  title="Method defi.bindNode(3)"
-  data-channel="Matreshka"
-  data-show_online="false"
-  data-upload="false"></div>
-
 </article>
 
 <article class="item method" id="!defi.bindOptionalNode">
@@ -1319,18 +1202,6 @@ setTimeout(() =&gt; {
 <pre><code class="lang-js">defi.bindOptionalNode(obj, 'myKey', '.my-element');</code></pre>
 
  
-
-
-	<a class="make-patch-link" target="_blank" href="https://github.com/matreshkajs/matreshka.io/blob/master/doc/en/defi.bindOptionalNode.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
-
-<a class="comments" data-id="defi.bindOptionalNode" data-title="Method defi.bindOptionalNode">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
-<div class="comments-container"
-  href="https://muut.com/i/matreshka/comments/matreshka-:defi.bindOptionalNode"
-  title="Method defi.bindOptionalNode"
-  data-channel="Matreshka"
-  data-show_online="false"
-  data-upload="false"></div>
 
 </article>
 
@@ -1422,18 +1293,6 @@ defi.bound(obj, 'x'); // will return document.querySelector('.my-element')</code
 defi.bound(obj, 'x', { all: true }); // will return an array of elements mached '.my-element'</code></pre>
 
  
-
-
-	<a class="make-patch-link" target="_blank" href="https://github.com/matreshkajs/matreshka.io/blob/master/doc/en/defi.bound.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
-
-<a class="comments" data-id="defi.bound" data-title="Method defi.bound">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
-<div class="comments-container"
-  href="https://muut.com/i/matreshka/comments/matreshka-:defi.bound"
-  title="Method defi.bound"
-  data-channel="Matreshka"
-  data-show_online="false"
-  data-upload="false"></div>
 
 </article>
 
@@ -1824,18 +1683,6 @@ obj.a = 5;</code></pre>
 
  
 
-
-	<a class="make-patch-link" target="_blank" href="https://github.com/matreshkajs/matreshka.io/blob/master/doc/en/defi.calc.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
-
-<a class="comments" data-id="defi.calc" data-title="Method defi.calc">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
-<div class="comments-container"
-  href="https://muut.com/i/matreshka/comments/matreshka-:defi.calc"
-  title="Method defi.calc"
-  data-channel="Matreshka"
-  data-show_online="false"
-  data-upload="false"></div>
-
 </article>
 
 <article class="item method" id="!defi.calc(batch)">
@@ -1955,18 +1802,6 @@ obj.a = 5;</code></pre>
 
  
 
-
-	<a class="make-patch-link" target="_blank" href="https://github.com/matreshkajs/matreshka.io/blob/master/doc/en/defi.calc.jsdoc.js#L353">Found an ussue in the article? Send a patch there.</a>
-
-<a class="comments" data-id="defi.calc(batch)" data-title="Method defi.calc(batch)">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
-<div class="comments-container"
-  href="https://muut.com/i/matreshka/comments/matreshka-:defi.calc(batch)"
-  title="Method defi.calc(batch)"
-  data-channel="Matreshka"
-  data-show_online="false"
-  data-upload="false"></div>
-
 </article>
 
 <article class="item method" id="!defi.chain">
@@ -2047,18 +1882,6 @@ obj.a = 5;</code></pre>
 // defi.bindNode(obj, 'c', '.node');</code></pre>
 
  
-
-
-	<a class="make-patch-link" target="_blank" href="https://github.com/matreshkajs/matreshka.io/blob/master/doc/en/defi.chain.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
-
-<a class="comments" data-id="defi.chain" data-title="Method defi.chain">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
-<div class="comments-container"
-  href="https://muut.com/i/matreshka/comments/matreshka-:defi.chain"
-  title="Method defi.chain"
-  data-channel="Matreshka"
-  data-show_online="false"
-  data-upload="false"></div>
 
 </article>
 
@@ -2153,18 +1976,6 @@ console.log(defi.lookForBinder(element));
 }</code></pre>
 
  
-
-
-	<a class="make-patch-link" target="_blank" href="https://github.com/matreshkajs/matreshka.io/blob/master/doc/en/defi.lookForBinder.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
-
-<a class="comments" data-id="defi.lookForBinder" data-title="Method defi.lookForBinder">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
-<div class="comments-container"
-  href="https://muut.com/i/matreshka/comments/matreshka-:defi.lookForBinder"
-  title="Method defi.lookForBinder"
-  data-channel="Matreshka"
-  data-show_online="false"
-  data-upload="false"></div>
 
 </article>
 
@@ -2276,18 +2087,6 @@ alert(typeof obj.x); // "string"</code></pre>
 
  
 
-
-	<a class="make-patch-link" target="_blank" href="https://github.com/matreshkajs/matreshka.io/blob/master/doc/en/defi.mediate.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
-
-<a class="comments" data-id="defi.mediate" data-title="Method defi.mediate">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
-<div class="comments-container"
-  href="https://muut.com/i/matreshka/comments/matreshka-:defi.mediate"
-  title="Method defi.mediate"
-  data-channel="Matreshka"
-  data-show_online="false"
-  data-upload="false"></div>
-
 </article>
 
 <article class="item method" id="!defi.mediate(2)">
@@ -2354,18 +2153,6 @@ alert(typeof obj.y); // "number"
 alert(typeof obj.z); // "boolean"</code></pre>
 
  
-
-
-	<a class="make-patch-link" target="_blank" href="https://github.com/matreshkajs/matreshka.io/blob/master/doc/en/defi.mediate.jsdoc.js#L25">Found an ussue in the article? Send a patch there.</a>
-
-<a class="comments" data-id="defi.mediate(2)" data-title="Method defi.mediate(2)">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
-<div class="comments-container"
-  href="https://muut.com/i/matreshka/comments/matreshka-:defi.mediate(2)"
-  title="Method defi.mediate(2)"
-  data-channel="Matreshka"
-  data-show_online="false"
-  data-upload="false"></div>
 
 </article>
 
@@ -2501,18 +2288,6 @@ defi.on(obj, 'change:x', handler);
 defi.off(obj, 'change:x', handler);</code></pre>
 
  
-
-
-	<a class="make-patch-link" target="_blank" href="https://github.com/matreshkajs/matreshka.io/blob/master/doc/en/defi.off.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
-
-<a class="comments" data-id="defi.off" data-title="Method defi.off">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
-<div class="comments-container"
-  href="https://muut.com/i/matreshka/comments/matreshka-:defi.off"
-  title="Method defi.off"
-  data-channel="Matreshka"
-  data-show_online="false"
-  data-upload="false"></div>
 
 </article>
 
@@ -2654,18 +2429,6 @@ defi.on(obj, 'foo', () => {
 
  
 
-
-	<a class="make-patch-link" target="_blank" href="https://github.com/matreshkajs/matreshka.io/blob/master/doc/en/defi.on.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
-
-<a class="comments" data-id="defi.on" data-title="Method defi.on">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
-<div class="comments-container"
-  href="https://muut.com/i/matreshka/comments/matreshka-:defi.on"
-  title="Method defi.on"
-  data-channel="Matreshka"
-  data-show_online="false"
-  data-upload="false"></div>
-
 </article>
 
 <article class="item method" id="!defi.on(2)">
@@ -2768,18 +2531,6 @@ defi.on(obj, 'foo', () => {
 });</code></pre>
 
  
-
-
-	<a class="make-patch-link" target="_blank" href="https://github.com/matreshkajs/matreshka.io/blob/master/doc/en/defi.on.jsdoc.js#L30">Found an ussue in the article? Send a patch there.</a>
-
-<a class="comments" data-id="defi.on(2)" data-title="Method defi.on(2)">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
-<div class="comments-container"
-  href="https://muut.com/i/matreshka/comments/matreshka-:defi.on(2)"
-  title="Method defi.on(2)"
-  data-channel="Matreshka"
-  data-show_online="false"
-  data-upload="false"></div>
 
 </article>
 
@@ -2893,18 +2644,6 @@ defi.remove(obj, ['myKey1', 'myKey2']);</code></pre>
 });</code></pre>
 
  
-
-
-	<a class="make-patch-link" target="_blank" href="https://github.com/matreshkajs/matreshka.io/blob/master/doc/en/defi.remove.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
-
-<a class="comments" data-id="defi.remove" data-title="Method defi.remove">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
-<div class="comments-container"
-  href="https://muut.com/i/matreshka/comments/matreshka-:defi.remove"
-  title="Method defi.remove"
-  data-channel="Matreshka"
-  data-show_online="false"
-  data-upload="false"></div>
 
 </article>
 
@@ -3053,18 +2792,6 @@ defi.set(obj, 'myKey', 4, {
 
  
 
-
-	<a class="make-patch-link" target="_blank" href="https://github.com/matreshkajs/matreshka.io/blob/master/doc/en/defi.set.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
-
-<a class="comments" data-id="defi.set" data-title="Method defi.set">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
-<div class="comments-container"
-  href="https://muut.com/i/matreshka/comments/matreshka-:defi.set"
-  title="Method defi.set"
-  data-channel="Matreshka"
-  data-show_online="false"
-  data-upload="false"></div>
-
 </article>
 
 <article class="item method" id="!defi.set(2)">
@@ -3161,18 +2888,6 @@ defi.set(obj, 'myKey', 4, {
 });</code></pre>
 
  
-
-
-	<a class="make-patch-link" target="_blank" href="https://github.com/matreshkajs/matreshka.io/blob/master/doc/en/defi.set.jsdoc.js#L52">Found an ussue in the article? Send a patch there.</a>
-
-<a class="comments" data-id="defi.set(2)" data-title="Method defi.set(2)">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
-<div class="comments-container"
-  href="https://muut.com/i/matreshka/comments/matreshka-:defi.set(2)"
-  title="Method defi.set(2)"
-  data-channel="Matreshka"
-  data-show_online="false"
-  data-upload="false"></div>
 
 </article>
 
@@ -3288,18 +3003,6 @@ defi.set(obj, 'myKey', 4, {
 defi.trigger(obj, 'foo', 1, 2, 3); // alerts 6</code></pre>
 
  
-
-
-	<a class="make-patch-link" target="_blank" href="https://github.com/matreshkajs/matreshka.io/blob/master/doc/en/defi.trigger.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
-
-<a class="comments" data-id="defi.trigger" data-title="Method defi.trigger">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
-<div class="comments-container"
-  href="https://muut.com/i/matreshka/comments/matreshka-:defi.trigger"
-  title="Method defi.trigger"
-  data-channel="Matreshka"
-  data-show_online="false"
-  data-upload="false"></div>
 
 </article>
 
@@ -3436,18 +3139,6 @@ obj.myKey = false;</code></pre>
 
  
 
-
-	<a class="make-patch-link" target="_blank" href="https://github.com/matreshkajs/matreshka.io/blob/master/doc/en/defi.unbindNode.jsdoc.js">Found an ussue in the article? Send a patch there.</a>
-
-<a class="comments" data-id="defi.unbindNode" data-title="Method defi.unbindNode">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
-<div class="comments-container"
-  href="https://muut.com/i/matreshka/comments/matreshka-:defi.unbindNode"
-  title="Method defi.unbindNode"
-  data-channel="Matreshka"
-  data-show_online="false"
-  data-upload="false"></div>
-
 </article>
 
 <article class="item method" id="!defi.unbindNode(2)">
@@ -3553,18 +3244,6 @@ obj.myKey = false;</code></pre>
 });</code></pre>
 
  
-
-
-	<a class="make-patch-link" target="_blank" href="https://github.com/matreshkajs/matreshka.io/blob/master/doc/en/defi.unbindNode.jsdoc.js#L26">Found an ussue in the article? Send a patch there.</a>
-
-<a class="comments" data-id="defi.unbindNode(2)" data-title="Method defi.unbindNode(2)">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
-<div class="comments-container"
-  href="https://muut.com/i/matreshka/comments/matreshka-:defi.unbindNode(2)"
-  title="Method defi.unbindNode(2)"
-  data-channel="Matreshka"
-  data-show_online="false"
-  data-upload="false"></div>
 
 </article>
 
@@ -3683,18 +3362,6 @@ defi.bindNode(obj, temporaryBindings);
 defi.unbindNode(obj, temporaryBindings);</code></pre>
 
  
-
-
-	<a class="make-patch-link" target="_blank" href="https://github.com/matreshkajs/matreshka.io/blob/master/doc/en/defi.unbindNode.jsdoc.js#L49">Found an ussue in the article? Send a patch there.</a>
-
-<a class="comments" data-id="defi.unbindNode(3)" data-title="Method defi.unbindNode(3)">Ask a question<i></i></a>
-<!--<div class="comments-container"></div>-->
-<div class="comments-container"
-  href="https://muut.com/i/matreshka/comments/matreshka-:defi.unbindNode(3)"
-  title="Method defi.unbindNode(3)"
-  data-channel="Matreshka"
-  data-show_online="false"
-  data-upload="false"></div>
 
 </article>
 
@@ -4356,102 +4023,23 @@ whatever = 42;</code></pre>
 
 </section>
 
-	<section hidden>
-		<article id="!faq">
-			<h2 id="faq"><a href="#!faq">FAQ</a></h2>
-<h3 id="how-does-matreshka-work-">How does Matreshka work?</h3>
-<p>Matreshka uses accessors, setters in particular, for implementing the two-way data binding and catching the events of property changing.</p>
-<p>As an example of how the two-way data binding works (<a href="#!Matreshka-bindNode">bindNode</a> function in particular), have a look at this code:</p>
-<pre><code class="lang-js">function bindNode(object, key, node, binder) {
-    const value = object[key];
-    Object.defineProperty(object, key, {
-        get() {
-            return value;
-        },
-        set(v) {
-            binder.setValue.call(node, v);
-        }
-    });
-
-    node.addEventListener(binder.on, () =&gt; {
-        value = binder.getValue.call(node);
-    });
-}
-</code></pre>
-<p>As you see, it’s real easy (for simplicity, the function doesn’t support many-to-many binding).</p>
-<h3 id="is-there-a-routing-in-matreshka-js-">Is there a routing in Matreshka.js?</h3>
-<p>Yes. Check out <a href="https://github.com/matreshkajs/matreshka-router">matreshka-router</a>.</p>
-<h3 id="how-to-pre-render-an-application-on-a-server">How to pre-render an application on a server</h3>
-<p>For the app pre-rendering Matreshka.js can be used on Node.js (<code>window</code> global object can be created via <a href="https://github.com/tmpvar/jsdom">jsdom</a>) or any template system you want on any server platform. The first case is fine for static HTML generation and the second for dynamic pages.</p>
-<p>The task of client-side is to restore application state from HTML. <a href="#!Matreshka-bindNode">Matreshka#bindNode</a> extracts element value and assigns it to a property and <a href="#!Matreshka.Array-restore">Matreshka.Array#restore</a> restores a state of a collection.</p>
-<h3 id="what-is-debounce">What is &quot;debounce&quot;</h3>
-<p>At this page you often can see the phrase &quot;micropattern debounce&quot;. This is widely used pattern which enforces that a function not be called again until a certain amount of time has passed without it being called. More info can be found <a href="https://davidwalsh.name/javascript-debounce-function">there</a>.</p>
-<h3 id="how-should-look-like-a-big-application-">How should look like a big application?</h3>
-<p>An application written with Matreshka.js usually represents one nested JavaScript object where every branch is <a href="#!Matreshka">Matreshka</a> instance. The new branches are created using <a href="#!Matreshka-instantiate">Matreshka#instantiate</a> which ensures the integrity of the application and allows to replace a state of the application using ordinary assignment.</p>
-<h3 id="how-to-render-one-object-at-few-collections">How to render one object at few collections</h3>
-<p>The first thing: you need to set <code>bindRenderedAsSandbox</code> as <code>false</code> for an item class. It turns off automatic sandbox initialization for rendered object (two sandboxes for one object aren&#39;t allowed).</p>
-<p>The second thing: when <code>render</code> event is fired, check where the object is rendered. Parent array can be get using <code>parentArray</code> property of the event object.</p>
-<p>Example. You have <code>User</code> class and two collections <code>UsersA</code> and <code>UsersB</code> (their <a href="#!Matreshka.Array-itemRenderer">Matreshka.Array#itemRenderer</a> can be different). For both collections <code>User</code> is a <a href="#!Matreshka.Array-Model">model</a>.</p>
-<pre><code class="lang-js">class User extends Matreshka.Object {
-    constructor() {
-        super();
-
-        this.bindRenderedAsSandbox = false;
-
-        setInterval(() =&gt; {
-            // when &quot;name&quot; is changed
-            // both bound nodes also change
-            this.name = Math.random();
-        }, 5000);
-    }
-    onRender(evt) {
-        const { parentArray, node } = evt;
-
-        if(parentArray instanceof UsersA) {
-            this.bindNode({
-                // pseudo-sandbox creation for syntax sugar at selectors
-                // (not required)
-                nodeA: node,
-                name: &#39;:bound(nodeA) .name&#39;,
-                email: &#39;:bound(nodeA) .email&#39;,
-            });
-        } else if(parentArray instanceof UsersB) {
-            this.bindNode({
-                nodeB: node,
-                name: &#39;:bound(nodeB) .user-name&#39;,
-            });
-        }
-    }
-}
-</code></pre>
-<p>Actually there are many ways to solve this problem. For example bindings can be declared at classes of the collections (an array will listen to <code>render</code> event of inserted objects)...</p>
-
-		</article>
-	</section>
 
 </main>
-<script>
-  ((window.gitter = {}).chat = {}).options = {
-    room: 'matreshkajs/matreshka'
-  };
-</script>
-<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
-
 <div class="typo-badge">
-	<span class="close" title="Больше не показывать"></span>
+	<span class="close" title="Hide forever"></span>
 	Found a typo?  <br> Select it and press <br>
 	<button>CTRL</button>+<button>Enter</button>
 </div>
 <form class="typo" method="POST" target="typo-iframe">
 	<i class="close-modal"></i>
-	<h5>Ошибка на сайте</h5>
+	<h5>A typo</h5>
 	<p class="selection"></p>
-	<textarea class="comment" rows="2" placeholder="Комментарий (не обязательно)"></textarea>
+	<textarea class="comment" rows="2" placeholder="Comment (optionals)"></textarea>
 	<input type="hidden" class="page">
 	<input type="hidden" class="selection">
 	<div class="action-bar">
-		<button type="submit">Отправить</button>
-		<button class="cancel">Отменить</button>
+		<button type="submit">Submit</button>
+		<button class="cancel">Cancel</button>
 	</div>
 </form>
 <script>
