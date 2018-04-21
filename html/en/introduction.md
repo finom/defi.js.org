@@ -1,25 +1,72 @@
 ## [Introduction](#!introduction)
-### Features
-- Reactive API which allows to solve hard and confusing problems easily
-- High robustness of developed apps
-- The ability to refactor legacy applications without rewriting them from scratch
-- Only couple of hours is needed to master the framework because of an absence of complex concepts
-- One of the most user-friendly documentations among JavaScript libraries
 
-### Who needs such framework?
+**defi.js** bunch of utilities that enable accessor-based reactivity for JavaScript objects.
 
-> Matreshka.js fills the gap between a junior and a senior
+It can be installed via NPM:
 
-- For those who is new at JavaScript, wishing to master the development of single-page applications
-- For full-stack devs, for whom front-end development is in the second place after the back-end
-- For all those who are not satisfied with the current order of things in the universe of web development
+```js
+npm i defi
+```
+```js
+const { bindNode, calc } = require('defi');
 
-### What's the business need solved by Matreshka.js framework?
+bindNode(obj, 'key', node)
+```
 
-It is not a secret that the barrier to entry into the web development is becoming higher, the list of requirements to a developer is bigger, a number of dependencies in projects may be up to several hundred. Despite the fact that the studying of JavaScript is very popular today, the demand for developers who can accomplish tasks successfully is greater than the supply.
+Or [downloaded to use as a global variable](https://github.com/finom/defi/tree/gh-pages)
 
-Due to extreme simplicity of the framework, even novice web developers can quickly start to do small, then medium and then large web applications. This means that web studios are able to save money by hiring younger professionals, who, in turn, could not find a job before.
+```js
+// use defi as a global variable
+defi.bindNode(obj, 'key', node)
+```
 
-### It is only for beginners?
 
-Two things that present Matreshka.js as a simple framework are use of selectors of bound DOM nodes when declaring a two-way data binding and an absence of any restrictions on requirements of an architecture and design patterns. In other aspects Matreshka.js is a modern general-purpose framework developed using today's technologies. At least, Matreshka.js may cause an interest because it uses the full potential of getters and setters in JavaScript.
+### How would I use it?
+
+As a simple task let's say you want to define a simple form with first name and last name input, where while you type a greeting appears.
+
+```html
+<input class="first">
+<input class="last">
+<output class="greeting"></output>
+```
+
+```js
+// default data
+const obj = {
+  first: 'John',
+  last: 'Doe'
+};
+
+// let's listen for first and last name changes
+defi.on(obj, 'change:first', () => console.log('First name is changed'));
+defi.on(obj, 'change:last', () => console.log('Last name is changed'));
+
+// we would like to re-calculate 'greeting' property every time
+// when the first or last are changed
+defi.calc(obj, 'greeting', ['first', 'last'], (first, last) => `Hello, ${first} ${last}`);
+
+// and we want to set up a two-way data binding between the props
+// and corresponding DOM nodes
+defi.bindNode(obj, {
+  first: '.first',
+  last: '.last',
+  greeting: '.greeting'
+});
+```
+
+If `first` or `last` is changed then event handlers print info about that to console, `greeting` property is updated, `.greeting` element is populated by calculated data (by default "Hello, John Doe"). And it happens every time when these properties are changed and it doesn't matter which way. You can do `obj.first = 'Jane'` or you can type text into its field, and everything will happen immediately. That's the real reactiveness. Check the example above [here](http://jsbin.com/qolulirela/3/edit) and try to type `obj.first = 'Jane'` at "Console" tab.
+
+
+### I have seen that before!
+
+defi.js is a hard-fork of [Matreshka.js framework](https://github.com/matreshkajs/matreshka) which includes a subset of its functions. It's created for applications which don't need a full list of features like array rendering but require quick and clear two-way data binding features and sugared reactivity.
+
+Note that defi.js is compatible with the most of Matreshka.js add-ons:
+
+- [Router](https://github.com/matreshkajs/matreshka-router)
+- [Form parser](https://github.com/matreshkajs/matreshka-parse-form)
+- [File binders](https://github.com/matreshkajs/file-binders)
+- [Codemirror binder](https://github.com/matreshkajs/matreshka-binder-codemirror)
+
+Also there is a [standalone set of common binders](https://github.com/finom/common-binders) compatible with both libraries.

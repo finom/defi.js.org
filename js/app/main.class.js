@@ -7,7 +7,6 @@ import Typedefs from './typedefs.class';
 import Typo from './typo.class';
 import Notifier from './notifier.class';
 import Search from './search.class';
-import Examples from './examples.class';
 import headerHider from '../lib/header-hider';
 import hljs from 'highlight.js';
 import { className, html, dataset, display } from 'matreshka/binders';
@@ -33,7 +32,6 @@ export default class Main extends MatreshkaObject {
 				search: Search,
 				articles: Articles,
 				typedefs: Typedefs,
-				examples: Examples
 			});
 
 		if (location.hash) {

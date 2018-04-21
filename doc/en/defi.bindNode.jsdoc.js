@@ -6,6 +6,8 @@
 @summary Binds a property of an object to HTML node, implementing two-way data binding
 @desc It creates a bridge between value of a property and a state of HTML node on the page: from a simple input to a complicated widget (the complexity of elements is unlimited). After using this function, it isn't necessary to monitor the synchronizations between model and view.
 
+> Note that a bunch of common binders (they are explained below) can be found at [common-binders](https://github.com/finom/common-binders) project.
+
 The function acepts three arguments: **a property name**, **HTML node** and a **binding rule** (a binder). In its turn, a binder is an ordinary object and it can have the following properties: ``on``, ``getValue``, ``setValue``, ``initialize``, ``destroy`` (Read more here: {@link #typedef-binder}). All the five properties are optional. It also allows to declare one-way data bindings (any direction).
 
 > The ``bindNode`` function  supports the many-to-many bindings. Several elements can be bound to one property and several properties can be bound to one element, including ones from different objects.
@@ -19,7 +21,7 @@ defi.bindNode(object, 'myKey', '.my-element', {
 ```
 
 For example, you want to bind a property of an object to a ``input[type="checkbox"]`` node:
-defijs
+```js
 defi.bindNode(obj, 'myKey', '.my-checkbox', {
 	// when is element state changed?
 	// - after 'click' event
