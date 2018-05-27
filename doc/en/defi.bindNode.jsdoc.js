@@ -6,7 +6,7 @@
 @summary Binds a property of an object to HTML node, implementing two-way data binding
 @desc It creates a bridge between value of a property and a state of HTML node on the page: from a simple input to a complicated widget (the complexity of elements is unlimited). After using this function, it isn't necessary to monitor the synchronizations between model and view.
 
-> Note that a bunch of common binders (they are explained below) can be found at [common-binders](https://github.com/finom/common-binders) project.
+> Note that a bunch of common binders (they are explained below) can be found at [common-binders](https://github.com/finom/common-binders) project. Also the function, by default, supports all form elements without need to pass binder argument.
 
 The function acepts three arguments: **a property name**, **HTML node** and a **binding rule** (a binder). In its turn, a binder is an ordinary object and it can have the following properties: ``on``, ``getValue``, ``setValue``, ``initialize``, ``destroy`` (Read more here: {@link #typedef-binder}). All the five properties are optional. It also allows to declare one-way data bindings (any direction).
 
@@ -46,7 +46,8 @@ After binding is declared, you can set value of an object property in your most 
 obj.myKey = true;
 ```
 
-More complicated example: binding object property to jQuery UI widget
+More interesting example: binding object property to a jQuery UI widget (of course you can use any other library, jQuery isn't something specially supported).
+
 ```html
 <div class="my-slider"></div>
 ```
