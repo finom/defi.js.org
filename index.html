@@ -466,7 +466,7 @@
 	<hr>
 	<span class="nav-heading">Info</span>
 	<hr>
-	<a>Last update 21.4.2018</a>
+	<a>Last update 27.5.2018</a>
 </nav>
 
 
@@ -576,7 +576,7 @@ defi.bindNode(obj, {
 </div>
 	<div class="description"><p>It creates a bridge between value of a property and a state of HTML node on the page: from a simple input to a complicated widget (the complexity of elements is unlimited). After using this function, it isn&#39;t necessary to monitor the synchronizations between model and view.</p>
 <blockquote>
-<p>Note that a bunch of common binders (they are explained below) can be found at <a href="https://github.com/finom/common-binders">common-binders</a> project.</p>
+<p>Note that a bunch of common binders (they are explained below) can be found at <a href="https://github.com/finom/common-binders">common-binders</a> project. Also the function, by default, supports all form elements without need to pass binder argument.</p>
 </blockquote>
 <p>The function acepts three arguments: <strong>a property name</strong>, <strong>HTML node</strong> and a <strong>binding rule</strong> (a binder). In its turn, a binder is an ordinary object and it can have the following properties: <code>on</code>, <code>getValue</code>, <code>setValue</code>, <code>initialize</code>, <code>destroy</code> (Read more here: <span data-type="binder">binder</span>). All the five properties are optional. It also allows to declare one-way data bindings (any direction).</p>
 <blockquote>
@@ -609,7 +609,7 @@ defi.bindNode(obj, {
 <pre><code class="lang-js">// sets checked = true
 obj.myKey = true;
 </code></pre>
-<p>More complicated example: binding object property to jQuery UI widget</p>
+<p>More interesting example: binding object property to a jQuery UI widget (of course you can use any other library, jQuery isn&#39;t something specially supported).</p>
 <pre><code class="lang-html">&lt;div class=&quot;my-slider&quot;&gt;&lt;/div&gt;
 </code></pre>
 <pre><code class="lang-js">defi.bindNode(obj, &#39;myKey&#39;, &#39;.my-slider&#39;, {
