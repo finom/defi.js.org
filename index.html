@@ -153,21 +153,6 @@
 
 			
 				<li>
-					<a href="#!defi.bindOptionalNode"
-						title="Works just the same as defi.bindNode but it does not throw an exception if the node argument is an empty array, undefined or non-existent.
-"
-						data-name="bindOptionalNode"
-						
-					>
-						bindOptionalNode
-						
-					</a>
-
-					
-				</li>
-
-			
-				<li>
 					<a href="#!defi.bound"
 						title="Returns a bound element
 "
@@ -501,7 +486,7 @@
 	<hr>
 	<span class="nav-heading">Info</span>
 	<hr>
-	<a>Last update 23.10.2018</a>
+	<a>Last update 21.12.2018</a>
 </nav>
 
 
@@ -794,10 +779,12 @@ setTimeout(() =&gt; {
 <p>To cancel this behavior (e. g. initiate synchronous binding) use <code>debounceSetValue</code> and/or <code>debounceGetValue</code> flags with <code>false</code> value.</p>
 <h4 id="flags-debouncesetvalueonbind-false-and-debouncegetvalueonbind-false-">Flags <code>debounceSetValueOnBind=false</code> and <code>debounceGetValueOnBind=false</code></h4>
 <p>As described above <code>bindNode</code> uses debounce pattern on property change and on bound node change. This doesn&#39;t apply to a moment when <code>bindNode</code> is called. To remind, when the function is called a property or a node is changed immediately. When <code>debounceGetValueOnBind</code> and/or <code>debounceSetValueOnBind</code> are set to <code>true</code> then debounce is turned on for binding initialization as well.</p>
-<h4 id="flags-debouncesetvaluedelay-0-debouncegetvaluedelay-0-">Flags <code>debounceSetValueDelay=0</code> и <code>debounceGetValueDelay=0</code></h4>
+<h4 id="flags-debouncesetvaluedelay-0-and-debouncegetvaluedelay-0-">Flags <code>debounceSetValueDelay=0</code> and <code>debounceGetValueDelay=0</code></h4>
 <p>These flags allow to set debounce delay. <code>debounceSetValueDelay</code> is used when <code>debounceSetValue</code> or <code>debounceSetValueOnBind</code> is <code>true</code>, <code>debounceGetValueDelay</code> is used when <code>debounceGetValue</code> or <code>debounceGetValueOnBind</code> is true.</p>
+<h4 id="a-flags-optional-false-">A flags <code>optional=false</code></h4>
+<p><code>bindNode</code> doesn&#39;t throw an error if <code>optional: true</code> is set.</p>
 <h4 id="a-flag-useexactbinder-false-">A flag <code>useExactBinder=false</code></h4>
-<p>Even if you pass a binder to <code>bindNode</code>, the framework tries to find default binder at <a href="#!defi.defaultBinder">defi.defaultBinder</a> and extend it by properties of the passed object. This feature makes possible to use partially re-defined default binder.</p>
+<p>Even if you pass a binder to <code>bindNode</code>, the framework tries to find default binder at <a href="#!defi.defaultBinders">defi.defaultBinders</a> and extend it by properties of the passed object. This feature makes possible to use partially re-defined default binder.</p>
 <p>For example, we want to bind <code>input[type=&quot;text&quot;]</code> to a property. By default, the standard binder contains <code>&quot;on&quot;</code> property with <code>&quot;input&quot;</code> value for this kind of node. It means that the value of the object property and node state will be synchronized when a user releases a key of the keyboard or pastes text from clipboard. In case if you want synchronization to be performed after the <code>&quot;blur&quot;</code> DOM event, you need to pass an object containing the only <code>&quot;on&quot;</code> property as the third argument. This object will extend the default binder, having retained <code>getValue</code> and <code>setValue</code> values.</p>
 <pre><code class="lang-js">defi.bindNode(obj, &#39;myKey&#39;, &#39;.my-input&#39;, { on: &#39;blur&#39; });
 </code></pre>
@@ -1201,45 +1188,6 @@ setTimeout(() =&gt; {
 
 </article>
 
-<article class="item method" id="!defi.bindOptionalNode">
-	<h2>
-		<a href="#!defi.bindOptionalNode">
-			<span class="memberof">defi.</span>bindOptionalNode()
-		</a> 
-	</h2>
-	
-	
-	<p class="module">
-		CommonJS module: <code>'defi/bindoptionalnode'</code>
-	</p>
-	
-	<div class="summary"><p>Works just the same as <a href="#!defi.bindNode">defi.bindNode</a> but it does not throw an exception if the <code>node</code> argument is an empty array, <code>undefined</code> or non-existent.</p>
-</div>
-	<div class="description"></div>
-	
-	
-
-	
-
-	
-<h4>Links</h4>
-<ul class="see">
-	
-		<li><a href="#!defi.bindNode">defi.bindNode</a>
-	
-</ul>
-
-
-	
-	<h3>Examples</h3>
-
-
-<pre><code class="lang-js">defi.bindOptionalNode(obj, 'myKey', '.my-element');</code></pre>
-
- 
-
-</article>
-
 <article class="item method" id="!defi.bound">
 	<h2>
 		<a href="#!defi.bound">
@@ -1385,7 +1333,7 @@ defi.calc(obj, &#39;a&#39;, {
 
 console.log(obj.a); // 6
 </code></pre>
-<h4 id="an-array-of-object-with-properties-object-key-">An array of object with properties <code>object</code> и <code>key</code></h4>
+<h4 id="an-array-of-object-with-properties-object-and-key-">An array of object with properties <code>object</code> and <code>key</code></h4>
 <p>This variation allows to define dependency from properties of different objects.</p>
 <pre><code class="lang-js">const someObjectX = {
     b: 1,
