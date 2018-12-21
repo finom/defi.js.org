@@ -58,7 +58,7 @@ defi.calc(obj, 'a', {
 console.log(obj.a); // 6
 ```
 
-#### An array of object with properties ``object`` и ``key``
+#### An array of object with properties ``object`` and ``key``
 
 This variation allows to define dependency from properties of different objects.
 

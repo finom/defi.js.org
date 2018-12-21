@@ -242,13 +242,17 @@ To cancel this behavior (e. g. initiate synchronous binding) use ``debounceSetVa
 
 As described above ``bindNode`` uses debounce pattern on property change and on bound node change. This doesn't apply to a moment when ``bindNode`` is called. To remind, when the function is called a property or a node is changed immediately. When ``debounceGetValueOnBind`` and/or ``debounceSetValueOnBind`` are set to ``true`` then debounce is turned on for binding initialization as well.
 
-#### Flags ``debounceSetValueDelay=0`` и ``debounceGetValueDelay=0``
+#### Flags ``debounceSetValueDelay=0`` and ``debounceGetValueDelay=0``
 
 These flags allow to set debounce delay. ``debounceSetValueDelay`` is used when ``debounceSetValue`` or ``debounceSetValueOnBind`` is ``true``, ``debounceGetValueDelay`` is used when ``debounceGetValue`` or ``debounceGetValueOnBind`` is true.
 
+#### A flags ``optional=false``
+
+``bindNode`` doesn't throw an error if ``optional: true`` is set.
+
 #### A flag ``useExactBinder=false``
 
-Even if you pass a binder to ``bindNode``, the framework tries to find default binder at {@link defi.defaultBinder} and extend it by properties of the passed object. This feature makes possible to use partially re-defined default binder.
+Even if you pass a binder to ``bindNode``, the framework tries to find default binder at {@link defi.defaultBinders} and extend it by properties of the passed object. This feature makes possible to use partially re-defined default binder.
 
 For example, we want to bind ``input[type="text"]`` to a property. By default, the standard binder contains ``"on"`` property with ``"input"`` value for this kind of node. It means that the value of the object property and node state will be synchronized when a user releases a key of the keyboard or pastes text from clipboard. In case if you want synchronization to be performed after the ``"blur"`` DOM event, you need to pass an object containing the only ``"on"`` property as the third argument. This object will extend the default binder, having retained ``getValue`` and ``setValue`` values.
 
