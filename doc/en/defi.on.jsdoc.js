@@ -11,11 +11,11 @@
 @param {object} obj - A target object
 @param {eventNames} names - An event name or some names which are separated by a space (for example, ``"change:x ajaxcomplete change:y"``)
 @param {eventHandler} callback - A function which is caused by the event
-@param {boolean} [triggerOnInit=false] - If ``triggerOnInit`` argument equals ``true``, the handler will be called immediately after event initialization.
+@param {object} options - Options object where``triggerOnInit`` (boolean) makes the handler called immediately after event initialization, ``once`` (boolean) makes the handler called only once, ``debounce`` (boolean or # of milliseconds) debounces the handler
 @returns {object} obj
 @example
 defi.on(obj, 'foo', () => {
-	alert('Custom Event is fired');
+	alert('A custom Event is fired');
 });
 
 defi.trigger(obj, 'foo');
@@ -24,7 +24,7 @@ defi.trigger(obj, 'foo');
 // Displays "bar" at once and waits for a firing of "foo" event
 defi.on(obj, 'foo', () => {
 	alert('bar');
-}, true);
+}, { triggerOnInit: true });
 */
 
 /**
@@ -34,7 +34,7 @@ defi.on(obj, 'foo', () => {
 @desc In the {@link defi.on} function the object with the key-element pairs can be passed to avoid multiple invocation of the function and reduce your code.
 @param {object} obj - A target object
 @param {object} evtnameHandlerObject - An object where keys are event names and values are event handlers
-@param {boolean} [triggerOnInit=false] - If ``triggerOnInit`` argument  equals ``true``, all handlers will be called immediately after event initialization.
+@param {object} options - See above.
 @param {object} obj - A target object
 
 @example
