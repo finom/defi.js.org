@@ -37,9 +37,6 @@ const plugins = [
         from: resolve('static/'),
         to: resolve('dist/')
     }]),
-    new webpack.optimize.UglifyJsPlugin({
-        sourceMap: true
-    })
 ];
 
 // TODO turn on dev server, for that documentation generator needs to be modified
@@ -48,6 +45,7 @@ module.exports = {
     context: resolve('./'),
     entry,
     plugins,
+    optimization: { minimize: true },
     output: {
         path: resolve('dist'),
         filename: '[name].js',
@@ -64,7 +62,7 @@ module.exports = {
                     loader: 'string-replace-loader',
                     options: {
                         search: 'SERVICE_WORKER_CACHE_VERSION',
-                        replace: Date.now(),
+                        replace: String(Date.now()),
                     }
                 }],
                 exclude: /\/node_modules\/(?!balajs\/)/
@@ -83,7 +81,7 @@ module.exports = {
                     }],
                 })
             },
-            { test: /\.html$/, use: { loader: 'ejs-compiled-loader' } },
+            { test: /\.html$/, use: { loader: 'compile-ejs-loader' } },
             {
                 test: /\.md$/,
                 use: [{ loader: "html-loader", options: { attrs: false } },'markdown-loader']
