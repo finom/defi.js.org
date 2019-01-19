@@ -596,7 +596,8 @@ obj.myKey = true;
 <pre><code class="lang-js">defi.bindNode(obj, &#39;myKey&#39;, &#39;.my-slider&#39;, {
     // when is element state changed?
     // - after &#39;slide&#39; event
-    on: &#39;slide&#39;,
+    // (a function can be used to listen to any non-DOM events)
+    on: (callback, { node }) =&gt; $(node).on(&#39;slide&#39;, callback),
     // how to extract element state?
     // - return &#39;value&#39; of the widget
     getValue: ({ node }) =&gt; $(node).slider(&#39;option&#39;, &#39;value&#39;),
