@@ -4,9 +4,10 @@
 
 It can be installed via NPM:
 
-```js
+```
 npm i defi
 ```
+
 ```js
 const { bindNode, calc } = require('defi');
 
