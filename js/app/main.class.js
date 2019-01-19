@@ -4,7 +4,6 @@ import MatreshkaObject from 'matreshka/object';
 import $ from 'balajs';
 import Articles from './articles.class';
 import Typedefs from './typedefs.class';
-import Typo from './typo.class';
 import Notifier from './notifier.class';
 import Search from './search.class';
 import headerHider from '../lib/header-hider';
@@ -23,11 +22,9 @@ export default class Main extends MatreshkaObject {
 			.events()
 			.set({
 				view: localStorage.view || 'all',
-				hideTypoBadge: localStorage.hideTypoBadge,
 				isMobile: /mobile|android/i.test(navigator.userAgent),
 			})
 			.instantiate({
-				typo: Typo,
 				notifier: Notifier,
 				search: Search,
 				articles: Articles,
@@ -123,7 +120,6 @@ export default class Main extends MatreshkaObject {
 			.bindNode({
 
 				win: window,
-				typeBadge: ':sandbox .typo-badge',
 				viewSwitcher: 'nav .view-switcher',
 				navShown: {
 					node: 'body',
@@ -140,10 +136,6 @@ export default class Main extends MatreshkaObject {
 				navOverlay: {
 					node: '.nav-overlay',
 					binder: className('hide', false)
-				},
-				hideTypoBadge: {
-					node: ':bound(typeBadge)',
-					binder: className('hide')
 				},
 				htmlTitle: {
 					node: 'head title',
@@ -248,16 +240,6 @@ export default class Main extends MatreshkaObject {
 					this.once('transitionend::navOverlay', evt => this.navOverlay = false);
 					this.navShown = false;
 				},
-				/*'click::([href*="jsbin.com"][href*="edit"])': evt => {
-					if (evt.target.classList.contains('embedded')) {
-						evt.target.nextSibling.classList.toggle('hide');
-					} else {
-						embed(evt.target);
-					}
-
-					evt.preventDefault();
-				},*/
-				'click::typeBadge(.close)': evt => localStorage.hideTypoBadge = this.hideTypoBadge = true
 			});
 	}
 
