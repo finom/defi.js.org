@@ -28,14 +28,10 @@ defi.bindNode(obj, 'myKey', '.my-checkbox', {
 	on: 'click',
 	// how to extract element state?
 	// - return 'checked' value
-	getValue() {
-		return this.checked;
-	},
+	getValue: ({ node }) => node.checked,
 	// how to set element state?
 	// - set 'checked' value
-	setValue(v) {
-		this.checked = !!v;
-	}
+	setValue: (v, { node }) => node.checked = !!v,
 });
 ```
 
@@ -59,20 +55,14 @@ defi.bindNode(obj, 'myKey', '.my-slider', {
 	on: 'slide',
 	// how to extract element state?
 	// - return 'value' of the widget
-	getValue() {
-		return $(this).slider('option', 'value');
-	},
+	getValue: ({ node }) => $(node).slider('option', 'value'),
 	// how to set element state?
 	// - set 'value'
-	setValue(v) {
-		$(this).slider('option', 'value', v);
-	},
+	setValue: (v, { node }) => $(node).slider('option', 'value', v),
 	// how to initialize the widget?
 	// you can initialize the slider in any way,
 	// but 'initialize' function provides some syntactic sugar
-	initialize() {
-		$(this).slider({ min: 0, max: 100 });
-	}
+	initialize: ({ node }) =>	$(node).slider({ min: 0, max: 100 }),
 });
 ```
 
@@ -92,12 +82,8 @@ How to do it? You should add a function checking an element against a set of rul
 const checkboxBinder = () => {
 	return {
 		on: 'click',
-		getValue() {
-			return this.checked;
-		},
-		setValue(v) {
-			this.checked = !!v;
-		}
+		getValue: ({ node }) => node.checked,
+		setValue: (v, { node }) => node.checked = !!v,
 	}
 };
 
@@ -122,15 +108,9 @@ What should you do if you need to pass arguments for initializing some plugin or
 const uiSlider = (min, max) => {
 	return {
 		on: 'slide',
-		getValue() {
-			return $(this).slider('option', 'value');
-		},
-		setValue(v) {
-			$(this).slider('option', 'value', v);
-		},
-		initialize() {
-			$(this).slider({ min: min, max: max });
-		}
+		getValue: ({ node }) => $(node).slider('option', 'value'),
+		setValue: (v, { node }) => $(node).slider('option', 'value', v),
+		initialize: ({ node }) => $(node).slider({ min: min, max: max }),
 	}
 };
 ```
