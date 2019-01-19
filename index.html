@@ -317,41 +317,6 @@
 
 			
 				<li>
-					<a href="#!defi.once"
-						title="Adds an event handler which can be called only once
-"
-						data-name="once"
-						
-					>
-						once
-						
-							<span class="expand"></span>
-							<span class="hidden-active-child"></span>
-						
-					</a>
-
-					
-						<div class="submenu-wrapper">
-							<ul data-submenu="!defi.once">
-								
-									<li>
-										<a href="#!defi.once(2)"
-											title="Alternative syntax: &quot;eventname-handler&quot; pairs
-"
-											data-name="once#2"
-											data-since="1.1"
-										>
-											#2
-										</a>
-									</li>
-								
-							</ul>
-						</div>
-					
-				</li>
-
-			
-				<li>
 					<a href="#!defi.remove"
 						title="Deletes a property and removes dependent handlers
 "
@@ -486,7 +451,7 @@
 	<hr>
 	<span class="nav-heading">Info</span>
 	<hr>
-	<a>Last update 21.12.2018</a>
+	<a>Last update 19.1.2019</a>
 </nav>
 
 
@@ -2277,7 +2242,7 @@ defi.off(obj, 'change:x', handler);</code></pre>
 <article class="item method" id="!defi.on">
 	<h2>
 		<a href="#!defi.on">
-			<span class="memberof">defi.</span>on<wbr>(<span class="args">obj, names, callback, triggerOnInit</span>)
+			<span class="memberof">defi.</span>on<wbr>(<span class="args">obj, names, callback, options</span>)
 				
 		</a> <span class="returns">→ 
 	<span data-type="object">object</span>
@@ -2364,16 +2329,14 @@ defi.off(obj, 'change:x', handler);</code></pre>
 			
 				<tr>
 					<td>
-						triggerOnInit
-						
-							<span class="signature">optional</span>
+						options
 						
 					</td>
 					 
 					<td>
-	<span data-type="boolean">boolean</span>
+	<span data-type="object">object</span>
 </td>
-					<td> <p>If <code>triggerOnInit</code> argument equals <code>true</code>, the handler will be called immediately after event initialization.</p>
+					<td> <p>Options object where<code>triggerOnInit</code> (boolean) makes the handler called immediately after event initialization, <code>once</code> (boolean) makes the handler called only once, <code>debounce</code> (boolean or # of milliseconds) debounces the handler</p>
 </td>
 				</tr>
 			
@@ -2397,7 +2360,7 @@ defi.off(obj, 'change:x', handler);</code></pre>
 
 
 <pre><code class="lang-js">defi.on(obj, 'foo', () => {
-	alert('Custom Event is fired');
+	alert('A custom Event is fired');
 });
 
 defi.trigger(obj, 'foo');</code></pre>
@@ -2408,7 +2371,7 @@ defi.trigger(obj, 'foo');</code></pre>
 <pre><code class="lang-js">// Displays "bar" at once and waits for a firing of "foo" event
 defi.on(obj, 'foo', () => {
 	alert('bar');
-}, true);</code></pre>
+}, { triggerOnInit: true });</code></pre>
 
  
 
@@ -2417,7 +2380,7 @@ defi.on(obj, 'foo', () => {
 <article class="item method" id="!defi.on(2)">
 	<h2>
 		<a href="#!defi.on(2)">
-			<span class="memberof">defi.</span>on<wbr>(<span class="args">obj, evtnameHandlerObject, triggerOnInit, obj</span>)
+			<span class="memberof">defi.</span>on<wbr>(<span class="args">obj, evtnameHandlerObject, options, obj</span>)
 				
 		</a> 
 	</h2>
@@ -2471,16 +2434,14 @@ defi.on(obj, 'foo', () => {
 			
 				<tr>
 					<td>
-						triggerOnInit
-						
-							<span class="signature">optional</span>
+						options
 						
 					</td>
 					 
 					<td>
-	<span data-type="boolean">boolean</span>
+	<span data-type="object">object</span>
 </td>
-					<td> <p>If <code>triggerOnInit</code> argument  equals <code>true</code>, all handlers will be called immediately after event initialization.</p>
+					<td> <p>See above.</p>
 </td>
 				</tr>
 			
@@ -2511,249 +2472,6 @@ defi.on(obj, 'foo', () => {
 	'custom': evt => ...,
 	'click::x': evt => ...,
 	'change:y': evt => ...,
-});</code></pre>
-
- 
-
-</article>
-
-<article class="item method" id="!defi.once">
-	<h2>
-		<a href="#!defi.once">
-			<span class="memberof">defi.</span>once<wbr>(<span class="args">obj, names, callback, context</span>)
-				
-		</a> <span class="returns">→ 
-	<span data-type="object">object</span>
-</span>
-	</h2>
-	
-	
-	<div class="summary"><p>Adds an event handler which can be called only once</p>
-</div>
-	<div class="description"><p>The method works the same as <a href="#!defi.on">defi.on</a> but the passing handler can be called only once.</p>
-</div>
-	
-	<p>
-		<b>Returns</b> 
-	<span data-type="object">object</span>
-
-		 - obj
-
-
-	</p>
-	
-	
-	<p>
-		<b>Fires</b> <span class="event">addevent</span> <span class="event">addevent:NAME</span>
-
-	</p>
-	
-
-	
-	<h4>Arguments</h4>
-	<table class="arguments">
-		<thead>
-			<tr>
-				<th>Name
-				
-				<th>Type
-				<th>Details
-			</tr>
-		</thead>
-		<tbody>
-			
-				<tr>
-					<td>
-						obj
-						
-					</td>
-					 
-					<td>
-	<span data-type="object">object</span>
-</td>
-					<td> <p>A target object</p>
-</td>
-				</tr>
-			
-				<tr>
-					<td>
-						names
-						
-					</td>
-					 
-					<td>
-	<span data-type="eventNames">eventNames</span>
-</td>
-					<td> <p>An event name or some names which are separated by a space (for example, <code>&quot;change:x ajaxcomplete change:y&quot;</code>)</p>
-</td>
-				</tr>
-			
-				<tr>
-					<td>
-						callback
-						
-					</td>
-					 
-					<td>
-	<span data-type="eventHandler">eventHandler</span>
-</td>
-					<td> <p>A handler which is caused by an event</p>
-</td>
-				</tr>
-			
-				<tr>
-					<td>
-						context
-						
-							<span class="signature">optional</span>
-						
-					</td>
-					 
-					<td>
-	<span data-type="object">object</span>
-</td>
-					<td> <p>A context of a handler</p>
-</td>
-				</tr>
-			
-		</tbody>
-	</table>
-
-
-	
-<h4>Links</h4>
-<ul class="see">
-	
-		<li><a href="#!defi.on">defi.on</a>
-	
-		<li><a href="#!defi.off">defi.off</a>
-	
-		<li><a href="#!defi.onDebounce">defi.onDebounce</a>
-	
-		<li><a href="#!defi.trigger">defi.trigger</a>
-	
-</ul>
-
-
-	
-	<h3>Examples</h3>
-
-
-<pre><code class="lang-js">obj.x = 1;
-
-defi.once(obj, 'change:x', () => {
-	alert('x is changed');
-});
-
-obj.x = 2; // displays 'x is changed'
-
-obj.x = 3; // does nothing</code></pre>
-
- 
-
-</article>
-
-<article class="item method" id="!defi.once(2)">
-	<h2>
-		<a href="#!defi.once(2)">
-			<span class="memberof">defi.</span>once<wbr>(<span class="args">obj, evtnameHandlerObject, context</span>)
-				
-		</a> <span class="returns">→ 
-	<span data-type="object">object</span>
-</span>
-	</h2>
-	
-	
-	<div class="summary"><p>Alternative syntax: &quot;eventname-handler&quot; pairs</p>
-</div>
-	<div class="description"></div>
-	
-	<p>
-		<b>Returns</b> 
-	<span data-type="object">object</span>
-
-		 - obj
-
-
-	</p>
-	
-	
-
-	
-	<h4>Arguments</h4>
-	<table class="arguments">
-		<thead>
-			<tr>
-				<th>Name
-				
-				<th>Type
-				<th>Details
-			</tr>
-		</thead>
-		<tbody>
-			
-				<tr>
-					<td>
-						obj
-						
-					</td>
-					 
-					<td>
-	<span data-type="object">object</span>
-</td>
-					<td> <p>A target object</p>
-</td>
-				</tr>
-			
-				<tr>
-					<td>
-						evtnameHandlerObject
-						
-					</td>
-					 
-					<td>
-	<span data-type="object">object</span>
-</td>
-					<td> <p>An object where keys are event names and values are event handlers</p>
-</td>
-				</tr>
-			
-				<tr>
-					<td>
-						context
-						
-							<span class="signature">optional</span>
-						
-					</td>
-					 
-					<td>
-	<span data-type="object">object</span>
-</td>
-					<td> <p>A context of a handler</p>
-</td>
-				</tr>
-			
-		</tbody>
-	</table>
-
-
-	
-<h4>Links</h4>
-<ul class="see">
-	
-		<li><a href="#!defi.on(2)">defi.on(2)</a>
-	
-</ul>
-
-
-	
-	<h3>Examples</h3>
-
-
-<pre><code class="lang-js">defi.once(obj, {
-	'custom': evt => { ... },
-	'click::x': evt => { ... },
-	'change:y': evt => { ... }
 });</code></pre>
 
  
