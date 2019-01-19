@@ -580,14 +580,10 @@ defi.bindNode(obj, {
     on: &#39;click&#39;,
     // how to extract element state?
     // - return &#39;checked&#39; value
-    getValue() {
-        return this.checked;
-    },
+    getValue: ({ node }) =&gt; node.checked,
     // how to set element state?
     // - set &#39;checked&#39; value
-    setValue(v) {
-        this.checked = !!v;
-    }
+    setValue: (v, { node }) =&gt; node.checked = !!v,
 });
 </code></pre>
 <p>After binding is declared, you can set value of an object property in your most habitual way and HTML node (in this case, a checkbox) will change its state immediately. After clicking on the checkbox, the property value will be changed to the corresponding one as well.</p>
@@ -603,20 +599,14 @@ obj.myKey = true;
     on: &#39;slide&#39;,
     // how to extract element state?
     // - return &#39;value&#39; of the widget
-    getValue() {
-        return $(this).slider(&#39;option&#39;, &#39;value&#39;);
-    },
+    getValue: ({ node }) =&gt; $(node).slider(&#39;option&#39;, &#39;value&#39;),
     // how to set element state?
     // - set &#39;value&#39;
-    setValue(v) {
-        $(this).slider(&#39;option&#39;, &#39;value&#39;, v);
-    },
+    setValue: (v, { node }) =&gt; $(node).slider(&#39;option&#39;, &#39;value&#39;, v),
     // how to initialize the widget?
     // you can initialize the slider in any way,
     // but &#39;initialize&#39; function provides some syntactic sugar
-    initialize() {
-        $(this).slider({ min: 0, max: 100 });
-    }
+    initialize: ({ node }) =&gt;    $(node).slider({ min: 0, max: 100 }),
 });
 </code></pre>
 <pre><code class="lang-js">// will set the slider value 42
@@ -630,12 +620,8 @@ obj.myKey = 42;
 <pre><code class="lang-js">const checkboxBinder = () =&gt; {
     return {
         on: &#39;click&#39;,
-        getValue() {
-            return this.checked;
-        },
-        setValue(v) {
-            this.checked = !!v;
-        }
+        getValue: ({ node }) =&gt; node.checked,
+        setValue: (v, { node }) =&gt; node.checked = !!v,
     }
 };
 
@@ -656,15 +642,9 @@ obj.myKey = true;
 <pre><code class="lang-js">const uiSlider = (min, max) =&gt; {
     return {
         on: &#39;slide&#39;,
-        getValue() {
-            return $(this).slider(&#39;option&#39;, &#39;value&#39;);
-        },
-        setValue(v) {
-            $(this).slider(&#39;option&#39;, &#39;value&#39;, v);
-        },
-        initialize() {
-            $(this).slider({ min: min, max: max });
-        }
+        getValue: ({ node }) =&gt; $(node).slider(&#39;option&#39;, &#39;value&#39;),
+        setValue: (v, { node }) =&gt; $(node).slider(&#39;option&#39;, &#39;value&#39;, v),
+        initialize: ({ node }) =&gt; $(node).slider({ min: min, max: max }),
     }
 };
 </code></pre>
