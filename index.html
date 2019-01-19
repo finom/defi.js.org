@@ -442,6 +442,9 @@
 
 	</div>
 	<hr>
+	<span class="nav-heading">Articles</span>
+	<a href="#!events">Events</a>
+	<hr>
 	<span class="nav-heading">Info</span>
 	<hr>
 	<a>Last update 19.1.2019</a>
@@ -467,8 +470,9 @@ obj.x = 'The magic of accessors';
 &lt;/script&gt;</code></pre>
 		</div>
 		<p>
-			<a href="https://github.com/matreshkajs/defi/archive/gh-pages.zip" download="matreshkajs.zip" class="download-btn">Download <i></i></a>
-			<a href="https://github.com/finom/defi" class="github-btn">Github <i></i></a>
+			<a href="https://github.com/defijs/defi/archive/gh-pages.zip" download="defijs.zip" class="download-btn">Download <i></i></a>
+			&nbsp; &nbsp;
+			<a href="https://github.com/defijs/defi" class="github-btn">Github <i></i></a>
 		</p>
 	</article>
 </section>
@@ -478,10 +482,11 @@ obj.x = 'The magic of accessors';
 			<h2 id="introduction"><a href="#!introduction">Introduction</a></h2>
 <p><strong>defi.js</strong> bunch of utilities that enable accessor-based reactivity for JavaScript objects.</p>
 <p>It can be installed via NPM:</p>
-<pre><code>npm i defi</code></pre><pre><code class="language-js">const { bindNode, calc } = require(&#39;defi&#39;);
+<pre><code class="language-js">npm i defi</code></pre>
+<pre><code class="language-js">const { bindNode, calc } = require(&#39;defi&#39;);
 
 bindNode(obj, &#39;key&#39;, node)</code></pre>
-<p>Or <a href="https://github.com/finom/defi/tree/gh-pages">downloaded to use as a global variable</a></p>
+<p>Or <a href="https://github.com/defijs/defi/tree/gh-pages">downloaded to use as a global variable</a></p>
 <pre><code class="language-js">// use defi as a global variable
 defi.bindNode(obj, &#39;key&#39;, node)</code></pre>
 <h3 id="how-would-i-use-it">How would I use it?</h3>
@@ -511,16 +516,6 @@ defi.bindNode(obj, {
   greeting: &#39;.greeting&#39;
 });</code></pre>
 <p>If <code>first</code> or <code>last</code> is changed then event handlers print info about that to console, <code>greeting</code> property is updated, <code>.greeting</code> element is populated by calculated data (by default &quot;Hello, John Doe&quot;). And it happens every time when these properties are changed and it doesn&#39;t matter which way. You can do <code>obj.first = &#39;Jane&#39;</code> or you can type text into its field, and everything will happen immediately. That&#39;s the real reactiveness. Check the example above <a href="http://jsbin.com/qolulirela/3/edit">here</a> and try to type <code>obj.first = &#39;Jane&#39;</code> at &quot;Console&quot; tab.</p>
-<h3 id="i-have-seen-that-before">I have seen that before!</h3>
-<p>defi.js is a hard-fork of <a href="https://github.com/matreshkajs/matreshka">Matreshka.js framework</a> which includes a subset of its functions. It&#39;s created for applications which don&#39;t need a full list of features like array rendering but require quick and clear two-way data binding features and sugared reactivity.</p>
-<p>Note that defi.js is compatible with the most of Matreshka.js add-ons:</p>
-<ul>
-<li><a href="https://github.com/matreshkajs/matreshka-router">Router</a></li>
-<li><a href="https://github.com/matreshkajs/matreshka-parse-form">Form parser</a></li>
-<li><a href="https://github.com/matreshkajs/file-binders">File binders</a></li>
-<li><a href="https://github.com/matreshkajs/matreshka-binder-codemirror">Codemirror binder</a></li>
-</ul>
-<p>Also there is a <a href="https://github.com/finom/common-binders">standalone set of common binders</a> compatible with both libraries.</p>
 
 		</article>
 	</section>
@@ -3887,25 +3882,166 @@ whatever = 42;</code></pre>
 
 </section>
 
+	<section>
+		<article id="!events">
+			<h2 id="the-events"><a href="#!events">The events</a></h2>
+<p>The article explains events in defi.js. They can be called a heart of defi.js because they power all the magic happened at <code>calc</code>, <code>bindNode</code>, and other methods.</p>
+<h3 id="basics">Basics</h3>
+<h4 id="custom-events">Custom events</h4>
+<p>Let’s start with the simplest thing. In defi.js events can be added with the help of <a href="#!defi.on">on</a> method.</p>
+<pre><code class="language-js">const handler = () =&gt; {
+  alert(&#39;&quot;someevent&quot; is fired&#39;);
+};
+defi.on(object, &#39;someevent&#39;, handler);</code></pre>
+<p>Where the list of events separated by spaces can be passed to.</p>
+<pre><code class="language-js">defi.on(object, &#39;someevent1 someevent2&#39;, handler);</code></pre>
+<p>Events can be fired with <a href="#!defi.trigger">trigger</a> method.</p>
+<pre><code class="language-js">defi.trigger(object, &#39;someevent&#39;);</code></pre>
+<p>At the same time, you can pass some data to the handler having determined the first and the following arguments.</p>
+<pre><code class="language-js">defi.on(object, &#39;someevent&#39;, (a, b, c) =&gt; {
+  alert([a, b, c]); // 1,2,3
+});
+defi.trigger(object, &#39;someevent&#39;, 1, 2, 3);</code></pre>
+<p><code>on</code> method accepts options which can affect on cases when the handler should be called. <code>once: true</code> makes the handler called only once.</p>
+<pre><code class="language-js">defi.on(object, &#39;someevent&#39;, handler, { once: true });
 
+defi.trigger(object, &#39;someevent&#39;); // the handler is called
+defi.trigger(object, &#39;someevent&#39;); // the handler isn&#39;t called any more
+</code></pre>
+<p><code>debounce: true</code> or <code>debounce: delay</code> &quot;debounces&quot; the handler. When an event fires out, the timer with the specified delay by a programmer starts. If no event with the same name is called upon the expiry of the timer, a handler is called. If an event fires before the delay is over, the timer updates and waits again. This is the implementation of a very popular &quot;debounce&quot; micropattern which you can read about on <a href="http://davidwalsh.name/javascript-debounce-function">this page</a>.</p>
+<pre><code class="language-js">defi.on(object, &#39;someevent&#39;, () =&gt; {
+  alert(&#39;yep&#39;);
+}, { debounce: 500 });
+for(let i = 0; i &lt; 1000; i++) {
+  defi.trigger(object, &#39;someevent&#39;);
+}
+// it will show ‘yep’ only once in 500ms</code></pre>
+<h4 id="events-of-property-changing">Events of property changing</h4>
+<p>When a property is changed, defi.js fires an event: <code>&quot;change:KEY&quot;</code>.</p>
+<pre><code class="language-js">defi.on(object, &#39;change:x&#39;, () =&gt; {
+    alert(&#39;x is changed&#39;);
+});
+this.x = 42;</code></pre>
+<p>In case you want to pass some data to the event handler or change a property value without calling <code>&quot;change:KEY&quot;</code> event, instead of a usual assignment use <a href="#!defi.set">defi.set</a> method which accepts three arguments: a key, a value and an object with data or special flags.</p>
+<pre><code class="language-js">defi.on(object, &#39;change:x&#39;, evt =&gt; {
+    alert(evt.someData);
+});
+
+defi.set(object, &#39;x&#39;, 42, { someData: &#39;foo&#39; });</code></pre>
+<p>You can change a property without calling an event handler in this way:</p>
+<pre><code class="language-js">// changing doesn’t fire an event
+defi.set(object, &#39;x&#39;, 9000, { silent: true });</code></pre>
+<p><code>set</code> method supports some more flags, the description of which would make us go beyond the topic of the article, so I refer you to the <a href="#!defi.set">documentation of the method</a>.</p>
+<h4 id="events-which-are-being-fired-before-a-property-changing">Events which are being fired before a property changing</h4>
+<p><code>&quot;beforechange:KEY&quot;</code> is being fired before a property changing. The event can be useful in cases you define <code>&quot;change:KEY&quot;</code> event and want to call the code which precedes this event.</p>
+<pre><code class="language-js">defi.on(object, &#39;beforechange:x&#39;, () =&gt; {
+    alert(&#39;x will be changed in a few microseconds&#39;);
+});</code></pre>
+<p>As usually, you can pass some data to the handler or cancel an event triggering.</p>
+<pre><code class="language-js">defi.on(object,&#39;beforechange:x&#39;, evt =&gt; {
+    alert(evt.someData);
+});
+
+this.set(&#39;x&#39;, 42, { someData: &#39;foo&#39; });
+
+// changing doesn’t fire an event
+this.set(&#39;x&#39;, 9000, { silent: true });</code></pre>
+<h4 id="events-of-a-property-removing">Events of a property removing</h4>
+<p>On removing properties with <a href="#!defi.remove">defi.remove</a> method, <code>&quot;delete:KEY&quot;</code> and <code>delete</code> events are fired.</p>
+<pre><code class="language-js">defi.on(object, &#39;delete:x&#39;, () =&gt; {
+    alert(&#39;x is deleted&#39;);
+});
+
+defi.on(object, &#39;delete&#39;, evt =&gt; {
+  alert(`${evt.key} is deleted`);
+});
+
+defi.remove(object, &#39;x&#39;);</code></pre>
+<h4 id="binding-events">Binding events</h4>
+<p>On the binding declaration two events: <code>&quot;bind&quot;</code> and <code>&quot;bind:KEY&quot;</code> are fired, where <code>KEY</code> is a key of a bound property.</p>
+<pre><code class="language-js">defi.on(object, &#39;bind:x&#39;, () =&gt; {
+    alert(&#39;x is bound&#39;);
+});
+
+defi.on(object, &#39;bind&#39;, evt =&gt; {
+    alert(`${evt.key} is bound`);
+});
+
+defi.bindNode(object, &#39;x&#39;, &#39;.my-node&#39;);</code></pre>
+<p>This event can be of use, for example, when you need to execute your code after binding made in a separate module.</p>
+<h3 id="the-events-of-event-addingremoving">The events of event adding/removing</h3>
+<p>When an event is added, <code>&quot;addevent&quot;</code> and <code>&quot;addevent:NAME&quot;</code> events are fired, and when an event is removed, <code>&quot;removeevent&quot;</code> and <code>&quot;removeevent:NAME&quot;</code> events are fired, where <code>NAME</code> is an event name.</p>
+<pre><code class="language-js">defi.on(object, &#39;addevent&#39;, handler);
+defi.on(object, &#39;addevent:someevent&#39;, handler);
+defi.on(object, &#39;removeevent&#39;, handler);
+defi.on(object, &#39;removeevent:someevent&#39;, handler);</code></pre>
+<p>One of the ways of its application can be the use of defi.js as an event engine of a third-party library. Let’s say, you want to place all handlers of all external libraries into one <a href="#!defi.on">on</a> call, having made the code more readable and compact. With the help of <code>addevent</code> you catch all further event initializations, and in the handler you check an event name against some conditions and initialize an event using API of a third-party library. In the example below there’s a code from a project which uses Fabric.js. <code>&quot;addevent&quot;</code> handler checks an event name for the presence of <code>&quot;fabric:&quot;</code> prefix and if checking is passed, it adds the corresponding handler to the canvas with the help of Fabric API.</p>
+<pre><code class="language-js">this.canvas = new fabric.Canvas(node);
+defi.on(object,{
+    &#39;addevent&#39;: evt =&gt; {
+        const { name, callback } = evt;
+        const prefix = &#39;fabric:&#39;;
+        if(name.indexOf(prefix) == 0) {
+            const fabricEventName = name.slice(prefix.length);
+            // add an event to the canvas
+            this.canvas.on(fabricEventName, callback);
+        }
+    },
+    &#39;fabric:after:render&#39;: evt =&gt; {
+        this.data = this.canvas.toObject();
+    },
+    &#39;fabric:object:selected&#39;: evt =&gt; { /* ... */ }
+});</code></pre>
+<h3 id="delegated-events">Delegated events</h3>
+<p>Now let’s get down to the most interesting: event delegations. The syntax of delegated events is as follows: <code>&quot;PATH@EVENT_NAME&quot;</code>, where <code>PATH</code> is a path (properties are separated by a dot) to an object which <code>EVENT_NAME</code> event needs to be added to. Let’s consider examples below.</p>
+<h4 id="example-1">Example 1</h4>
+<p>You want to add an event handler in <code>&quot;a&quot;</code> property which in its turn is an object.</p>
+<pre><code class="language-js">defi.on(object, &#39;a@someevent&#39;, handler);</code></pre>
+<p>The handler will be called when <code>&quot;someevent&quot;</code> event has been fired in the <code>&quot;a&quot;</code> object.</p>
+<pre><code class="language-js">defi.trigger(obj.a, &#39;someevent&#39;);</code></pre>
+<p>Also, the handler can be declared before <code>&quot;a&quot;</code> property is set. If <code>&quot;a&quot;</code> property is rewritten into another object, inner mechanism of the library will catch this change, remove the handler from the previous property value and add it to a new value (if the new value is an object as well).</p>
+<pre><code class="language-js">obj.a = {};
+defi.trigger(obj.a, &#39;someevent&#39;);</code></pre>
+<p>The handler will be called again.</p>
+<h4 id="example-2">Example 2</h4>
+<p>Let’s go deeper. Suppose we have <code>&quot;a&quot;</code> property that contains an object with <code>&quot;b&quot;</code> property, in which <code>&quot;someevent&quot;</code> event must be fired. In this case properties are separated by a dot:</p>
+<pre><code class="language-js">defi.on(object, &#39;a.b@someevent&#39;, handler);
+defi.trigger(object.a.b, &#39;someevent&#39;);</code></pre>
+<h4 id="example-3">Example 3</h4>
+<p>Besides custom events, you can use the ones which are built in defi.js as well. Instead of <code>&quot;someevent&quot;</code> you can use <code>&quot;change:KEY&quot;</code> event described above.</p>
+<pre><code class="language-js">// in “a” object there’s “b” object,
+// in which we listen to changes of “c” property.
+defi.on(object, &#39;a.b@change:c&#39;, handler);</code></pre>
+<p>Let me remind you that delegated events are added dynamically. On declaring a handler any branch of the way may be absent. If anything is overridden in the object tree, the binding to the old value is disrupted and a new one is created with a new value:</p>
+<pre><code class="language-js">defi.on(object, &#39;a.b.c.d@someevent&#39;, handler);
+object.a.b = { c: { d: {} } };
+defi.trigger(object.a.b.c.d, &#39;someevent&#39;);</code></pre>
+<h3 id="dom-events">DOM events</h3>
+<p>defi.js is known to allow bindings of DOM elements on a page to some object properties implementing one-way or two-way data binding:</p>
+<pre><code class="language-js">defi.bindNode(object, &#39;x&#39;, &#39;.my-node&#39;);</code></pre>
+<p><a href="#!defi.bindNode">More detailed information about bindNode method</a>.</p>
+<p>Before or after the declaration of the binding you can create a handler that listens to DOM events of the bound element. The syntax is as follows: <code>&quot;DOM_EVENT::KEY&quot;</code>, where <code>DOM_EVENT</code> is DOM event, and <code>KEY</code> is a key of a bound property. <code>DOM_EVENT</code> and <code>KEY</code> are separated by a double colon.</p>
+<pre><code class="language-js">defi.on(object, &#39;click::x&#39;, evt =&gt; {
+  evt.preventDefault();
+});</code></pre>
+<p>The object of original DOM event is under <code>&quot;domEvent&quot;</code> key of the event object passed to the handler. Besides, there are several properties and methods available in the object so as not to address <code>&quot;domEvent&quot;</code> every time: <code>&quot;preventDefault&quot;</code>, <code>&quot;stopPropagation&quot;</code>, <code>&quot;which&quot;</code>, <code>&quot;target&quot;</code> and some other properties.</p>
+<p>This opportunity is just a syntactic sugar over ordinary DOM events and the code below does the same things as the previous one:</p>
+<pre><code class="language-js">document.querySelector(&#39;.my-node&#39;).addEventListener(&#39;click&#39;, evt =&gt; {
+    evt.preventDefault();
+});</code></pre>
+<h4 id="delegated-dom-events">Delegated DOM events</h4>
+<p>Event declaring from the example above requires binding declaring. You must take two steps: call <code>bindNode</code> method and declare the event as such. It isn’t always convenient because there are often some cases when DOM node isn’t used anywhere except only one DOM event. For this case there is another syntax variant of DOM events which looks like <code>&quot;DOM_EVENT::KEY(SELECTOR)&quot;</code>. In this case <code>KEY</code> is some key bound to some DOM node. And <code>SELECTOR</code> is a selector of DOM node that is a child of the one bound to <code>KEY</code>.</p>
+<p>HTML:</p>
+<pre><code class="language-html">&lt;div class=&quot;my-node&quot;&gt;
+    &lt;span class=&quot;my-inner-node&quot;&gt;&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+<p>JS:</p>
+<pre><code class="language-js">defi.bindNode(object, &#39;x&#39;, &#39;.my-node&#39;);
+defi.on(object, &#39;click::x(.my-inner-node)&#39;, handler);</code></pre>
+
+		</article>
+	</section>
 </main>
-<div class="typo-badge">
-	<span class="close" title="Hide forever"></span>
-	Found a typo?  <br> Select it and press <br>
-	<button>CTRL</button>+<button>Enter</button>
-</div>
-<form class="typo" method="POST" target="typo-iframe">
-	<i class="close-modal"></i>
-	<h5>A typo</h5>
-	<p class="selection"></p>
-	<textarea class="comment" rows="2" placeholder="Comment (optionals)"></textarea>
-	<input type="hidden" class="page">
-	<input type="hidden" class="selection">
-	<div class="action-bar">
-		<button type="submit">Submit</button>
-		<button class="cancel">Cancel</button>
-	</div>
-</form>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-12418613-11"></script>
 <script>
