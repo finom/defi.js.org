@@ -79,3 +79,5 @@ Also you can use ``html`` from [common-binders](https://github.com/defijs/common
 const { html } = require('common-binders');
 defi.bindNode(obj, 'greeting', '.greeting', html())
 ```
+
+> Also check out [defi-router](https://github.com/defijs/defi-router) - a routing library for defi.js.

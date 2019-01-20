@@ -4,7 +4,7 @@
 @fires addevent
 @fires addevent:NAME
 @summary Adds an event handler
-@desc The function adds an event handler for an object. Refer to the complete list of possible events with the description here: {@link #typedef-eventNames}.
+@desc The function adds an event handler for an object. Refer to the complete list of possible events with the description here: {@link #typedef-eventNames}. Also check out [a short article about events](#!events). 
 
 @see {@link defi.off}
 @see {@link defi.trigger}
