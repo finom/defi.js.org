@@ -538,7 +538,7 @@ defi.bindNode(obj, &#39;greeting&#39;, &#39;.greeting&#39;, html())</code></pre>
 <article class="item method" id="!defi.bindNode">
 	<h2>
 		<a href="#!defi.bindNode">
-			<span class="memberof">defi.</span>bindNode<wbr>(<span class="args">obj, key, node, binder, eventOptions</span>)
+			<span class="memberof">defi.</span>bindNode<wbr>(<span class="args">obj, key, node, binder, options</span>)
 				
 		</a> <span class="returns">→ 
 	<span data-type="object">object</span>
@@ -554,7 +554,7 @@ defi.bindNode(obj, &#39;greeting&#39;, &#39;.greeting&#39;, html())</code></pre>
 </div>
 	<div class="description"><p>It creates a bridge between value of a property and a state of HTML node on the page: from a simple input to a complicated widget (the complexity of elements is unlimited). After using this function, it isn&#39;t necessary to monitor the synchronizations between model and view.</p>
 <blockquote>
-<p>Note that a bunch of common binders (they are explained below) can be found at <a href="https://github.com/finom/common-binders">common-binders</a> project. Also the function, by default, supports all form elements without need to pass binder argument.</p>
+<p>Note that a bunch of common binders can be found at <a href="https://github.com/defijs/common-binders">common-binders</a> project. Also the function, by default, supports all form elements without need to pass binder argument.</p>
 </blockquote>
 <p>The function acepts three arguments: <strong>a property name</strong>, <strong>HTML node</strong> and a <strong>binding rule</strong> (a binder). In its turn, a binder is an ordinary object and it can have the following properties: <code>on</code>, <code>getValue</code>, <code>setValue</code>, <code>initialize</code>, <code>destroy</code> (Read more here: <span data-type="binder">binder</span>). All the five properties are optional. It also allows to declare one-way data bindings (any direction).</p>
 <blockquote>
@@ -596,12 +596,12 @@ obj.myKey = true;</code></pre>
     // how to initialize the widget?
     // you can initialize the slider in any way,
     // but &#39;initialize&#39; function provides some syntactic sugar
-    initialize: ({ node }) =&gt;    $(node).slider({ min: 0, max: 100 }),
+    initialize: ({ node }) =&gt; $(node).slider({ min: 0, max: 100 }),
 });</code></pre>
 <pre><code class="language-js">// will set the slider value 42
 obj.myKey = 42;</code></pre>
-<p>It looks easy but you may ask a question: &quot;What should I do to avoid writing these rules every time?&quot;. Indeed, there can be a lot of elements of the same type on the page: text fields, drop down menus, fields from the HTML5 specification as well as third party widgets (see the example above).</p>
-<p>As observed in this documentation, the third argument is not obligatory for the ones of the <code>bindNode</code> function (see below). This problem is solved by the <a href="#!defi.defaultBinders">defi.defaultBinders</a> array which contains functions checking an HTML node against a set of rules and returns corresponding binder or <code>undefined</code>. You get an opportunity to reduce your code a great deal, putting  binding rules into a separate part of your code and to use a syntax for binding without the third argument:</p>
+<p>It looks easy but you may ask a question: &quot;What should I do to avoid writing these rules every time?&quot;. Indeed, there can be a lot of elements of the same type on the page: text fields, drop down menus, fields from the HTML5 specification as well as third party widgets.</p>
+<p>As observed in this documentation, the third argument is not obligatory for the ones of the <code>bindNode</code> function. This problem is solved by the <a href="#!defi.defaultBinders">defi.defaultBinders</a> array which contains functions checking an HTML node against a set of rules and returns corresponding binder or <code>undefined</code>. You get an opportunity to reduce your code a great deal, putting  binding rules into a separate part of your code and to use a syntax for binding without the third argument:</p>
 <pre><code class="language-js">defi.bindNode(obj, &#39;myKey&#39;, &#39;.my-element&#39;);</code></pre>
 <p>How to do it? You should add a function checking an element against a set of rules to the beginning of the <a href="#!defi.defaultBinders">defi.defaultBinders</a> array.</p>
 <pre><code class="language-js">const checkboxBinder = () =&gt; {
@@ -629,7 +629,7 @@ obj.myKey = true;</code></pre>
         on: &#39;slide&#39;,
         getValue: ({ node }) =&gt; $(node).slider(&#39;option&#39;, &#39;value&#39;),
         setValue: (v, { node }) =&gt; $(node).slider(&#39;option&#39;, &#39;value&#39;, v),
-        initialize: ({ node }) =&gt; $(node).slider({ min: min, max: max }),
+        initialize: ({ node }) =&gt; $(node).slider({ min, max }),
     }
 };</code></pre>
 <pre><code class="language-js">defi.bindNode(obj, &#39;myKey1&#39;, &#39;.my-slider1&#39;, uiSlider(0, 100));
@@ -654,10 +654,10 @@ defi.on(obj, &#39;click::myKey&#39;, () =&gt; { ... });
 // will handle the click on the &#39;.my-element .my-inner-element&#39;
 defi.on(&#39;click::myKey(.my-inner-element)&#39;, () =&gt; { ... });</code></pre>
 <blockquote>
-<p>If a node is not found <code>&quot;Bound element is missing&quot;</code> error will be thrown. Check out <a href="#!defi.bindOptionalNode">defi.bindOptionalNode</a>.</p>
+<p>If a node is not found <code>&quot;Bound element is missing&quot;</code> error will be thrown. See an option <code>optional: true</code> below.</p>
 </blockquote>
 <h3 id="important-features-of-the-function-and-special-flags">Important features of the function and special flags</h3>
-<p>The fourth argument of <code>bindNode</code> function is  <code>eventOptions</code>. As usual this object can include special flags or custom data which will be passed to <code>bind</code> and <code>bind:KEY</code> event handlers.</p>
+<p>The fourth argument of <code>bindNode</code> function is  <code>options</code>. As usual this object can include special flags or custom data which will be passed to <code>bind</code> and <code>bind:KEY</code> event handlers.</p>
 <pre><code class="language-js">defi.on(obj, &#39;bind:x&#39;, evt =&gt; {
     console.log(evt.foo); // bar
 });
@@ -802,16 +802,16 @@ setTimeout(() =&gt; {
 			
 				<tr>
 					<td>
-						eventOptions
+						options
 						
 							<span class="signature">optional</span>
 						
 					</td>
 					 
 					<td>
-	<span data-type="eventOptions">eventOptions</span>
+	<span data-type="object">object</span>
 </td>
-					<td> <p>An event options which accepts <code>&quot;silent&quot;</code> (don&#39;t fire <code>&quot;bind&quot;</code> and <code>&quot;bind:KEY&quot;</code>), flags described above or custom data</p>
+					<td> <p>Options object which accepts <code>&quot;silent&quot;</code> (don&#39;t fire <code>&quot;bind&quot;</code> and <code>&quot;bind:KEY&quot;</code>), flags described above or custom data</p>
 </td>
 				</tr>
 			
@@ -824,8 +824,6 @@ setTimeout(() =&gt; {
 <ul class="see">
 	
 		<li><a href="#!defi.unbindNode">defi.unbindNode</a>
-	
-		<li><a href="#!defi.bindOptionalNode">defi.bindOptionalNode</a>
 	
 		<li><a href="#!defi.defaultBinders">defi.defaultBinders</a>
 	
@@ -841,7 +839,7 @@ setTimeout(() =&gt; {
 <article class="item method" id="!defi.bindNode(2)">
 	<h2>
 		<a href="#!defi.bindNode(2)">
-			<span class="memberof">defi.</span>bindNode<wbr>(<span class="args">obj, bindings, binder, eventOptions</span>)
+			<span class="memberof">defi.</span>bindNode<wbr>(<span class="args">obj, bindings, binder, options</span>)
 				
 		</a> <span class="returns">→ 
 	<span data-type="object">object</span>
@@ -927,14 +925,14 @@ setTimeout(() =&gt; {
 			
 				<tr>
 					<td>
-						eventOptions
+						options
 						
 							<span class="signature">optional</span>
 						
 					</td>
 					 
 					<td>
-	<span data-type="eventOptions">eventOptions</span>
+	<span data-type="object">object</span>
 </td>
 					<td> <p>(see above)</p>
 </td>
@@ -981,7 +979,7 @@ setTimeout(() =&gt; {
 <article class="item method" id="!defi.bindNode(3)">
 	<h2>
 		<a href="#!defi.bindNode(3)">
-			<span class="memberof">defi.</span>bindNode<wbr>(<span class="args">obj, batch, commonEventOptions</span>)
+			<span class="memberof">defi.</span>bindNode<wbr>(<span class="args">obj, batch, options</span>)
 				
 		</a> <span class="returns">→ 
 	<span data-type="object">object</span>
@@ -1053,14 +1051,14 @@ setTimeout(() =&gt; {
 			
 				<tr>
 					<td>
-						commonEventOptions
+						options
 						
 							<span class="signature">optional</span>
 						
 					</td>
 					 
 					<td>
-	<span data-type="eventOptions">eventOptions</span>
+	<span data-type="object">object</span>
 </td>
 					<td> <p>Common event options</p>
 </td>
@@ -3550,7 +3548,7 @@ defi.on(obj, &#39;a.b.c@change:d&#39;, () =&gt; {...});</code></pre>
 defi.bindNode(obj, 'a', '.my-checkbox', binder);</code></pre>
 
 <pre><code class="lang-js">const binder = {
-	on: (callback, bindingOptions) bindingOptions.node.onclick = callback,
+	on: (callback, bindingOptions) => bindingOptions.node.onclick = callback,
 	// ...
 };
 // ...</code></pre>
