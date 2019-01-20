@@ -67,7 +67,7 @@ When a property is changed, defi.js fires an event: ``"change:KEY"``.
 defi.on(object, 'change:x', () => {
     alert('x is changed');
 });
-this.x = 42;
+object.x = 42;
 ```
 
 In case you want to pass some data to the event handler or change a property value without calling ``"change:KEY"`` event, instead of a usual assignment use [defi.set](#!defi.set) method which accepts three arguments: a key, a value and an object with data or special flags.
@@ -106,10 +106,10 @@ defi.on(object,'beforechange:x', evt => {
     alert(evt.someData);
 });
 
-this.set('x', 42, { someData: 'foo' });
+defi.set(object, 'x', 42, { someData: 'foo' });
 
 // changing doesn’t fire an event
-this.set('x', 9000, { silent: true });
+defi.set(object, 'x', 9000, { silent: true });
 ```
 
 #### Events of a property removing
@@ -161,7 +161,7 @@ defi.on(object, 'removeevent:someevent', handler);
 One of the ways of its application can be the use of defi.js as an event engine of a third-party library. Let’s say, you want to place all handlers of all external libraries into one [on](#!defi.on) call, having made the code more readable and compact. With the help of ``addevent`` you catch all further event initializations, and in the handler you check an event name against some conditions and initialize an event using API of a third-party library. In the example below there’s a code from a project which uses Fabric.js. ``"addevent"`` handler checks an event name for the presence of ``"fabric:"`` prefix and if checking is passed, it adds the corresponding handler to the canvas with the help of Fabric API.
 
 ```js
-this.canvas = new fabric.Canvas(node);
+object.canvas = new fabric.Canvas(node);
 defi.on(object,{
     'addevent': evt => {
         const { name, callback } = evt;
@@ -169,11 +169,11 @@ defi.on(object,{
         if(name.indexOf(prefix) == 0) {
             const fabricEventName = name.slice(prefix.length);
             // add an event to the canvas
-            this.canvas.on(fabricEventName, callback);
+            object.canvas.on(fabricEventName, callback);
         }
     },
     'fabric:after:render': evt => {
-        this.data = this.canvas.toObject();
+        object.data = object.canvas.toObject();
     },
     'fabric:object:selected': evt => { /* ... */ }
 });
