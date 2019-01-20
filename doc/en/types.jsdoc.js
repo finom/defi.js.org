@@ -99,26 +99,16 @@ defi.on(obj, 'x.y.z@click::u(.my-selector)', () => {...});
 @example
 const binder = {
 	on: 'click',
-	getValue(bindingOptions) {
-		return this.value;
-	},
-	setValue(v, bindingOptions) {
-		this.value = v;
-	},
-	initialize(bindingOptions) {
-		alert('A binding is initialized');
-	},
-	destroy(bindingOptions) {
-		alert('A binding is destroyed');
-	}
+	getValue: (bindingOptions) => bindingOptions.node.value,
+	setValue(v, bindingOptions) => bindingOptions.node.value = v,
+	initialize: (bindingOptions) => alert('A binding is initialized'),
+	destroy: (bindingOptions) => alert('A binding is destroyed'),
 };
 
 defi.bindNode(obj, 'a', '.my-checkbox', binder);
 @example
 const binder = {
-	on(callback, bindingOptions) {
-		this.onclick = callback;
-	},
+	on: (callback, bindingOptions) bindingOptions.node.onclick = callback,
 	// ...
 };
 // ...

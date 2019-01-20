@@ -15,11 +15,7 @@ console.log(defi.lookForBinder(element));
 // will return something similar to the following object
 {
 	on: 'input',
-	getValue() {
-		return this.value;
-	},
-	setValue(v) {
-		this.value = v;
-	}
+	getValue: ({ node }) => node.value,
+	setValue: (v, { node }) => node.value = v,
 }
 */
