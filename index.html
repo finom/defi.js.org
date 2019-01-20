@@ -3907,7 +3907,7 @@ for(let i = 0; i &lt; 1000; i++) {
 <pre><code class="language-js">defi.on(object, &#39;change:x&#39;, () =&gt; {
     alert(&#39;x is changed&#39;);
 });
-this.x = 42;</code></pre>
+object.x = 42;</code></pre>
 <p>In case you want to pass some data to the event handler or change a property value without calling <code>&quot;change:KEY&quot;</code> event, instead of a usual assignment use <a href="#!defi.set">defi.set</a> method which accepts three arguments: a key, a value and an object with data or special flags.</p>
 <pre><code class="language-js">defi.on(object, &#39;change:x&#39;, evt =&gt; {
     alert(evt.someData);
@@ -3928,10 +3928,10 @@ defi.set(object, &#39;x&#39;, 9000, { silent: true });</code></pre>
     alert(evt.someData);
 });
 
-this.set(&#39;x&#39;, 42, { someData: &#39;foo&#39; });
+defi.set(object, &#39;x&#39;, 42, { someData: &#39;foo&#39; });
 
 // changing doesn’t fire an event
-this.set(&#39;x&#39;, 9000, { silent: true });</code></pre>
+defi.set(object, &#39;x&#39;, 9000, { silent: true });</code></pre>
 <h4 id="events-of-a-property-removing">Events of a property removing</h4>
 <p>On removing properties with <a href="#!defi.remove">defi.remove</a> method, <code>&quot;delete:KEY&quot;</code> and <code>delete</code> events are fired.</p>
 <pre><code class="language-js">defi.on(object, &#39;delete:x&#39;, () =&gt; {
@@ -3962,7 +3962,7 @@ defi.on(object, &#39;addevent:someevent&#39;, handler);
 defi.on(object, &#39;removeevent&#39;, handler);
 defi.on(object, &#39;removeevent:someevent&#39;, handler);</code></pre>
 <p>One of the ways of its application can be the use of defi.js as an event engine of a third-party library. Let’s say, you want to place all handlers of all external libraries into one <a href="#!defi.on">on</a> call, having made the code more readable and compact. With the help of <code>addevent</code> you catch all further event initializations, and in the handler you check an event name against some conditions and initialize an event using API of a third-party library. In the example below there’s a code from a project which uses Fabric.js. <code>&quot;addevent&quot;</code> handler checks an event name for the presence of <code>&quot;fabric:&quot;</code> prefix and if checking is passed, it adds the corresponding handler to the canvas with the help of Fabric API.</p>
-<pre><code class="language-js">this.canvas = new fabric.Canvas(node);
+<pre><code class="language-js">object.canvas = new fabric.Canvas(node);
 defi.on(object,{
     &#39;addevent&#39;: evt =&gt; {
         const { name, callback } = evt;
@@ -3970,11 +3970,11 @@ defi.on(object,{
         if(name.indexOf(prefix) == 0) {
             const fabricEventName = name.slice(prefix.length);
             // add an event to the canvas
-            this.canvas.on(fabricEventName, callback);
+            object.canvas.on(fabricEventName, callback);
         }
     },
     &#39;fabric:after:render&#39;: evt =&gt; {
-        this.data = this.canvas.toObject();
+        object.data = object.canvas.toObject();
     },
     &#39;fabric:object:selected&#39;: evt =&gt; { /* ... */ }
 });</code></pre>
