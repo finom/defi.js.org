@@ -1,5 +1,7 @@
 ## [Introduction](#!introduction)
 
+> Before we start, in case if you found an inaccuracy or a typo on this page, feel free to open an issue [here](https://github.com/defijs/defi.js.org).
+
 **defi.js** bunch of utilities that enable accessor-based reactivity for JavaScript objects.
 
 It can be installed via NPM:
