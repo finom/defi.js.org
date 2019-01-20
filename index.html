@@ -128,17 +128,6 @@
 										</a>
 									</li>
 								
-									<li>
-										<a href="#!defi.bindNode(3)"
-											title="Alternative syntax which makes possible to define unlimited amount of bindings per one bindNode call.
-"
-											data-name="bindNode#3"
-											
-										>
-											#3
-										</a>
-									</li>
-								
 							</ul>
 						</div>
 					
@@ -403,17 +392,6 @@
 										</a>
 									</li>
 								
-									<li>
-										<a href="#!defi.unbindNode(3)"
-											title="Alternative syntax of the function which allows to easily unbind unlimited amount of bindings by single unbindNode call.
-"
-											data-name="unbindNode#3"
-											
-										>
-											#3
-										</a>
-									</li>
-								
 							</ul>
 						</div>
 					
@@ -657,12 +635,12 @@ defi.on(&#39;click::myKey(.my-inner-element)&#39;, () =&gt; { ... });</code></pr
 <p>If a node is not found <code>&quot;Bound element is missing&quot;</code> error will be thrown. See an option <code>optional: true</code> below.</p>
 </blockquote>
 <h3 id="important-features-of-the-function-and-special-flags">Important features of the function and special flags</h3>
-<p>The fourth argument of <code>bindNode</code> function is  <code>options</code>. As usual this object can include special flags or custom data which will be passed to <code>bind</code> and <code>bind:KEY</code> event handlers.</p>
+<p>The fourth argument of <code>bindNode</code> function is  <code>options</code>. This object can include special flags or custom data which will be passed to <code>bind</code> and <code>bind:KEY</code> event handlers.</p>
 <pre><code class="language-js">defi.on(obj, &#39;bind:x&#39;, evt =&gt; {
     console.log(evt.foo); // bar
 });
 defi.bindNode(obj, &#39;x&#39;, node, binder, { foo: &#39;bar&#39; });</code></pre>
-<p>To understand important features of <code>bindNode</code> it is required to read information below but it&#39;s not required to remember all these flags.</p>
+<p>To understand important features of <code>bindNode</code> it is important to read information below but it&#39;s not required to remember all these flags.</p>
 <h4 id="a-flag-exactkeyfalse">A flag <code>exactKey=false</code></h4>
 <p>If <code>key</code> string includes a dot then such string will be interpreted as a path to a property of nested object. The library will listen all changes of given object tree.</p>
 <pre><code class="language-js">obj.a = { b: { c: &#39;foo&#39; } };
@@ -688,7 +666,7 @@ obj[&#39;a.b.c&#39;] = &#39;bar&#39;;</code></pre>
 <h4 id="a-flag-setvalueonbind">A flag <code>setValueOnBind</code></h4>
 <p>When <code>setValue</code> is given then the value of the property will be set as element state immediately after <code>bindNode</code> call in case if the property has non-undefined value. To force this behavior even if the property is <code>undefined</code> use <code>setValueOnBind</code> flag with <code>true</code> value. To cancel this behavior use the same flag but with <code>false</code> value.</p>
 <h4 id="flags-debouncegetvaluetrue-and-debouncesetvaluetrue">Flags <code>debounceGetValue=true</code> and <code>debounceSetValue=true</code></h4>
-<p>One of the most important feature of <code>bindNode</code> is that the logic of property change and the logic of element state change uses debounce pattern. It means that if bound property is changed many times in a short time then bound element state will be updated only once after small delay (thanks to <code>debounceSetValue=true</code>). If element state is changed many times in a short time (eg corresponding DOM event is triggered), the property gets new value only once after minimum delay (thanks to <code>debounceGetValue=true</code>).</p>
+<p>One of the most important feature of <code>bindNode</code> is that the logic of property change and the logic of element state change uses the debounce pattern. It means that if bound property is changed many times in a short time then bound element state will be updated only once after small delay (thanks to <code>debounceSetValue=true</code>). If element state is changed many times in a short time (eg corresponding DOM event is triggered), the property gets new value only once after minimum delay (thanks to <code>debounceGetValue=true</code>).</p>
 <pre><code class="language-js">const input = document.querySelector(&#39;.my-input&#39;);
 defi.bindNode(obj, &#39;x&#39;, input);
 obj.x = &#39;foo&#39;;
@@ -702,7 +680,7 @@ setTimeout(() =&gt; {
 <h4 id="flags-debouncesetvaluedelay0-and-debouncegetvaluedelay0">Flags <code>debounceSetValueDelay=0</code> and <code>debounceGetValueDelay=0</code></h4>
 <p>These flags allow to set debounce delay. <code>debounceSetValueDelay</code> is used when <code>debounceSetValue</code> or <code>debounceSetValueOnBind</code> is <code>true</code>, <code>debounceGetValueDelay</code> is used when <code>debounceGetValue</code> or <code>debounceGetValueOnBind</code> is true.</p>
 <h4 id="a-flags-optionalfalse">A flags <code>optional=false</code></h4>
-<p><code>bindNode</code> doesn&#39;t throw an error if <code>optional: true</code> is set.</p>
+<p><code>bindNode</code> doesn&#39;t throw an error of missing node if <code>optional: true</code> is set.</p>
 <h4 id="a-flag-useexactbinderfalse">A flag <code>useExactBinder=false</code></h4>
 <p>Even if you pass a binder to <code>bindNode</code>, the framework tries to find default binder at <a href="#!defi.defaultBinders">defi.defaultBinders</a> and extend it by properties of the passed object. This feature makes possible to use partially re-defined default binder.</p>
 <p>For example, we want to bind <code>input[type=&quot;text&quot;]</code> to a property. By default, the standard binder contains <code>&quot;on&quot;</code> property with <code>&quot;input&quot;</code> value for this kind of node. It means that the value of the object property and node state will be synchronized when a user releases a key of the keyboard or pastes text from clipboard. In case if you want synchronization to be performed after the <code>&quot;blur&quot;</code> DOM event, you need to pass an object containing the only <code>&quot;on&quot;</code> property as the third argument. This object will extend the default binder, having retained <code>getValue</code> and <code>setValue</code> values.</p>
@@ -976,134 +954,6 @@ setTimeout(() =&gt; {
 
 </article>
 
-<article class="item method" id="!defi.bindNode(3)">
-	<h2>
-		<a href="#!defi.bindNode(3)">
-			<span class="memberof">defi.</span>bindNode<wbr>(<span class="args">obj, batch, options</span>)
-				
-		</a> <span class="returns">→ 
-	<span data-type="object">object</span>
-</span>
-	</h2>
-	
-	
-	<div class="summary"><p>Alternative syntax which makes possible to define unlimited amount of bindings per one <code>bindNode</code> call.</p>
-</div>
-	<div class="description"><p>The function variation allows to pass an array of objects which need to include the following properties:</p>
-<ul>
-<li><code>key</code> - a property name</li>
-<li><code>node</code> - an HTML element which must be bound to a <code>key</code></li>
-<li><code>binder</code> - a binder (optional)</li>
-<li><code>event</code> - event options (optional)</li>
-</ul>
-<p>The second arg object includes common event options for all bindings and extends <code>event</code> object (properties from <code>event</code> has more priority).</p>
-</div>
-	
-	<p>
-		<b>Returns</b> 
-	<span data-type="object">object</span>
-
-		 - object
-
-
-	</p>
-	
-	
-
-	
-	<h4>Arguments</h4>
-	<table class="arguments">
-		<thead>
-			<tr>
-				<th>Name
-				
-				<th>Type
-				<th>Details
-			</tr>
-		</thead>
-		<tbody>
-			
-				<tr>
-					<td>
-						obj
-						
-					</td>
-					 
-					<td>
-	<span data-type="object">object</span>
-</td>
-					<td> <p>A target object</p>
-</td>
-				</tr>
-			
-				<tr>
-					<td>
-						batch
-						
-					</td>
-					 
-					<td>
-	<span data-type="array">array</span>
-</td>
-					<td> <p>A batch of bindings</p>
-</td>
-				</tr>
-			
-				<tr>
-					<td>
-						options
-						
-							<span class="signature">optional</span>
-						
-					</td>
-					 
-					<td>
-	<span data-type="object">object</span>
-</td>
-					<td> <p>Common event options</p>
-</td>
-				</tr>
-			
-		</tbody>
-	</table>
-
-
-	
-
-	
-	<h3>Examples</h3>
-
-
-<pre><code class="lang-js">defi.bindNode(obj, [{
-	key: 'a',
-	node: '.my-node',
-	binder: {
-		setValue(v) {
-			doSomething(v);
-		}
-	}
-}, {
-	key: 'b',
-	node: document.querySelectorAll('.bar')
-	event: {
-		foo: 'bar'
-	}
-}, {
-	key: 'c.d.e',
-	node: jQuery('.baz'),
-	binder: defi.binders.html(),
-	event: {
-		silent: true,
-		exactKey: true
-	}
-}], {
-	getValueOnBind: false
-});</code></pre>
-
- 
-
-</article>
-
 <article class="item method" id="!defi.bound">
 	<h2>
 		<a href="#!defi.bound">
@@ -1158,7 +1008,7 @@ setTimeout(() =&gt; {
 					<td>
 	<span data-type="string">string</span>
 </td>
-					<td> <p>The key of a property, which bound elements you want to get</p>
+					<td> <p>A name of a property, which bound elements you want to get</p>
 </td>
 				</tr>
 			
@@ -1189,7 +1039,7 @@ setTimeout(() =&gt; {
 defi.bound(obj, 'x'); // will return document.querySelector('.my-element')</code></pre>
 
 <pre><code class="lang-js">defi.bindNode(obj, 'x', '.my-element');
-defi.bound(obj, 'x', { all: true }); // will return an array of elements mached '.my-element'</code></pre>
+defi.bound(obj, 'x', { all: true }); // will return an array of elements bound to "x"</code></pre>
 
  
 
@@ -1198,7 +1048,7 @@ defi.bound(obj, 'x', { all: true }); // will return an array of elements mached 
 <article class="item method" id="!defi.calc">
 	<h2>
 		<a href="#!defi.calc">
-			<span class="memberof">defi.</span>calc<wbr>(<span class="args">obj, targetKey, source, handler<span class="default-value">=(v)=>v</span>, eventOptions</span>)
+			<span class="memberof">defi.</span>calc<wbr>(<span class="args">obj, targetKey, source, handler<span class="default-value">=(v)=>v</span>, options</span>)
 				
 		</a> 
 	</h2>
@@ -1211,7 +1061,7 @@ defi.bound(obj, 'x', { all: true }); // will return an array of elements mached 
 	<div class="summary"><p>Creates a dependency of one property value on values of others</p>
 </div>
 	<div class="description"><p><code>calc</code> creates a dependency of a property (<code>target</code> argument) on values of other properties (<code>source</code> argument). When source property is changed, <code>target</code> is re-calculated automatically.</p>
-<p><code>source</code> arg has few variations.</p>
+<p><code>source</code> arg has a few variations.</p>
 <h4 id="a-string">A string</h4>
 <p>A <code>target</code> property is dependent on <code>source</code> property.</p>
 <pre><code class="language-js">obj.b = 1;
@@ -1273,7 +1123,7 @@ const someObject = {
 };
 
 defi.calc(obj, &#39;a&#39;, [&#39;b&#39;, &#39;c&#39;, {
-    object: someObjectX,
+    object: someObject,
     key: [&#39;d&#39;, &#39;e&#39;]
 }], (b, c, d, e) =&gt; b + c + d + e);
 
@@ -1327,7 +1177,7 @@ defi.set(obj, &#39;b&#39;, newValue, {
     skipCalc: true
 });</code></pre>
 <h3 id="important-features-of-the-function-and-special-flags">Important features of the function and special flags</h3>
-<p>The fifth argument of <code>calc</code> function is  <code>eventOptions</code>. As usual this object can include special flags or custom data which will be passed to <code>change:TARGET</code> event handler.</p>
+<p>The fifth argument of <code>calc</code> function is <code>options</code> (you also can call them just &quot;options&quot;). As usual this object can include special flags or custom data which will be passed to <code>change:TARGET</code> event handler.</p>
 <pre><code class="language-js">defi.on(obj, &#39;change:a&#39;, evt =&gt; {
     console.log(evt.foo); // &#39;bar&#39;
 });
@@ -1512,16 +1362,16 @@ obj.c = 2;
 			
 				<tr>
 					<td>
-						eventOptions
+						options
 						
 							<span class="signature">optional</span>
 						
 					</td>
 					<td><code></code> 
 					<td>
-	<span data-type="eventOptions">eventOptions</span>
+	<span data-type="object">object</span>
 </td>
-					<td> <p>An object which can contain some special flags or data for <code>change:KEY</code> handler (see above)</p>
+					<td> <p>An object which can contain some special flags or data for <code>change:KEY</code> handler</p>
 </td>
 				</tr>
 			
@@ -1569,7 +1419,7 @@ obj.a = 5;</code></pre>
 <article class="item method" id="!defi.calc(batch)">
 	<h2>
 		<a href="#!defi.calc(batch)">
-			<span class="memberof">defi.</span>calc<wbr>(<span class="args">obj, batch, commonEventOptions</span>)
+			<span class="memberof">defi.</span>calc<wbr>(<span class="args">obj, batch, options</span>)
 				
 		</a> 
 	</h2>
@@ -1581,9 +1431,9 @@ obj.a = 5;</code></pre>
 <ul>
 <li><code>source</code> - which properties the target property is depended on;</li>
 <li><code>handler</code> - a function which returns a new value of a property (by default it equals to <code>(value) =&gt; value</code>);</li>
-<li><code>event</code> - event options.</li>
+<li><code>options</code> - calc options.</li>
 </ul>
-<p>The third argument contains common event options which extend <code>event</code> of every item (properties of <code>event</code> have higher priority).</p>
+<p>The third argument contains common options which extend <code>options</code> of every item (but they still have higher priority than common options).</p>
 <p><code>source</code> can take any kind of look as <a href="#!defi.calc">described above</a> (a string, an array of strings etc).</p>
 </div>
 	
@@ -1630,16 +1480,16 @@ obj.a = 5;</code></pre>
 			
 				<tr>
 					<td>
-						commonEventOptions
+						options
 						
 							<span class="signature">optional</span>
 						
 					</td>
 					 
 					<td>
-	<span data-type="eventOptions">eventOptions</span>
+	<span data-type="object">object</span>
 </td>
-					<td> <p>Event options which are common for all listed calculated properties</p>
+					<td> <p>Options which are common for all listed calculated properties</p>
 </td>
 				</tr>
 			
@@ -1663,7 +1513,7 @@ obj.a = 5;</code></pre>
 	        object: someObject,
 	        key: 'c'
 	    },
-	    event: {
+	    options: {
 	        setOnInit: false
 	    }
 	},
@@ -1702,7 +1552,7 @@ obj.a = 5;</code></pre>
 	
 	<div class="summary"><p>Allows chained calls of defi.js functions</p>
 </div>
-	<div class="description"><p>The function accepts any object and returns an instance of externally inaccessible class which adopts function allowing them to be called in a chain to change given object.</p>
+	<div class="description"><p>The function accepts any object and returns an instance of a class which adopts functions allowing them to be called in a chain.</p>
 </div>
 	
 	<p>
@@ -2135,10 +1985,6 @@ alert(typeof obj.z); // "boolean"</code></pre>
 	
 		<li><a href="#!defi.on">defi.on</a>
 	
-		<li><a href="#!defi.once">defi.once</a>
-	
-		<li><a href="#!defi.onDebounce">defi.onDebounce</a>
-	
 		<li><a href="#!defi.trigger">defi.trigger</a>
 	
 </ul>
@@ -2265,7 +2111,7 @@ defi.off(obj, 'change:x', handler);</code></pre>
 					<td>
 	<span data-type="object">object</span>
 </td>
-					<td> <p>Options object where<code>triggerOnInit</code> (boolean) makes the handler called immediately after event initialization, <code>once</code> (boolean) makes the handler called only once, <code>debounce</code> (boolean or # of milliseconds) debounces the handler</p>
+					<td> <p>Options object where <code>triggerOnInit</code> (boolean) makes the handler called immediately after event initialization, <code>once</code> (boolean) makes the handler called only once, <code>debounce</code> (boolean or # of milliseconds) debounces the handler</p>
 </td>
 				</tr>
 			
@@ -2301,6 +2147,17 @@ defi.trigger(obj, 'foo');</code></pre>
 defi.on(obj, 'foo', () => {
 	alert('bar');
 }, { triggerOnInit: true });</code></pre>
+
+    <h4><p>Calling a handler only once</p>
+</h4>
+
+<pre><code class="lang-js">defi.on(obj, 'foo', () => {
+	alert('bar');
+}, { once: true });
+
+defi.trigger(obj, 'foo'); // displays "bar"
+defi.trigger(obj, 'foo'); // does nothing
+defi.trigger(obj, 'foo'); // does nothing</code></pre>
 
  
 
@@ -2535,13 +2392,13 @@ defi.remove(obj, ['myKey1', 'myKey2']);</code></pre>
 	
 	<div class="summary"><p>Sets a property value allowing to pass an event options object</p>
 </div>
-	<div class="description"><p>The list of the supported flags:</p>
+	<div class="description"><p>The list of supported flags:</p>
 <ul>
 <li><code>silent</code> -  do not call the <code>change</code> and <code>change:KEY</code> events</li>
 <li><code>silentHTML</code> - do not change states of bound HTML nodes</li>
 <li><code>force</code> - call the <code>change</code> and <code>change:KEY</code> events even though the property value has not been changed</li>
 <li><code>forceHTML</code> - change a state of bound element even though the property value has not been changed. This option is usable if the bound element has been rendered after the binding (for example, some <code>option</code> tags have been added to <code>select</code> tag)</li>
-<li><code>skipMediator</code> - prevents the property transformation by a mediator (see <a href="#!defi.mediate">defi.mediate</a>)</li>
+<li><code>skipMediator</code> - prevents the property transformation by <a href="#!defi.mediate">defi.mediate</a></li>
 <li><code>skipCalc</code> - prevents the work of dependencies created with <a href="#!defi.calc">defi.calc</a></li>
 </ul>
 </div>
@@ -3115,124 +2972,6 @@ obj.myKey = false;</code></pre>
 		node: '.ddd'
 	}]
 });</code></pre>
-
- 
-
-</article>
-
-<article class="item method" id="!defi.unbindNode(3)">
-	<h2>
-		<a href="#!defi.unbindNode(3)">
-			<span class="memberof">defi.</span>unbindNode<wbr>(<span class="args">obj, batch, eventOptions</span>)
-				
-		</a> 
-	</h2>
-	
-	
-	<div class="summary"><p>Alternative syntax of the function which allows to easily unbind unlimited amount of bindings by single <code>unbindNode</code> call.</p>
-</div>
-	<div class="description"><p>The variation makes possible to pass an array which includes objects with the following properties:</p>
-<ul>
-<li><code>key</code> - a property name</li>
-<li><code>node</code> - a node bound to <code>key</code> (optional)</li>
-</ul>
-<p>This variation is useful because it matches one variation of <a href="#!defi.bindNode">defi.bindNode</a> function, allowing to store bindings in a variable to easily remove them when needed.</p>
-</div>
-	
-	
-
-	
-	<h4>Arguments</h4>
-	<table class="arguments">
-		<thead>
-			<tr>
-				<th>Name
-				
-				<th>Type
-				<th>Details
-			</tr>
-		</thead>
-		<tbody>
-			
-				<tr>
-					<td>
-						obj
-						
-					</td>
-					 
-					<td>
-	<span data-type="object">object</span>
-</td>
-					<td> <p>A target object</p>
-</td>
-				</tr>
-			
-				<tr>
-					<td>
-						batch
-						
-					</td>
-					 
-					<td>
-	<span data-type="array">array</span>
-</td>
-					<td> <p>An array of bindings</p>
-</td>
-				</tr>
-			
-				<tr>
-					<td>
-						eventOptions
-						
-							<span class="signature">optional</span>
-						
-					</td>
-					 
-					<td>
-	<span data-type="eventOptions">eventOptions</span>
-</td>
-					<td> <p>(see above)</p>
-</td>
-				</tr>
-			
-		</tbody>
-	</table>
-
-
-	
-
-	
-	<h3>Examples</h3>
-
-
-<pre><code class="lang-js">const temporaryBindings = [{
-	key: 'a',
-	node: '.my-node',
-	binder: {
-		setValue(v) {
-			doSomething(v);
-		}
-	}
-}, {
-	key: 'b',
-	node: document.querySelectorAll('.bar')
-	event: {
-		foo: 'bar'
-	}
-}, {
-	key: 'c.d.e',
-	node: jQuery('.baz'),
-	binder: myBinder(),
-	event: {
-		silent: true,
-		exactKey: true
-	}
-}]
-
-defi.bindNode(obj, temporaryBindings);
-
-// these bindings are no longer needed
-defi.unbindNode(obj, temporaryBindings);</code></pre>
 
  
 
@@ -3969,7 +3708,8 @@ defi.bindNode(object, &#39;x&#39;, &#39;.my-node&#39;);</code></pre>
 defi.on(object, &#39;addevent:someevent&#39;, handler);
 defi.on(object, &#39;removeevent&#39;, handler);
 defi.on(object, &#39;removeevent:someevent&#39;, handler);</code></pre>
-<p>One of the ways of its application can be the use of defi.js as an event engine of a third-party library. Let’s say, you want to place all handlers of all external libraries into one <a href="#!defi.on">on</a> call, having made the code more readable and compact. With the help of <code>addevent</code> you catch all further event initializations, and in the handler you check an event name against some conditions and initialize an event using API of a third-party library. In the example below there’s a code from a project which uses Fabric.js. <code>&quot;addevent&quot;</code> handler checks an event name for the presence of <code>&quot;fabric:&quot;</code> prefix and if checking is passed, it adds the corresponding handler to the canvas with the help of Fabric API.</p>
+<p>One of the ways of its application can be the use of defi.js as an event engine of a third-party library. Let’s say, you want to place all handlers of all external libraries into one <a href="#!defi.on">on</a> call, having made the code more readable and compact. With the help of <code>addevent</code> you catch all further event initializations, and in the handler you check an event name against some conditions and initialize an event using API of a third-party library.</p>
+<p>In the example below there’s a code from a project which uses Fabric.js. <code>&quot;addevent&quot;</code> handler checks an event name for the presence of <code>&quot;fabric:&quot;</code> prefix and if checking is passed, it adds the corresponding handler to the canvas with the help of Fabric API.</p>
 <pre><code class="language-js">object.canvas = new fabric.Canvas(node);
 defi.on(object,{
     &#39;addevent&#39;: evt =&gt; {
