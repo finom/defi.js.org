@@ -515,7 +515,17 @@ defi.bindNode(obj, {
   last: &#39;.last&#39;,
   greeting: &#39;.greeting&#39;
 });</code></pre>
-<p>If <code>first</code> or <code>last</code> is changed then event handlers print info about that to console, <code>greeting</code> property is updated, <code>.greeting</code> element is populated by calculated data (by default &quot;Hello, John Doe&quot;). And it happens every time when these properties are changed and it doesn&#39;t matter which way. You can do <code>obj.first = &#39;Jane&#39;</code> or you can type text into its field, and everything will happen immediately. That&#39;s the real reactiveness. Check the example above <a href="http://jsbin.com/qolulirela/3/edit">here</a> and try to type <code>obj.first = &#39;Jane&#39;</code> at &quot;Console&quot; tab.</p>
+<p>If <code>first</code> or <code>last</code> is changed then event handlers print info about that to console, <code>greeting</code> property is updated, <code>.greeting</code> element is populated by calculated data (by default &quot;Hello, John Doe&quot;). And it happens every time when these properties are changed and it doesn&#39;t matter which way. You can do <code>obj.first = &#39;Jane&#39;</code> or you can type text into its field, and everything will happen immediately.</p>
+<p>That&#39;s the real accessor-based reactiveness! Check the example above <a href="https://jsbin.com/xuzohanuno/1/edit?html,js,console,output">here</a> and try to type <code>obj.first = &#39;Jane&#39;</code> at the &quot;Console&quot; tab.</p>
+<p>Note that if you want to use a custom HTML element (at the example above we use <code>&lt;output&gt;</code> tag) to update its innerHTML you will need to pass so-called &quot;binder&quot; as a rule of how the bound element should behave. By default <code>defi.bindNode</code> doesn&#39;t know how to interact with non-form elements.</p>
+<pre><code class="language-js">const htmlBinder = {
+  setValue: (value, binding) =&gt; binding.node.innerHTML = value,
+};
+// this will update innerHTML for any element when obj.greeting is changed
+defi.bindNode(obj, &#39;greeting&#39;, &#39;.greeting&#39;, htmlBinder)</code></pre>
+<p>Also you can use <code>html</code> from <a href="https://github.com/defijs/common-binders">common-binders</a> (a collection of binders of general purpose).</p>
+<pre><code class="language-js">const { html } = require(&#39;common-binders&#39;);
+defi.bindNode(obj, &#39;greeting&#39;, &#39;.greeting&#39;, html())</code></pre>
 
 		</article>
 	</section>
