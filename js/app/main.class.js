@@ -93,11 +93,6 @@ export default class Main extends MatreshkaObject {
 				el.selectionStart = el.selectionEnd = el.value.length;
 			});
 		}
-
-		fetch('https://api.github.com/repos/matreshkajs/matreshka/releases/latest')
-			.then(resp => resp.json())
-			.then(data => this.version = data.tag_name || 2)
-			.catch(() => this.version = 2);
 	}
 
 	initDynamicStyles() {
