@@ -447,7 +447,7 @@
 	<hr>
 	<span class="nav-heading">Info</span>
 	<hr>
-	<a>Last update 19.1.2019</a>
+	<a>Last update 20.1.2019</a>
 </nav>
 
 
@@ -1840,12 +1840,8 @@ console.log(defi.lookForBinder(element));
 // will return something similar to the following object
 {
 	on: 'input',
-	getValue() {
-		return this.value;
-	},
-	setValue(v) {
-		this.value = v;
-	}
+	getValue: ({ node }) => node.value,
+	setValue: (v, { node }) => node.value = v,
 }</code></pre>
 
  
@@ -3535,26 +3531,16 @@ defi.on(obj, &#39;a.b.c@change:d&#39;, () =&gt; {...});</code></pre>
 
 <pre><code class="lang-js">const binder = {
 	on: 'click',
-	getValue(bindingOptions) {
-		return this.value;
-	},
-	setValue(v, bindingOptions) {
-		this.value = v;
-	},
-	initialize(bindingOptions) {
-		alert('A binding is initialized');
-	},
-	destroy(bindingOptions) {
-		alert('A binding is destroyed');
-	}
+	getValue: (bindingOptions) => bindingOptions.node.value,
+	setValue(v, bindingOptions) => bindingOptions.node.value = v,
+	initialize: (bindingOptions) => alert('A binding is initialized'),
+	destroy: (bindingOptions) => alert('A binding is destroyed'),
 };
 
 defi.bindNode(obj, 'a', '.my-checkbox', binder);</code></pre>
 
 <pre><code class="lang-js">const binder = {
-	on(callback, bindingOptions) {
-		this.onclick = callback;
-	},
+	on: (callback, bindingOptions) bindingOptions.node.onclick = callback,
 	// ...
 };
 // ...</code></pre>
