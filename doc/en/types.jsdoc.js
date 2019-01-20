@@ -108,7 +108,7 @@ const binder = {
 defi.bindNode(obj, 'a', '.my-checkbox', binder);
 @example
 const binder = {
-	on: (callback, bindingOptions) bindingOptions.node.onclick = callback,
+	on: (callback, bindingOptions) => bindingOptions.node.onclick = callback,
 	// ...
 };
 // ...

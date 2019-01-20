@@ -6,7 +6,7 @@
 @summary Binds a property of an object to HTML node, implementing two-way data binding
 @desc It creates a bridge between value of a property and a state of HTML node on the page: from a simple input to a complicated widget (the complexity of elements is unlimited). After using this function, it isn't necessary to monitor the synchronizations between model and view.
 
-> Note that a bunch of common binders (they are explained below) can be found at [common-binders](https://github.com/finom/common-binders) project. Also the function, by default, supports all form elements without need to pass binder argument.
+> Note that a bunch of common binders can be found at [common-binders](https://github.com/defijs/common-binders) project. Also the function, by default, supports all form elements without need to pass binder argument.
 
 The function acepts three arguments: **a property name**, **HTML node** and a **binding rule** (a binder). In its turn, a binder is an ordinary object and it can have the following properties: ``on``, ``getValue``, ``setValue``, ``initialize``, ``destroy`` (Read more here: {@link #typedef-binder}). All the five properties are optional. It also allows to declare one-way data bindings (any direction).
 
@@ -63,7 +63,7 @@ defi.bindNode(obj, 'myKey', '.my-slider', {
 	// how to initialize the widget?
 	// you can initialize the slider in any way,
 	// but 'initialize' function provides some syntactic sugar
-	initialize: ({ node }) =>	$(node).slider({ min: 0, max: 100 }),
+	initialize: ({ node }) => $(node).slider({ min: 0, max: 100 }),
 });
 ```
 
@@ -72,9 +72,9 @@ defi.bindNode(obj, 'myKey', '.my-slider', {
 obj.myKey = 42;
 ```
 
-It looks easy but you may ask a question: "What should I do to avoid writing these rules every time?". Indeed, there can be a lot of elements of the same type on the page: text fields, drop down menus, fields from the HTML5 specification as well as third party widgets (see the example above).
+It looks easy but you may ask a question: "What should I do to avoid writing these rules every time?". Indeed, there can be a lot of elements of the same type on the page: text fields, drop down menus, fields from the HTML5 specification as well as third party widgets.
 
-As observed in this documentation, the third argument is not obligatory for the ones of the ```bindNode``` function (see below). This problem is solved by the {@link defi.defaultBinders} array which contains functions checking an HTML node against a set of rules and returns corresponding binder or ``undefined``. You get an opportunity to reduce your code a great deal, putting  binding rules into a separate part of your code and to use a syntax for binding without the third argument:
+As observed in this documentation, the third argument is not obligatory for the ones of the ```bindNode``` function. This problem is solved by the {@link defi.defaultBinders} array which contains functions checking an HTML node against a set of rules and returns corresponding binder or ``undefined``. You get an opportunity to reduce your code a great deal, putting  binding rules into a separate part of your code and to use a syntax for binding without the third argument:
 ```js
 defi.bindNode(obj, 'myKey', '.my-element');
 ```
@@ -111,7 +111,7 @@ const uiSlider = (min, max) => {
 		on: 'slide',
 		getValue: ({ node }) => $(node).slider('option', 'value'),
 		setValue: (v, { node }) => $(node).slider('option', 'value', v),
-		initialize: ({ node }) => $(node).slider({ min: min, max: max }),
+		initialize: ({ node }) => $(node).slider({ min, max }),
 	}
 };
 ```
@@ -151,11 +151,11 @@ defi.on(obj, 'click::myKey', () => { ... });
 defi.on('click::myKey(.my-inner-element)', () => { ... });
 ```
 
-> If a node is not found ``"Bound element is missing"`` error will be thrown. Check out {@link defi.bindOptionalNode}.
+> If a node is not found ``"Bound element is missing"`` error will be thrown. See an option ``optional: true`` below.
 
 ### Important features of the function and special flags
 
-The fourth argument of ``bindNode`` function is  ``eventOptions``. As usual this object can include special flags or custom data which will be passed to ``bind`` and ``bind:KEY`` event handlers.
+The fourth argument of ``bindNode`` function is  ``options``. As usual this object can include special flags or custom data which will be passed to ``bind`` and ``bind:KEY`` event handlers.
 
 ```js
 defi.on(obj, 'bind:x', evt => {
@@ -250,14 +250,13 @@ defi.bindNode(obj, 'x', node, binder, {
 ```
 
 @see {@link defi.unbindNode}
-@see {@link defi.bindOptionalNode}
 @see {@link defi.defaultBinders}
 
 @param {object} obj - A target object
 @param {string} key - A property name
 @param {string|node|$nodes} node - An HTML element which must be bound to a ``key``
 @param {binder} [binder] - A binder containing the following properties: ``on`` , ``getValue``, ``setValue``, ``initialize``, ``destroy``. You can get more detailed information about binders in their documentation: see {@link #typedef-binder}
-@param {eventOptions} [eventOptions] - An event options which accepts ``"silent"`` (don't fire ``"bind"`` and ``"bind:KEY"``), flags described above or custom data
+@param {object} [options] - Options object which accepts ``"silent"`` (don't fire ``"bind"`` and ``"bind:KEY"``), flags described above or custom data
 @returns {object} object
 
 */
@@ -278,7 +277,7 @@ If ``binder`` arg is passed as the second argument then it wil be used as the bi
 @param {object} obj - A target object
 @param {object} bindings - (see the example)
 @param {binder} [binder] - (see above)
-@param {eventOptions} [eventOptions] - (see above)
+@param {object} [options] - (see above)
 
 @returns {object} object
 
@@ -326,7 +325,7 @@ The second arg object includes common event options for all bindings and extends
 
 @param {object} obj - A target object
 @param {array} batch - A batch of bindings
-@param {eventOptions} [commonEventOptions] - Common event options
+@param {object} [options] - Common event options
 
 @returns {object} object
 
