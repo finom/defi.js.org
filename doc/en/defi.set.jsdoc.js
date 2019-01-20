@@ -6,12 +6,12 @@
 @fires beforechange
 @fires beforechange:KEY
 @summary Sets a property value allowing to pass an event options object
-@desc The list of the supported flags:
+@desc The list of supported flags:
 + ``silent`` -  do not call the ``change`` and ``change:KEY`` events
 + ``silentHTML`` - do not change states of bound HTML nodes
 + ``force`` - call the ``change`` and ``change:KEY`` events even though the property value has not been changed
 + ``forceHTML`` - change a state of bound element even though the property value has not been changed. This option is usable if the bound element has been rendered after the binding (for example, some ``option`` tags have been added to ``select`` tag)
-+ ``skipMediator`` - prevents the property transformation by a mediator (see {@link defi.mediate})
++ ``skipMediator`` - prevents the property transformation by {@link defi.mediate}
 + ``skipCalc`` - prevents the work of dependencies created with {@link defi.calc}
 
 @param {object} obj - A target object

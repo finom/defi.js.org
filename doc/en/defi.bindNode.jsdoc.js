@@ -155,7 +155,7 @@ defi.on('click::myKey(.my-inner-element)', () => { ... });
 
 ### Important features of the function and special flags
 
-The fourth argument of ``bindNode`` function is  ``options``. As usual this object can include special flags or custom data which will be passed to ``bind`` and ``bind:KEY`` event handlers.
+The fourth argument of ``bindNode`` function is  ``options``. This object can include special flags or custom data which will be passed to ``bind`` and ``bind:KEY`` event handlers.
 
 ```js
 defi.on(obj, 'bind:x', evt => {
@@ -164,7 +164,7 @@ defi.on(obj, 'bind:x', evt => {
 defi.bindNode(obj, 'x', node, binder, { foo: 'bar' });
 ```
 
-To understand important features of ``bindNode`` it is required to read information below but it's not required to remember all these flags.
+To understand important features of ``bindNode`` it is important to read information below but it's not required to remember all these flags.
 
 #### A flag ``exactKey=false``
 
@@ -205,7 +205,7 @@ When ``setValue`` is given then the value of the property will be set as element
 
 #### Flags ``debounceGetValue=true`` and ``debounceSetValue=true``
 
-One of the most important feature of ``bindNode`` is that the logic of property change and the logic of element state change uses debounce pattern. It means that if bound property is changed many times in a short time then bound element state will be updated only once after small delay (thanks to ``debounceSetValue=true``). If element state is changed many times in a short time (eg corresponding DOM event is triggered), the property gets new value only once after minimum delay (thanks to ``debounceGetValue=true``).
+One of the most important feature of ``bindNode`` is that the logic of property change and the logic of element state change uses the debounce pattern. It means that if bound property is changed many times in a short time then bound element state will be updated only once after small delay (thanks to ``debounceSetValue=true``). If element state is changed many times in a short time (eg corresponding DOM event is triggered), the property gets new value only once after minimum delay (thanks to ``debounceGetValue=true``).
 
 ```js
 const input = document.querySelector('.my-input');
@@ -229,7 +229,7 @@ These flags allow to set debounce delay. ``debounceSetValueDelay`` is used when 
 
 #### A flags ``optional=false``
 
-``bindNode`` doesn't throw an error if ``optional: true`` is set.
+``bindNode`` doesn't throw an error of missing node if ``optional: true`` is set.
 
 #### A flag ``useExactBinder=false``
 
@@ -305,54 +305,5 @@ defi.bindNode(obj, {
 	setValue(value) {
 		foo(value);
 	}
-});
-*/
-
-
-/**
-@function defi.bindNode
-@variation 3
-@summary Alternative syntax which makes possible to define unlimited amount of bindings per one ``bindNode`` call.
-
-@desc The function variation allows to pass an array of objects which need to include the following properties:
-
-- ``key`` - a property name
-- ``node`` - an HTML element which must be bound to a ``key``
-- ``binder`` - a binder (optional)
-- ``event`` - event options (optional)
-
-The second arg object includes common event options for all bindings and extends ``event`` object (properties from ``event`` has more priority).
-
-@param {object} obj - A target object
-@param {array} batch - A batch of bindings
-@param {object} [options] - Common event options
-
-@returns {object} object
-
-@example
-defi.bindNode(obj, [{
-	key: 'a',
-	node: '.my-node',
-	binder: {
-		setValue(v) {
-			doSomething(v);
-		}
-	}
-}, {
-	key: 'b',
-	node: document.querySelectorAll('.bar')
-	event: {
-		foo: 'bar'
-	}
-}, {
-	key: 'c.d.e',
-	node: jQuery('.baz'),
-	binder: defi.binders.html(),
-	event: {
-		silent: true,
-		exactKey: true
-	}
-}], {
-	getValueOnBind: false
 });
 */

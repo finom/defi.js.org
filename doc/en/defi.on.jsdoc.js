@@ -11,7 +11,7 @@
 @param {object} obj - A target object
 @param {eventNames} names - An event name or some names which are separated by a space (for example, ``"change:x ajaxcomplete change:y"``)
 @param {eventHandler} callback - A function which is caused by the event
-@param {object} options - Options object where``triggerOnInit`` (boolean) makes the handler called immediately after event initialization, ``once`` (boolean) makes the handler called only once, ``debounce`` (boolean or # of milliseconds) debounces the handler
+@param {object} options - Options object where ``triggerOnInit`` (boolean) makes the handler called immediately after event initialization, ``once`` (boolean) makes the handler called only once, ``debounce`` (boolean or # of milliseconds) debounces the handler
 @returns {object} obj
 @example
 defi.on(obj, 'foo', () => {
@@ -25,6 +25,15 @@ defi.trigger(obj, 'foo');
 defi.on(obj, 'foo', () => {
 	alert('bar');
 }, { triggerOnInit: true });
+
+@example <caption>Calling a handler only once</caption>
+defi.on(obj, 'foo', () => {
+	alert('bar');
+}, { once: true });
+
+defi.trigger(obj, 'foo'); // displays "bar"
+defi.trigger(obj, 'foo'); // does nothing
+defi.trigger(obj, 'foo'); // does nothing
 */
 
 /**

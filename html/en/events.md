@@ -158,7 +158,9 @@ defi.on(object, 'removeevent', handler);
 defi.on(object, 'removeevent:someevent', handler);
 ```
 
-One of the ways of its application can be the use of defi.js as an event engine of a third-party library. Let’s say, you want to place all handlers of all external libraries into one [on](#!defi.on) call, having made the code more readable and compact. With the help of ``addevent`` you catch all further event initializations, and in the handler you check an event name against some conditions and initialize an event using API of a third-party library. In the example below there’s a code from a project which uses Fabric.js. ``"addevent"`` handler checks an event name for the presence of ``"fabric:"`` prefix and if checking is passed, it adds the corresponding handler to the canvas with the help of Fabric API.
+One of the ways of its application can be the use of defi.js as an event engine of a third-party library. Let’s say, you want to place all handlers of all external libraries into one [on](#!defi.on) call, having made the code more readable and compact. With the help of ``addevent`` you catch all further event initializations, and in the handler you check an event name against some conditions and initialize an event using API of a third-party library.
+
+In the example below there’s a code from a project which uses Fabric.js. ``"addevent"`` handler checks an event name for the presence of ``"fabric:"`` prefix and if checking is passed, it adds the corresponding handler to the canvas with the help of Fabric API.
 
 ```js
 object.canvas = new fabric.Canvas(node);

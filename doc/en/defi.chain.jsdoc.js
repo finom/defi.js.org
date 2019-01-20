@@ -3,7 +3,7 @@
 @module defi/chain
 @summary Allows chained calls of defi.js functions
 
-@desc The function accepts any object and returns an instance of externally inaccessible class which adopts function allowing them to be called in a chain to change given object.
+@desc The function accepts any object and returns an instance of a class which adopts functions allowing them to be called in a chain.
 
 @param {object} obj - An object
 @returns {object} An instance of the class which adopts defi functions

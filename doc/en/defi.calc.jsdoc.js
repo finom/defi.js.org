@@ -4,7 +4,7 @@
 @summary Creates a dependency of one property value on values of others
 @desc ``calc`` creates a dependency of a property (``target`` argument) on values of other properties (``source`` argument). When source property is changed, ``target`` is re-calculated automatically.
 
-``source`` arg has few variations.
+``source`` arg has a few variations.
 
 #### A string
 
@@ -93,7 +93,7 @@ const someObject = {
 };
 
 defi.calc(obj, 'a', ['b', 'c', {
-	object: someObjectX,
+	object: someObject,
 	key: ['d', 'e']
 }], (b, c, d, e) => b + c + d + e);
 
@@ -167,7 +167,7 @@ defi.set(obj, 'b', newValue, {
 
 ### Important features of the function and special flags
 
-The fifth argument of ``calc`` function is  ``eventOptions``. As usual this object can include special flags or custom data which will be passed to ``change:TARGET`` event handler.
+The fifth argument of ``calc`` function is ``options`` (you also can call them just "options"). As usual this object can include special flags or custom data which will be passed to ``change:TARGET`` event handler.
 
 ```js
 defi.on(obj, 'change:a', evt => {
@@ -319,7 +319,7 @@ defi.calc(obj, 'response', 'data', async (data) => {
 @param {string} targetKey - A property which needs to be calculated
 @param {string|array} source - Which properties the target property is depended on
 @param {function} [handler=(v)=>v] - A function which returns a new value
-@param {eventOptions} [eventOptions] - An object which can contain some special flags or data for ``change:KEY`` handler (see above)
+@param {object} [options] - An object which can contain some special flags or data for ``change:KEY`` handler
 
 @example
 
@@ -359,15 +359,15 @@ obj.a = 5;
 
 - ``source`` - which properties the target property is depended on;
 - ``handler`` - a function which returns a new value of a property (by default it equals to ``(value) => value``);
-- ``event`` - event options.
+- ``options`` - calc options.
 
-The third argument contains common event options which extend ``event`` of every item (properties of ``event`` have higher priority).
+The third argument contains common options which extend ``options`` of every item (but they still have higher priority than common options).
 
 ``source`` can take any kind of look as {@link defi.calc described above} (a string, an array of strings etc).
 
 @param {object} obj - A target object
 @param {array} batch - An object which includes all information about calculated properties
-@param {eventOptions} [commonEventOptions] - Event options which are common for all listed calculated properties
+@param {object} [options] - Options which are common for all listed calculated properties
 
 @example
 
@@ -381,7 +381,7 @@ defi.calc(obj, {
 	        object: someObject,
 	        key: 'c'
 	    },
-	    event: {
+	    options: {
 	        setOnInit: false
 	    }
 	},

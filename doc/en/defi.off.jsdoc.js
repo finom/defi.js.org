@@ -7,8 +7,6 @@
 @desc It deletes a handler which has been created before. All arguments (except of a target object of course) are optional. You can delete both all the events (without passing event names) and separate ones (having passed only the event name, the event name and the handler).
 
 @see {@link defi.on}
-@see {@link defi.once}
-@see {@link defi.onDebounce}
 @see {@link defi.trigger}
 
 @param {object} obj - A target object
