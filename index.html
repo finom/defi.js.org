@@ -433,7 +433,7 @@
 	<hr>
 	<span class="nav-heading">Info</span>
 	<hr>
-	<a>Last update 21.1.2019</a>
+	<a>Last update 25.8.2019</a>
 </nav>
 
 
@@ -1970,7 +1970,7 @@ alert(typeof obj.z); // "boolean"</code></pre>
 					<td>
 	<span data-type="eventNames">eventNames</span>
 </td>
-					<td> <p>A list of event names which are separated by spaces (for example, <code>&quot;change:x ajaxcomplete change:y&quot;</code>)</p>
+					<td> <p>An event name or a an array of event names</p>
 </td>
 				</tr>
 			
@@ -2008,7 +2008,8 @@ alert(typeof obj.z); // "boolean"</code></pre>
 	<h3>Examples</h3>
 
 
-<pre><code class="lang-js">defi.off(obj, 'change:x bind');</code></pre>
+<pre><code class="lang-js">defi.off(obj, 'change:x');
+defi.off(obj, ['change:x', 'bind']);</code></pre>
 
     <h4><p>The deletion of all events</p>
 </h4>
@@ -2099,7 +2100,7 @@ defi.off(obj, 'change:x', handler);</code></pre>
 					<td>
 	<span data-type="eventNames">eventNames</span>
 </td>
-					<td> <p>An event name or some names which are separated by a space (for example, <code>&quot;change:x ajaxcomplete change:y&quot;</code>)</p>
+					<td> <p>An event name or an array of names</p>
 </td>
 				</tr>
 			
@@ -2154,6 +2155,29 @@ defi.off(obj, 'change:x', handler);</code></pre>
 
 defi.trigger(obj, 'foo');</code></pre>
 
+    <h4><p>Using Symbol as an event name</p>
+</h4>
+
+<pre><code class="lang-js">const foo = Symbol('foo');
+defi.on(obj, foo, () => {
+	alert('A custom Event is fired');
+});
+
+defi.trigger(obj, foo);</code></pre>
+
+    <h4><p>Using an array of event names</p>
+</h4>
+
+<pre><code class="lang-js">const bar = Symbol('foo');
+
+defi.on(obj, ['foo', bar, 'baz'], () => {
+	alert('A custom Event is fired');
+});
+
+defi.trigger(obj, 'foo');
+defi.trigger(obj, bar);
+defi.trigger(obj, 'baz');</code></pre>
+
     <h4><p>Calling a handler immediately after event initialization</p>
 </h4>
 
@@ -2188,7 +2212,7 @@ defi.trigger(obj, 'foo'); // does nothing</code></pre>
 	
 	<div class="summary"><p>Alternative syntax: &quot;eventname-handler&quot; pairs</p>
 </div>
-	<div class="description"><p>In the <a href="#!defi.on">defi.on</a> function the object with the key-element pairs can be passed to avoid multiple invocation of the function and reduce your code.</p>
+	<div class="description"><p>In the <a href="#!defi.on">defi.on</a> function the object with the key-event pairs can be passed to avoid multiple invocation of the function.</p>
 </div>
 	
 	
@@ -2272,6 +2296,7 @@ defi.trigger(obj, 'foo'); // does nothing</code></pre>
 	'custom': evt => ...,
 	'click::x': evt => ...,
 	'change:y': evt => ...,
+	[Symbol.for('a symbolic event')]: evt => ...,
 });</code></pre>
 
  
@@ -2703,7 +2728,7 @@ defi.set(obj, 'myKey', 4, {
 					<td>
 	<span data-type="eventNames">eventNames</span>
 </td>
-					<td> <p>An event name or some names which are separated by a space</p>
+					<td> <p>An event name or an array of names</p>
 </td>
 				</tr>
 			
@@ -2741,7 +2766,7 @@ defi.set(obj, 'myKey', 4, {
 	<h3>Examples</h3>
 
 
-<pre><code class="lang-js">defi.on(obj, 'foo bar', (a, b, c) => {
+<pre><code class="lang-js">defi.on(obj, ['foo', 'bar'], (a, b, c) => {
 	alert(a + b + c);
 });
 defi.trigger(obj, 'foo', 1, 2, 3); // alerts 6</code></pre>
@@ -3057,7 +3082,7 @@ defi.bindNode(obj, 'myKey', '.foo.bar');</code></pre>
 <article class="item typedef" data-typedef="eventHandler">
 	<i class="close-modal"></i>
 	<h2>
-		eventHandler:
+		eventHandler
 			<span data-type="function">function</span>
 		
 	</h2>
@@ -3117,15 +3142,17 @@ defi.trigger(obj, 'fyeah', 'foo', 'bar', 'baz');</code></pre>
 <article class="item typedef" data-typedef="eventNames">
 	<i class="close-modal"></i>
 	<h2>
-		eventNames:
+		eventNames
 			<span data-type="string">string</span>
+		
+			<span data-type="symbol">symbol</span>
 		
 	</h2>
 
-	<p>Event name or space-delimited list of event names.</p>
+	<p>Event name or an array of event names.</p>
 <h5 id="custom-events">Custom events.</h5>
-<pre><code class="language-js">defi.on(obj, &#39;myevent&#39;, () =&gt; {...});
-defi.trigger(obj, &#39;myevent&#39;);</code></pre>
+<pre><code class="language-js">defi.on(obj, [&#39;myevent1&#39;, Symbol.for(&#39;myevent2&#39;)], () =&gt; {...});
+defi.trigger(obj, Symbol.for(&#39;myevent2&#39;));</code></pre>
 <h5 id="changekey-which-is-triggered-every-time-when-a-property-is-changed"><code>change:KEY</code> which is triggered every time when a property is changed.</h5>
 <pre><code class="language-js">defi.on(obj, &#39;change:x&#39;, evt =&gt; {...});
 obj.x = 42;</code></pre>
@@ -3160,7 +3187,7 @@ defi.on(obj, &#39;click::x(.my-button)&#39;, evt =&gt; {
     alert(&#39;clicked &quot;.my-button&quot;&#39;);
 });</code></pre>
 <h5 id="delegated-events-pathevent-where-path-is-a-path-to-a-target-object-whose-events-we-want-to-listen-event-is-an-event-name">Delegated events: <code>PATH@EVENT</code>, where PATH is a path to a target object whose events we want to listen, EVENT is an event name.</h5>
-<pre><code class="language-js">defi.on(obj,&#39;a@someevent&#39;, () =&gt; {...});
+<pre><code class="language-js">defi.on(obj, &#39;a@someevent&#39;, () =&gt; {...});
 defi.on(obj, &#39;a.b.c@change:d&#39;, () =&gt; {...});</code></pre>
 <h5 id="any-combinations-all-events-described-above-can-be-combined">Any combinations. All events described above can be combined.</h5>
 <pre><code class="language-js">defi.on(obj, &#39;x.y.z@click::u(.my-selector)&#39;, () =&gt; {...});</code></pre>
@@ -3182,7 +3209,7 @@ defi.on(obj, &#39;a.b.c@change:d&#39;, () =&gt; {...});</code></pre>
 <article class="item typedef" data-typedef="binder">
 	<i class="close-modal"></i>
 	<h2>
-		binder:
+		binder
 			<span data-type="object">object</span>
 		
 	</h2>
@@ -3253,7 +3280,7 @@ defi.on(obj, &#39;a.b.c@change:d&#39;, () =&gt; {...});</code></pre>
 					<td>
 	<span data-type="function">function</span>
 
-					<td><p>A function which is called before binding is launched. For example it can initialize jQuery plugin or something else</p>
+					<td><p>A function which is called before binding is launched. For example it can initialize a JavaScript plugin or something else</p>
 
 				</tr>
 			
@@ -3305,7 +3332,7 @@ defi.bindNode(obj, 'a', '.my-checkbox', binder);</code></pre>
 <article class="item typedef" data-typedef="eventOptions">
 	<i class="close-modal"></i>
 	<h2>
-		eventOptions:
+		eventOptions
 			<span data-type="object">object</span>
 		
 	</h2>
@@ -3380,7 +3407,7 @@ defi.set(obj, 'a', 2, eventOptions); // alerts "yeah"</code></pre>
 		$nodes
 	</h2>
 
-	<p>DOM nodes collection. For example, jQuery instance or NodeList.</p>
+	<p>DOM nodes collection (NodeList, array, etc).</p>
 
 	
 
@@ -3420,6 +3447,33 @@ $nodes = document.querySelectorAll('.bar');</code></pre>
 
 
 <pre><code class="lang-js">const foo = 'bar';</code></pre>
+
+ 
+
+</article>
+
+
+	
+<article class="item typedef" data-typedef="symbol">
+	<i class="close-modal"></i>
+	<h2>
+		symbol
+	</h2>
+
+	<p>A symbol</p>
+
+	
+
+	
+
+	
+
+	
+	<h3>Examples</h3>
+
+
+<pre><code class="lang-js">const foo = Symbol('foo');
+const bar = Symbol.for('bar');</code></pre>
 
  
 
