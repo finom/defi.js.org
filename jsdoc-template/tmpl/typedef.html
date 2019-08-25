@@ -1,12 +1,12 @@
 <?js
-	var type = obj.type && obj.type.names[0];
+	var types = obj.type ? obj.type.names : [];
 ?>
 <article class="item typedef" data-typedef="<?js= obj.longname ?>">
 	<i class="close-modal"></i>
 	<h2>
-		<?js= obj.name ?><?js if( type ) { ?>:
+		<?js= obj.name ?><?js types.forEach( function( type ) { ?>
 			<span data-type="<?js= type ?>"><?js= type ?></span>
-		<?js } ?>
+		<?js }, this ) ?>
 	</h2>
 
 	<?js= obj.description ?>

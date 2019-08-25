@@ -10,11 +10,12 @@
 @see {@link defi.trigger}
 
 @param {object} obj - A target object
-@param {eventNames} [names] - A list of event names which are separated by spaces (for example, ``"change:x ajaxcomplete change:y"``)
+@param {eventNames} [names] - An event name or a an array of event names
 @param {eventHandler} [callback] - A function-handler
 @returns {object} obj
 @example
-defi.off(obj, 'change:x bind');
+defi.off(obj, 'change:x');
+defi.off(obj, ['change:x', 'bind']);
 @example <caption>The deletion of all events</caption>
 defi.off(obj);
 @example <caption>The deletion of an event with definite handler</caption>

@@ -13,12 +13,12 @@ defi.trigger(obj, 'fyeah', 'foo', 'bar', 'baz');
 
 
 /**
-Event name or space-delimited list of event names.
+Event name or an array of event names.
 
 ##### Custom events.
 ```js
-defi.on(obj, 'myevent', () => {...});
-defi.trigger(obj, 'myevent');
+defi.on(obj, ['myevent1', Symbol.for('myevent2')], () => {...});
+defi.trigger(obj, Symbol.for('myevent2'));
 ```
 
 ##### ``change:KEY`` which is triggered every time when a property is changed.
@@ -76,7 +76,7 @@ defi.on(obj, 'click::x(.my-button)', evt => {
 
 ##### Delegated events: ``PATH@EVENT``, where PATH is a path to a target object whose events we want to listen, EVENT is an event name.
 ```js
-defi.on(obj,'a@someevent', () => {...});
+defi.on(obj, 'a@someevent', () => {...});
 defi.on(obj, 'a.b.c@change:d', () => {...});
 ```
 
@@ -84,7 +84,7 @@ defi.on(obj, 'a.b.c@change:d', () => {...});
 ```js
 defi.on(obj, 'x.y.z@click::u(.my-selector)', () => {...});
 ```
-@typedef {string} eventNames
+@typedef {string|symbol} eventNames
 */
 
 
@@ -94,7 +94,7 @@ defi.on(obj, 'x.y.z@click::u(.my-selector)', () => {...});
 @property {string|function} [on] - DOM event (or space-delimited list of events) which tells when the node state is changed. Besides, it accepts a function as a value if you need to customize a listener definition
 @property {function} [getValue] - A function which tells how to retrieve a value (state) from HTML node when DOM event is fired
 @property {function} [setValue] - A function which tells how to change DOM node when the property value is changed
-@property {function} [initialize] - A function which is called before binding is launched. For example it can initialize jQuery plugin or something else
+@property {function} [initialize] - A function which is called before binding is launched. For example it can initialize a JavaScript plugin or something else
 @property {function} [destroy] - A function which is called when a binding is removed using ``unbindNode`` function
 @example
 const binder = {
@@ -149,7 +149,7 @@ const node = document.querySelector('.foo');
 */
 
 /**
-DOM nodes collection. For example, jQuery instance or NodeList.
+DOM nodes collection (NodeList, array, etc).
 @typedef $nodes
 @example
 let $nodes = $('.foo');
@@ -161,6 +161,14 @@ A string
 @typedef string
 @example
 const foo = 'bar';
+*/
+
+/**
+A symbol
+@typedef symbol
+@example
+const foo = Symbol('foo');
+const bar = Symbol.for('bar');
 */
 
 /**
