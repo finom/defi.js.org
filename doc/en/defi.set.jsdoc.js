@@ -13,6 +13,7 @@
 + ``forceHTML`` - change a state of bound element even though the property value has not been changed. This option is usable if the bound element has been rendered after the binding (for example, some ``option`` tags have been added to ``select`` tag)
 + ``skipMediator`` - prevents the property transformation by {@link defi.mediate}
 + ``skipCalc`` - prevents the work of dependencies created with {@link defi.calc}
++ ``define`` - makes the property to be "listenable" by `"change"` event by setting defi-specific accessors
 
 @param {object} obj - A target object
 @param {string} key - A key
