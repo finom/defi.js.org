@@ -21,5 +21,5 @@ module.exports = (dirname, item) => {
 
     checkExistence(path.resolve(root, relativeFilePath))
 
-    return 'https://github.com/defijs/defi.js.org/blob/master/' + escapedFilePath + linenoSuffix;
+    return 'https://github.com/finom/defi.js.org/blob/master/' + escapedFilePath + linenoSuffix;
 }

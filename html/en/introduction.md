@@ -1,6 +1,6 @@
 ## [Introduction](#!introduction)
 
-> Before we start, in case if you found an inaccuracy or a typo on this page, feel free to open an issue [here](https://github.com/defijs/defi.js.org).
+> Before we start, in case if you found an inaccuracy or a typo on this page, feel free to open an issue [here](https://github.com/finom/defi.js.org).
 
 **defi.js** bunch of utilities that enable accessor-based reactivity for JavaScript objects.
 
@@ -16,7 +16,7 @@ const { bindNode, calc } = require('defi');
 bindNode(obj, 'key', node)
 ```
 
-Or [downloaded to be used as a global variable](https://github.com/defijs/defi/tree/gh-pages)
+Or [downloaded to be used as a global variable](https://github.com/finom/defi/tree/gh-pages)
 
 ```js
 // use defi as a global variable
@@ -73,11 +73,11 @@ const htmlBinder = {
 defi.bindNode(obj, 'greeting', '.greeting', htmlBinder)
 ```
 
-Also you can use ``html`` from [common-binders](https://github.com/defijs/common-binders) (a collection of binders of general purpose).
+Also you can use ``html`` from [common-binders](https://github.com/finom/defi/tree/master/packages/common-binders) (a collection of binders of general purpose).
 
 ```js
 const { html } = require('common-binders');
 defi.bindNode(obj, 'greeting', '.greeting', html())
 ```
 
-> Also check out [defi-router](https://github.com/defijs/defi-router) - a routing library for defi.js.
+> Also check out [defi-router](https://github.com/finom/defi/tree/master/packages/router) - a routing library for defi.js.
