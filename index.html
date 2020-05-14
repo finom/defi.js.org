@@ -1,41 +1,4 @@
-
-
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>defi.js - JavaScript data binding without framework</title>
-		<meta name="description" content="defi.js - JavaScript data binding without framework">
-		<meta name="viewport" content="initial-scale=1, width=device-width">
-		<meta charset="UTF-8">
-		<link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
-		<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
-		<link rel="manifest" href="icons/site.webmanifest">
-		<link rel="mask-icon" href="icons/safari-pinned-tab.svg" color="#61b594">
-		<link rel="shortcut icon" href="icons/favicon.ico">
-		<meta name="msapplication-TileColor" content="#61b594">
-		<meta name="msapplication-config" content="icons/browserconfig.xml">
-		<meta name="theme-color" content="#ffffff">
-		<link rel="dns-prefetch" href="//google-analytics.com/">
-		<meta name="apple-mobile-web-app-title" content="defi.js - JavaScript data binding without framework">
-		<meta name="application-name" content="defi.js - JavaScript data binding without framework">
-		<meta name="msapplication-TileColor" content="#00aba9">
-		<meta name="msapplication-TileImage" content="icons/mstile-144x144.png">
-		<meta name="msapplication-config" content="icons/browserconfig.xml">
-		<meta name="theme-color" content="#8BC34A">
-		<meta name="google-site-verification" content="h6PRRaItZUtT98WEfeFWdOwlBs3eYUaq4EnFjBLtvAM">
-		<meta property="og:image" content="https://defi.js.org/img/og_logo.png">
-		<meta property="og:title" content="defi.js - JavaScript data binding without framework"/>
-		<meta property="og:url" content="https://defi.js.org"/>
-		<meta property="og:site_name" content="defi.js"/>
-
-		<meta name="twitter:title" content="defi.js">
-		<meta name="twitter:description" content="defi.js - JavaScript data binding without framework">
-		<meta name="twitter:image" content="https://defi.js.org/img/og_logo.png">
-		<meta name="twitter:card" content="https://defi.js.org/img/logo.png">
-
-		<style>
-			.loader {
+<!doctype html><html><head><title>defi.js - JavaScript data binding without framework</title><meta name="description" content="defi.js - JavaScript data binding without framework"><meta name="viewport" content="initial-scale=1,width=device-width"><meta charset="UTF-8"><link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png"><link rel="manifest" href="icons/site.webmanifest"><link rel="mask-icon" href="icons/safari-pinned-tab.svg" color="#61b594"><link rel="shortcut icon" href="icons/favicon.ico"><meta name="msapplication-TileColor" content="#61b594"><meta name="msapplication-config" content="icons/browserconfig.xml"><meta name="theme-color" content="#ffffff"><link rel="dns-prefetch" href="//google-analytics.com/"><meta name="apple-mobile-web-app-title" content="defi.js - JavaScript data binding without framework"><meta name="application-name" content="defi.js - JavaScript data binding without framework"><meta name="msapplication-TileColor" content="#00aba9"><meta name="msapplication-TileImage" content="icons/mstile-144x144.png"><meta name="msapplication-config" content="icons/browserconfig.xml"><meta name="theme-color" content="#8BC34A"><meta name="google-site-verification" content="h6PRRaItZUtT98WEfeFWdOwlBs3eYUaq4EnFjBLtvAM"><meta property="og:image" content="https://defi.js.org/img/og_logo.png"><meta property="og:title" content="defi.js - JavaScript data binding without framework"/><meta property="og:url" content="https://defi.js.org"/><meta property="og:site_name" content="defi.js"/><meta name="twitter:title" content="defi.js"><meta name="twitter:description" content="defi.js - JavaScript data binding without framework"><meta name="twitter:image" content="https://defi.js.org/img/og_logo.png"><meta name="twitter:card" content="https://defi.js.org/img/logo.png"><style>.loader {
 				position: fixed;
 				width: 100%;
 				height: 100%;
@@ -63,389 +26,25 @@
 			@keyframes loader-spin {
 			    0% { transform: rotate(0deg); }
 			    100% { transform: rotate(360deg); }
-			}
-		</style>
-	<link href="css/style.css" rel="stylesheet"></head>
-	<body>
-		<div class="loader">
-			<div class="loader-inner"> </div>
-		</div>
-		<link rel="stylesheet" href="css/fonts.css">
-		<link rel="stylesheet" href="css/style.css">
-
-		<header>
-			<div class="header-content">
-				<i class="show-nav"></i>
-				<div class="inner"></div>
-				<i class="show-search"></i>
-			</div>
-			<div class="search-content">
-				<i class="back"></i><input type="text" class="search">
-				<ul class="search-results-dropdown"></ul>
-			</div>
-		</header>
-		<iframe id="typo-iframe" class="hide" name="typo-iframe"></iframe>
-		<iframe id="notification-iframe" class="hide" name="notification-iframe"></iframe>
-		<form class="hide notification-form" method="POST" target="notification-iframe">
-			<input type="hidden" class="page">
-			<input type="hidden" class="text">
-			<input type="hidden" class="type">
-		</form>
-		<nav>
-	<span class="view-switcher">
-		<span data-value="all" class="checked">Everything</span><span data-value="per-one">One by one</span>
-	</span>
-	<span class="nav-heading">Start</span>
-	<a href="#!home">Home</a>
-	<a href="#!introduction">Introduction</a>
-	<hr>
-	<div class="api">
-		
-		<ul>
-			
-				<li><span class="nav-heading">Static Methods</span></li>
-			
-
-			
-				<li>
-					<a href="#!defi.bindNode"
-						title="Binds a property of an object to HTML node, implementing two-way data binding
-"
-						data-name="bindNode"
-						
-					>
-						bindNode
-						
-							<span class="expand"></span>
-							<span class="hidden-active-child"></span>
-						
-					</a>
-
-					
-						<div class="submenu-wrapper">
-							<ul data-submenu="!defi.bindNode">
-								
-									<li>
-										<a href="#!defi.bindNode(2)"
-											title="Alternative syntax: passing of an object
-"
-											data-name="bindNode#2"
-											
-										>
-											#2
-										</a>
-									</li>
-								
-							</ul>
-						</div>
-					
-				</li>
-
-			
-				<li>
-					<a href="#!defi.bound"
-						title="Returns a bound element
-"
-						data-name="bound"
-						
-					>
-						bound
-						
-					</a>
-
-					
-				</li>
-
-			
-				<li>
-					<a href="#!defi.calc"
-						title="Creates a dependency of one property value on values of others
-"
-						data-name="calc"
-						
-					>
-						calc
-						
-							<span class="expand"></span>
-							<span class="hidden-active-child"></span>
-						
-					</a>
-
-					
-						<div class="submenu-wrapper">
-							<ul data-submenu="!defi.calc">
-								
-									<li>
-										<a href="#!defi.calc(batch)"
-											title="Extra syntax for defi.calc. Allows to define few calculated properties per single call of the function.
-"
-											data-name="calc#batch"
-											
-										>
-											#batch
-										</a>
-									</li>
-								
-							</ul>
-						</div>
-					
-				</li>
-
-			
-				<li>
-					<a href="#!defi.chain"
-						title="Allows chained calls of defi.js functions
-"
-						data-name="chain"
-						
-					>
-						chain
-						
-					</a>
-
-					
-				</li>
-
-			
-				<li>
-					<a href="#!defi.lookForBinder"
-						title=""
-						data-name="lookForBinder"
-						
-					>
-						lookForBinder
-						
-					</a>
-
-					
-				</li>
-
-			
-				<li>
-					<a href="#!defi.mediate"
-						title="Transforms property value on its changing
-"
-						data-name="mediate"
-						
-					>
-						mediate
-						
-							<span class="expand"></span>
-							<span class="hidden-active-child"></span>
-						
-					</a>
-
-					
-						<div class="submenu-wrapper">
-							<ul data-submenu="!defi.mediate">
-								
-									<li>
-										<a href="#!defi.mediate(2)"
-											title="Alternative syntax of the defi.mediate function which accepts &quot;key-mediator&quot; object as an argument
-"
-											data-name="mediate#2"
-											
-										>
-											#2
-										</a>
-									</li>
-								
-							</ul>
-						</div>
-					
-				</li>
-
-			
-				<li>
-					<a href="#!defi.off"
-						title="Deletes an event handler
-"
-						data-name="off"
-						
-					>
-						off
-						
-					</a>
-
-					
-				</li>
-
-			
-				<li>
-					<a href="#!defi.on"
-						title="Adds an event handler
-"
-						data-name="on"
-						
-					>
-						on
-						
-							<span class="expand"></span>
-							<span class="hidden-active-child"></span>
-						
-					</a>
-
-					
-						<div class="submenu-wrapper">
-							<ul data-submenu="!defi.on">
-								
-									<li>
-										<a href="#!defi.on(2)"
-											title="Alternative syntax: &quot;eventname-handler&quot; pairs
-"
-											data-name="on#2"
-											
-										>
-											#2
-										</a>
-									</li>
-								
-							</ul>
-						</div>
-					
-				</li>
-
-			
-				<li>
-					<a href="#!defi.remove"
-						title="Deletes a property and removes dependent handlers
-"
-						data-name="remove"
-						
-					>
-						remove
-						
-					</a>
-
-					
-				</li>
-
-			
-				<li>
-					<a href="#!defi.set"
-						title="Sets a property value allowing to pass an event options object
-"
-						data-name="set"
-						
-					>
-						set
-						
-							<span class="expand"></span>
-							<span class="hidden-active-child"></span>
-						
-					</a>
-
-					
-						<div class="submenu-wrapper">
-							<ul data-submenu="!defi.set">
-								
-									<li>
-										<a href="#!defi.set(2)"
-											title="Alternative &quot;key-value&quot; syntax of the defi.set function
-"
-											data-name="set#2"
-											
-										>
-											#2
-										</a>
-									</li>
-								
-							</ul>
-						</div>
-					
-				</li>
-
-			
-				<li>
-					<a href="#!defi.trigger"
-						title="Fires an event
-"
-						data-name="trigger"
-						
-					>
-						trigger
-						
-					</a>
-
-					
-				</li>
-
-			
-				<li>
-					<a href="#!defi.unbindNode"
-						title="Destroys a binding between given property and HTML node
-"
-						data-name="unbindNode"
-						
-					>
-						unbindNode
-						
-							<span class="expand"></span>
-							<span class="hidden-active-child"></span>
-						
-					</a>
-
-					
-						<div class="submenu-wrapper">
-							<ul data-submenu="!defi.unbindNode">
-								
-									<li>
-										<a href="#!defi.unbindNode(2)"
-											title="Alternative syntax which allows to pass an object with bindings to unbindNode. Look at defi.bindNode(2) for more information
-"
-											data-name="unbindNode#2"
-											
-										>
-											#2
-										</a>
-									</li>
-								
-							</ul>
-						</div>
-					
-				</li>
-
-			
-
-			
-				<li><span class="nav-heading">Static Props</span></li>
-			
-			
-				<li>
-					<a
-						href="#!defi.defaultBinders"
-						title="An array of functions which return a corresponding binder or a falsy value
-"
-						data-name="defaultBinders"
-						
-					>
-						defaultBinders
-					</a>
-				</li>
-			
-		</ul>
-
-
-	</div>
-	<hr>
-	<span class="nav-heading">Articles</span>
-	<a href="#!events">Events</a>
-	<hr>
-	<span class="nav-heading">Info</span>
-	<hr>
-	<a>Last update 16.1.2020</a>
-</nav>
-
-
-<main>
-	<section id="promo">
-	<article id="!home">
-		<img alt="defi.js" src="https://defijs.github.io/assets/logo.svg" />
-
-		<div class="demo">
-			<output class="out">Data binding without framework</output>
-			<input type="text" class="in">
-			<pre><code class="lang-html">&lt;input class=&quot;in&quot; type=&quot;text&quot;&gt;
+			}</style><link href="css/style.css" rel="stylesheet"></head><body><div class="loader"><div class="loader-inner"></div></div><link rel="stylesheet" href="css/fonts.css"><link rel="stylesheet" href="css/style.css"><header><div class="header-content"><i class="show-nav"></i><div class="inner"></div><i class="show-search"></i></div><div class="search-content"><i class="back"></i><input class="search"><ul class="search-results-dropdown"></ul></div></header><iframe id="typo-iframe" class="hide" name="typo-iframe"></iframe><iframe id="notification-iframe" class="hide" name="notification-iframe"></iframe><form class="hide notification-form" method="POST" target="notification-iframe"><input type="hidden" class="page"> <input type="hidden" class="text"> <input type="hidden" class="type"></form><nav><span class="view-switcher"><span data-value="all" class="checked">Everything</span><span data-value="per-one">One by one</span> </span><span class="nav-heading">Start</span> <a href="#!home">Home</a> <a href="#!introduction">Introduction</a><hr><div class="api"><ul><li><span class="nav-heading">Static Methods</span></li><li><a href="#!defi.bindNode" title="Binds a property of an object to HTML node, implementing two-way data binding
+" data-name="bindNode">bindNode <span class="expand"></span> <span class="hidden-active-child"></span></a><div class="submenu-wrapper"><ul data-submenu="!defi.bindNode"><li><a href="#!defi.bindNode(2)" title="Alternative syntax: passing of an object
+" data-name="bindNode#2">#2</a></li></ul></div></li><li><a href="#!defi.bound" title="Returns a bound element
+" data-name="bound">bound</a></li><li><a href="#!defi.calc" title="Creates a dependency of one property value on values of others
+" data-name="calc">calc <span class="expand"></span> <span class="hidden-active-child"></span></a><div class="submenu-wrapper"><ul data-submenu="!defi.calc"><li><a href="#!defi.calc(batch)" title="Extra syntax for defi.calc. Allows to define few calculated properties per single call of the function.
+" data-name="calc#batch">#batch</a></li></ul></div></li><li><a href="#!defi.chain" title="Allows chained calls of defi.js functions
+" data-name="chain">chain</a></li><li><a href="#!defi.lookForBinder" title="" data-name="lookForBinder">lookForBinder</a></li><li><a href="#!defi.mediate" title="Transforms property value on its changing
+" data-name="mediate">mediate <span class="expand"></span> <span class="hidden-active-child"></span></a><div class="submenu-wrapper"><ul data-submenu="!defi.mediate"><li><a href="#!defi.mediate(2)" title="Alternative syntax of the defi.mediate function which accepts &quot;key-mediator&quot; object as an argument
+" data-name="mediate#2">#2</a></li></ul></div></li><li><a href="#!defi.off" title="Deletes an event handler
+" data-name="off">off</a></li><li><a href="#!defi.on" title="Adds an event handler
+" data-name="on">on <span class="expand"></span> <span class="hidden-active-child"></span></a><div class="submenu-wrapper"><ul data-submenu="!defi.on"><li><a href="#!defi.on(2)" title="Alternative syntax: &quot;eventname-handler&quot; pairs
+" data-name="on#2">#2</a></li></ul></div></li><li><a href="#!defi.remove" title="Deletes a property and removes dependent handlers
+" data-name="remove">remove</a></li><li><a href="#!defi.set" title="Sets a property value allowing to pass an event options object
+" data-name="set">set <span class="expand"></span> <span class="hidden-active-child"></span></a><div class="submenu-wrapper"><ul data-submenu="!defi.set"><li><a href="#!defi.set(2)" title="Alternative &quot;key-value&quot; syntax of the defi.set function
+" data-name="set#2">#2</a></li></ul></div></li><li><a href="#!defi.trigger" title="Fires an event
+" data-name="trigger">trigger</a></li><li><a href="#!defi.unbindNode" title="Destroys a binding between given property and HTML node
+" data-name="unbindNode">unbindNode <span class="expand"></span> <span class="hidden-active-child"></span></a><div class="submenu-wrapper"><ul data-submenu="!defi.unbindNode"><li><a href="#!defi.unbindNode(2)" title="Alternative syntax which allows to pass an object with bindings to unbindNode. Look at defi.bindNode(2) for more information
+" data-name="unbindNode#2">#2</a></li></ul></div></li><li><span class="nav-heading">Static Props</span></li><li><a href="#!defi.defaultBinders" title="An array of functions which return a corresponding binder or a falsy value
+" data-name="defaultBinders">defaultBinders</a></li></ul></div><hr><span class="nav-heading">Articles</span> <a href="#!events">Events</a><hr><span class="nav-heading">Info</span><hr><a>Last update 14.5.2020</a></nav><main><section id="promo"><article id="!home"><img alt="defi.js" src="https://defijs.github.io/assets/logo.svg"/><div class="demo"><output class="out">Data binding without framework</output><input class="in"><pre><code class="lang-html">&lt;input class=&quot;in&quot; type=&quot;text&quot;&gt;
 &lt;output class=&quot;out&quot;&gt;&lt;/output&gt;
 
 &lt;script src=&quot;defi.min.js&quot;&gt;&lt;/script&gt;
@@ -453,37 +52,12 @@
 const obj = {};
 defi.bindNode(obj, 'x', '.in, .out');
 obj.x = 'Data binding without framework';
-&lt;/script&gt;</code></pre>
-		</div>
-		<p>
-			<a href="https://github.com/defijs/defi/archive/gh-pages.zip" download="defijs.zip" class="download-btn">Download <i></i></a>
-			&nbsp;
-			<a href="https://github.com/defijs/defi" class="github-btn">Github <i></i></a>
-		</p>
-	</article>
-</section>
+&lt;/script&gt;</code></pre></div><p><a href="https://github.com/defijs/defi/archive/gh-pages.zip" download="defijs.zip" class="download-btn">Download <i></i></a> &nbsp; <a href="https://github.com/defijs/defi" class="github-btn">Github <i></i></a></p></article></section><section><article id="!introduction"><h2 id="introduction"><a href="#!introduction">Introduction</a></h2><blockquote><p>Before we start, in case if you found an inaccuracy or a typo on this page, feel free to open an issue <a href="https://github.com/defijs/defi.js.org">here</a>.</p></blockquote><p><strong>defi.js</strong> bunch of utilities that enable accessor-based reactivity for JavaScript objects.</p><p>It can be installed via NPM:</p><pre><code class="language-js">npm i defi</code></pre><pre><code class="language-js">const { bindNode, calc } = require(&#39;defi&#39;);
 
-	<section>
-		<article id="!introduction">
-			<h2 id="introduction"><a href="#!introduction">Introduction</a></h2>
-<blockquote>
-<p>Before we start, in case if you found an inaccuracy or a typo on this page, feel free to open an issue <a href="https://github.com/defijs/defi.js.org">here</a>.</p>
-</blockquote>
-<p><strong>defi.js</strong> bunch of utilities that enable accessor-based reactivity for JavaScript objects.</p>
-<p>It can be installed via NPM:</p>
-<pre><code class="language-js">npm i defi</code></pre>
-<pre><code class="language-js">const { bindNode, calc } = require(&#39;defi&#39;);
-
-bindNode(obj, &#39;key&#39;, node)</code></pre>
-<p>Or <a href="https://github.com/defijs/defi/tree/gh-pages">downloaded to be used as a global variable</a></p>
-<pre><code class="language-js">// use defi as a global variable
-defi.bindNode(obj, &#39;key&#39;, node)</code></pre>
-<h3 id="how-would-i-use-it">How would I use it?</h3>
-<p>As a simple task let&#39;s say you want to define a simple form with first name and last name input, where while you type a greeting appears.</p>
-<pre><code class="language-html">&lt;input class=&quot;first&quot;&gt;
+bindNode(obj, &#39;key&#39;, node)</code></pre><p>Or <a href="https://github.com/defijs/defi/tree/gh-pages">downloaded to be used as a global variable</a></p><pre><code class="language-js">// use defi as a global variable
+defi.bindNode(obj, &#39;key&#39;, node)</code></pre><h3 id="how-would-i-use-it">How would I use it?</h3><p>As a simple task let&#39;s say you want to define a simple form with first name and last name input, where while you type a greeting appears.</p><pre><code class="language-html">&lt;input class=&quot;first&quot;&gt;
 &lt;input class=&quot;last&quot;&gt;
-&lt;output class=&quot;greeting&quot;&gt;&lt;/output&gt;</code></pre>
-<pre><code class="language-js">// default data
+&lt;output class=&quot;greeting&quot;&gt;&lt;/output&gt;</code></pre><pre><code class="language-js">// default data
 const obj = {
   first: &#39;John&#39;,
   last: &#39;Doe&#39;
@@ -503,62 +77,16 @@ defi.bindNode(obj, {
   first: &#39;.first&#39;,
   last: &#39;.last&#39;,
   greeting: &#39;.greeting&#39;
-});</code></pre>
-<p>If <code>first</code> or <code>last</code> is changed then event handlers print info about that to console, <code>greeting</code> property is updated, <code>.greeting</code> element is populated by calculated data (by default &quot;Hello, John Doe&quot;). And it happens every time when these properties are changed and it doesn&#39;t matter which way. You can do <code>obj.first = &#39;Jane&#39;</code> or you can type text into its field, and everything will happen immediately.</p>
-<p>That&#39;s the real accessor-based reactiveness! Check the example above <a href="https://jsbin.com/xuzohanuno/1/edit?html,js,console,output">here</a> and try to type <code>obj.first = &#39;Jane&#39;</code> at the &quot;Console&quot; tab.</p>
-<p>Note that if you want to use a custom HTML element (at the example above we use <code>&lt;output&gt;</code> tag) to update its innerHTML you will need to pass so-called &quot;binder&quot; as a rule of how the bound element should behave. By default <code>defi.bindNode</code> doesn&#39;t know how to interact with non-form elements.</p>
-<pre><code class="language-js">const htmlBinder = {
+});</code></pre><p>If <code>first</code> or <code>last</code> is changed then event handlers print info about that to console, <code>greeting</code> property is updated, <code>.greeting</code> element is populated by calculated data (by default &quot;Hello, John Doe&quot;). And it happens every time when these properties are changed and it doesn&#39;t matter which way. You can do <code>obj.first = &#39;Jane&#39;</code> or you can type text into its field, and everything will happen immediately.</p><p>That&#39;s the real accessor-based reactiveness! Check the example above <a href="https://jsbin.com/xuzohanuno/1/edit?html,js,console,output">here</a> and try to type <code>obj.first = &#39;Jane&#39;</code> at the &quot;Console&quot; tab.</p><p>Note that if you want to use a custom HTML element (at the example above we use <code>&lt;output&gt;</code> tag) to update its innerHTML you will need to pass so-called &quot;binder&quot; as a rule of how the bound element should behave. By default <code>defi.bindNode</code> doesn&#39;t know how to interact with non-form elements.</p><pre><code class="language-js">const htmlBinder = {
   setValue: (value, binding) =&gt; binding.node.innerHTML = value,
 };
 // this will update innerHTML for any element when obj.greeting is changed
-defi.bindNode(obj, &#39;greeting&#39;, &#39;.greeting&#39;, htmlBinder)</code></pre>
-<p>Also you can use <code>html</code> from <a href="https://github.com/defijs/common-binders">common-binders</a> (a collection of binders of general purpose).</p>
-<pre><code class="language-js">const { html } = require(&#39;common-binders&#39;);
-defi.bindNode(obj, &#39;greeting&#39;, &#39;.greeting&#39;, html())</code></pre>
-<blockquote>
-<p>Also check out <a href="https://github.com/defijs/defi-router">defi-router</a> - a routing library for defi.js.</p>
-</blockquote>
-
-		</article>
-	</section>
-	<section>
-
-</section>
-<section class="api">
-
-	
-<article class="item method" id="!defi.bindNode">
-	<h2>
-		<a href="#!defi.bindNode">
-			<span class="memberof">defi.</span>bindNode<wbr>(<span class="args">obj, key, node, binder, options</span>)
-				
-		</a> <span class="returns">→ 
-	<span data-type="object">object</span>
-</span>
-	</h2>
-	
-	
-	<p class="module">
-		CommonJS module: <code>'defi/bindnode'</code>
-	</p>
-	
-	<div class="summary"><p>Binds a property of an object to HTML node, implementing two-way data binding</p>
-</div>
-	<div class="description"><p>It creates a bridge between value of a property and a state of HTML node on the page: from a simple input to a complicated widget (the complexity of elements is unlimited). After using this function, it isn&#39;t necessary to monitor the synchronizations between model and view.</p>
-<blockquote>
-<p>Note that a bunch of common binders can be found at <a href="https://github.com/defijs/common-binders">common-binders</a> project. Also the function, by default, supports all form elements without need to pass binder argument.</p>
-</blockquote>
-<p>The function acepts three arguments: <strong>a property name</strong>, <strong>HTML node</strong> and a <strong>binding rule</strong> (a binder). In its turn, a binder is an ordinary object and it can have the following properties: <code>on</code>, <code>getValue</code>, <code>setValue</code>, <code>initialize</code>, <code>destroy</code> (Read more here: <span data-type="binder">binder</span>). All the five properties are optional. It also allows to declare one-way data bindings (any direction).</p>
-<blockquote>
-<p>The <code>bindNode</code> function  supports the many-to-many bindings. Several elements can be bound to one property and several properties can be bound to one element, including ones from different objects.</p>
-</blockquote>
-<pre><code class="language-js">defi.bindNode(object, &#39;myKey&#39;, &#39;.my-element&#39;, {
+defi.bindNode(obj, &#39;greeting&#39;, &#39;.greeting&#39;, htmlBinder)</code></pre><p>Also you can use <code>html</code> from <a href="https://github.com/defijs/common-binders">common-binders</a> (a collection of binders of general purpose).</p><pre><code class="language-js">const { html } = require(&#39;common-binders&#39;);
+defi.bindNode(obj, &#39;greeting&#39;, &#39;.greeting&#39;, html())</code></pre><blockquote><p>Also check out <a href="https://github.com/defijs/defi-router">defi-router</a> - a routing library for defi.js.</p></blockquote></article></section><section></section><section class="api"><article class="item method" id="!defi.bindNode"><h2><a href="#!defi.bindNode"><span class="memberof">defi.</span>bindNode<wbr>(<span class="args">obj, key, node, binder, options</span>) </a><span class="returns">→ <span data-type="object">object</span></span></h2><p class="module">CommonJS module: <code>'defi/bindnode'</code></p><div class="summary"><p>Binds a property of an object to HTML node, implementing two-way data binding</p></div><div class="description"><p>It creates a bridge between value of a property and a state of HTML node on the page: from a simple input to a complicated widget (the complexity of elements is unlimited). After using this function, it isn&#39;t necessary to monitor the synchronizations between model and view.</p><blockquote><p>Note that a bunch of common binders can be found at <a href="https://github.com/defijs/common-binders">common-binders</a> project. Also the function, by default, supports all form elements without need to pass binder argument.</p></blockquote><p>The function acepts three arguments: <strong>a property name</strong>, <strong>HTML node</strong> and a <strong>binding rule</strong> (a binder). In its turn, a binder is an ordinary object and it can have the following properties: <code>on</code>, <code>getValue</code>, <code>setValue</code>, <code>initialize</code>, <code>destroy</code> (Read more here: <span data-type="binder">binder</span>). All the five properties are optional. It also allows to declare one-way data bindings (any direction).</p><blockquote><p>The <code>bindNode</code> function supports the many-to-many bindings. Several elements can be bound to one property and several properties can be bound to one element, including ones from different objects.</p></blockquote><pre><code class="language-js">defi.bindNode(object, &#39;myKey&#39;, &#39;.my-element&#39;, {
     on: &#39;click&#39;,
     getValue() { ... },
     setValue() { ... }
-});</code></pre>
-<p>For example, you want to bind a property of an object to a <code>input[type=&quot;checkbox&quot;]</code> node:</p>
-<pre><code class="language-js">defi.bindNode(obj, &#39;myKey&#39;, &#39;.my-checkbox&#39;, {
+});</code></pre><p>For example, you want to bind a property of an object to a <code>input[type=&quot;checkbox&quot;]</code> node:</p><pre><code class="language-js">defi.bindNode(obj, &#39;myKey&#39;, &#39;.my-checkbox&#39;, {
     // when is element state changed?
     // - after &#39;click&#39; event
     on: &#39;click&#39;,
@@ -568,13 +96,8 @@ defi.bindNode(obj, &#39;greeting&#39;, &#39;.greeting&#39;, html())</code></pre>
     // how to set element state?
     // - set &#39;checked&#39; value
     setValue: (v, { node }) =&gt; node.checked = !!v,
-});</code></pre>
-<p>After binding is declared, you can set value of an object property in your most habitual way and HTML node (in this case, a checkbox) will change its state immediately. After clicking on the checkbox, the property value will be changed to the corresponding one as well.</p>
-<pre><code class="language-js">// sets checked = true
-obj.myKey = true;</code></pre>
-<p>More interesting example: binding object property to a jQuery UI widget (of course you can use any other library, jQuery isn&#39;t something specially supported).</p>
-<pre><code class="language-html">&lt;div class=&quot;my-slider&quot;&gt;&lt;/div&gt;</code></pre>
-<pre><code class="language-js">defi.bindNode(obj, &#39;myKey&#39;, &#39;.my-slider&#39;, {
+});</code></pre><p>After binding is declared, you can set value of an object property in your most habitual way and HTML node (in this case, a checkbox) will change its state immediately. After clicking on the checkbox, the property value will be changed to the corresponding one as well.</p><pre><code class="language-js">// sets checked = true
+obj.myKey = true;</code></pre><p>More interesting example: binding object property to a jQuery UI widget (of course you can use any other library, jQuery isn&#39;t something specially supported).</p><pre><code class="language-html">&lt;div class=&quot;my-slider&quot;&gt;&lt;/div&gt;</code></pre><pre><code class="language-js">defi.bindNode(obj, &#39;myKey&#39;, &#39;.my-slider&#39;, {
     // when is element state changed?
     // - after &#39;slide&#39; event
     // (a function can be used to listen to any non-DOM events)
@@ -589,14 +112,8 @@ obj.myKey = true;</code></pre>
     // you can initialize the slider in any way,
     // but &#39;initialize&#39; function provides some syntactic sugar
     initialize: ({ node }) =&gt; $(node).slider({ min: 0, max: 100 }),
-});</code></pre>
-<pre><code class="language-js">// will set the slider value 42
-obj.myKey = 42;</code></pre>
-<p>It looks easy but you may ask a question: &quot;What should I do to avoid writing these rules every time?&quot;. Indeed, there can be a lot of elements of the same type on the page: text fields, drop down menus, fields from the HTML5 specification as well as third party widgets.</p>
-<p>As observed in this documentation, the third argument is not obligatory for the ones of the <code>bindNode</code> function. This problem is solved by the <a href="#!defi.defaultBinders">defi.defaultBinders</a> array which contains functions checking an HTML node against a set of rules and returns corresponding binder or <code>undefined</code>. You get an opportunity to reduce your code a great deal, putting  binding rules into a separate part of your code and to use a syntax for binding without the third argument:</p>
-<pre><code class="language-js">defi.bindNode(obj, &#39;myKey&#39;, &#39;.my-element&#39;);</code></pre>
-<p>How to do it? You should add a function checking an element against a set of rules to the beginning of the <a href="#!defi.defaultBinders">defi.defaultBinders</a> array.</p>
-<pre><code class="language-js">const checkboxBinder = () =&gt; {
+});</code></pre><pre><code class="language-js">// will set the slider value 42
+obj.myKey = 42;</code></pre><p>It looks easy but you may ask a question: &quot;What should I do to avoid writing these rules every time?&quot;. Indeed, there can be a lot of elements of the same type on the page: text fields, drop down menus, fields from the HTML5 specification as well as third party widgets.</p><p>As observed in this documentation, the third argument is not obligatory for the ones of the <code>bindNode</code> function. This problem is solved by the <a href="#!defi.defaultBinders">defi.defaultBinders</a> array which contains functions checking an HTML node against a set of rules and returns corresponding binder or <code>undefined</code>. You get an opportunity to reduce your code a great deal, putting binding rules into a separate part of your code and to use a syntax for binding without the third argument:</p><pre><code class="language-js">defi.bindNode(obj, &#39;myKey&#39;, &#39;.my-element&#39;);</code></pre><p>How to do it? You should add a function checking an element against a set of rules to the beginning of the <a href="#!defi.defaultBinders">defi.defaultBinders</a> array.</p><pre><code class="language-js">const checkboxBinder = () =&gt; {
     return {
         on: &#39;click&#39;,
         getValue: ({ node }) =&gt; node.checked,
@@ -612,52 +129,31 @@ defi.defaultBinders.unshift(node =&gt; {
         // if checking is OK, return a new binder
         return checkboxBinder();
     }
-});</code></pre>
-<pre><code class="language-js">defi.bindNode(obj, &#39;myKey&#39;, &#39;.my-checkbox&#39;);
-obj.myKey = true;</code></pre>
-<p>What should you do if you need to pass arguments for initializing some plugin or a widget? You can call the function that returns a binder manually.</p>
-<pre><code class="language-js">const uiSlider = (min, max) =&gt; {
+});</code></pre><pre><code class="language-js">defi.bindNode(obj, &#39;myKey&#39;, &#39;.my-checkbox&#39;);
+obj.myKey = true;</code></pre><p>What should you do if you need to pass arguments for initializing some plugin or a widget? You can call the function that returns a binder manually.</p><pre><code class="language-js">const uiSlider = (min, max) =&gt; {
     return {
         on: &#39;slide&#39;,
         getValue: ({ node }) =&gt; $(node).slider(&#39;option&#39;, &#39;value&#39;),
         setValue: (v, { node }) =&gt; $(node).slider(&#39;option&#39;, &#39;value&#39;, v),
         initialize: ({ node }) =&gt; $(node).slider({ min, max }),
     }
-};</code></pre>
-<pre><code class="language-js">defi.bindNode(obj, &#39;myKey1&#39;, &#39;.my-slider1&#39;, uiSlider(0, 100));
+};</code></pre><pre><code class="language-js">defi.bindNode(obj, &#39;myKey1&#39;, &#39;.my-slider1&#39;, uiSlider(0, 100));
 defi.bindNode(obj, &#39;myKey2&#39;, &#39;.my-slider2&#39;, uiSlider(1, 1000));
 obj.myKey1 = 42;
-obj.myKey2 = 999;</code></pre>
-<p><a href="#!defi.defaultBinders">defi.defaultBinders</a> OOB has a support for <strong>all form elements</strong> without any exception: <code>select</code> (including <code>multiple</code>), <code>textarea</code>, <code>output</code>, <code>input</code> (including all types from the specification of HTML5: <code>text</code>, <code>checkbox</code>, <code>radio</code>, <code>range</code>, <code>number</code>, <code>date</code>, <code>search</code>, <code>time</code>, <code>datetime</code>, <code>datetime-local</code>, <code>color</code> and others). That means it is not necessary to designate a binder for standard elements.</p>
-<pre><code class="language-html">&lt;input type=&quot;color&quot; class=&quot;my-color-input&quot;&gt;</code></pre>
-<pre><code class="language-js">defi.bindNode(obj, &#39;myColor&#39;, &#39;.my-color-input&#39;);
-obj.myColor = &#39;#66bb6a&#39;;</code></pre>
-<p>Besides, after the binding, a new non-standard <code>:bound(KEY)</code> CSS selector is available for you.</p>
-<pre><code class="language-js">defi.bindNode(obj, &#39;myKey&#39;, &#39;.my-element&#39;);
+obj.myKey2 = 999;</code></pre><p><a href="#!defi.defaultBinders">defi.defaultBinders</a> OOB has a support for <strong>all form elements</strong> without any exception: <code>select</code> (including <code>multiple</code>), <code>textarea</code>, <code>output</code>, <code>input</code> (including all types from the specification of HTML5: <code>text</code>, <code>checkbox</code>, <code>radio</code>, <code>range</code>, <code>number</code>, <code>date</code>, <code>search</code>, <code>time</code>, <code>datetime</code>, <code>datetime-local</code>, <code>color</code> and others). That means it is not necessary to designate a binder for standard elements.</p><pre><code class="language-html">&lt;input type=&quot;color&quot; class=&quot;my-color-input&quot;&gt;</code></pre><pre><code class="language-js">defi.bindNode(obj, &#39;myColor&#39;, &#39;.my-color-input&#39;);
+obj.myColor = &#39;#66bb6a&#39;;</code></pre><p>Besides, after the binding, a new non-standard <code>:bound(KEY)</code> CSS selector is available for you.</p><pre><code class="language-js">defi.bindNode(obj, &#39;myKey&#39;, &#39;.my-element&#39;);
 
 // will find the element &#39;.my-inner-element&#39; inside &#39;.my-element&#39;
-defi.bindNode(obj, &#39;myAnotherKey&#39;, &#39;:bound(myKey) .my-inner-element&#39;);</code></pre>
-<p>And the syntax of possible event names is extended:</p>
-<pre><code class="language-js">defi.bindNode(obj, &#39;myKey&#39;, &#39;.my-element&#39;);
+defi.bindNode(obj, &#39;myAnotherKey&#39;, &#39;:bound(myKey) .my-inner-element&#39;);</code></pre><p>And the syntax of possible event names is extended:</p><pre><code class="language-js">defi.bindNode(obj, &#39;myKey&#39;, &#39;.my-element&#39;);
 
 // will handle the click on the &#39;.my-element&#39; element
 defi.on(obj, &#39;click::myKey&#39;, () =&gt; { ... });
 
 // will handle the click on the &#39;.my-element .my-inner-element&#39;
-defi.on(&#39;click::myKey(.my-inner-element)&#39;, () =&gt; { ... });</code></pre>
-<blockquote>
-<p>If a node is not found <code>&quot;Bound element is missing&quot;</code> error will be thrown. See an option <code>optional: true</code> below.</p>
-</blockquote>
-<h3 id="important-features-of-the-function-and-special-flags">Important features of the function and special flags</h3>
-<p>The fourth argument of <code>bindNode</code> function is  <code>options</code>. This object can include special flags or custom data which will be passed to <code>bind</code> and <code>bind:KEY</code> event handlers.</p>
-<pre><code class="language-js">defi.on(obj, &#39;bind:x&#39;, evt =&gt; {
+defi.on(&#39;click::myKey(.my-inner-element)&#39;, () =&gt; { ... });</code></pre><blockquote><p>If a node is not found <code>&quot;Bound element is missing&quot;</code> error will be thrown. See an option <code>optional: true</code> below.</p></blockquote><h3 id="important-features-of-the-function-and-special-flags">Important features of the function and special flags</h3><p>The fourth argument of <code>bindNode</code> function is <code>options</code>. This object can include special flags or custom data which will be passed to <code>bind</code> and <code>bind:KEY</code> event handlers.</p><pre><code class="language-js">defi.on(obj, &#39;bind:x&#39;, evt =&gt; {
     console.log(evt.foo); // bar
 });
-defi.bindNode(obj, &#39;x&#39;, node, binder, { foo: &#39;bar&#39; });</code></pre>
-<p>To understand important features of <code>bindNode</code> it is important to read information below but it&#39;s not required to remember all these flags.</p>
-<h4 id="a-flag-exactkeyfalse">A flag <code>exactKey=false</code></h4>
-<p>If <code>key</code> string includes a dot then such string will be interpreted as a path to a property of nested object. The library will listen all changes of given object tree.</p>
-<pre><code class="language-js">obj.a = { b: { c: &#39;foo&#39; } };
+defi.bindNode(obj, &#39;x&#39;, node, binder, { foo: &#39;bar&#39; });</code></pre><p>To understand important features of <code>bindNode</code> it is important to read information below but it&#39;s not required to remember all these flags.</p><h4 id="a-flag-exactkeyfalse">A flag <code>exactKey=false</code></h4><p>If <code>key</code> string includes a dot then such string will be interpreted as a path to a property of nested object. The library will listen all changes of given object tree.</p><pre><code class="language-js">obj.a = { b: { c: &#39;foo&#39; } };
 defi.bindNode(obj, &#39;a.b.c&#39;, node);
 
 obj.a.b.c = &#39;bar&#39;; // updates node by bar
@@ -668,284 +164,22 @@ obj.a.b = { c: &#39;baz&#39; }; // updates node by baz
 
 // the node is not updated because
 // the connection with the object subtree is destroyed
-oldB.c = &#39;fuu&#39;;</code></pre>
-<p>In case if you need to use property name as is, use  <code>exactKey</code> flag with <code>true</code> value.</p>
-<pre><code class="language-js">obj[&#39;a.b.c&#39;] = &#39;foo&#39;;
+oldB.c = &#39;fuu&#39;;</code></pre><p>In case if you need to use property name as is, use <code>exactKey</code> flag with <code>true</code> value.</p><pre><code class="language-js">obj[&#39;a.b.c&#39;] = &#39;foo&#39;;
 defi.bindNode(obj, &#39;a.b.c&#39;, node, binder, {
     exactKey: true
 });
-obj[&#39;a.b.c&#39;] = &#39;bar&#39;;</code></pre>
-<h4 id="a-flag-getvalueonbind">A flag <code>getValueOnBind</code></h4>
-<p>When <code>getValue</code> is given then a state of an element will be extracted and assigned to bound property immediately after <code>bindNode</code> call in case if the property has <code>undefined</code> value. To force this behavior even if the property has non-undefined value use <code>getValueOnbind</code> flag with <code>true</code> value. To cancel this behavior use the same flag with <code>false</code> value.</p>
-<h4 id="a-flag-setvalueonbind">A flag <code>setValueOnBind</code></h4>
-<p>When <code>setValue</code> is given then the value of the property will be set as element state immediately after <code>bindNode</code> call in case if the property has non-undefined value. To force this behavior even if the property is <code>undefined</code> use <code>setValueOnBind</code> flag with <code>true</code> value. To cancel this behavior use the same flag but with <code>false</code> value.</p>
-<h4 id="flags-debouncegetvaluetrue-and-debouncesetvaluetrue">Flags <code>debounceGetValue=true</code> and <code>debounceSetValue=true</code></h4>
-<p>One of the most important feature of <code>bindNode</code> is that the logic of property change and the logic of element state change uses the debounce pattern. It means that if bound property is changed many times in a short time then bound element state will be updated only once after small delay (thanks to <code>debounceSetValue=true</code>). If element state is changed many times in a short time (eg corresponding DOM event is triggered), the property gets new value only once after minimum delay (thanks to <code>debounceGetValue=true</code>).</p>
-<pre><code class="language-js">const input = document.querySelector(&#39;.my-input&#39;);
+obj[&#39;a.b.c&#39;] = &#39;bar&#39;;</code></pre><h4 id="a-flag-getvalueonbind">A flag <code>getValueOnBind</code></h4><p>When <code>getValue</code> is given then a state of an element will be extracted and assigned to bound property immediately after <code>bindNode</code> call in case if the property has <code>undefined</code> value. To force this behavior even if the property has non-undefined value use <code>getValueOnbind</code> flag with <code>true</code> value. To cancel this behavior use the same flag with <code>false</code> value.</p><h4 id="a-flag-setvalueonbind">A flag <code>setValueOnBind</code></h4><p>When <code>setValue</code> is given then the value of the property will be set as element state immediately after <code>bindNode</code> call in case if the property has non-undefined value. To force this behavior even if the property is <code>undefined</code> use <code>setValueOnBind</code> flag with <code>true</code> value. To cancel this behavior use the same flag but with <code>false</code> value.</p><h4 id="flags-debouncegetvaluetrue-and-debouncesetvaluetrue">Flags <code>debounceGetValue=true</code> and <code>debounceSetValue=true</code></h4><p>One of the most important feature of <code>bindNode</code> is that the logic of property change and the logic of element state change uses the debounce pattern. It means that if bound property is changed many times in a short time then bound element state will be updated only once after small delay (thanks to <code>debounceSetValue=true</code>). If element state is changed many times in a short time (eg corresponding DOM event is triggered), the property gets new value only once after minimum delay (thanks to <code>debounceGetValue=true</code>).</p><pre><code class="language-js">const input = document.querySelector(&#39;.my-input&#39;);
 defi.bindNode(obj, &#39;x&#39;, input);
 obj.x = &#39;foo&#39;;
 console.log(input.value === &#39;foo&#39;); // false
 setTimeout(() =&gt; {
     console.log(input.value === &#39;foo&#39;); // true
-});</code></pre>
-<p>To cancel this behavior (e. g. initiate synchronous binding) use <code>debounceSetValue</code> and/or <code>debounceGetValue</code> flags with <code>false</code> value.</p>
-<h4 id="flags-debouncesetvalueonbindfalse-and-debouncegetvalueonbindfalse">Flags <code>debounceSetValueOnBind=false</code> and <code>debounceGetValueOnBind=false</code></h4>
-<p>As described above <code>bindNode</code> uses debounce pattern on property change and on bound node change. This doesn&#39;t apply to a moment when <code>bindNode</code> is called. To remind, when the function is called a property or a node is changed immediately. When <code>debounceGetValueOnBind</code> and/or <code>debounceSetValueOnBind</code> are set to <code>true</code> then debounce is turned on for binding initialization as well.</p>
-<h4 id="flags-debouncesetvaluedelay0-and-debouncegetvaluedelay0">Flags <code>debounceSetValueDelay=0</code> and <code>debounceGetValueDelay=0</code></h4>
-<p>These flags allow to set debounce delay. <code>debounceSetValueDelay</code> is used when <code>debounceSetValue</code> or <code>debounceSetValueOnBind</code> is <code>true</code>, <code>debounceGetValueDelay</code> is used when <code>debounceGetValue</code> or <code>debounceGetValueOnBind</code> is true.</p>
-<h4 id="a-flags-optionalfalse">A flags <code>optional=false</code></h4>
-<p><code>bindNode</code> doesn&#39;t throw an error of missing node if <code>optional: true</code> is set.</p>
-<h4 id="a-flag-useexactbinderfalse">A flag <code>useExactBinder=false</code></h4>
-<p>Even if you pass a binder to <code>bindNode</code>, the framework tries to find default binder at <a href="#!defi.defaultBinders">defi.defaultBinders</a> and extend it by properties of the passed object. This feature makes possible to use partially re-defined default binder.</p>
-<p>For example, we want to bind <code>input[type=&quot;text&quot;]</code> to a property. By default, the standard binder contains <code>&quot;on&quot;</code> property with <code>&quot;input&quot;</code> value for this kind of node. It means that the value of the object property and node state will be synchronized when a user releases a key of the keyboard or pastes text from clipboard. In case if you want synchronization to be performed after the <code>&quot;blur&quot;</code> DOM event, you need to pass an object containing the only <code>&quot;on&quot;</code> property as the third argument. This object will extend the default binder, having retained <code>getValue</code> and <code>setValue</code> values.</p>
-<pre><code class="language-js">defi.bindNode(obj, &#39;myKey&#39;, &#39;.my-input&#39;, { on: &#39;blur&#39; });</code></pre>
-<p>To cancel this behavior and use the binder as is, you can use <code>useExactBinder</code> flag with <code>true</code> value.</p>
-<pre><code class="language-js">defi.bindNode(obj, &#39;x&#39;, node, binder, {
+});</code></pre><p>To cancel this behavior (e. g. initiate synchronous binding) use <code>debounceSetValue</code> and/or <code>debounceGetValue</code> flags with <code>false</code> value.</p><h4 id="flags-debouncesetvalueonbindfalse-and-debouncegetvalueonbindfalse">Flags <code>debounceSetValueOnBind=false</code> and <code>debounceGetValueOnBind=false</code></h4><p>As described above <code>bindNode</code> uses debounce pattern on property change and on bound node change. This doesn&#39;t apply to a moment when <code>bindNode</code> is called. To remind, when the function is called a property or a node is changed immediately. When <code>debounceGetValueOnBind</code> and/or <code>debounceSetValueOnBind</code> are set to <code>true</code> then debounce is turned on for binding initialization as well.</p><h4 id="flags-debouncesetvaluedelay0-and-debouncegetvaluedelay0">Flags <code>debounceSetValueDelay=0</code> and <code>debounceGetValueDelay=0</code></h4><p>These flags allow to set debounce delay. <code>debounceSetValueDelay</code> is used when <code>debounceSetValue</code> or <code>debounceSetValueOnBind</code> is <code>true</code>, <code>debounceGetValueDelay</code> is used when <code>debounceGetValue</code> or <code>debounceGetValueOnBind</code> is true.</p><h4 id="a-flags-optionalfalse">A flags <code>optional=false</code></h4><p><code>bindNode</code> doesn&#39;t throw an error of missing node if <code>optional: true</code> is set.</p><h4 id="a-flag-useexactbinderfalse">A flag <code>useExactBinder=false</code></h4><p>Even if you pass a binder to <code>bindNode</code>, the framework tries to find default binder at <a href="#!defi.defaultBinders">defi.defaultBinders</a> and extend it by properties of the passed object. This feature makes possible to use partially re-defined default binder.</p><p>For example, we want to bind <code>input[type=&quot;text&quot;]</code> to a property. By default, the standard binder contains <code>&quot;on&quot;</code> property with <code>&quot;input&quot;</code> value for this kind of node. It means that the value of the object property and node state will be synchronized when a user releases a key of the keyboard or pastes text from clipboard. In case if you want synchronization to be performed after the <code>&quot;blur&quot;</code> DOM event, you need to pass an object containing the only <code>&quot;on&quot;</code> property as the third argument. This object will extend the default binder, having retained <code>getValue</code> and <code>setValue</code> values.</p><pre><code class="language-js">defi.bindNode(obj, &#39;myKey&#39;, &#39;.my-input&#39;, { on: &#39;blur&#39; });</code></pre><p>To cancel this behavior and use the binder as is, you can use <code>useExactBinder</code> flag with <code>true</code> value.</p><pre><code class="language-js">defi.bindNode(obj, &#39;x&#39;, node, binder, {
     useExactBinder: true
-});</code></pre>
-</div>
-	
-	<p>
-		<b>Returns</b> 
-	<span data-type="object">object</span>
-
-		 - object
-
-
-	</p>
-	
-	
-	<p>
-		<b>Fires</b> <span class="event">bind</span> <span class="event">bind:KEY</span>
-
-	</p>
-	
-
-	
-	<h4>Arguments</h4>
-	<table class="arguments">
-		<thead>
-			<tr>
-				<th>Name
-				
-				<th>Type
-				<th>Details
-			</tr>
-		</thead>
-		<tbody>
-			
-				<tr>
-					<td>
-						obj
-						
-					</td>
-					 
-					<td>
-	<span data-type="object">object</span>
-</td>
-					<td> <p>A target object</p>
-</td>
-				</tr>
-			
-				<tr>
-					<td>
-						key
-						
-					</td>
-					 
-					<td>
-	<span data-type="string">string</span>
-</td>
-					<td> <p>A property name</p>
-</td>
-				</tr>
-			
-				<tr>
-					<td>
-						node
-						
-					</td>
-					 
-					<td>
-	<span data-type="string">string</span>
-
-	<span data-type="node">node</span>
-
-	<span data-type="$nodes">$nodes</span>
-</td>
-					<td> <p>An HTML element which must be bound to a <code>key</code></p>
-</td>
-				</tr>
-			
-				<tr>
-					<td>
-						binder
-						
-							<span class="signature">optional</span>
-						
-					</td>
-					 
-					<td>
-	<span data-type="binder">binder</span>
-</td>
-					<td> <p>A binder containing the following properties: <code>on</code> , <code>getValue</code>, <code>setValue</code>, <code>initialize</code>, <code>destroy</code>. You can get more detailed information about binders in their documentation: see <span data-type="binder">binder</span></p>
-</td>
-				</tr>
-			
-				<tr>
-					<td>
-						options
-						
-							<span class="signature">optional</span>
-						
-					</td>
-					 
-					<td>
-	<span data-type="object">object</span>
-</td>
-					<td> <p>Options object which accepts <code>&quot;silent&quot;</code> (don&#39;t fire <code>&quot;bind&quot;</code> and <code>&quot;bind:KEY&quot;</code>), flags described above or custom data</p>
-</td>
-				</tr>
-			
-		</tbody>
-	</table>
-
-
-	
-<h4>Links</h4>
-<ul class="see">
-	
-		<li><a href="#!defi.unbindNode">defi.unbindNode</a>
-	
-		<li><a href="#!defi.defaultBinders">defi.defaultBinders</a>
-	
-</ul>
-
-
-	
-
- 
-
-</article>
-
-<article class="item method" id="!defi.bindNode(2)">
-	<h2>
-		<a href="#!defi.bindNode(2)">
-			<span class="memberof">defi.</span>bindNode<wbr>(<span class="args">obj, bindings, binder, options</span>)
-				
-		</a> <span class="returns">→ 
-	<span data-type="object">object</span>
-</span>
-	</h2>
-	
-	
-	<div class="summary"><p>Alternative syntax: passing of an object</p>
-</div>
-	<div class="description"><p>To the <a href="#!defi.bindNode">defi.bindNode</a> function an object can be passed to avoid multiple invocation of the function and reduce code. Keys of the object are property names and values can get the following look:</p>
-<ul>
-<li>A node;</li>
-<li>An object with properties <code>node</code> and <code>binder</code>;</li>
-<li>An array of objects with properties <code>node</code> and <code>binder</code>;</li>
-</ul>
-<p>If <code>binder</code> arg is passed as the second argument then it wil be used as the binder for those elements for which a binder wasn&#39;t specified.</p>
-</div>
-	
-	<p>
-		<b>Returns</b> 
-	<span data-type="object">object</span>
-
-		 - object
-
-
-	</p>
-	
-	
-
-	
-	<h4>Arguments</h4>
-	<table class="arguments">
-		<thead>
-			<tr>
-				<th>Name
-				
-				<th>Type
-				<th>Details
-			</tr>
-		</thead>
-		<tbody>
-			
-				<tr>
-					<td>
-						obj
-						
-					</td>
-					 
-					<td>
-	<span data-type="object">object</span>
-</td>
-					<td> <p>A target object</p>
-</td>
-				</tr>
-			
-				<tr>
-					<td>
-						bindings
-						
-					</td>
-					 
-					<td>
-	<span data-type="object">object</span>
-</td>
-					<td> <p>(see the example)</p>
-</td>
-				</tr>
-			
-				<tr>
-					<td>
-						binder
-						
-							<span class="signature">optional</span>
-						
-					</td>
-					 
-					<td>
-	<span data-type="binder">binder</span>
-</td>
-					<td> <p>(see above)</p>
-</td>
-				</tr>
-			
-				<tr>
-					<td>
-						options
-						
-							<span class="signature">optional</span>
-						
-					</td>
-					 
-					<td>
-	<span data-type="object">object</span>
-</td>
-					<td> <p>(see above)</p>
-</td>
-				</tr>
-			
-		</tbody>
-	</table>
-
-
-	
-
-	
-	<h3>Examples</h3>
-
-
-<pre><code class="lang-js">defi.bindNode(obj, {
+});</code></pre></div><p><b>Returns</b> <span data-type="object">object</span> - object</p><p><b>Fires</b> <span class="event">bind</span> <span class="event">bind:KEY</span></p><h4>Arguments</h4><table class="arguments"><thead><tr><th>Name</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>obj</td><td><span data-type="object">object</span></td><td><p>A target object</p></td></tr><tr><td>key</td><td><span data-type="string">string</span></td><td><p>A property name</p></td></tr><tr><td>node</td><td><span data-type="string">string</span> <span data-type="node">node</span> <span data-type="$nodes">$nodes</span></td><td><p>An HTML element which must be bound to a <code>key</code></p></td></tr><tr><td>binder <span class="signature">optional</span></td><td><span data-type="binder">binder</span></td><td><p>A binder containing the following properties: <code>on</code> , <code>getValue</code>, <code>setValue</code>, <code>initialize</code>, <code>destroy</code>. You can get more detailed information about binders in their documentation: see <span data-type="binder">binder</span></p></td></tr><tr><td>options <span class="signature">optional</span></td><td><span data-type="object">object</span></td><td><p>Options object which accepts <code>&quot;silent&quot;</code> (don&#39;t fire <code>&quot;bind&quot;</code> and <code>&quot;bind:KEY&quot;</code>), flags described above or custom data</p></td></tr></tbody></table><h4>Links</h4><ul class="see"><li><a href="#!defi.unbindNode">defi.unbindNode</a></li><li><a href="#!defi.defaultBinders">defi.defaultBinders</a></li></ul></article><article class="item method" id="!defi.bindNode(2)"><h2><a href="#!defi.bindNode(2)"><span class="memberof">defi.</span>bindNode<wbr>(<span class="args">obj, bindings, binder, options</span>) </a><span class="returns">→ <span data-type="object">object</span></span></h2><div class="summary"><p>Alternative syntax: passing of an object</p></div><div class="description"><p>To the <a href="#!defi.bindNode">defi.bindNode</a> function an object can be passed to avoid multiple invocation of the function and reduce code. Keys of the object are property names and values can get the following look:</p><ul><li>A node;</li><li>An object with properties <code>node</code> and <code>binder</code>;</li><li>An array of objects with properties <code>node</code> and <code>binder</code>;</li></ul><p>If <code>binder</code> arg is passed as the second argument then it wil be used as the binder for those elements for which a binder wasn&#39;t specified.</p></div><p><b>Returns</b> <span data-type="object">object</span> - object</p><h4>Arguments</h4><table class="arguments"><thead><tr><th>Name</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>obj</td><td><span data-type="object">object</span></td><td><p>A target object</p></td></tr><tr><td>bindings</td><td><span data-type="object">object</span></td><td><p>(see the example)</p></td></tr><tr><td>binder <span class="signature">optional</span></td><td><span data-type="binder">binder</span></td><td><p>(see above)</p></td></tr><tr><td>options <span class="signature">optional</span></td><td><span data-type="object">object</span></td><td><p>(see above)</p></td></tr></tbody></table><h3>Examples</h3><pre><code class="lang-js">defi.bindNode(obj, {
 	foo: '.custom-checkbox',
 	'bar.length': 'textarea'
-});</code></pre>
-
-<pre><code class="lang-js">defi.bindNode(obj, {
+});</code></pre><pre><code class="lang-js">defi.bindNode(obj, {
 	foo: {
 		node: ':bound(x) .aaa',
 		binder: myBinder()
@@ -962,143 +196,21 @@ setTimeout(() =&gt; {
 	setValue(value) {
 		foo(value);
 	}
-});</code></pre>
-
- 
-
-</article>
-
-<article class="item method" id="!defi.bound">
-	<h2>
-		<a href="#!defi.bound">
-			<span class="memberof">defi.</span>bound<wbr>(<span class="args">obj, key, options</span>)
-				
-		</a> 
-	</h2>
-	
-	
-	<p class="module">
-		CommonJS module: <code>'defi/bound'</code>
-	</p>
-	
-	<div class="summary"><p>Returns a bound element</p>
-</div>
-	<div class="description"></div>
-	
-	
-
-	
-	<h4>Arguments</h4>
-	<table class="arguments">
-		<thead>
-			<tr>
-				<th>Name
-				
-				<th>Type
-				<th>Details
-			</tr>
-		</thead>
-		<tbody>
-			
-				<tr>
-					<td>
-						obj
-						
-					</td>
-					 
-					<td>
-	<span data-type="object">object</span>
-</td>
-					<td> <p>A target object</p>
-</td>
-				</tr>
-			
-				<tr>
-					<td>
-						key
-						
-					</td>
-					 
-					<td>
-	<span data-type="string">string</span>
-</td>
-					<td> <p>A name of a property, which bound elements you want to get</p>
-</td>
-				</tr>
-			
-				<tr>
-					<td>
-						options
-						
-					</td>
-					 
-					<td>
-	<span data-type="object">object</span>
-</td>
-					<td> <p>You can pass <code>all: true</code> if you want to get all elements bound to the key</p>
-</td>
-				</tr>
-			
-		</tbody>
-	</table>
-
-
-	
-
-	
-	<h3>Examples</h3>
-
-
-<pre><code class="lang-js">defi.bindNode(obj, 'x', '.my-element');
-defi.bound(obj, 'x'); // will return document.querySelector('.my-element')</code></pre>
-
-<pre><code class="lang-js">defi.bindNode(obj, 'x', '.my-element');
-defi.bound(obj, 'x', { all: true }); // will return an array of elements bound to "x"</code></pre>
-
- 
-
-</article>
-
-<article class="item method" id="!defi.calc">
-	<h2>
-		<a href="#!defi.calc">
-			<span class="memberof">defi.</span>calc<wbr>(<span class="args">obj, targetKey, source, handler<span class="default-value">=(v)=>v</span>, options</span>)
-				
-		</a> 
-	</h2>
-	
-	
-	<p class="module">
-		CommonJS module: <code>'defi/calc'</code>
-	</p>
-	
-	<div class="summary"><p>Creates a dependency of one property value on values of others</p>
-</div>
-	<div class="description"><p><code>calc</code> creates a dependency of a property (<code>target</code> argument) on values of other properties (<code>source</code> argument). When source property is changed, <code>target</code> is re-calculated automatically.</p>
-<p><code>source</code> arg has a few variations.</p>
-<h4 id="a-string">A string</h4>
-<p>A <code>target</code> property is dependent on <code>source</code> property.</p>
-<pre><code class="language-js">obj.b = 1;
+});</code></pre></article><article class="item method" id="!defi.bound"><h2><a href="#!defi.bound"><span class="memberof">defi.</span>bound<wbr>(<span class="args">obj, key, options</span>)</a></h2><p class="module">CommonJS module: <code>'defi/bound'</code></p><div class="summary"><p>Returns a bound element</p></div><div class="description"></div><h4>Arguments</h4><table class="arguments"><thead><tr><th>Name</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>obj</td><td><span data-type="object">object</span></td><td><p>A target object</p></td></tr><tr><td>key</td><td><span data-type="string">string</span></td><td><p>A name of a property, which bound elements you want to get</p></td></tr><tr><td>options</td><td><span data-type="object">object</span></td><td><p>You can pass <code>all: true</code> if you want to get all elements bound to the key</p></td></tr></tbody></table><h3>Examples</h3><pre><code class="lang-js">defi.bindNode(obj, 'x', '.my-element');
+defi.bound(obj, 'x'); // will return document.querySelector('.my-element')</code></pre><pre><code class="lang-js">defi.bindNode(obj, 'x', '.my-element');
+defi.bound(obj, 'x', { all: true }); // will return an array of elements bound to "x"</code></pre></article><article class="item method" id="!defi.calc"><h2><a href="#!defi.calc"><span class="memberof">defi.</span>calc<wbr>(<span class="args">obj, targetKey, source, handler<span class="default-value">=(v)=>v</span>, options</span>)</a></h2><p class="module">CommonJS module: <code>'defi/calc'</code></p><div class="summary"><p>Creates a dependency of one property value on values of others</p></div><div class="description"><p><code>calc</code> creates a dependency of a property (<code>target</code> argument) on values of other properties (<code>source</code> argument). When source property is changed, <code>target</code> is re-calculated automatically.</p><p><code>source</code> arg has a few variations.</p><h4 id="a-string">A string</h4><p>A <code>target</code> property is dependent on <code>source</code> property.</p><pre><code class="language-js">obj.b = 1;
 defi.calc(obj, &#39;a&#39;, &#39;b&#39;, b =&gt; b * 2);
-console.log(obj.a); // 2</code></pre>
-<h4 id="an-array-of-strings">An array of strings</h4>
-<p>A <code>target</code> is dependent on properties listed at <code>source</code> array.</p>
-<pre><code class="language-js">obj.b = 1;
+console.log(obj.a); // 2</code></pre><h4 id="an-array-of-strings">An array of strings</h4><p>A <code>target</code> is dependent on properties listed at <code>source</code> array.</p><pre><code class="language-js">obj.b = 1;
 obj.c = 2;
 obj.d = 3;
 defi.calc(obj, &#39;a&#39;, [&#39;b&#39;, &#39;c&#39;, &#39;d&#39;], (b, c, d) =&gt; b + c + d);
-console.log(obj.a); // 6</code></pre>
-<h4 id="an-object-with-properties-object-and-key">An object with properties <code>object</code> and <code>key</code></h4>
-<p>At this case <code>target</code> property is dependent on a property from another object.</p>
-<pre><code class="language-js">const someObject = { b: 1 };
+console.log(obj.a); // 6</code></pre><h4 id="an-object-with-properties-object-and-key">An object with properties <code>object</code> and <code>key</code></h4><p>At this case <code>target</code> property is dependent on a property from another object.</p><pre><code class="language-js">const someObject = { b: 1 };
 defi.calc(obj, &#39;a&#39;, {
     object: someObject,
     key: &#39;b&#39;
 }, b =&gt; b * 2);
 
-console.log(obj.a); // 2</code></pre>
-<p><code>key</code> property also accepts an array of property names.</p>
-<pre><code class="language-js">const someObject = {
+console.log(obj.a); // 2</code></pre><p><code>key</code> property also accepts an array of property names.</p><pre><code class="language-js">const someObject = {
     b: 1,
     c: 2,
     d: 3
@@ -1108,10 +220,7 @@ defi.calc(obj, &#39;a&#39;, {
     key: [&#39;b&#39;, &#39;c&#39;, &#39;d&#39;]
 }, (b, c, d) =&gt; b + c + d);
 
-console.log(obj.a); // 6</code></pre>
-<h4 id="an-array-of-object-with-properties-object-and-key">An array of object with properties <code>object</code> and <code>key</code></h4>
-<p>This variation allows to define dependency from properties of different objects.</p>
-<pre><code class="language-js">const someObjectX = {
+console.log(obj.a); // 6</code></pre><h4 id="an-array-of-object-with-properties-object-and-key">An array of object with properties <code>object</code> and <code>key</code></h4><p>This variation allows to define dependency from properties of different objects.</p><pre><code class="language-js">const someObjectX = {
     b: 1,
     c: 2
 };
@@ -1126,9 +235,7 @@ defi.calc(obj, &#39;a&#39;, [{
     key: &#39;d&#39;
 }], (b, c, d) =&gt; b + c + d);
 
-console.log(obj.a); // 6</code></pre>
-<h4 id="a-combination-of-strings-own-properties-and-objects">A combination of strings (own properties) and objects</h4>
-<pre><code class="language-js">obj.b = 1;
+console.log(obj.a); // 6</code></pre><h4 id="a-combination-of-strings-own-properties-and-objects">A combination of strings (own properties) and objects</h4><pre><code class="language-js">obj.b = 1;
 obj.c = 2;
 
 const someObject = {
@@ -1141,9 +248,7 @@ defi.calc(obj, &#39;a&#39;, [&#39;b&#39;, &#39;c&#39;, {
     key: [&#39;d&#39;, &#39;e&#39;]
 }], (b, c, d, e) =&gt; b + c + d + e);
 
-console.log(obj.a); // 10</code></pre>
-<p>For reasons of code purity, the combination of strings and objects inside <code>source</code> array is not recommended. Instead, pass an object whose <code>object</code> property refers to source object. An example below makes the same job as shown at the previous example.</p>
-<pre><code class="language-js">obj.b = 1;
+console.log(obj.a); // 10</code></pre><p>For reasons of code purity, the combination of strings and objects inside <code>source</code> array is not recommended. Instead, pass an object whose <code>object</code> property refers to source object. An example below makes the same job as shown at the previous example.</p><pre><code class="language-js">obj.b = 1;
 obj.c = 2;
 
 const someObject = {
@@ -1159,17 +264,12 @@ defi.calc(obj, &#39;a&#39;, [{
     key: [&#39;d&#39;, &#39;e&#39;]
 }], (b, c, d, e) =&gt; b + c + d + e);
 
-console.log(obj.a); // 10</code></pre>
-<h4 id="a-path-to-source-property">A path to source property</h4>
-<p>If source property name includes a dot then the function initiates a dependency on a property from nested object.</p>
-<pre><code class="language-js">obj.b = { c: { d: 1 } };
+console.log(obj.a); // 10</code></pre><h4 id="a-path-to-source-property">A path to source property</h4><p>If source property name includes a dot then the function initiates a dependency on a property from nested object.</p><pre><code class="language-js">obj.b = { c: { d: 1 } };
 obj.e = { f: { g: 2 } };
 
 defi.calc(obj, &#39;a&#39;, [&#39;b.c.d&#39;, &#39;e.f.g&#39;], (d, g) =&gt; d + g);
 
-console.log(obj.a); // 3</code></pre>
-<p>The same thing works for external sources.</p>
-<pre><code class="language-js">obj.b = { c: { d: 1 } };
+console.log(obj.a); // 3</code></pre><p>The same thing works for external sources.</p><pre><code class="language-js">obj.b = { c: { d: 1 } };
 const someObject = { e: { f: { g: 2 } } };
 
 defi.calc(obj, &#39;a&#39;, [{
@@ -1180,26 +280,14 @@ defi.calc(obj, &#39;a&#39;, [{
     key; &#39;e.f.g&#39;
 }], (d, g) =&gt; d + g);
 
-console.log(obj.a); // 3</code></pre>
-<blockquote>
-<p>The function is protected from circular references (for example, <code>a</code> depends on <code>b</code>, <code>b</code> depends on <code>c</code> and <code>c</code> depends on <code>a</code>) and if there is a calculation problem, it does not block the page and does not throw an exception about the stack over-flow.</p>
-</blockquote>
-<p>As you may noticed, arguments of <code>handler</code> function always follow the same order as source properties appear.</p>
-<p>In case if you want to change a value of one source property and make it so that target property will not be recalculated, then use <a href="#!defi.set">defi.set</a> function with <code>skipCalc</code> flag.</p>
-<pre><code class="language-js">defi.calc(obj, &#39;a&#39;, &#39;b&#39;, handler);
+console.log(obj.a); // 3</code></pre><blockquote><p>The function is protected from circular references (for example, <code>a</code> depends on <code>b</code>, <code>b</code> depends on <code>c</code> and <code>c</code> depends on <code>a</code>) and if there is a calculation problem, it does not block the page and does not throw an exception about the stack over-flow.</p></blockquote><p>As you may noticed, arguments of <code>handler</code> function always follow the same order as source properties appear.</p><p>In case if you want to change a value of one source property and make it so that target property will not be recalculated, then use <a href="#!defi.set">defi.set</a> function with <code>skipCalc</code> flag.</p><pre><code class="language-js">defi.calc(obj, &#39;a&#39;, &#39;b&#39;, handler);
 defi.set(obj, &#39;b&#39;, newValue, {
     skipCalc: true
-});</code></pre>
-<h3 id="important-features-of-the-function-and-special-flags">Important features of the function and special flags</h3>
-<p>The fifth argument of <code>calc</code> function is <code>options</code> (you also can call them just &quot;options&quot;). As usual this object can include special flags or custom data which will be passed to <code>change:TARGET</code> event handler.</p>
-<pre><code class="language-js">defi.on(obj, &#39;change:a&#39;, evt =&gt; {
+});</code></pre><h3 id="important-features-of-the-function-and-special-flags">Important features of the function and special flags</h3><p>The fifth argument of <code>calc</code> function is <code>options</code> (you also can call them just &quot;options&quot;). As usual this object can include special flags or custom data which will be passed to <code>change:TARGET</code> event handler.</p><pre><code class="language-js">defi.on(obj, &#39;change:a&#39;, evt =&gt; {
     console.log(evt.foo); // &#39;bar&#39;
 });
 
-defi.calc(obj, &#39;a&#39;, source, handler, { foo: &#39;bar&#39; });</code></pre>
-<h4 id="a-flag-debouncecalctrue">A flag <code>debounceCalc=true</code></h4>
-<p>After <code>calc</code> is called, a target property is calculated with no delays. But when source property is changed the debounce pattern is used. That means that target property will be changed in few milliseconds and only once even if source properties was changed many times in a short time.</p>
-<pre><code class="language-js">obj.b = 1;
+defi.calc(obj, &#39;a&#39;, source, handler, { foo: &#39;bar&#39; });</code></pre><h4 id="a-flag-debouncecalctrue">A flag <code>debounceCalc=true</code></h4><p>After <code>calc</code> is called, a target property is calculated with no delays. But when source property is changed the debounce pattern is used. That means that target property will be changed in few milliseconds and only once even if source properties was changed many times in a short time.</p><pre><code class="language-js">obj.b = 1;
 obj.c = 2;
 obj.d = 3;
 
@@ -1214,9 +302,7 @@ defi.on(obj, &#39;change:a&#39;, () =&gt; {
 obj.b = 10;
 obj.c = 20;
 obj.d = 30;
-console.log(obj.a); // 6 instead of 60</code></pre>
-<p>To cancel debounce pattern when source properties are changed, in other words to make the calculation synchronously pass <code>debounceCalc</code> with <code>false</code> value to the function.</p>
-<pre><code class="language-js">obj.b = 1;
+console.log(obj.a); // 6 instead of 60</code></pre><p>To cancel debounce pattern when source properties are changed, in other words to make the calculation synchronously pass <code>debounceCalc</code> with <code>false</code> value to the function.</p><pre><code class="language-js">obj.b = 1;
 obj.c = 2;
 obj.d = 3;
 
@@ -1235,10 +321,7 @@ defi.on(obj, &#39;change:a&#39;, () =&gt; {
 obj.b = 10;
 obj.c = 20;
 obj.d = 30;
-console.log(obj.a); // 60</code></pre>
-<h4 id="a-flag-debouncecalconinitfalse">A flag <code>debounceCalcOnInit=false</code></h4>
-<p>As described above, target property is calculated immediately after the <code>calc</code> is called. To turn on debounce on <code>calc</code> call pass <code>debounceCalcOnInit</code> with <code>true</code> value to the function.</p>
-<pre><code class="language-js">defi.on(obj, &#39;change:a&#39;, () =&gt; {
+console.log(obj.a); // 60</code></pre><h4 id="a-flag-debouncecalconinitfalse">A flag <code>debounceCalcOnInit=false</code></h4><p>As described above, target property is calculated immediately after the <code>calc</code> is called. To turn on debounce on <code>calc</code> call pass <code>debounceCalcOnInit</code> with <code>true</code> value to the function.</p><pre><code class="language-js">defi.on(obj, &#39;change:a&#39;, () =&gt; {
     // the handler will be called only once in a moment
     console.log(`a is changed to ${obj.a}`); // a is changed to 6
 });
@@ -1251,33 +334,18 @@ defi.calc(obj, &#39;a&#39;, [&#39;b&#39;, &#39;c&#39;, &#39;d&#39;], (b, c, d) =
     debounceCalcOnInit: true
 });
 
-console.log(obj.a); // undefined</code></pre>
-<p>In real world <code>debounceCalcOnInit</code> flag is unlikely to be useful. Just keep in mind that you can enable &quot;total debounce&quot; if needed.</p>
-<h4 id="a-flag-debouncecalcdelay0">A flag <code>debounceCalcDelay=0</code></h4>
-<p>The flag can be used to set debounce delay when <code>debounceCalc</code> or <code>debounceCalcOnInit</code> is set as <code>true</code>.</p>
-<h4 id="a-flag-setoninittrue">A flag <code>setOnInit=true</code></h4>
-<p>It is known that target property gets new value after <code>calc</code> is called. To cancel this behavior and don&#39;t calculate a property immediately use <code>setOnInit</code> with <code>false</code> value.</p>
-<pre><code class="language-js">defi.calc(obj, &#39;a&#39;, &#39;b&#39;, b =&gt; b * 2, {
+console.log(obj.a); // undefined</code></pre><p>In real world <code>debounceCalcOnInit</code> flag is unlikely to be useful. Just keep in mind that you can enable &quot;total debounce&quot; if needed.</p><h4 id="a-flag-debouncecalcdelay0">A flag <code>debounceCalcDelay=0</code></h4><p>The flag can be used to set debounce delay when <code>debounceCalc</code> or <code>debounceCalcOnInit</code> is set as <code>true</code>.</p><h4 id="a-flag-setoninittrue">A flag <code>setOnInit=true</code></h4><p>It is known that target property gets new value after <code>calc</code> is called. To cancel this behavior and don&#39;t calculate a property immediately use <code>setOnInit</code> with <code>false</code> value.</p><pre><code class="language-js">defi.calc(obj, &#39;a&#39;, &#39;b&#39;, b =&gt; b * 2, {
     setOnInit: false
 });
 
 console.log(obj.a); // undefined
 
 // but if obj.b is changed the target property will be calculated
-obj.b = 1;</code></pre>
-<h4 id="a-flag-exactkeyfalse">A flag <code>exactKey=false</code></h4>
-<p>As described above, it&#39;s possible to use a path to source property using a string that contains dots. In case if you need to use exact name of source property use <code>exactKey</code> with <code>true</code> value.</p>
-<pre><code class="language-js">obj[&#39;foo.bar.baz&#39;] = 1;
+obj.b = 1;</code></pre><h4 id="a-flag-exactkeyfalse">A flag <code>exactKey=false</code></h4><p>As described above, it&#39;s possible to use a path to source property using a string that contains dots. In case if you need to use exact name of source property use <code>exactKey</code> with <code>true</code> value.</p><pre><code class="language-js">obj[&#39;foo.bar.baz&#39;] = 1;
 defi.calc(obj, &#39;a&#39;, &#39;foo.bar.baz&#39;, fooBarBaz =&gt; fooBarBaz * 2, {
     exactKey: true
 });
-console.log(obj.a); // 2</code></pre>
-<h4 id="a-flag-promisecalcfalse">A flag <code>promiseCalc=false</code></h4>
-<p>This flag allows to return <code>Promise</code> instance from the calculating function. Target property gets its value from resolved promise.</p>
-<blockquote>
-<p>Warning! <code>Promise</code> cannot be canceled. Use the <code>promiseCalc</code> feature carefully and don&#39;t allow multiple calls of heavy functions.</p>
-</blockquote>
-<pre><code class="language-js">defi.calc(obj, &#39;a&#39;, [&#39;b&#39;, &#39;c&#39;], (b, c) =&gt; {
+console.log(obj.a); // 2</code></pre><h4 id="a-flag-promisecalcfalse">A flag <code>promiseCalc=false</code></h4><p>This flag allows to return <code>Promise</code> instance from the calculating function. Target property gets its value from resolved promise.</p><blockquote><p>Warning! <code>Promise</code> cannot be canceled. Use the <code>promiseCalc</code> feature carefully and don&#39;t allow multiple calls of heavy functions.</p></blockquote><pre><code class="language-js">defi.calc(obj, &#39;a&#39;, [&#39;b&#39;, &#39;c&#39;], (b, c) =&gt; {
     return new Promise(resolve =&gt; {
         setTimeout(() =&gt; {
             resolve(a + b)
@@ -1290,8 +358,7 @@ console.log(obj.a); // 2</code></pre>
 obj.b = 1;
 obj.c = 2;
 
-// &quot;a&quot; will be changed in a second</code></pre>
-<pre><code class="language-js">defi.calc(obj, &#39;response&#39;, &#39;data&#39;, async (data) =&gt; {
+// &quot;a&quot; will be changed in a second</code></pre><pre><code class="language-js">defi.calc(obj, &#39;response&#39;, &#39;data&#39;, async (data) =&gt; {
     const resp = await fetch(url, {
         method: &#39;post&#39;,
         body: data
@@ -1300,116 +367,12 @@ obj.c = 2;
     return resp.json();
 }, {
     promiseCalc: true
-});</code></pre>
-</div>
-	
-	
-
-	
-	<h4>Arguments</h4>
-	<table class="arguments">
-		<thead>
-			<tr>
-				<th>Name
-				<th>Default
-				<th>Type
-				<th>Details
-			</tr>
-		</thead>
-		<tbody>
-			
-				<tr>
-					<td>
-						obj
-						
-					</td>
-					<td><code></code> 
-					<td>
-	<span data-type="object">object</span>
-</td>
-					<td> <p>A target object</p>
-</td>
-				</tr>
-			
-				<tr>
-					<td>
-						targetKey
-						
-					</td>
-					<td><code></code> 
-					<td>
-	<span data-type="string">string</span>
-</td>
-					<td> <p>A property which needs to be calculated</p>
-</td>
-				</tr>
-			
-				<tr>
-					<td>
-						source
-						
-					</td>
-					<td><code></code> 
-					<td>
-	<span data-type="string">string</span>
-
-	<span data-type="array">array</span>
-</td>
-					<td> <p>Which properties the target property is depended on</p>
-</td>
-				</tr>
-			
-				<tr>
-					<td>
-						handler
-						
-							<span class="signature">optional</span>
-						
-					</td>
-					<td><code>(v)=>v</code> 
-					<td>
-	<span data-type="function">function</span>
-</td>
-					<td> <p>A function which returns a new value</p>
-</td>
-				</tr>
-			
-				<tr>
-					<td>
-						options
-						
-							<span class="signature">optional</span>
-						
-					</td>
-					<td><code></code> 
-					<td>
-	<span data-type="object">object</span>
-</td>
-					<td> <p>An object which can contain some special flags or data for <code>change:KEY</code> handler</p>
-</td>
-				</tr>
-			
-		</tbody>
-	</table>
-
-
-	
-
-	
-	<h3>Examples</h3>
-
-
-<pre><code class="lang-js">defi.calc(obj, 'greeting', 'name', name => `Hello, ${name}!`);
+});</code></pre></div><h4>Arguments</h4><table class="arguments"><thead><tr><th>Name</th><th>Default</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>obj</td><td><code></code></td><td><span data-type="object">object</span></td><td><p>A target object</p></td></tr><tr><td>targetKey</td><td><code></code></td><td><span data-type="string">string</span></td><td><p>A property which needs to be calculated</p></td></tr><tr><td>source</td><td><code></code></td><td><span data-type="string">string</span> <span data-type="array">array</span></td><td><p>Which properties the target property is depended on</p></td></tr><tr><td>handler <span class="signature">optional</span></td><td><code>(v)=>v</code></td><td><span data-type="function">function</span></td><td><p>A function which returns a new value</p></td></tr><tr><td>options <span class="signature">optional</span></td><td><code></code></td><td><span data-type="object">object</span></td><td><p>An object which can contain some special flags or data for <code>change:KEY</code> handler</p></td></tr></tbody></table><h3>Examples</h3><pre><code class="lang-js">defi.calc(obj, 'greeting', 'name', name => `Hello, ${name}!`);
 
 obj.name = 'World';
 
 // ... in a moment
-alert(obj.greeting); // 'Hello, World!'</code></pre>
-
-    <h4><p>The calculation of the rectangle perimeter with two sides known (and the calculation of the sides with the perimeter known)</p>
-</h4>
-
-<pre><code class="lang-js">obj.a = 3;
+alert(obj.greeting); // 'Hello, World!'</code></pre><h4><p>The calculation of the rectangle perimeter with two sides known (and the calculation of the sides with the perimeter known)</p></h4><pre><code class="lang-js">obj.a = 3;
 obj.b = 4;
 
 obj.chain(obj)
@@ -1424,100 +387,7 @@ defi.on(obj, 'change:p', () => {
     console.log(`The perimeter has been changed and equals ${obj.p}`);
 });
 
-obj.a = 5;</code></pre>
-
- 
-
-</article>
-
-<article class="item method" id="!defi.calc(batch)">
-	<h2>
-		<a href="#!defi.calc(batch)">
-			<span class="memberof">defi.</span>calc<wbr>(<span class="args">obj, batch, options</span>)
-				
-		</a> 
-	</h2>
-	
-	
-	<div class="summary"><p>Extra syntax for <a href="#!defi.calc">defi.calc</a>. Allows to define few calculated properties per single call of the function.</p>
-</div>
-	<div class="description"><p>The first argument is an object whose keys are property names and values are objects with the following data:</p>
-<ul>
-<li><code>source</code> - which properties the target property is depended on;</li>
-<li><code>handler</code> - a function which returns a new value of a property (by default it equals to <code>(value) =&gt; value</code>);</li>
-<li><code>options</code> - calc options.</li>
-</ul>
-<p>The third argument contains common options which extend <code>options</code> of every item (but they still have higher priority than common options).</p>
-<p><code>source</code> can take any kind of look as <a href="#!defi.calc">described above</a> (a string, an array of strings etc).</p>
-</div>
-	
-	
-
-	
-	<h4>Arguments</h4>
-	<table class="arguments">
-		<thead>
-			<tr>
-				<th>Name
-				
-				<th>Type
-				<th>Details
-			</tr>
-		</thead>
-		<tbody>
-			
-				<tr>
-					<td>
-						obj
-						
-					</td>
-					 
-					<td>
-	<span data-type="object">object</span>
-</td>
-					<td> <p>A target object</p>
-</td>
-				</tr>
-			
-				<tr>
-					<td>
-						batch
-						
-					</td>
-					 
-					<td>
-	<span data-type="array">array</span>
-</td>
-					<td> <p>An object which includes all information about calculated properties</p>
-</td>
-				</tr>
-			
-				<tr>
-					<td>
-						options
-						
-							<span class="signature">optional</span>
-						
-					</td>
-					 
-					<td>
-	<span data-type="object">object</span>
-</td>
-					<td> <p>Options which are common for all listed calculated properties</p>
-</td>
-				</tr>
-			
-		</tbody>
-	</table>
-
-
-	
-
-	
-	<h3>Examples</h3>
-
-
-<pre><code class="lang-js">defi.calc(obj, {
+obj.a = 5;</code></pre></article><article class="item method" id="!defi.calc(batch)"><h2><a href="#!defi.calc(batch)"><span class="memberof">defi.</span>calc<wbr>(<span class="args">obj, batch, options</span>)</a></h2><div class="summary"><p>Extra syntax for <a href="#!defi.calc">defi.calc</a>. Allows to define few calculated properties per single call of the function.</p></div><div class="description"><p>The first argument is an object whose keys are property names and values are objects with the following data:</p><ul><li><code>source</code> - which properties the target property is depended on;</li><li><code>handler</code> - a function which returns a new value of a property (by default it equals to <code>(value) =&gt; value</code>);</li><li><code>options</code> - calc options.</li></ul><p>The third argument contains common options which extend <code>options</code> of every item (but they still have higher priority than common options).</p><p><code>source</code> can take any kind of look as <a href="#!defi.calc">described above</a> (a string, an array of strings etc).</p></div><h4>Arguments</h4><table class="arguments"><thead><tr><th>Name</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>obj</td><td><span data-type="object">object</span></td><td><p>A target object</p></td></tr><tr><td>batch</td><td><span data-type="array">array</span></td><td><p>An object which includes all information about calculated properties</p></td></tr><tr><td>options <span class="signature">optional</span></td><td><span data-type="object">object</span></td><td><p>Options which are common for all listed calculated properties</p></td></tr></tbody></table><h3>Examples</h3><pre><code class="lang-js">defi.calc(obj, {
 	x: {
     	source: ['a', 'b'],
     	handler: (a, b) => a + b
@@ -1543,80 +413,7 @@ obj.a = 5;</code></pre>
 	}
 }, {
     debounceCalc: false
-});</code></pre>
-
- 
-
-</article>
-
-<article class="item method" id="!defi.chain">
-	<h2>
-		<a href="#!defi.chain">
-			<span class="memberof">defi.</span>chain<wbr>(<span class="args">obj</span>)
-				
-		</a> <span class="returns">→ 
-	<span data-type="object">object</span>
-</span>
-	</h2>
-	
-	
-	<p class="module">
-		CommonJS module: <code>'defi/chain'</code>
-	</p>
-	
-	<div class="summary"><p>Allows chained calls of defi.js functions</p>
-</div>
-	<div class="description"><p>The function accepts any object and returns an instance of a class which adopts functions allowing them to be called in a chain.</p>
-</div>
-	
-	<p>
-		<b>Returns</b> 
-	<span data-type="object">object</span>
-
-		 - An instance of the class which adopts defi functions
-
-
-	</p>
-	
-	
-
-	
-	<h4>Arguments</h4>
-	<table class="arguments">
-		<thead>
-			<tr>
-				<th>Name
-				
-				<th>Type
-				<th>Details
-			</tr>
-		</thead>
-		<tbody>
-			
-				<tr>
-					<td>
-						obj
-						
-					</td>
-					 
-					<td>
-	<span data-type="object">object</span>
-</td>
-					<td> <p>An object</p>
-</td>
-				</tr>
-			
-		</tbody>
-	</table>
-
-
-	
-
-	
-	<h3>Examples</h3>
-
-
-<pre><code class="lang-js">defi.chain(obj)
+});</code></pre></article><article class="item method" id="!defi.chain"><h2><a href="#!defi.chain"><span class="memberof">defi.</span>chain<wbr>(<span class="args">obj</span>) </a><span class="returns">→ <span data-type="object">object</span></span></h2><p class="module">CommonJS module: <code>'defi/chain'</code></p><div class="summary"><p>Allows chained calls of defi.js functions</p></div><div class="description"><p>The function accepts any object and returns an instance of a class which adopts functions allowing them to be called in a chain.</p></div><p><b>Returns</b> <span data-type="object">object</span> - An instance of the class which adopts defi functions</p><h4>Arguments</h4><table class="arguments"><thead><tr><th>Name</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>obj</td><td><span data-type="object">object</span></td><td><p>An object</p></td></tr></tbody></table><h3>Examples</h3><pre><code class="lang-js">defi.chain(obj)
     .calc('a', 'b', b => b * 2)
     .set('b', 3)
     .bindNode('c', '.node');
@@ -1624,87 +421,7 @@ obj.a = 5;</code></pre>
 // the same as
 // defi.calc(obj, 'a', 'b', b => b * 2)
 // defi.set(obj, 'b', 3)
-// defi.bindNode(obj, 'c', '.node');</code></pre>
-
- 
-
-</article>
-
-<article class="item method" id="!defi.lookForBinder">
-	<h2>
-		<a href="#!defi.lookForBinder">
-			<span class="memberof">defi.</span>lookForBinder<wbr>(<span class="args">node</span>)
-				
-		</a> <span class="returns">→ 
-	<span data-type="binder">binder</span>
-</span>
-	</h2>
-	
-	
-	<p class="module">
-		CommonJS module: <code>'defi/lookforbinder'</code>
-	</p>
-	
-	<div class="summary"></div>
-	<div class="description"><p>Returns a binder corresponding to an element. If it is not found, it returns <code>undefined</code>. The function uses <a href="#!defi.defaultBinders">defi.defaultBinders</a> for the search.</p>
-</div>
-	
-	<p>
-		<b>Returns</b> 
-	<span data-type="binder">binder</span>
-
-		 - binder
-
-
-	</p>
-	
-	
-
-	
-	<h4>Arguments</h4>
-	<table class="arguments">
-		<thead>
-			<tr>
-				<th>Name
-				
-				<th>Type
-				
-			</tr>
-		</thead>
-		<tbody>
-			
-				<tr>
-					<td>
-						node
-						
-					</td>
-					 
-					<td>
-	<span data-type="node">node</span>
-</td>
-					 </td>
-				</tr>
-			
-		</tbody>
-	</table>
-
-
-	
-<h4>Links</h4>
-<ul class="see">
-	
-		<li><a href="#!defi.bindNode">defi.bindNode</a>
-	
-		<li><a href="#!defi.defaultBinders">defi.defaultBinders</a>
-	
-</ul>
-
-
-	
-	<h3>Examples</h3>
-
-
-<pre><code class="lang-js">const element = document.createElement('input');
+// defi.bindNode(obj, 'c', '.node');</code></pre></article><article class="item method" id="!defi.lookForBinder"><h2><a href="#!defi.lookForBinder"><span class="memberof">defi.</span>lookForBinder<wbr>(<span class="args">node</span>) </a><span class="returns">→ <span data-type="binder">binder</span></span></h2><p class="module">CommonJS module: <code>'defi/lookforbinder'</code></p><div class="summary"></div><div class="description"><p>Returns a binder corresponding to an element. If it is not found, it returns <code>undefined</code>. The function uses <a href="#!defi.defaultBinders">defi.defaultBinders</a> for the search.</p></div><p><b>Returns</b> <span data-type="binder">binder</span> - binder</p><h4>Arguments</h4><table class="arguments"><thead><tr><th>Name</th><th>Type</th></tr></thead><tbody><tr><td>node</td><td><span data-type="node">node</span></td></tr></tbody></table><h4>Links</h4><ul class="see"><li><a href="#!defi.bindNode">defi.bindNode</a></li><li><a href="#!defi.defaultBinders">defi.defaultBinders</a></li></ul><h3>Examples</h3><pre><code class="lang-js">const element = document.createElement('input');
 element.type = 'text';
 
 console.log(defi.lookForBinder(element));
@@ -1714,174 +431,11 @@ console.log(defi.lookForBinder(element));
 	on: 'input',
 	getValue: ({ node }) => node.value,
 	setValue: (v, { node }) => node.value = v,
-}</code></pre>
-
- 
-
-</article>
-
-<article class="item method" id="!defi.mediate">
-	<h2>
-		<a href="#!defi.mediate">
-			<span class="memberof">defi.</span>mediate<wbr>(<span class="args">obj, key, mediator</span>)
-				
-		</a> <span class="returns">→ 
-	<span data-type="object">object</span>
-</span>
-	</h2>
-	
-	
-	<p class="module">
-		CommonJS module: <code>'defi/mediate'</code>
-	</p>
-	
-	<div class="summary"><p>Transforms property value on its changing</p>
-</div>
-	<div class="description"><p>This function is used for transforming property value on its changing. For example, you want the property value to be always either of a certain type or an integer value, or to be no less than zero and no more than a hundred etc.</p>
-</div>
-	
-	<p>
-		<b>Returns</b> 
-	<span data-type="object">object</span>
-
-		 - obj
-
-
-	</p>
-	
-	
-
-	
-	<h4>Arguments</h4>
-	<table class="arguments">
-		<thead>
-			<tr>
-				<th>Name
-				
-				<th>Type
-				<th>Details
-			</tr>
-		</thead>
-		<tbody>
-			
-				<tr>
-					<td>
-						obj
-						
-					</td>
-					 
-					<td>
-	<span data-type="object">object</span>
-</td>
-					<td> <p>A target object</p>
-</td>
-				</tr>
-			
-				<tr>
-					<td>
-						key
-						
-					</td>
-					 
-					<td>
-	<span data-type="string">string</span>
-
-	<span data-type="array">array</span>
-</td>
-					<td> <p>A key or an array of keys</p>
-</td>
-				</tr>
-			
-				<tr>
-					<td>
-						mediator
-						
-					</td>
-					 
-					<td>
-	<span data-type="function">function</span>
-</td>
-					<td> <p>A function-mediator which returns a new value. It gets the following arguments: new value, previous value, a key, an object itself</p>
-</td>
-				</tr>
-			
-		</tbody>
-	</table>
-
-
-	
-
-	
-	<h3>Examples</h3>
-
-
-<pre><code class="lang-js">defi.mediate(obj, 'x', value => String(value));
+}</code></pre></article><article class="item method" id="!defi.mediate"><h2><a href="#!defi.mediate"><span class="memberof">defi.</span>mediate<wbr>(<span class="args">obj, key, mediator</span>) </a><span class="returns">→ <span data-type="object">object</span></span></h2><p class="module">CommonJS module: <code>'defi/mediate'</code></p><div class="summary"><p>Transforms property value on its changing</p></div><div class="description"><p>This function is used for transforming property value on its changing. For example, you want the property value to be always either of a certain type or an integer value, or to be no less than zero and no more than a hundred etc.</p></div><p><b>Returns</b> <span data-type="object">object</span> - obj</p><h4>Arguments</h4><table class="arguments"><thead><tr><th>Name</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>obj</td><td><span data-type="object">object</span></td><td><p>A target object</p></td></tr><tr><td>key</td><td><span data-type="string">string</span> <span data-type="array">array</span></td><td><p>A key or an array of keys</p></td></tr><tr><td>mediator</td><td><span data-type="function">function</span></td><td><p>A function-mediator which returns a new value. It gets the following arguments: new value, previous value, a key, an object itself</p></td></tr></tbody></table><h3>Examples</h3><pre><code class="lang-js">defi.mediate(obj, 'x', value => String(value));
 
 obj.x = 1;
 
-alert(typeof obj.x); // "string"</code></pre>
-
-    <h4><p>An array of keys</p>
-</h4>
-
-<pre><code class="lang-js">defi.mediate(obj, ['x', 'y'], value => String(value));</code></pre>
-
- 
-
-</article>
-
-<article class="item method" id="!defi.mediate(2)">
-	<h2>
-		<a href="#!defi.mediate(2)">
-			<span class="memberof">defi.</span>mediate<wbr>(<span class="args">keyMediatorPairs</span>)
-				
-		</a> 
-	</h2>
-	
-	
-	<div class="summary"><p>Alternative syntax of the <a href="#!defi.mediate">defi.mediate</a> function which accepts &quot;key-mediator&quot; object as an argument</p>
-</div>
-	<div class="description"></div>
-	
-	
-
-	
-	<h4>Arguments</h4>
-	<table class="arguments">
-		<thead>
-			<tr>
-				<th>Name
-				
-				<th>Type
-				<th>Details
-			</tr>
-		</thead>
-		<tbody>
-			
-				<tr>
-					<td>
-						keyMediatorPairs
-						
-					</td>
-					 
-					<td>
-	<span data-type="object">object</span>
-</td>
-					<td> <p>An object with key-mediator properties</p>
-</td>
-				</tr>
-			
-		</tbody>
-	</table>
-
-
-	
-
-	
-	<h3>Examples</h3>
-
-
-<pre><code class="lang-js">defi.mediate(obj, {
+alert(typeof obj.x); // "string"</code></pre><h4><p>An array of keys</p></h4><pre><code class="lang-js">defi.mediate(obj, ['x', 'y'], value => String(value));</code></pre></article><article class="item method" id="!defi.mediate(2)"><h2><a href="#!defi.mediate(2)"><span class="memberof">defi.</span>mediate<wbr>(<span class="args">keyMediatorPairs</span>)</a></h2><div class="summary"><p>Alternative syntax of the <a href="#!defi.mediate">defi.mediate</a> function which accepts &quot;key-mediator&quot; object as an argument</p></div><div class="description"></div><h4>Arguments</h4><table class="arguments"><thead><tr><th>Name</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>keyMediatorPairs</td><td><span data-type="object">object</span></td><td><p>An object with key-mediator properties</p></td></tr></tbody></table><h3>Examples</h3><pre><code class="lang-js">defi.mediate(obj, {
 	x: String,
 	y: Number,
 	z: Boolean
@@ -1891,284 +445,21 @@ obj.y = 2;
 obj.z = 3;
 alert(typeof obj.x); // "string"
 alert(typeof obj.y); // "number"
-alert(typeof obj.z); // "boolean"</code></pre>
-
- 
-
-</article>
-
-<article class="item method" id="!defi.off">
-	<h2>
-		<a href="#!defi.off">
-			<span class="memberof">defi.</span>off<wbr>(<span class="args">obj, names, callback</span>)
-				
-		</a> <span class="returns">→ 
-	<span data-type="object">object</span>
-</span>
-	</h2>
-	
-	
-	<p class="module">
-		CommonJS module: <code>'defi/off'</code>
-	</p>
-	
-	<div class="summary"><p>Deletes an event handler</p>
-</div>
-	<div class="description"><p>It deletes a handler which has been created before. All arguments (except of a target object of course) are optional. You can delete both all the events (without passing event names) and separate ones (having passed only the event name, the event name and the handler).</p>
-</div>
-	
-	<p>
-		<b>Returns</b> 
-	<span data-type="object">object</span>
-
-		 - obj
-
-
-	</p>
-	
-	
-	<p>
-		<b>Fires</b> <span class="event">removeevent</span> <span class="event">removeevent:NAME</span>
-
-	</p>
-	
-
-	
-	<h4>Arguments</h4>
-	<table class="arguments">
-		<thead>
-			<tr>
-				<th>Name
-				
-				<th>Type
-				<th>Details
-			</tr>
-		</thead>
-		<tbody>
-			
-				<tr>
-					<td>
-						obj
-						
-					</td>
-					 
-					<td>
-	<span data-type="object">object</span>
-</td>
-					<td> <p>A target object</p>
-</td>
-				</tr>
-			
-				<tr>
-					<td>
-						names
-						
-							<span class="signature">optional</span>
-						
-					</td>
-					 
-					<td>
-	<span data-type="eventNames">eventNames</span>
-</td>
-					<td> <p>An event name or a an array of event names</p>
-</td>
-				</tr>
-			
-				<tr>
-					<td>
-						callback
-						
-							<span class="signature">optional</span>
-						
-					</td>
-					 
-					<td>
-	<span data-type="eventHandler">eventHandler</span>
-</td>
-					<td> <p>A function-handler</p>
-</td>
-				</tr>
-			
-		</tbody>
-	</table>
-
-
-	
-<h4>Links</h4>
-<ul class="see">
-	
-		<li><a href="#!defi.on">defi.on</a>
-	
-		<li><a href="#!defi.trigger">defi.trigger</a>
-	
-</ul>
-
-
-	
-	<h3>Examples</h3>
-
-
-<pre><code class="lang-js">defi.off(obj, 'change:x');
-defi.off(obj, ['change:x', 'bind']);</code></pre>
-
-    <h4><p>The deletion of all events</p>
-</h4>
-
-<pre><code class="lang-js">defi.off(obj);</code></pre>
-
-    <h4><p>The deletion of an event with definite handler</p>
-</h4>
-
-<pre><code class="lang-js">const handler = function() {
+alert(typeof obj.z); // "boolean"</code></pre></article><article class="item method" id="!defi.off"><h2><a href="#!defi.off"><span class="memberof">defi.</span>off<wbr>(<span class="args">obj, names, callback</span>) </a><span class="returns">→ <span data-type="object">object</span></span></h2><p class="module">CommonJS module: <code>'defi/off'</code></p><div class="summary"><p>Deletes an event handler</p></div><div class="description"><p>It deletes a handler which has been created before. All arguments (except of a target object of course) are optional. You can delete both all the events (without passing event names) and separate ones (having passed only the event name, the event name and the handler).</p></div><p><b>Returns</b> <span data-type="object">object</span> - obj</p><p><b>Fires</b> <span class="event">removeevent</span> <span class="event">removeevent:NAME</span></p><h4>Arguments</h4><table class="arguments"><thead><tr><th>Name</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>obj</td><td><span data-type="object">object</span></td><td><p>A target object</p></td></tr><tr><td>names <span class="signature">optional</span></td><td><span data-type="eventNames">eventNames</span></td><td><p>An event name or a an array of event names</p></td></tr><tr><td>callback <span class="signature">optional</span></td><td><span data-type="eventHandler">eventHandler</span></td><td><p>A function-handler</p></td></tr></tbody></table><h4>Links</h4><ul class="see"><li><a href="#!defi.on">defi.on</a></li><li><a href="#!defi.trigger">defi.trigger</a></li></ul><h3>Examples</h3><pre><code class="lang-js">defi.off(obj, 'change:x');
+defi.off(obj, ['change:x', 'bind']);</code></pre><h4><p>The deletion of all events</p></h4><pre><code class="lang-js">defi.off(obj);</code></pre><h4><p>The deletion of an event with definite handler</p></h4><pre><code class="lang-js">const handler = function() {
 	//...
 }
 defi.on(obj, 'change:x', handler);
-defi.off(obj, 'change:x', handler);</code></pre>
-
- 
-
-</article>
-
-<article class="item method" id="!defi.on">
-	<h2>
-		<a href="#!defi.on">
-			<span class="memberof">defi.</span>on<wbr>(<span class="args">obj, names, callback, options</span>)
-				
-		</a> <span class="returns">→ 
-	<span data-type="object">object</span>
-</span>
-	</h2>
-	
-	
-	<p class="module">
-		CommonJS module: <code>'defi/on'</code>
-	</p>
-	
-	<div class="summary"><p>Adds an event handler</p>
-</div>
-	<div class="description"><p>The function adds an event handler for an object. Refer to the complete list of possible events with the description here: <span data-type="eventNames">eventNames</span>. Also check out <a href="#!events">a short article about events</a>.</p>
-</div>
-	
-	<p>
-		<b>Returns</b> 
-	<span data-type="object">object</span>
-
-		 - obj
-
-
-	</p>
-	
-	
-	<p>
-		<b>Fires</b> <span class="event">addevent</span> <span class="event">addevent:NAME</span>
-
-	</p>
-	
-
-	
-	<h4>Arguments</h4>
-	<table class="arguments">
-		<thead>
-			<tr>
-				<th>Name
-				
-				<th>Type
-				<th>Details
-			</tr>
-		</thead>
-		<tbody>
-			
-				<tr>
-					<td>
-						obj
-						
-					</td>
-					 
-					<td>
-	<span data-type="object">object</span>
-</td>
-					<td> <p>A target object</p>
-</td>
-				</tr>
-			
-				<tr>
-					<td>
-						names
-						
-					</td>
-					 
-					<td>
-	<span data-type="eventNames">eventNames</span>
-</td>
-					<td> <p>An event name or an array of names</p>
-</td>
-				</tr>
-			
-				<tr>
-					<td>
-						callback
-						
-					</td>
-					 
-					<td>
-	<span data-type="eventHandler">eventHandler</span>
-</td>
-					<td> <p>A function which is caused by the event</p>
-</td>
-				</tr>
-			
-				<tr>
-					<td>
-						options
-						
-					</td>
-					 
-					<td>
-	<span data-type="object">object</span>
-</td>
-					<td> <p>Options object where <code>triggerOnInit</code> (boolean) makes the handler called immediately after event initialization, <code>once</code> (boolean) makes the handler called only once, <code>debounce</code> (boolean or # of milliseconds) debounces the handler</p>
-</td>
-				</tr>
-			
-		</tbody>
-	</table>
-
-
-	
-<h4>Links</h4>
-<ul class="see">
-	
-		<li><a href="#!defi.off">defi.off</a>
-	
-		<li><a href="#!defi.trigger">defi.trigger</a>
-	
-</ul>
-
-
-	
-	<h3>Examples</h3>
-
-
-<pre><code class="lang-js">defi.on(obj, 'foo', () => {
+defi.off(obj, 'change:x', handler);</code></pre></article><article class="item method" id="!defi.on"><h2><a href="#!defi.on"><span class="memberof">defi.</span>on<wbr>(<span class="args">obj, names, callback, options</span>) </a><span class="returns">→ <span data-type="object">object</span></span></h2><p class="module">CommonJS module: <code>'defi/on'</code></p><div class="summary"><p>Adds an event handler</p></div><div class="description"><p>The function adds an event handler for an object. Refer to the complete list of possible events with the description here: <span data-type="eventNames">eventNames</span>. Also check out <a href="#!events">a short article about events</a>.</p></div><p><b>Returns</b> <span data-type="object">object</span> - obj</p><p><b>Fires</b> <span class="event">addevent</span> <span class="event">addevent:NAME</span></p><h4>Arguments</h4><table class="arguments"><thead><tr><th>Name</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>obj</td><td><span data-type="object">object</span></td><td><p>A target object</p></td></tr><tr><td>names</td><td><span data-type="eventNames">eventNames</span></td><td><p>An event name or an array of names</p></td></tr><tr><td>callback</td><td><span data-type="eventHandler">eventHandler</span></td><td><p>A function which is caused by the event</p></td></tr><tr><td>options</td><td><span data-type="object">object</span></td><td><p>Options object where <code>triggerOnInit</code> (boolean) makes the handler called immediately after event initialization, <code>once</code> (boolean) makes the handler called only once, <code>debounce</code> (boolean or # of milliseconds) debounces the handler</p></td></tr></tbody></table><h4>Links</h4><ul class="see"><li><a href="#!defi.off">defi.off</a></li><li><a href="#!defi.trigger">defi.trigger</a></li></ul><h3>Examples</h3><pre><code class="lang-js">defi.on(obj, 'foo', () => {
 	alert('A custom Event is fired');
 });
 
-defi.trigger(obj, 'foo');</code></pre>
-
-    <h4><p>Using Symbol as an event name</p>
-</h4>
-
-<pre><code class="lang-js">const foo = Symbol('foo');
+defi.trigger(obj, 'foo');</code></pre><h4><p>Using Symbol as an event name</p></h4><pre><code class="lang-js">const foo = Symbol('foo');
 defi.on(obj, foo, () => {
 	alert('A custom Event is fired');
 });
 
-defi.trigger(obj, foo);</code></pre>
-
-    <h4><p>Using an array of event names</p>
-</h4>
-
-<pre><code class="lang-js">const bar = Symbol('foo');
+defi.trigger(obj, foo);</code></pre><h4><p>Using an array of event names</p></h4><pre><code class="lang-js">const bar = Symbol('foo');
 
 defi.on(obj, ['foo', bar, 'baz'], () => {
 	alert('A custom Event is fired');
@@ -2176,728 +467,55 @@ defi.on(obj, ['foo', bar, 'baz'], () => {
 
 defi.trigger(obj, 'foo');
 defi.trigger(obj, bar);
-defi.trigger(obj, 'baz');</code></pre>
-
-    <h4><p>Calling a handler immediately after event initialization</p>
-</h4>
-
-<pre><code class="lang-js">// Displays "bar" at once and waits for a firing of "foo" event
+defi.trigger(obj, 'baz');</code></pre><h4><p>Calling a handler immediately after event initialization</p></h4><pre><code class="lang-js">// Displays "bar" at once and waits for a firing of "foo" event
 defi.on(obj, 'foo', () => {
 	alert('bar');
-}, { triggerOnInit: true });</code></pre>
-
-    <h4><p>Calling a handler only once</p>
-</h4>
-
-<pre><code class="lang-js">defi.on(obj, 'foo', () => {
+}, { triggerOnInit: true });</code></pre><h4><p>Calling a handler only once</p></h4><pre><code class="lang-js">defi.on(obj, 'foo', () => {
 	alert('bar');
 }, { once: true });
 
 defi.trigger(obj, 'foo'); // displays "bar"
 defi.trigger(obj, 'foo'); // does nothing
-defi.trigger(obj, 'foo'); // does nothing</code></pre>
-
- 
-
-</article>
-
-<article class="item method" id="!defi.on(2)">
-	<h2>
-		<a href="#!defi.on(2)">
-			<span class="memberof">defi.</span>on<wbr>(<span class="args">obj, evtnameHandlerObject, options, obj</span>)
-				
-		</a> 
-	</h2>
-	
-	
-	<div class="summary"><p>Alternative syntax: &quot;eventname-handler&quot; pairs</p>
-</div>
-	<div class="description"><p>In the <a href="#!defi.on">defi.on</a> function the object with the key-event pairs can be passed to avoid multiple invocation of the function.</p>
-</div>
-	
-	
-
-	
-	<h4>Arguments</h4>
-	<table class="arguments">
-		<thead>
-			<tr>
-				<th>Name
-				
-				<th>Type
-				<th>Details
-			</tr>
-		</thead>
-		<tbody>
-			
-				<tr>
-					<td>
-						obj
-						
-					</td>
-					 
-					<td>
-	<span data-type="object">object</span>
-</td>
-					<td> <p>A target object</p>
-</td>
-				</tr>
-			
-				<tr>
-					<td>
-						evtnameHandlerObject
-						
-					</td>
-					 
-					<td>
-	<span data-type="object">object</span>
-</td>
-					<td> <p>An object where keys are event names and values are event handlers</p>
-</td>
-				</tr>
-			
-				<tr>
-					<td>
-						options
-						
-					</td>
-					 
-					<td>
-	<span data-type="object">object</span>
-</td>
-					<td> <p>See above.</p>
-</td>
-				</tr>
-			
-				<tr>
-					<td>
-						obj
-						
-					</td>
-					 
-					<td>
-	<span data-type="object">object</span>
-</td>
-					<td> <p>A target object</p>
-</td>
-				</tr>
-			
-		</tbody>
-	</table>
-
-
-	
-
-	
-	<h3>Examples</h3>
-
-
-<pre><code class="lang-js">defi.on(obj, {
+defi.trigger(obj, 'foo'); // does nothing</code></pre></article><article class="item method" id="!defi.on(2)"><h2><a href="#!defi.on(2)"><span class="memberof">defi.</span>on<wbr>(<span class="args">obj, evtnameHandlerObject, options, obj</span>)</a></h2><div class="summary"><p>Alternative syntax: &quot;eventname-handler&quot; pairs</p></div><div class="description"><p>In the <a href="#!defi.on">defi.on</a> function the object with the key-event pairs can be passed to avoid multiple invocation of the function.</p></div><h4>Arguments</h4><table class="arguments"><thead><tr><th>Name</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>obj</td><td><span data-type="object">object</span></td><td><p>A target object</p></td></tr><tr><td>evtnameHandlerObject</td><td><span data-type="object">object</span></td><td><p>An object where keys are event names and values are event handlers</p></td></tr><tr><td>options</td><td><span data-type="object">object</span></td><td><p>See above.</p></td></tr><tr><td>obj</td><td><span data-type="object">object</span></td><td><p>A target object</p></td></tr></tbody></table><h3>Examples</h3><pre><code class="lang-js">defi.on(obj, {
 	'custom': evt => ...,
 	'click::x': evt => ...,
 	'change:y': evt => ...,
 	[Symbol.for('a symbolic event')]: evt => ...,
-});</code></pre>
-
- 
-
-</article>
-
-<article class="item method" id="!defi.remove">
-	<h2>
-		<a href="#!defi.remove">
-			<span class="memberof">defi.</span>remove<wbr>(<span class="args">obj, key, eventOptions</span>)
-				
-		</a> <span class="returns">→ 
-	<span data-type="object">object</span>
-</span>
-	</h2>
-	
-	
-	<p class="module">
-		CommonJS module: <code>'defi/remove'</code>
-	</p>
-	
-	<div class="summary"><p>Deletes a property and removes dependent handlers</p>
-</div>
-	<div class="description"></div>
-	
-	<p>
-		<b>Returns</b> 
-	<span data-type="object">object</span>
-
-		 - obj
-
-
-	</p>
-	
-	
-	<p>
-		<b>Fires</b> <span class="event">delete</span> <span class="event">delete:KEY</span>
-
-	</p>
-	
-
-	
-	<h4>Arguments</h4>
-	<table class="arguments">
-		<thead>
-			<tr>
-				<th>Name
-				
-				<th>Type
-				<th>Details
-			</tr>
-		</thead>
-		<tbody>
-			
-				<tr>
-					<td>
-						obj
-						
-					</td>
-					 
-					<td>
-	<span data-type="object">object</span>
-</td>
-					<td> <p>A target object</p>
-</td>
-				</tr>
-			
-				<tr>
-					<td>
-						key
-						
-					</td>
-					 
-					<td>
-	<span data-type="string">string</span>
-</td>
-					<td> <p>A property name or an array of names to remove</p>
-</td>
-				</tr>
-			
-				<tr>
-					<td>
-						eventOptions
-						
-							<span class="signature">optional</span>
-						
-					</td>
-					 
-					<td>
-	<span data-type="eventOptions">eventOptions</span>
-</td>
-					<td> <p>An event options</p>
-</td>
-				</tr>
-			
-		</tbody>
-	</table>
-
-
-	
-
-	
-	<h3>Examples</h3>
-
-
-<pre><code class="lang-js">defi.remove(obj, 'myKey');
-defi.remove(obj, ['myKey1', 'myKey2']);</code></pre>
-
-    <h4><p>Using  <code>eventOptions</code></p>
-</h4>
-
-<pre><code class="lang-js">defi.remove(obj, 'myKey', {
+});</code></pre></article><article class="item method" id="!defi.remove"><h2><a href="#!defi.remove"><span class="memberof">defi.</span>remove<wbr>(<span class="args">obj, key, eventOptions</span>) </a><span class="returns">→ <span data-type="object">object</span></span></h2><p class="module">CommonJS module: <code>'defi/remove'</code></p><div class="summary"><p>Deletes a property and removes dependent handlers</p></div><div class="description"></div><p><b>Returns</b> <span data-type="object">object</span> - obj</p><p><b>Fires</b> <span class="event">delete</span> <span class="event">delete:KEY</span></p><h4>Arguments</h4><table class="arguments"><thead><tr><th>Name</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>obj</td><td><span data-type="object">object</span></td><td><p>A target object</p></td></tr><tr><td>key</td><td><span data-type="string">string</span></td><td><p>A property name or an array of names to remove</p></td></tr><tr><td>eventOptions <span class="signature">optional</span></td><td><span data-type="eventOptions">eventOptions</span></td><td><p>An event options</p></td></tr></tbody></table><h3>Examples</h3><pre><code class="lang-js">defi.remove(obj, 'myKey');
+defi.remove(obj, ['myKey1', 'myKey2']);</code></pre><h4><p>Using <code>eventOptions</code></p></h4><pre><code class="lang-js">defi.remove(obj, 'myKey', {
 	silent: true
-});</code></pre>
-
- 
-
-</article>
-
-<article class="item method" id="!defi.set">
-	<h2>
-		<a href="#!defi.set">
-			<span class="memberof">defi.</span>set<wbr>(<span class="args">obj, key, value, eventOptions</span>)
-				
-		</a> 
-	</h2>
-	
-	
-	<p class="module">
-		CommonJS module: <code>'defi/set'</code>
-	</p>
-	
-	<div class="summary"><p>Sets a property value allowing to pass an event options object</p>
-</div>
-	<div class="description"><p>The list of supported flags:</p>
-<ul>
-<li><code>silent</code> -  do not call the <code>change</code> and <code>change:KEY</code> events</li>
-<li><code>silentHTML</code> - do not change states of bound HTML nodes</li>
-<li><code>force</code> - call the <code>change</code> and <code>change:KEY</code> events even though the property value has not been changed</li>
-<li><code>forceHTML</code> - change a state of bound element even though the property value has not been changed. This option is usable if the bound element has been rendered after the binding (for example, some <code>option</code> tags have been added to <code>select</code> tag)</li>
-<li><code>skipMediator</code> - prevents the property transformation by <a href="#!defi.mediate">defi.mediate</a></li>
-<li><code>skipCalc</code> - prevents the work of dependencies created with <a href="#!defi.calc">defi.calc</a></li>
-<li><code>define</code> - makes the property to be &quot;listenable&quot; by <code>&quot;change&quot;</code> event by setting defi-specific accessors</li>
-</ul>
-</div>
-	
-	
-	<p>
-		<b>Fires</b> <span class="event">change</span> <span class="event">change:KEY</span> <span class="event">beforechange</span> <span class="event">beforechange:KEY</span>
-
-	</p>
-	
-
-	
-	<h4>Arguments</h4>
-	<table class="arguments">
-		<thead>
-			<tr>
-				<th>Name
-				
-				<th>Type
-				<th>Details
-			</tr>
-		</thead>
-		<tbody>
-			
-				<tr>
-					<td>
-						obj
-						
-					</td>
-					 
-					<td>
-	<span data-type="object">object</span>
-</td>
-					<td> <p>A target object</p>
-</td>
-				</tr>
-			
-				<tr>
-					<td>
-						key
-						
-					</td>
-					 
-					<td>
-	<span data-type="string">string</span>
-</td>
-					<td> <p>A key</p>
-</td>
-				</tr>
-			
-				<tr>
-					<td>
-						value
-						
-					</td>
-					 
-					<td>
-	<span data-type="*">*</span>
-</td>
-					<td> <p>A value</p>
-</td>
-				</tr>
-			
-				<tr>
-					<td>
-						eventOptions
-						
-							<span class="signature">optional</span>
-						
-					</td>
-					 
-					<td>
-	<span data-type="eventOptions">eventOptions</span>
-</td>
-					<td> <p>Event options</p>
-</td>
-				</tr>
-			
-		</tbody>
-	</table>
-
-
-	
-
-	
-	<h3>Examples</h3>
-
-
-<pre><code class="lang-js">defi.on(obj, 'change:myKey', evt => {
+});</code></pre></article><article class="item method" id="!defi.set"><h2><a href="#!defi.set"><span class="memberof">defi.</span>set<wbr>(<span class="args">obj, key, value, eventOptions</span>)</a></h2><p class="module">CommonJS module: <code>'defi/set'</code></p><div class="summary"><p>Sets a property value allowing to pass an event options object</p></div><div class="description"><p>The list of supported flags:</p><ul><li><code>silent</code> - do not call the <code>change</code> and <code>change:KEY</code> events</li><li><code>silentHTML</code> - do not change states of bound HTML nodes</li><li><code>force</code> - call the <code>change</code> and <code>change:KEY</code> events even though the property value has not been changed</li><li><code>forceHTML</code> - change a state of bound element even though the property value has not been changed. This option is usable if the bound element has been rendered after the binding (for example, some <code>option</code> tags have been added to <code>select</code> tag)</li><li><code>skipMediator</code> - prevents the property transformation by <a href="#!defi.mediate">defi.mediate</a></li><li><code>skipCalc</code> - prevents the work of dependencies created with <a href="#!defi.calc">defi.calc</a></li><li><code>define</code> - makes the property to be &quot;listenable&quot; by <code>&quot;change&quot;</code> event by setting defi-specific accessors</li></ul></div><p><b>Fires</b> <span class="event">change</span> <span class="event">change:KEY</span> <span class="event">beforechange</span> <span class="event">beforechange:KEY</span></p><h4>Arguments</h4><table class="arguments"><thead><tr><th>Name</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>obj</td><td><span data-type="object">object</span></td><td><p>A target object</p></td></tr><tr><td>key</td><td><span data-type="string">string</span></td><td><p>A key</p></td></tr><tr><td>value</td><td><span data-type="*">*</span></td><td><p>A value</p></td></tr><tr><td>eventOptions <span class="signature">optional</span></td><td><span data-type="eventOptions">eventOptions</span></td><td><p>Event options</p></td></tr></tbody></table><h3>Examples</h3><pre><code class="lang-js">defi.on(obj, 'change:myKey', evt => {
 	alert(evt.value);
 });
 
 // the same as obj['myKey'] = 3
 // or obj.myKey = 3
 // alerts 3
-defi.set(obj, 'myKey', 3);</code></pre>
-
-    <h4><p>Using <code>eventOptions</code></p>
-</h4>
-
-<pre><code class="lang-js">defi.on(obj, 'change:myKey', evt => {
+defi.set(obj, 'myKey', 3);</code></pre><h4><p>Using <code>eventOptions</code></p></h4><pre><code class="lang-js">defi.on(obj, 'change:myKey', evt => {
 	alert(evt.value);
 });
 
 // the handler isn't fired
 defi.set(obj, 'myKey', 4, {
 	silent: true
-});</code></pre>
-
-    <h4><p>Passing custom data to a handler</p>
-</h4>
-
-<pre><code class="lang-js">defi.on(obj, 'change:myKey', evt => {
+});</code></pre><h4><p>Passing custom data to a handler</p></h4><pre><code class="lang-js">defi.on(obj, 'change:myKey', evt => {
 	alert(evt.myCustomFlag);
 });
 
 // alerts 42
 defi.set(obj, 'myKey', 4, {
 	myCustomFlag: 42
-});</code></pre>
-
- 
-
-</article>
-
-<article class="item method" id="!defi.set(2)">
-	<h2>
-		<a href="#!defi.set(2)">
-			<span class="memberof">defi.</span>set<wbr>(<span class="args">obj, keyValuePairs, eventOptions</span>)
-				
-		</a> 
-	</h2>
-	
-	
-	<div class="summary"><p>Alternative &quot;key-value&quot; syntax of the <a href="#!defi.set">defi.set</a> function</p>
-</div>
-	<div class="description"></div>
-	
-	
-
-	
-	<h4>Arguments</h4>
-	<table class="arguments">
-		<thead>
-			<tr>
-				<th>Name
-				
-				<th>Type
-				<th>Details
-			</tr>
-		</thead>
-		<tbody>
-			
-				<tr>
-					<td>
-						obj
-						
-					</td>
-					 
-					<td>
-	<span data-type="object">object</span>
-</td>
-					<td> <p>A target object</p>
-</td>
-				</tr>
-			
-				<tr>
-					<td>
-						keyValuePairs
-						
-					</td>
-					 
-					<td>
-	<span data-type="object">object</span>
-</td>
-					<td> <p>An object containing key-value pairs</p>
-</td>
-				</tr>
-			
-				<tr>
-					<td>
-						eventOptions
-						
-							<span class="signature">optional</span>
-						
-					</td>
-					 
-					<td>
-	<span data-type="eventOptions">eventOptions</span>
-</td>
-					<td> <p>An event object</p>
-</td>
-				</tr>
-			
-		</tbody>
-	</table>
-
-
-	
-
-	
-	<h3>Examples</h3>
-
-
-<pre><code class="lang-js">defi.set(obj, {
+});</code></pre></article><article class="item method" id="!defi.set(2)"><h2><a href="#!defi.set(2)"><span class="memberof">defi.</span>set<wbr>(<span class="args">obj, keyValuePairs, eventOptions</span>)</a></h2><div class="summary"><p>Alternative &quot;key-value&quot; syntax of the <a href="#!defi.set">defi.set</a> function</p></div><div class="description"></div><h4>Arguments</h4><table class="arguments"><thead><tr><th>Name</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>obj</td><td><span data-type="object">object</span></td><td><p>A target object</p></td></tr><tr><td>keyValuePairs</td><td><span data-type="object">object</span></td><td><p>An object containing key-value pairs</p></td></tr><tr><td>eventOptions <span class="signature">optional</span></td><td><span data-type="eventOptions">eventOptions</span></td><td><p>An event object</p></td></tr></tbody></table><h3>Examples</h3><pre><code class="lang-js">defi.set(obj, {
 	myKey1: 1,
 	myKey2: 2
-});</code></pre>
-
-    <h4><p>Passing  <code>eventOptions</code> as a second argument</p>
-</h4>
-
-<pre><code class="lang-js">defi.set(obj, {
+});</code></pre><h4><p>Passing <code>eventOptions</code> as a second argument</p></h4><pre><code class="lang-js">defi.set(obj, {
 	myKey: 3
 }, {
 	myFlag: 'foo'
-});</code></pre>
-
- 
-
-</article>
-
-<article class="item method" id="!defi.trigger">
-	<h2>
-		<a href="#!defi.trigger">
-			<span class="memberof">defi.</span>trigger<wbr>(<span class="args">obj, names, arg</span>)
-				
-		</a> <span class="returns">→ 
-	<span data-type="object">object</span>
-</span>
-	</h2>
-	
-	
-	<p class="module">
-		CommonJS module: <code>'defi/trigger'</code>
-	</p>
-	
-	<div class="summary"><p>Fires an event</p>
-</div>
-	<div class="description"><p>After adding event handlers using <a href="#!defi.on">defi.on</a> any event can be fired manually using this function.</p>
-</div>
-	
-	<p>
-		<b>Returns</b> 
-	<span data-type="object">object</span>
-
-		 - obj
-
-
-	</p>
-	
-	
-
-	
-	<h4>Arguments</h4>
-	<table class="arguments">
-		<thead>
-			<tr>
-				<th>Name
-				
-				<th>Type
-				<th>Details
-			</tr>
-		</thead>
-		<tbody>
-			
-				<tr>
-					<td>
-						obj
-						
-					</td>
-					 
-					<td>
-	<span data-type="object">object</span>
-</td>
-					<td> <p>A target object</p>
-</td>
-				</tr>
-			
-				<tr>
-					<td>
-						names
-						
-							<span class="signature">optional</span>
-						
-					</td>
-					 
-					<td>
-	<span data-type="eventNames">eventNames</span>
-</td>
-					<td> <p>An event name or an array of names</p>
-</td>
-				</tr>
-			
-				<tr>
-					<td>
-						arg
-						
-							<span class="signature">optional</span>
-						
-					</td>
-					 
-					<td>
-	<span data-type="*">*</span>
-</td>
-					<td> <p>Any arguments which will be passed to every event handler</p>
-</td>
-				</tr>
-			
-		</tbody>
-	</table>
-
-
-	
-<h4>Links</h4>
-<ul class="see">
-	
-		<li><a href="#!defi.on">defi.on</a>
-	
-		<li><a href="#!defi.off">defi.off</a>
-	
-</ul>
-
-
-	
-	<h3>Examples</h3>
-
-
-<pre><code class="lang-js">defi.on(obj, ['foo', 'bar'], (a, b, c) => {
+});</code></pre></article><article class="item method" id="!defi.trigger"><h2><a href="#!defi.trigger"><span class="memberof">defi.</span>trigger<wbr>(<span class="args">obj, names, arg</span>) </a><span class="returns">→ <span data-type="object">object</span></span></h2><p class="module">CommonJS module: <code>'defi/trigger'</code></p><div class="summary"><p>Fires an event</p></div><div class="description"><p>After adding event handlers using <a href="#!defi.on">defi.on</a> any event can be fired manually using this function.</p></div><p><b>Returns</b> <span data-type="object">object</span> - obj</p><h4>Arguments</h4><table class="arguments"><thead><tr><th>Name</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>obj</td><td><span data-type="object">object</span></td><td><p>A target object</p></td></tr><tr><td>names <span class="signature">optional</span></td><td><span data-type="eventNames">eventNames</span></td><td><p>An event name or an array of names</p></td></tr><tr><td>arg <span class="signature">optional</span></td><td><span data-type="*">*</span></td><td><p>Any arguments which will be passed to every event handler</p></td></tr></tbody></table><h4>Links</h4><ul class="see"><li><a href="#!defi.on">defi.on</a></li><li><a href="#!defi.off">defi.off</a></li></ul><h3>Examples</h3><pre><code class="lang-js">defi.on(obj, ['foo', 'bar'], (a, b, c) => {
 	alert(a + b + c);
 });
-defi.trigger(obj, 'foo', 1, 2, 3); // alerts 6</code></pre>
-
- 
-
-</article>
-
-<article class="item method" id="!defi.unbindNode">
-	<h2>
-		<a href="#!defi.unbindNode">
-			<span class="memberof">defi.</span>unbindNode<wbr>(<span class="args">obj, undefined, node, eventOptions</span>)
-				
-		</a> <span class="returns">→ 
-	<span data-type="object">object</span>
-</span>
-	</h2>
-	
-	
-	<p class="module">
-		CommonJS module: <code>'defi/unbindnode'</code>
-	</p>
-	
-	<div class="summary"><p>Destroys a binding between given property and HTML node</p>
-</div>
-	<div class="description"><p>Using this function you can delete a binding between a property and HTML node, which has been added recently and no longer needed.</p>
-</div>
-	
-	<p>
-		<b>Returns</b> 
-	<span data-type="object">object</span>
-
-		 - obj
-
-
-	</p>
-	
-	
-	<p>
-		<b>Fires</b> <span class="event">unbind</span> <span class="event">unbind:KEY</span>
-
-	</p>
-	
-
-	
-	<h4>Arguments</h4>
-	<table class="arguments">
-		<thead>
-			<tr>
-				<th>Name
-				
-				<th>Type
-				<th>Details
-			</tr>
-		</thead>
-		<tbody>
-			
-				<tr>
-					<td>
-						obj
-						
-					</td>
-					 
-					<td>
-	<span data-type="object">object</span>
-</td>
-					<td> <p>A target object</p>
-</td>
-				</tr>
-			
-				<tr>
-					<td>
-						
-						
-					</td>
-					 
-					<td>
-	<span data-type="string">string</span>
-
-	<span data-type="null">null</span>
-</td>
-					<td> <p>A key or an array of keys. If you pass <code>null</code> instead of the key, all bindings for the given object will be deleted</p>
-</td>
-				</tr>
-			
-				<tr>
-					<td>
-						node
-						
-							<span class="signature">optional</span>
-						
-					</td>
-					 
-					<td>
-	<span data-type="string">string</span>
-
-	<span data-type="node">node</span>
-
-	<span data-type="$nodes">$nodes</span>
-</td>
-					<td> <p>HTML node</p>
-</td>
-				</tr>
-			
-				<tr>
-					<td>
-						eventOptions
-						
-							<span class="signature">optional</span>
-						
-					</td>
-					 
-					<td>
-	<span data-type="eventOptions">eventOptions</span>
-</td>
-					<td> <p>Event object (<code>&quot;silent&quot;</code> key disables firing the events <code>&quot;unbind&quot;</code> and <code>&quot;unbind:KEY&quot;</code>)</p>
-</td>
-				</tr>
-			
-		</tbody>
-	</table>
-
-
-	
-
-	
-	<h3>Examples</h3>
-
-
-<pre><code class="lang-js">defi.bindNode(obj, 'myKey', '.my-element');
+defi.trigger(obj, 'foo', 1, 2, 3); // alerts 6</code></pre></article><article class="item method" id="!defi.unbindNode"><h2><a href="#!defi.unbindNode"><span class="memberof">defi.</span>unbindNode<wbr>(<span class="args">obj, undefined, node, eventOptions</span>) </a><span class="returns">→ <span data-type="object">object</span></span></h2><p class="module">CommonJS module: <code>'defi/unbindnode'</code></p><div class="summary"><p>Destroys a binding between given property and HTML node</p></div><div class="description"><p>Using this function you can delete a binding between a property and HTML node, which has been added recently and no longer needed.</p></div><p><b>Returns</b> <span data-type="object">object</span> - obj</p><p><b>Fires</b> <span class="event">unbind</span> <span class="event">unbind:KEY</span></p><h4>Arguments</h4><table class="arguments"><thead><tr><th>Name</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>obj</td><td><span data-type="object">object</span></td><td><p>A target object</p></td></tr><tr><td></td><td><span data-type="string">string</span> <span data-type="null">null</span></td><td><p>A key or an array of keys. If you pass <code>null</code> instead of the key, all bindings for the given object will be deleted</p></td></tr><tr><td>node <span class="signature">optional</span></td><td><span data-type="string">string</span> <span data-type="node">node</span> <span data-type="$nodes">$nodes</span></td><td><p>HTML node</p></td></tr><tr><td>eventOptions <span class="signature">optional</span></td><td><span data-type="eventOptions">eventOptions</span></td><td><p>Event object (<code>&quot;silent&quot;</code> key disables firing the events <code>&quot;unbind&quot;</code> and <code>&quot;unbind:KEY&quot;</code>)</p></td></tr></tbody></table><h3>Examples</h3><pre><code class="lang-js">defi.bindNode(obj, 'myKey', '.my-element');
 
 // changes the property value and the state of the HTML element
 obj.myKey = true;
@@ -2905,103 +523,7 @@ obj.myKey = true;
 defi.unbindNode(obj, 'myKey', '.my-element');
 
 // only the property value is being changed now
-obj.myKey = false;</code></pre>
-
- 
-
-</article>
-
-<article class="item method" id="!defi.unbindNode(2)">
-	<h2>
-		<a href="#!defi.unbindNode(2)">
-			<span class="memberof">defi.</span>unbindNode<wbr>(<span class="args">obj, bindings, eventOptions</span>)
-				
-		</a> <span class="returns">→ 
-	<span data-type="object">object</span>
-</span>
-	</h2>
-	
-	
-	<div class="summary"><p>Alternative syntax which allows to pass an object with bindings to <code>unbindNode</code>. Look at <a href="#!defi.bindNode(2)">defi.bindNode(2)</a> for more information</p>
-</div>
-	<div class="description"></div>
-	
-	<p>
-		<b>Returns</b> 
-	<span data-type="object">object</span>
-
-		 - obj
-
-
-	</p>
-	
-	
-
-	
-	<h4>Arguments</h4>
-	<table class="arguments">
-		<thead>
-			<tr>
-				<th>Name
-				
-				<th>Type
-				<th>Details
-			</tr>
-		</thead>
-		<tbody>
-			
-				<tr>
-					<td>
-						obj
-						
-					</td>
-					 
-					<td>
-	<span data-type="object">object</span>
-</td>
-					<td> <p>A target object</p>
-</td>
-				</tr>
-			
-				<tr>
-					<td>
-						bindings
-						
-					</td>
-					 
-					<td>
-	<span data-type="object">object</span>
-</td>
-					<td> <p>(see the example)</p>
-</td>
-				</tr>
-			
-				<tr>
-					<td>
-						eventOptions
-						
-							<span class="signature">optional</span>
-						
-					</td>
-					 
-					<td>
-	<span data-type="eventOptions">eventOptions</span>
-</td>
-					<td> <p>(see above)</p>
-</td>
-				</tr>
-			
-		</tbody>
-	</table>
-
-
-	
-
-	
-	<h3>Examples</h3>
-
-
-<pre><code class="lang-js">defi.unbindNode(obj, {
+obj.myKey = false;</code></pre></article><article class="item method" id="!defi.unbindNode(2)"><h2><a href="#!defi.unbindNode(2)"><span class="memberof">defi.</span>unbindNode<wbr>(<span class="args">obj, bindings, eventOptions</span>) </a><span class="returns">→ <span data-type="object">object</span></span></h2><div class="summary"><p>Alternative syntax which allows to pass an object with bindings to <code>unbindNode</code>. Look at <a href="#!defi.bindNode(2)">defi.bindNode(2)</a> for more information</p></div><div class="description"></div><p><b>Returns</b> <span data-type="object">object</span> - obj</p><h4>Arguments</h4><table class="arguments"><thead><tr><th>Name</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>obj</td><td><span data-type="object">object</span></td><td><p>A target object</p></td></tr><tr><td>bindings</td><td><span data-type="object">object</span></td><td><p>(see the example)</p></td></tr><tr><td>eventOptions <span class="signature">optional</span></td><td><span data-type="eventOptions">eventOptions</span></td><td><p>(see above)</p></td></tr></tbody></table><h3>Examples</h3><pre><code class="lang-js">defi.unbindNode(obj, {
 	foo: '.aaa'
 	bar: {
 		node: '.bbb'
@@ -3011,48 +533,7 @@ obj.myKey = false;</code></pre>
 	}, {
 		node: '.ddd'
 	}]
-});</code></pre>
-
- 
-
-</article>
-
-
-<article class="item property" id="!defi.defaultBinders">
-	<h2>
-		<a href="#!defi.defaultBinders">
-
-			<span class="memberof">defi.</span>defaultBinders</a><span class="type">:
-				<span data-type="array">array</span>
-			</span>
-
-		<span class="new-badge"></span>
-	</h2>
-	
-	<p class="module">
-		CommonJS module: <code>'defi/defaultbinders'</code>
-	</p>
-	
-	<div class="summary"><p>An array of functions which return a corresponding binder or a falsy value</p>
-</div>
-	<div class="description"><p><code>defaultBinders</code> is the array of functions which check an element in turn against given rules in these functions and return a binder (see <span data-type="binder">binder</span>). This array is used when the third argument has not been passed to the <a href="#!defi.bindNode">defi.bindNode</a> function. See more detailed information about bindings in <a href="#!defi.bindNode">defi.bindNode</a> documentation.</p>
-</div>
-	
-<h4>Links</h4>
-<ul class="see">
-	
-		<li><a href="#!defi.bindNode">defi.bindNode</a>
-	
-		<li><a href="#!defi.lookForBinder">defi.lookForBinder</a>
-	
-</ul>
-
-
-	
-	<h3>Examples</h3>
-
-
-<pre><code class="lang-js">defi.defaultBinders.unshift(element => {
+});</code></pre></article><article class="item property" id="!defi.defaultBinders"><h2><a href="#!defi.defaultBinders"><span class="memberof">defi.</span>defaultBinders</a><span class="type">: <span data-type="array">array</span> </span><span class="new-badge"></span></h2><p class="module">CommonJS module: <code>'defi/defaultbinders'</code></p><div class="summary"><p>An array of functions which return a corresponding binder or a falsy value</p></div><div class="description"><p><code>defaultBinders</code> is the array of functions which check an element in turn against given rules in these functions and return a binder (see <span data-type="binder">binder</span>). This array is used when the third argument has not been passed to the <a href="#!defi.bindNode">defi.bindNode</a> function. See more detailed information about bindings in <a href="#!defi.bindNode">defi.bindNode</a> documentation.</p></div><h4>Links</h4><ul class="see"><li><a href="#!defi.bindNode">defi.bindNode</a></li><li><a href="#!defi.lookForBinder">defi.lookForBinder</a></li></ul><h3>Examples</h3><pre><code class="lang-js">defi.defaultBinders.unshift(element => {
 	// check if the element has "foo" class name
 	if(element.classList.contains('foo')) {
 		// if checking is OK, return a new binder
@@ -3066,249 +547,34 @@ obj.myKey = false;</code></pre>
 
 // ...
 
-defi.bindNode(obj, 'myKey', '.foo.bar');</code></pre>
-
- 
-
-	
-</article>
-
-
-
-
-</section>
-<section>
-
-	
-<article class="item typedef" data-typedef="eventHandler">
-	<i class="close-modal"></i>
-	<h2>
-		eventHandler
-			<span data-type="function">function</span>
-		
-	</h2>
-
-	<p>An event handler. Takes any arguments passed to <a href="#!defi.trigger">defi.trigger</a></p>
-
-	
-	<h4>Arguments</h4>
-	<table class="arguments">
-		<thead>
-			<tr>
-				<th>Name
-				
-				<th>Type
-				<th>Details
-			</tr>
-		</thead>
-		<tbody>
-			
-				<tr>
-					<td>
-						options
-						
-					</td>
-					 
-					<td>
-	<span data-type="*">*</span>
-</td>
-					<td> Any arguments</td>
-				</tr>
-			
-		</tbody>
-	</table>
-
-
-	
-
-	
-
-	
-	<h3>Examples</h3>
-
-
-<pre><code class="lang-js">const eventHandler = (...args) => {
+defi.bindNode(obj, 'myKey', '.foo.bar');</code></pre></article></section><section><article class="item typedef" data-typedef="eventHandler"><i class="close-modal"></i><h2>eventHandler <span data-type="function">function</span></h2><p>An event handler. Takes any arguments passed to <a href="#!defi.trigger">defi.trigger</a></p><h4>Arguments</h4><table class="arguments"><thead><tr><th>Name</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>options</td><td><span data-type="*">*</span></td><td>Any arguments</td></tr></tbody></table><h3>Examples</h3><pre><code class="lang-js">const eventHandler = (...args) => {
 	console.log(args);
 };
 defi.on(obj, 'fyeah', eventHandler);
 // logs 'foo', 'bar', 'baz'
-defi.trigger(obj, 'fyeah', 'foo', 'bar', 'baz');</code></pre>
-
- 
-
-</article>
-
-
-	
-<article class="item typedef" data-typedef="eventNames">
-	<i class="close-modal"></i>
-	<h2>
-		eventNames
-			<span data-type="string">string</span>
-		
-			<span data-type="symbol">symbol</span>
-		
-	</h2>
-
-	<p>Event name or an array of event names.</p>
-<h5 id="custom-events">Custom events.</h5>
-<pre><code class="language-js">defi.on(obj, [&#39;myevent1&#39;, Symbol.for(&#39;myevent2&#39;)], () =&gt; {...});
-defi.trigger(obj, Symbol.for(&#39;myevent2&#39;));</code></pre>
-<h5 id="changekey-which-is-triggered-every-time-when-a-property-is-changed"><code>change:KEY</code> which is triggered every time when a property is changed.</h5>
-<pre><code class="language-js">defi.on(obj, &#39;change:x&#39;, evt =&gt; {...});
-obj.x = 42;</code></pre>
-<h5 id="beforechangekey-which-is-triggered-every-time-before-a-property-is-changed"><code>beforechange:KEY</code> which is triggered every time before a property is changed.</h5>
-<pre><code class="language-js">defi.on(obj, &#39;beforechange:x&#39;, evt =&gt; {...});
-obj.x = 42;</code></pre>
-<h5 id="addeventname-and-addevent-which-are-triggered-on-event-add"><code>addevent:NAME</code> and <code>addevent</code> which are triggered on event add.</h5>
-<pre><code class="language-js">// for any event
+defi.trigger(obj, 'fyeah', 'foo', 'bar', 'baz');</code></pre></article><article class="item typedef" data-typedef="eventNames"><i class="close-modal"></i><h2>eventNames <span data-type="string">string</span> <span data-type="symbol">symbol</span></h2><p>Event name or an array of event names.</p><h5 id="custom-events">Custom events.</h5><pre><code class="language-js">defi.on(obj, [&#39;myevent1&#39;, Symbol.for(&#39;myevent2&#39;)], () =&gt; {...});
+defi.trigger(obj, Symbol.for(&#39;myevent2&#39;));</code></pre><h5 id="changekey-which-is-triggered-every-time-when-a-property-is-changed"><code>change:KEY</code> which is triggered every time when a property is changed.</h5><pre><code class="language-js">defi.on(obj, &#39;change:x&#39;, evt =&gt; {...});
+obj.x = 42;</code></pre><h5 id="beforechangekey-which-is-triggered-every-time-before-a-property-is-changed"><code>beforechange:KEY</code> which is triggered every time before a property is changed.</h5><pre><code class="language-js">defi.on(obj, &#39;beforechange:x&#39;, evt =&gt; {...});
+obj.x = 42;</code></pre><h5 id="addeventname-and-addevent-which-are-triggered-on-event-add"><code>addevent:NAME</code> and <code>addevent</code> which are triggered on event add.</h5><pre><code class="language-js">// for any event
 defi.on(obj, &#39;addevent&#39;, evt =&gt; {...});
 // for &quot;someevent&quot; event
 defi.on(obj, &#39;addevent:someevent&#39;, evt =&gt; {...});
 // the line below fires &quot;addevent&quot; and &quot;addevent:someevent&quot;
-defi.on(obj, &#39;someevent&#39;, evt =&gt; {...});</code></pre>
-<h5 id="removeeventname-and-removeevent-which-are-triggered-on-event-remove"><code>removeevent:NAME</code> and <code>removeevent</code> which are triggered on event remove.</h5>
-<pre><code class="language-js">// for any event
+defi.on(obj, &#39;someevent&#39;, evt =&gt; {...});</code></pre><h5 id="removeeventname-and-removeevent-which-are-triggered-on-event-remove"><code>removeevent:NAME</code> and <code>removeevent</code> which are triggered on event remove.</h5><pre><code class="language-js">// for any event
 defi.on(obj, &#39;removeevent&#39;, evt =&gt; {...});
 // for &quot;someevent&quot; event
 defi.on(obj, &#39;removeevent:someevent&#39;, evt =&gt; {...});
 // the line below fires &quot;removeevent&quot; and &quot;removeevent:someevent&quot;
-defi.off(obj, &#39;someevent&#39;, evt =&gt; {...});</code></pre>
-<h5 id="dom_eventkey-where-dom_event-is-a-name-of-dom-event-key-is-a-key-a-handler-is-called-when-dom_event-is-triggered-on-a-node-which-is-bound-to-the-key"><code>DOM_EVENT::KEY</code>, where DOM_EVENT is a name of DOM event, KEY is a key. A handler is called when DOM_EVENT is triggered on a node which is bound to the KEY.</h5>
-<pre><code class="language-js">defi.bindNode(obj, &#39;x&#39;, &#39;.my-div&#39;);
+defi.off(obj, &#39;someevent&#39;, evt =&gt; {...});</code></pre><h5 id="dom_eventkey-where-dom_event-is-a-name-of-dom-event-key-is-a-key-a-handler-is-called-when-dom_event-is-triggered-on-a-node-which-is-bound-to-the-key"><code>DOM_EVENT::KEY</code>, where DOM_EVENT is a name of DOM event, KEY is a key. A handler is called when DOM_EVENT is triggered on a node which is bound to the KEY.</h5><pre><code class="language-js">defi.bindNode(obj, &#39;x&#39;, &#39;.my-div&#39;);
 defi.on(obj, &#39;click::x&#39;, evt =&gt; {
     alert(&#39;clicked &quot;.my-div&quot;&#39;);
-});</code></pre>
-<h5 id="dom_eventkeyselector-where-dom_event-is-a-name-of-dom-event-key-is-a-key-selector-is-a-selector-a-handler-is-called-when-dom_event-is-triggered-on-a-node-which-matches-the-selector-within-a-node-bound-to-the-key"><code>DOM_EVENT::KEY(SELECTOR)</code>, where DOM_EVENT is a name of DOM event, KEY is a key, SELECTOR is a selector. A handler is called when DOM_EVENT is triggered on a node which matches the SELECTOR within a node bound to the KEY.</h5>
-<pre><code class="language-html">&lt;div class=&quot;my-div&quot;&gt;
+});</code></pre><h5 id="dom_eventkeyselector-where-dom_event-is-a-name-of-dom-event-key-is-a-key-selector-is-a-selector-a-handler-is-called-when-dom_event-is-triggered-on-a-node-which-matches-the-selector-within-a-node-bound-to-the-key"><code>DOM_EVENT::KEY(SELECTOR)</code>, where DOM_EVENT is a name of DOM event, KEY is a key, SELECTOR is a selector. A handler is called when DOM_EVENT is triggered on a node which matches the SELECTOR within a node bound to the KEY.</h5><pre><code class="language-html">&lt;div class=&quot;my-div&quot;&gt;
     &lt;button class=&quot;my-button&quot;&gt;&lt;/button&gt;
-&lt;/div&gt;</code></pre>
-<pre><code class="language-js">defi.bindNode(obj, &#39;x&#39;, &#39;.my-div&#39;);
+&lt;/div&gt;</code></pre><pre><code class="language-js">defi.bindNode(obj, &#39;x&#39;, &#39;.my-div&#39;);
 defi.on(obj, &#39;click::x(.my-button)&#39;, evt =&gt; {
     alert(&#39;clicked &quot;.my-button&quot;&#39;);
-});</code></pre>
-<h5 id="delegated-events-pathevent-where-path-is-a-path-to-a-target-object-whose-events-we-want-to-listen-event-is-an-event-name">Delegated events: <code>PATH@EVENT</code>, where PATH is a path to a target object whose events we want to listen, EVENT is an event name.</h5>
-<pre><code class="language-js">defi.on(obj, &#39;a@someevent&#39;, () =&gt; {...});
-defi.on(obj, &#39;a.b.c@change:d&#39;, () =&gt; {...});</code></pre>
-<h5 id="any-combinations-all-events-described-above-can-be-combined">Any combinations. All events described above can be combined.</h5>
-<pre><code class="language-js">defi.on(obj, &#39;x.y.z@click::u(.my-selector)&#39;, () =&gt; {...});</code></pre>
-
-	
-
-	
-
-	
-
-	
-
- 
-
-</article>
-
-
-	
-<article class="item typedef" data-typedef="binder">
-	<i class="close-modal"></i>
-	<h2>
-		binder
-			<span data-type="object">object</span>
-		
-	</h2>
-
-	<p><code>binder</code> contains all information about how to synchronize an object property value with DOM node state. Every member of a binder uses HTML node as its context (<code>this</code>)</p>
-
-	
-
-	
-	<h4>Properties</h4>
-	<table class="properties">
-		<thead>
-			<tr>
-				<th>Name
-				<th>Type
-				<th>Details
-			</tr>
-		</thead>
-		<tbody>
-			
-				<tr>
-					<td>
-						on
-						
-							<span class="signature">optional</span>
-						
-					<td>
-	<span data-type="string">string</span>
-
-	<span data-type="function">function</span>
-
-					<td><p>DOM event (or space-delimited list of events) which tells when the node state is changed. Besides, it accepts a function as a value if you need to customize a listener definition</p>
-
-				</tr>
-			
-				<tr>
-					<td>
-						getValue
-						
-							<span class="signature">optional</span>
-						
-					<td>
-	<span data-type="function">function</span>
-
-					<td><p>A function which tells how to retrieve a value (state) from HTML node when DOM event is fired</p>
-
-				</tr>
-			
-				<tr>
-					<td>
-						setValue
-						
-							<span class="signature">optional</span>
-						
-					<td>
-	<span data-type="function">function</span>
-
-					<td><p>A function which tells how to change DOM node when the property value is changed</p>
-
-				</tr>
-			
-				<tr>
-					<td>
-						initialize
-						
-							<span class="signature">optional</span>
-						
-					<td>
-	<span data-type="function">function</span>
-
-					<td><p>A function which is called before binding is launched. For example it can initialize a JavaScript plugin or something else</p>
-
-				</tr>
-			
-				<tr>
-					<td>
-						destroy
-						
-							<span class="signature">optional</span>
-						
-					<td>
-	<span data-type="function">function</span>
-
-					<td><p>A function which is called when a binding is removed using <code>unbindNode</code> function</p>
-
-				</tr>
-			
-		</tbody>
-	</table>
-
-
-	
-
-	
-	<h3>Examples</h3>
-
-
-<pre><code class="lang-js">const binder = {
+});</code></pre><h5 id="delegated-events-pathevent-where-path-is-a-path-to-a-target-object-whose-events-we-want-to-listen-event-is-an-event-name">Delegated events: <code>PATH@EVENT</code>, where PATH is a path to a target object whose events we want to listen, EVENT is an event name.</h5><pre><code class="language-js">defi.on(obj, &#39;a@someevent&#39;, () =&gt; {...});
+defi.on(obj, &#39;a.b.c@change:d&#39;, () =&gt; {...});</code></pre><h5 id="any-combinations-all-events-described-above-can-be-combined">Any combinations. All events described above can be combined.</h5><pre><code class="language-js">defi.on(obj, &#39;x.y.z@click::u(.my-selector)&#39;, () =&gt; {...});</code></pre></article><article class="item typedef" data-typedef="binder"><i class="close-modal"></i><h2>binder <span data-type="object">object</span></h2><p><code>binder</code> contains all information about how to synchronize an object property value with DOM node state. Every member of a binder uses HTML node as its context (<code>this</code>)</p><h4>Properties</h4><table class="properties"><thead><tr><th>Name</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>on <span class="signature">optional</span></td><td><span data-type="string">string</span> <span data-type="function">function</span></td><td><p>DOM event (or space-delimited list of events) which tells when the node state is changed. Besides, it accepts a function as a value if you need to customize a listener definition</p></td></tr><tr><td>getValue <span class="signature">optional</span></td><td><span data-type="function">function</span></td><td><p>A function which tells how to retrieve a value (state) from HTML node when DOM event is fired</p></td></tr><tr><td>setValue <span class="signature">optional</span></td><td><span data-type="function">function</span></td><td><p>A function which tells how to change DOM node when the property value is changed</p></td></tr><tr><td>initialize <span class="signature">optional</span></td><td><span data-type="function">function</span></td><td><p>A function which is called before binding is launched. For example it can initialize a JavaScript plugin or something else</p></td></tr><tr><td>destroy <span class="signature">optional</span></td><td><span data-type="function">function</span></td><td><p>A function which is called when a binding is removed using <code>unbindNode</code> function</p></td></tr></tbody></table><h3>Examples</h3><pre><code class="lang-js">const binder = {
 	on: 'click',
 	getValue: (bindingOptions) => bindingOptions.node.value,
 	setValue(v, bindingOptions) => bindingOptions.node.value = v,
@@ -3316,41 +582,11 @@ defi.on(obj, &#39;a.b.c@change:d&#39;, () =&gt; {...});</code></pre>
 	destroy: (bindingOptions) => alert('A binding is destroyed'),
 };
 
-defi.bindNode(obj, 'a', '.my-checkbox', binder);</code></pre>
-
-<pre><code class="lang-js">const binder = {
+defi.bindNode(obj, 'a', '.my-checkbox', binder);</code></pre><pre><code class="lang-js">const binder = {
 	on: (callback, bindingOptions) => bindingOptions.node.onclick = callback,
 	// ...
 };
-// ...</code></pre>
-
- 
-
-</article>
-
-
-	
-<article class="item typedef" data-typedef="eventOptions">
-	<i class="close-modal"></i>
-	<h2>
-		eventOptions
-			<span data-type="object">object</span>
-		
-	</h2>
-
-	<p>An object which can contain service flags or custom data which will be passed to an event handler</p>
-
-	
-
-	
-
-	
-
-	
-	<h3>Examples</h3>
-
-
-<pre><code class="lang-js">const eventOptions = { silent: true };
+// ...</code></pre></article><article class="item typedef" data-typedef="eventOptions"><i class="close-modal"></i><h2>eventOptions <span data-type="object">object</span></h2><p>An object which can contain service flags or custom data which will be passed to an event handler</p><h3>Examples</h3><pre><code class="lang-js">const eventOptions = { silent: true };
 
 obj.a = 1;
 
@@ -3358,9 +594,7 @@ defi.on(obj, 'change:a', () => {
 	alert('a is changed');
 });
 
-defi.set(obj, 'a', 2, eventOptions); // no alert</code></pre>
-
-<pre><code class="lang-js">const eventOptions = { f: 'yeah' };
+defi.set(obj, 'a', 2, eventOptions); // no alert</code></pre><pre><code class="lang-js">const eventOptions = { f: 'yeah' };
 
 obj.a = 1;
 
@@ -3368,379 +602,48 @@ defi.on(obj, 'change:a', eventOptions => {
 	alert(eventOptions.f);
 });
 
-defi.set(obj, 'a', 2, eventOptions); // alerts "yeah"</code></pre>
-
- 
-
-</article>
-
-
-	
-<article class="item typedef" data-typedef="node">
-	<i class="close-modal"></i>
-	<h2>
-		node
-	</h2>
-
-	<p>A DOM node</p>
-
-	
-
-	
-
-	
-
-	
-	<h3>Examples</h3>
-
-
-<pre><code class="lang-js">const node = document.querySelector('.foo');</code></pre>
-
- 
-
-</article>
-
-
-	
-<article class="item typedef" data-typedef="$nodes">
-	<i class="close-modal"></i>
-	<h2>
-		$nodes
-	</h2>
-
-	<p>DOM nodes collection (NodeList, array, etc).</p>
-
-	
-
-	
-
-	
-
-	
-	<h3>Examples</h3>
-
-
-<pre><code class="lang-js">let $nodes = $('.foo');
-$nodes = document.querySelectorAll('.bar');</code></pre>
-
- 
-
-</article>
-
-
-	
-<article class="item typedef" data-typedef="string">
-	<i class="close-modal"></i>
-	<h2>
-		string
-	</h2>
-
-	<p>A string</p>
-
-	
-
-	
-
-	
-
-	
-	<h3>Examples</h3>
-
-
-<pre><code class="lang-js">const foo = 'bar';</code></pre>
-
- 
-
-</article>
-
-
-	
-<article class="item typedef" data-typedef="symbol">
-	<i class="close-modal"></i>
-	<h2>
-		symbol
-	</h2>
-
-	<p>A symbol</p>
-
-	
-
-	
-
-	
-
-	
-	<h3>Examples</h3>
-
-
-<pre><code class="lang-js">const foo = Symbol('foo');
-const bar = Symbol.for('bar');</code></pre>
-
- 
-
-</article>
-
-
-	
-<article class="item typedef" data-typedef="boolean">
-	<i class="close-modal"></i>
-	<h2>
-		boolean
-	</h2>
-
-	<p>A boolean</p>
-
-	
-
-	
-
-	
-
-	
-	<h3>Examples</h3>
-
-
-<pre><code class="lang-js">const bool = true;</code></pre>
-
- 
-
-</article>
-
-
-	
-<article class="item typedef" data-typedef="number">
-	<i class="close-modal"></i>
-	<h2>
-		number
-	</h2>
-
-	<p>A number</p>
-
-	
-
-	
-
-	
-
-	
-	<h3>Examples</h3>
-
-
-<pre><code class="lang-js">const num = 42;</code></pre>
-
- 
-
-</article>
-
-
-	
-<article class="item typedef" data-typedef="object">
-	<i class="close-modal"></i>
-	<h2>
-		object
-	</h2>
-
-	<p>An object</p>
-
-	
-
-	
-
-	
-
-	
-	<h3>Examples</h3>
-
-
-<pre><code class="lang-js">const obj = {
+defi.set(obj, 'a', 2, eventOptions); // alerts "yeah"</code></pre></article><article class="item typedef" data-typedef="node"><i class="close-modal"></i><h2>node</h2><p>A DOM node</p><h3>Examples</h3><pre><code class="lang-js">const node = document.querySelector('.foo');</code></pre></article><article class="item typedef" data-typedef="$nodes"><i class="close-modal"></i><h2>$nodes</h2><p>DOM nodes collection (NodeList, array, etc).</p><h3>Examples</h3><pre><code class="lang-js">let $nodes = $('.foo');
+$nodes = document.querySelectorAll('.bar');</code></pre></article><article class="item typedef" data-typedef="string"><i class="close-modal"></i><h2>string</h2><p>A string</p><h3>Examples</h3><pre><code class="lang-js">const foo = 'bar';</code></pre></article><article class="item typedef" data-typedef="symbol"><i class="close-modal"></i><h2>symbol</h2><p>A symbol</p><h3>Examples</h3><pre><code class="lang-js">const foo = Symbol('foo');
+const bar = Symbol.for('bar');</code></pre></article><article class="item typedef" data-typedef="boolean"><i class="close-modal"></i><h2>boolean</h2><p>A boolean</p><h3>Examples</h3><pre><code class="lang-js">const bool = true;</code></pre></article><article class="item typedef" data-typedef="number"><i class="close-modal"></i><h2>number</h2><p>A number</p><h3>Examples</h3><pre><code class="lang-js">const num = 42;</code></pre></article><article class="item typedef" data-typedef="object"><i class="close-modal"></i><h2>object</h2><p>An object</p><h3>Examples</h3><pre><code class="lang-js">const obj = {
 	foo: 'x',
 	['bar']: 'y'
-};</code></pre>
-
- 
-
-</article>
-
-
-	
-<article class="item typedef" data-typedef="array">
-	<i class="close-modal"></i>
-	<h2>
-		array
-	</h2>
-
-	<p>An array</p>
-
-	
-
-	
-
-	
-
-	
-	<h3>Examples</h3>
-
-
-<pre><code class="lang-js">const arr = ['foo', undefined, null, () => {}];</code></pre>
-
- 
-
-</article>
-
-
-	
-<article class="item typedef" data-typedef="function">
-	<i class="close-modal"></i>
-	<h2>
-		function
-	</h2>
-
-	<p>A function</p>
-
-	
-
-	
-
-	
-
-	
-	<h3>Examples</h3>
-
-
-<pre><code class="lang-js">function comeOnBarbieLetsGoParty() {
+};</code></pre></article><article class="item typedef" data-typedef="array"><i class="close-modal"></i><h2>array</h2><p>An array</p><h3>Examples</h3><pre><code class="lang-js">const arr = ['foo', undefined, null, () => {}];</code></pre></article><article class="item typedef" data-typedef="function"><i class="close-modal"></i><h2>function</h2><p>A function</p><h3>Examples</h3><pre><code class="lang-js">function comeOnBarbieLetsGoParty() {
 	alert("I'm a Barbie girl, in a Barbie world");
-}</code></pre>
-
- 
-
-</article>
-
-
-	
-<article class="item typedef" data-typedef="null">
-	<i class="close-modal"></i>
-	<h2>
-		null
-	</h2>
-
-	<p>null, just null</p>
-
-	
-
-	
-
-	
-
-	
-	<h3>Examples</h3>
-
-
-<pre><code class="lang-js">const x = null;</code></pre>
-
- 
-
-</article>
-
-
-	
-<article class="item typedef" data-typedef="*">
-	<i class="close-modal"></i>
-	<h2>
-		*
-	</h2>
-
-	<p>Any type</p>
-
-	
-
-	
-
-	
-
-	
-	<h3>Examples</h3>
-
-
-<pre><code class="lang-js">let whatever = 'foo';
-whatever = 42;</code></pre>
-
- 
-
-</article>
-
-
-</section>
-<section>
-
-</section>
-
-	<section>
-		<article id="!events">
-			<h2 id="the-events"><a href="#!events">The events</a></h2>
-<p>The article explains events in defi.js. They can be called a heart of defi.js because they power all the magic happened at <code>calc</code>, <code>bindNode</code>, and other methods.</p>
-<h3 id="basics">Basics</h3>
-<h4 id="custom-events">Custom events</h4>
-<p>Let’s start with the simplest thing. In defi.js events can be added with the help of <a href="#!defi.on">on</a> method.</p>
-<pre><code class="language-js">const handler = () =&gt; {
+}</code></pre></article><article class="item typedef" data-typedef="null"><i class="close-modal"></i><h2>null</h2><p>null, just null</p><h3>Examples</h3><pre><code class="lang-js">const x = null;</code></pre></article><article class="item typedef" data-typedef="*"><i class="close-modal"></i><h2>*</h2><p>Any type</p><h3>Examples</h3><pre><code class="lang-js">let whatever = 'foo';
+whatever = 42;</code></pre></article></section><section></section><section><article id="!events"><h2 id="the-events"><a href="#!events">The events</a></h2><p>The article explains events in defi.js. They can be called a heart of defi.js because they power all the magic happened at <code>calc</code>, <code>bindNode</code>, and other methods.</p><h3 id="basics">Basics</h3><h4 id="custom-events">Custom events</h4><p>Let’s start with the simplest thing. In defi.js events can be added with the help of <a href="#!defi.on">on</a> method.</p><pre><code class="language-js">const handler = () =&gt; {
   alert(&#39;&quot;someevent&quot; is fired&#39;);
 };
-defi.on(object, &#39;someevent&#39;, handler);</code></pre>
-<p>Where the list of events separated by spaces can be passed to.</p>
-<pre><code class="language-js">defi.on(object, &#39;someevent1 someevent2&#39;, handler);</code></pre>
-<p>Events can be fired with <a href="#!defi.trigger">trigger</a> method.</p>
-<pre><code class="language-js">defi.trigger(object, &#39;someevent&#39;);</code></pre>
-<p>At the same time, you can pass some data to the handler having determined the first and the following arguments.</p>
-<pre><code class="language-js">defi.on(object, &#39;someevent&#39;, (a, b, c) =&gt; {
+defi.on(object, &#39;someevent&#39;, handler);</code></pre><p>Where the list of events separated by spaces can be passed to.</p><pre><code class="language-js">defi.on(object, &#39;someevent1 someevent2&#39;, handler);</code></pre><p>Events can be fired with <a href="#!defi.trigger">trigger</a> method.</p><pre><code class="language-js">defi.trigger(object, &#39;someevent&#39;);</code></pre><p>At the same time, you can pass some data to the handler having determined the first and the following arguments.</p><pre><code class="language-js">defi.on(object, &#39;someevent&#39;, (a, b, c) =&gt; {
   alert([a, b, c]); // 1,2,3
 });
-defi.trigger(object, &#39;someevent&#39;, 1, 2, 3);</code></pre>
-<p><code>on</code> method accepts options which can affect on cases when the handler should be called. <code>once: true</code> makes the handler called only once.</p>
-<pre><code class="language-js">defi.on(object, &#39;someevent&#39;, handler, { once: true });
+defi.trigger(object, &#39;someevent&#39;, 1, 2, 3);</code></pre><p><code>on</code> method accepts options which can affect on cases when the handler should be called. <code>once: true</code> makes the handler called only once.</p><pre><code class="language-js">defi.on(object, &#39;someevent&#39;, handler, { once: true });
 
 defi.trigger(object, &#39;someevent&#39;); // the handler is called
 defi.trigger(object, &#39;someevent&#39;); // the handler isn&#39;t called any more
-</code></pre>
-<p><code>debounce: true</code> or <code>debounce: delay</code> &quot;debounces&quot; the handler. When an event fires out, the timer with the specified delay by a programmer starts. If no event with the same name is called upon the expiry of the timer, a handler is called. If an event fires before the delay is over, the timer updates and waits again. This is the implementation of a very popular &quot;debounce&quot; micropattern which you can read about on <a href="http://davidwalsh.name/javascript-debounce-function">this page</a>.</p>
-<pre><code class="language-js">defi.on(object, &#39;someevent&#39;, () =&gt; {
+</code></pre><p><code>debounce: true</code> or <code>debounce: delay</code> &quot;debounces&quot; the handler. When an event fires out, the timer with the specified delay by a programmer starts. If no event with the same name is called upon the expiry of the timer, a handler is called. If an event fires before the delay is over, the timer updates and waits again. This is the implementation of a very popular &quot;debounce&quot; micropattern which you can read about on <a href="http://davidwalsh.name/javascript-debounce-function">this page</a>.</p><pre><code class="language-js">defi.on(object, &#39;someevent&#39;, () =&gt; {
   alert(&#39;yep&#39;);
 }, { debounce: 500 });
 for(let i = 0; i &lt; 1000; i++) {
   defi.trigger(object, &#39;someevent&#39;);
 }
-// it will show ‘yep’ only once in 500ms</code></pre>
-<h4 id="events-of-property-changing">Events of property changing</h4>
-<p>When a property is changed, defi.js fires an event: <code>&quot;change:KEY&quot;</code>.</p>
-<pre><code class="language-js">defi.on(object, &#39;change:x&#39;, () =&gt; {
+// it will show ‘yep’ only once in 500ms</code></pre><h4 id="events-of-property-changing">Events of property changing</h4><p>When a property is changed, defi.js fires an event: <code>&quot;change:KEY&quot;</code>.</p><pre><code class="language-js">defi.on(object, &#39;change:x&#39;, () =&gt; {
     alert(&#39;x is changed&#39;);
 });
-object.x = 42;</code></pre>
-<p>In case you want to pass some data to the event handler or change a property value without calling <code>&quot;change:KEY&quot;</code> event, instead of a usual assignment use <a href="#!defi.set">defi.set</a> method which accepts three arguments: a key, a value and an object with data or special flags.</p>
-<pre><code class="language-js">defi.on(object, &#39;change:x&#39;, evt =&gt; {
+object.x = 42;</code></pre><p>In case you want to pass some data to the event handler or change a property value without calling <code>&quot;change:KEY&quot;</code> event, instead of a usual assignment use <a href="#!defi.set">defi.set</a> method which accepts three arguments: a key, a value and an object with data or special flags.</p><pre><code class="language-js">defi.on(object, &#39;change:x&#39;, evt =&gt; {
     alert(evt.someData);
 });
 
-defi.set(object, &#39;x&#39;, 42, { someData: &#39;foo&#39; });</code></pre>
-<p>You can change a property without calling an event handler in this way:</p>
-<pre><code class="language-js">// changing doesn’t fire an event
-defi.set(object, &#39;x&#39;, 9000, { silent: true });</code></pre>
-<p><code>set</code> method supports some more flags, the description of which would make us go beyond the topic of the article, so I refer you to the <a href="#!defi.set">documentation of the method</a>.</p>
-<h4 id="events-which-are-being-fired-before-a-property-changing">Events which are being fired before a property changing</h4>
-<p><code>&quot;beforechange:KEY&quot;</code> is being fired before a property changing. The event can be useful in cases you define <code>&quot;change:KEY&quot;</code> event and want to call the code which precedes this event.</p>
-<pre><code class="language-js">defi.on(object, &#39;beforechange:x&#39;, () =&gt; {
+defi.set(object, &#39;x&#39;, 42, { someData: &#39;foo&#39; });</code></pre><p>You can change a property without calling an event handler in this way:</p><pre><code class="language-js">// changing doesn’t fire an event
+defi.set(object, &#39;x&#39;, 9000, { silent: true });</code></pre><p><code>set</code> method supports some more flags, the description of which would make us go beyond the topic of the article, so I refer you to the <a href="#!defi.set">documentation of the method</a>.</p><h4 id="events-which-are-being-fired-before-a-property-changing">Events which are being fired before a property changing</h4><p><code>&quot;beforechange:KEY&quot;</code> is being fired before a property changing. The event can be useful in cases you define <code>&quot;change:KEY&quot;</code> event and want to call the code which precedes this event.</p><pre><code class="language-js">defi.on(object, &#39;beforechange:x&#39;, () =&gt; {
     alert(&#39;x will be changed in a few microseconds&#39;);
-});</code></pre>
-<p>As usually, you can pass some data to the handler or cancel an event triggering.</p>
-<pre><code class="language-js">defi.on(object,&#39;beforechange:x&#39;, evt =&gt; {
+});</code></pre><p>As usually, you can pass some data to the handler or cancel an event triggering.</p><pre><code class="language-js">defi.on(object,&#39;beforechange:x&#39;, evt =&gt; {
     alert(evt.someData);
 });
 
 defi.set(object, &#39;x&#39;, 42, { someData: &#39;foo&#39; });
 
 // changing doesn’t fire an event
-defi.set(object, &#39;x&#39;, 9000, { silent: true });</code></pre>
-<h4 id="events-of-a-property-removing">Events of a property removing</h4>
-<p>On removing properties with <a href="#!defi.remove">defi.remove</a> method, <code>&quot;delete:KEY&quot;</code> and <code>delete</code> events are fired.</p>
-<pre><code class="language-js">defi.on(object, &#39;delete:x&#39;, () =&gt; {
+defi.set(object, &#39;x&#39;, 9000, { silent: true });</code></pre><h4 id="events-of-a-property-removing">Events of a property removing</h4><p>On removing properties with <a href="#!defi.remove">defi.remove</a> method, <code>&quot;delete:KEY&quot;</code> and <code>delete</code> events are fired.</p><pre><code class="language-js">defi.on(object, &#39;delete:x&#39;, () =&gt; {
     alert(&#39;x is deleted&#39;);
 });
 
@@ -3748,10 +651,7 @@ defi.on(object, &#39;delete&#39;, evt =&gt; {
   alert(`${evt.key} is deleted`);
 });
 
-defi.remove(object, &#39;x&#39;);</code></pre>
-<h4 id="binding-events">Binding events</h4>
-<p>On the binding declaration two events: <code>&quot;bind&quot;</code> and <code>&quot;bind:KEY&quot;</code> are fired, where <code>KEY</code> is a key of a bound property.</p>
-<pre><code class="language-js">defi.on(object, &#39;bind:x&#39;, () =&gt; {
+defi.remove(object, &#39;x&#39;);</code></pre><h4 id="binding-events">Binding events</h4><p>On the binding declaration two events: <code>&quot;bind&quot;</code> and <code>&quot;bind:KEY&quot;</code> are fired, where <code>KEY</code> is a key of a bound property.</p><pre><code class="language-js">defi.on(object, &#39;bind:x&#39;, () =&gt; {
     alert(&#39;x is bound&#39;);
 });
 
@@ -3759,17 +659,10 @@ defi.on(object, &#39;bind&#39;, evt =&gt; {
     alert(`${evt.key} is bound`);
 });
 
-defi.bindNode(object, &#39;x&#39;, &#39;.my-node&#39;);</code></pre>
-<p>This event can be of use, for example, when you need to execute your code after binding made in a separate module.</p>
-<h3 id="the-events-of-event-addingremoving">The events of event adding/removing</h3>
-<p>When an event is added, <code>&quot;addevent&quot;</code> and <code>&quot;addevent:NAME&quot;</code> events are fired, and when an event is removed, <code>&quot;removeevent&quot;</code> and <code>&quot;removeevent:NAME&quot;</code> events are fired, where <code>NAME</code> is an event name.</p>
-<pre><code class="language-js">defi.on(object, &#39;addevent&#39;, handler);
+defi.bindNode(object, &#39;x&#39;, &#39;.my-node&#39;);</code></pre><p>This event can be of use, for example, when you need to execute your code after binding made in a separate module.</p><h3 id="the-events-of-event-addingremoving">The events of event adding/removing</h3><p>When an event is added, <code>&quot;addevent&quot;</code> and <code>&quot;addevent:NAME&quot;</code> events are fired, and when an event is removed, <code>&quot;removeevent&quot;</code> and <code>&quot;removeevent:NAME&quot;</code> events are fired, where <code>NAME</code> is an event name.</p><pre><code class="language-js">defi.on(object, &#39;addevent&#39;, handler);
 defi.on(object, &#39;addevent:someevent&#39;, handler);
 defi.on(object, &#39;removeevent&#39;, handler);
-defi.on(object, &#39;removeevent:someevent&#39;, handler);</code></pre>
-<p>One of the ways of its application can be the use of defi.js as an event engine of a third-party library. Let’s say, you want to place all handlers of all external libraries into one <a href="#!defi.on">on</a> call, having made the code more readable and compact. With the help of <code>addevent</code> you catch all further event initializations, and in the handler you check an event name against some conditions and initialize an event using API of a third-party library.</p>
-<p>In the example below there’s a code from a project which uses Fabric.js. <code>&quot;addevent&quot;</code> handler checks an event name for the presence of <code>&quot;fabric:&quot;</code> prefix and if checking is passed, it adds the corresponding handler to the canvas with the help of Fabric API.</p>
-<pre><code class="language-js">object.canvas = new fabric.Canvas(node);
+defi.on(object, &#39;removeevent:someevent&#39;, handler);</code></pre><p>One of the ways of its application can be the use of defi.js as an event engine of a third-party library. Let’s say, you want to place all handlers of all external libraries into one <a href="#!defi.on">on</a> call, having made the code more readable and compact. With the help of <code>addevent</code> you catch all further event initializations, and in the handler you check an event name against some conditions and initialize an event using API of a third-party library.</p><p>In the example below there’s a code from a project which uses Fabric.js. <code>&quot;addevent&quot;</code> handler checks an event name for the presence of <code>&quot;fabric:&quot;</code> prefix and if checking is passed, it adds the corresponding handler to the canvas with the help of Fabric API.</p><pre><code class="language-js">object.canvas = new fabric.Canvas(node);
 defi.on(object,{
     &#39;addevent&#39;: evt =&gt; {
         const { name, callback } = evt;
@@ -3784,76 +677,24 @@ defi.on(object,{
         object.data = object.canvas.toObject();
     },
     &#39;fabric:object:selected&#39;: evt =&gt; { /* ... */ }
-});</code></pre>
-<h3 id="delegated-events">Delegated events</h3>
-<p>Now let’s get down to the most interesting: event delegations. The syntax of delegated events is as follows: <code>&quot;PATH@EVENT_NAME&quot;</code>, where <code>PATH</code> is a path (properties are separated by a dot) to an object which <code>EVENT_NAME</code> event needs to be added to. Let’s consider examples below.</p>
-<h4 id="example-1">Example 1</h4>
-<p>You want to add an event handler in <code>&quot;a&quot;</code> property which in its turn is an object.</p>
-<pre><code class="language-js">defi.on(object, &#39;a@someevent&#39;, handler);</code></pre>
-<p>The handler will be called when <code>&quot;someevent&quot;</code> event has been fired in the <code>&quot;a&quot;</code> object.</p>
-<pre><code class="language-js">defi.trigger(obj.a, &#39;someevent&#39;);</code></pre>
-<p>Also, the handler can be declared before <code>&quot;a&quot;</code> property is set. If <code>&quot;a&quot;</code> property is rewritten into another object, inner mechanism of the library will catch this change, remove the handler from the previous property value and add it to a new value (if the new value is an object as well).</p>
-<pre><code class="language-js">obj.a = {};
-defi.trigger(obj.a, &#39;someevent&#39;);</code></pre>
-<p>The handler will be called again.</p>
-<h4 id="example-2">Example 2</h4>
-<p>Let’s go deeper. Suppose we have <code>&quot;a&quot;</code> property that contains an object with <code>&quot;b&quot;</code> property, in which <code>&quot;someevent&quot;</code> event must be fired. In this case properties are separated by a dot:</p>
-<pre><code class="language-js">defi.on(object, &#39;a.b@someevent&#39;, handler);
-defi.trigger(object.a.b, &#39;someevent&#39;);</code></pre>
-<h4 id="example-3">Example 3</h4>
-<p>Besides custom events, you can use the ones which are built in defi.js as well. Instead of <code>&quot;someevent&quot;</code> you can use <code>&quot;change:KEY&quot;</code> event described above.</p>
-<pre><code class="language-js">// in “a” object there’s “b” object,
+});</code></pre><h3 id="delegated-events">Delegated events</h3><p>Now let’s get down to the most interesting: event delegations. The syntax of delegated events is as follows: <code>&quot;PATH@EVENT_NAME&quot;</code>, where <code>PATH</code> is a path (properties are separated by a dot) to an object which <code>EVENT_NAME</code> event needs to be added to. Let’s consider examples below.</p><h4 id="example-1">Example 1</h4><p>You want to add an event handler in <code>&quot;a&quot;</code> property which in its turn is an object.</p><pre><code class="language-js">defi.on(object, &#39;a@someevent&#39;, handler);</code></pre><p>The handler will be called when <code>&quot;someevent&quot;</code> event has been fired in the <code>&quot;a&quot;</code> object.</p><pre><code class="language-js">defi.trigger(obj.a, &#39;someevent&#39;);</code></pre><p>Also, the handler can be declared before <code>&quot;a&quot;</code> property is set. If <code>&quot;a&quot;</code> property is rewritten into another object, inner mechanism of the library will catch this change, remove the handler from the previous property value and add it to a new value (if the new value is an object as well).</p><pre><code class="language-js">obj.a = {};
+defi.trigger(obj.a, &#39;someevent&#39;);</code></pre><p>The handler will be called again.</p><h4 id="example-2">Example 2</h4><p>Let’s go deeper. Suppose we have <code>&quot;a&quot;</code> property that contains an object with <code>&quot;b&quot;</code> property, in which <code>&quot;someevent&quot;</code> event must be fired. In this case properties are separated by a dot:</p><pre><code class="language-js">defi.on(object, &#39;a.b@someevent&#39;, handler);
+defi.trigger(object.a.b, &#39;someevent&#39;);</code></pre><h4 id="example-3">Example 3</h4><p>Besides custom events, you can use the ones which are built in defi.js as well. Instead of <code>&quot;someevent&quot;</code> you can use <code>&quot;change:KEY&quot;</code> event described above.</p><pre><code class="language-js">// in “a” object there’s “b” object,
 // in which we listen to changes of “c” property.
-defi.on(object, &#39;a.b@change:c&#39;, handler);</code></pre>
-<p>Let me remind you that delegated events are added dynamically. On declaring a handler any branch of the way may be absent. If anything is overridden in the object tree, the binding to the old value is disrupted and a new one is created with a new value:</p>
-<pre><code class="language-js">defi.on(object, &#39;a.b.c.d@someevent&#39;, handler);
+defi.on(object, &#39;a.b@change:c&#39;, handler);</code></pre><p>Let me remind you that delegated events are added dynamically. On declaring a handler any branch of the way may be absent. If anything is overridden in the object tree, the binding to the old value is disrupted and a new one is created with a new value:</p><pre><code class="language-js">defi.on(object, &#39;a.b.c.d@someevent&#39;, handler);
 object.a.b = { c: { d: {} } };
-defi.trigger(object.a.b.c.d, &#39;someevent&#39;);</code></pre>
-<h3 id="dom-events">DOM events</h3>
-<p>defi.js is known to allow bindings of DOM elements on a page to some object properties implementing one-way or two-way data binding:</p>
-<pre><code class="language-js">defi.bindNode(object, &#39;x&#39;, &#39;.my-node&#39;);</code></pre>
-<p><a href="#!defi.bindNode">More detailed information about bindNode method</a>.</p>
-<p>Before or after the declaration of the binding you can create a handler that listens to DOM events of the bound element. The syntax is as follows: <code>&quot;DOM_EVENT::KEY&quot;</code>, where <code>DOM_EVENT</code> is DOM event, and <code>KEY</code> is a key of a bound property. <code>DOM_EVENT</code> and <code>KEY</code> are separated by a double colon.</p>
-<pre><code class="language-js">defi.on(object, &#39;click::x&#39;, evt =&gt; {
+defi.trigger(object.a.b.c.d, &#39;someevent&#39;);</code></pre><h3 id="dom-events">DOM events</h3><p>defi.js is known to allow bindings of DOM elements on a page to some object properties implementing one-way or two-way data binding:</p><pre><code class="language-js">defi.bindNode(object, &#39;x&#39;, &#39;.my-node&#39;);</code></pre><p><a href="#!defi.bindNode">More detailed information about bindNode method</a>.</p><p>Before or after the declaration of the binding you can create a handler that listens to DOM events of the bound element. The syntax is as follows: <code>&quot;DOM_EVENT::KEY&quot;</code>, where <code>DOM_EVENT</code> is DOM event, and <code>KEY</code> is a key of a bound property. <code>DOM_EVENT</code> and <code>KEY</code> are separated by a double colon.</p><pre><code class="language-js">defi.on(object, &#39;click::x&#39;, evt =&gt; {
   evt.preventDefault();
-});</code></pre>
-<p>The object of original DOM event is under <code>&quot;domEvent&quot;</code> key of the event object passed to the handler. Besides, there are several properties and methods available in the object so as not to address <code>&quot;domEvent&quot;</code> every time: <code>&quot;preventDefault&quot;</code>, <code>&quot;stopPropagation&quot;</code>, <code>&quot;which&quot;</code>, <code>&quot;target&quot;</code> and some other properties.</p>
-<p>This opportunity is just a syntactic sugar over ordinary DOM events and the code below does the same things as the previous one:</p>
-<pre><code class="language-js">document.querySelector(&#39;.my-node&#39;).addEventListener(&#39;click&#39;, evt =&gt; {
+});</code></pre><p>The object of original DOM event is under <code>&quot;domEvent&quot;</code> key of the event object passed to the handler. Besides, there are several properties and methods available in the object so as not to address <code>&quot;domEvent&quot;</code> every time: <code>&quot;preventDefault&quot;</code>, <code>&quot;stopPropagation&quot;</code>, <code>&quot;which&quot;</code>, <code>&quot;target&quot;</code> and some other properties.</p><p>This opportunity is just a syntactic sugar over ordinary DOM events and the code below does the same things as the previous one:</p><pre><code class="language-js">document.querySelector(&#39;.my-node&#39;).addEventListener(&#39;click&#39;, evt =&gt; {
     evt.preventDefault();
-});</code></pre>
-<h4 id="delegated-dom-events">Delegated DOM events</h4>
-<p>Event declaring from the example above requires binding declaring. You must take two steps: call <code>bindNode</code> method and declare the event as such. It isn’t always convenient because there are often some cases when DOM node isn’t used anywhere except only one DOM event. For this case there is another syntax variant of DOM events which looks like <code>&quot;DOM_EVENT::KEY(SELECTOR)&quot;</code>. In this case <code>KEY</code> is some key bound to some DOM node. And <code>SELECTOR</code> is a selector of DOM node that is a child of the one bound to <code>KEY</code>.</p>
-<p>HTML:</p>
-<pre><code class="language-html">&lt;div class=&quot;my-node&quot;&gt;
+});</code></pre><h4 id="delegated-dom-events">Delegated DOM events</h4><p>Event declaring from the example above requires binding declaring. You must take two steps: call <code>bindNode</code> method and declare the event as such. It isn’t always convenient because there are often some cases when DOM node isn’t used anywhere except only one DOM event. For this case there is another syntax variant of DOM events which looks like <code>&quot;DOM_EVENT::KEY(SELECTOR)&quot;</code>. In this case <code>KEY</code> is some key bound to some DOM node. And <code>SELECTOR</code> is a selector of DOM node that is a child of the one bound to <code>KEY</code>.</p><p>HTML:</p><pre><code class="language-html">&lt;div class=&quot;my-node&quot;&gt;
     &lt;span class=&quot;my-inner-node&quot;&gt;&lt;/span&gt;
-&lt;/div&gt;</code></pre>
-<p>JS:</p>
-<pre><code class="language-js">defi.bindNode(object, &#39;x&#39;, &#39;.my-node&#39;);
-defi.on(object, &#39;click::x(.my-inner-node)&#39;, handler);</code></pre>
-
-		</article>
-	</section>
-</main>
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-12418613-11"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
+&lt;/div&gt;</code></pre><p>JS:</p><pre><code class="language-js">defi.bindNode(object, &#39;x&#39;, &#39;.my-node&#39;);
+defi.on(object, &#39;click::x(.my-inner-node)&#39;, handler);</code></pre></article></section></main><script async src="https://www.googletagmanager.com/gtag/js?id=UA-12418613-11"></script><script>window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'UA-12418613-11');
-</script>
-
-
-		<div class="hide nav-overlay"></div>
-		<div class="hide typedef-overlay"></div>
-		<div class="hide typo-overlay"></div>
-		<script id="pagination-template" type="text/html">
-			<div class="pagination">
+  gtag('config', 'UA-12418613-11');</script><div class="hide nav-overlay"></div><div class="hide typedef-overlay"></div><div class="hide typo-overlay"></div><script id="pagination-template" type="text/html"><div class="pagination">
 				<a class="previous-page"></a>
 				<a class="next-page"></a>
-			</div>
-		</script>
-	<script type="text/javascript" src="js/app.js"></script></body>
-</html>
+			</div></script><script src="js/app.js"></script></body></html>
