@@ -1,5 +1,5 @@
 {
-  "name": "matreshka.io",
+  "name": "defi.js.org",
   "private": true,
   "version": "2.0.0",
   "description": "Defi.js website",
@@ -42,6 +42,7 @@
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "glob": "^7.1.6",
     "html-loader": "^1.1.0",
+    "html-minifier": "^4.0.0",
     "html-webpack-plugin": "^4.3.0",
     "http-server": "^0.12.3",
     "jsdoc": "^3.6.4",

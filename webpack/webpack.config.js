@@ -74,9 +74,9 @@ module.exports = {
                     use: [
                         { loader: 'css-loader' },
                         { loader: 'sass-loader', options: {
-                            functions: sassAssetFunctions({
+                            sassOptions: { functions: sassAssetFunctions({
                                 images_path: 'sass/inlined-images',
-                            })
+                            })}
                         }
                     }],
                 })
@@ -84,7 +84,7 @@ module.exports = {
             { test: /\.html$/, use: { loader: 'compile-ejs-loader' } },
             {
                 test: /\.md$/,
-                use: [{ loader: "html-loader", options: { attrs: false } },'markdown-loader']
+                use: [{ loader: "html-loader", options: { attributes: false } },'markdown-loader']
             },
             { test: /\.yaml$/,  use: ['json-loader', 'yaml-loader'] },
         ]
