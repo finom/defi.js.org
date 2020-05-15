@@ -16,10 +16,10 @@ const handler = () => {
 defi.on(object, 'someevent', handler);
 ```
 
-Where the list of events separated by spaces can be passed to.
+Where the list of events can be passed to.
 
 ```js
-defi.on(object, 'someevent1 someevent2', handler);
+defi.on(object, ['someevent1', 'someevent2'], handler);
 ```
 
 Events can be fired with [trigger](#!defi.trigger) method.
