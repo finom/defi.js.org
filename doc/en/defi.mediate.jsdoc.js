@@ -26,6 +26,7 @@ defi.mediate(obj, ['x', 'y'], value => String(value));
 @function defi.mediate
 @variation 2
 @summary Alternative syntax of the {@link defi.mediate} function which accepts "key-mediator" object as an argument
+@param {object} obj - A target object
 @param {object} keyMediatorPairs - An object with key-mediator properties
 @example
 defi.mediate(obj, {
