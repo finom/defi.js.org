@@ -4,7 +4,9 @@
 @fires bind
 @fires bind:KEY
 @summary Binds a property of an object to HTML node, implementing two-way data binding
-@desc It creates a bridge between value of a property and a state of HTML node on the page: from a simple input to a complicated widget (the complexity of elements is unlimited). After using this function, it isn't necessary to monitor the synchronizations between model and view.
+@desc > Skip this section if you're using **defi-react** because React handles DOM rendering by its own.
+
+It creates a bridge between value of a property and a state of HTML node on the page: from a simple input to a complicated widget (the complexity of elements is unlimited). After using this function, it isn't necessary to monitor the synchronizations between model and view.
 
 > Note that a bunch of common binders can be found at [common-binders](https://github.com/finom/defi/tree/master/packages/common-binders) package. Also the function, by default, supports all form elements without need to pass binder argument.
 

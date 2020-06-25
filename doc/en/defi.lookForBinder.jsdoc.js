@@ -1,7 +1,9 @@
 /**
 @function defi.lookForBinder
 @module defi/lookforbinder
-@desc Returns a binder corresponding to an element. If it is not found, it returns ``undefined``. The function uses {@link defi.defaultBinders} for the search.
+@desc > Skip this section if you're using **defi-react** because React handles DOM rendering by its own.
+
+Returns a binder corresponding to an element. If it is not found, it returns ``undefined``. The function uses {@link defi.defaultBinders} for the search.
 @see {@link defi.bindNode}
 @see {@link defi.defaultBinders}
 @param {node} node

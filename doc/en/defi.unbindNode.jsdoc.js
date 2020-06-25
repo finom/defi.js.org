@@ -4,7 +4,9 @@
 @fires unbind
 @fires unbind:KEY
 @summary Destroys a binding between given property and HTML node
-@desc Using this function you can delete a binding between a property and HTML node, which has been added recently and no longer needed.
+@desc > Skip this section if you're using **defi-react** because React handles DOM rendering by its own.
+
+Using this function you can delete a binding between a property and HTML node, which has been added recently and no longer needed.
 @param {object} obj - A target object
 @param {string|null} key - A key or an array of keys. If you pass ``null`` instead of the key, all bindings for the given object will be deleted
 @param {string|node|$nodes} [node] - HTML node
